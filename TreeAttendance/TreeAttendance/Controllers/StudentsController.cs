@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 
 namespace TreeAttendance.Controllers
 {
@@ -50,7 +46,7 @@ namespace TreeAttendance.Controllers
 
         // POST: Students/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit()
         {
             try
             {

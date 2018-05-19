@@ -1,0 +1,54 @@
+﻿@{
+    ViewBag.Title = "Create Student";
+}
+
+
+<br /><br />
+<h4>Current Development</h4>
+<br />
+
+
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item" aria-current="page"> <a href="~/AdminHome">Admin Home</a></li>
+        <li class="breadcrumb-item" aria-current="page"> <a href="~/Students">Students</a></li>
+        <li class="breadcrumb-item" aria-current="page active">Add a New Stduent</li>
+    </ol>
+</nav>
+
+<div class="row">
+    <div class="col-4">
+        <div class="input-group" style="margin: 30px">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="">Name</span>
+            </div>
+            <input type="text" class="form-control">
+        </div>
+        <div class="input-group" style="margin: 30px">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="">Profile Picture Uri</span>
+            </div>
+            <input type="text" class="form-control">
+        </div>
+        <div class="row" style="margin: 30px">
+            <div style="margin-right: 30px">
+                @Html.ActionLink("Cancel", "Index", null, new { @class = "btn btn-success" })
+            </div>
+            <div style="margin-right: 30px">
+                <input type="submit" value="Update" class="btn btn-primary">
+            </div>
+
+
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
