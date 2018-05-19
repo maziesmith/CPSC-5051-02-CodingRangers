@@ -196,6 +196,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\ReportsController.cs" />
     <Compile Include="Controllers\AdminHomeController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -223,6 +224,7 @@
     <Content Include="Content\img\boy2.png" />
     <Content Include="Content\img\girl1.png" />
     <Content Include="Content\img\girl2.png" />
+    <Content Include="Content\img\reports.png" />
     <Content Include="Content\img\StudentsDetails.png" />
     <Content Include="Content\img\StudentsIndex.png" />
     <Content Include="Content\img\SUinterlock.png" />
@@ -287,6 +289,7 @@
     <Content Include="Views\AdminHome\Index.cshtml" />
     <Content Include="Views\Students\Index.cshtml" />
     <Content Include="Views\Students\Details.cshtml" />
+    <Content Include="Views\Reports\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
