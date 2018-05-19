@@ -1,0 +1,46 @@
+﻿@{
+    ViewBag.Title = "Remove Student";
+}
+
+
+<br /><br />
+<h4>Current Development</h4>
+<br />
+
+
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item" aria-current="page"> <a href="~/AdminHome">Admin Home</a></li>
+        <li class="breadcrumb-item" aria-current="page"> <a href="~/Students">Students</a></li>
+        <li class="breadcrumb-item" aria-current="page"><a href="~/Students">Allen</a></li>
+        <li class="breadcrumb-item" aria-current="page active">Edit</li>
+    </ol>
+</nav>
+
+<div>
+    <h2>Remove Student</h2>
+    <br />
+    <br />
+
+    <div class="row">
+        <div align="center" style="padding:70px">
+            <img src="~/Content/img/boy1.png" width="100" height="100" />
+            <br />
+            <div style="padding: 7px">
+                Allen
+            </div>
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div style="margin: 15px">
+            @Html.ActionLink("Cancel", "Details", new { id = 1 }, new { @class = "btn btn-success" })
+        </div>
+        <div style="margin: 15px">
+            <input type="submit" value="Update" class="btn btn-danger">
+        </div>
+    </div>
+
+
+</div>
