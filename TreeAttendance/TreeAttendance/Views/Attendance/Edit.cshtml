@@ -1,0 +1,54 @@
+﻿@{
+    ViewBag.Title = "Edit Attendance";
+}
+
+
+<br /><br />
+<h4>Current Development</h4>
+<br />
+
+
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item" aria-current="page"> <a href="~/AdminHome">Admin Home</a></li>
+        <li class="breadcrumb-item" aria-current="page"> <a href="~/Attendance">Attendance</a></li>
+        <li class="breadcrumb-item" aria-current="page"><a href="~/Attendance/Details/1">Allen 5.1.2018</a></li>
+        <li class="breadcrumb-item" aria-current="page active">Edit</li>
+    </ol>
+</nav>
+
+<div class="row">
+    <div class="col-4" align="center" style="padding:70px">
+        <a href="~/Students/Details/1">
+            <img src="~/Content/img/boy1.png" width="100" height="100" />
+            <br />
+            <div style="padding: 7px">
+                Allen
+            </div>
+        </a>
+    </div>
+    <div class="col-4">
+        <div class="input-group" style="margin: 30px">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="">Check-in Time</span>
+            </div>
+            <input type="text" class="form-control">
+        </div>
+        <div class="input-group" style="margin: 30px">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="">Check-out Time</span>
+            </div>
+            <input type="text" class="form-control">
+        </div>
+        <div class="row" style="margin: 30px">
+            <div style="margin-right: 30px">
+                @Html.ActionLink("Cancel", "Details", new { id = 1 }, new { @class = "btn btn-success" })
+            </div>
+            <div style="margin-right: 30px">
+                <input type="submit" value="Update" class="btn btn-primary">
+            </div>
+
+
+        </div>
+    </div>
+</div>
