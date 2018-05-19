@@ -223,6 +223,7 @@
     <Content Include="Content\img\boy2.png" />
     <Content Include="Content\img\girl1.png" />
     <Content Include="Content\img\girl2.png" />
+    <Content Include="Content\img\StudentsDetails.png" />
     <Content Include="Content\img\StudentsIndex.png" />
     <Content Include="Content\img\SUinterlock.png" />
     <Content Include="favicon.ico" />
