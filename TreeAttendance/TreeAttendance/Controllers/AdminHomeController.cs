@@ -13,5 +13,9 @@ namespace TreeAttendance.Controllers
         {
             return View();
         }
+        public ActionResult Reports()
+        {
+            return View();
+        }
     }
 }
