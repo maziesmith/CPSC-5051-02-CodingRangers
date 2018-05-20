@@ -220,6 +220,7 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\img\AdminHome.png" />
+    <Content Include="Content\img\AttendanceCreate.png" />
     <Content Include="Content\img\AttendanceDelete.png" />
     <Content Include="Content\img\AttendanceDetails.png" />
     <Content Include="Content\img\AttendanceEdit.png" />

@@ -1,7 +1,11 @@
 ﻿@{
     ViewBag.Title = "Create Attendance";
 }
-
+<br /><br />
+<h4>Prototype</h4>
+<div>
+    <img src="~/Content/img/AttendanceCreate.png" />
+</div>
 
 <br /><br />
 <h4>Current Development</h4>
@@ -36,7 +40,7 @@
         </div>
         <div class="row" style="margin-left: 15px; margin-top: 30px; margin-bottom: 30px">
             <div style="margin-right: 30px">
-                @Html.ActionLink("Cancel", "Index", null, new {@class = "btn btn-success"})
+                @Html.ActionLink("Cancel", "Index", null, new { @class = "btn btn-success" })
             </div>
             <div style="margin-right: 30px">
                 <input type="submit" value="Create" class="btn btn-primary">
