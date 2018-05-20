@@ -1,5 +1,5 @@
 ﻿@{
-    ViewBag.Title = "Students";
+    ViewBag.Title = "Attendance Details";
 }
 <br />
 <br />
@@ -22,14 +22,33 @@
         <div style="padding: 10px">
             Allen
         </div>
+        <div style="padding: 10px">
+            5/1/2018
+        </div>
     </div>
-    <div style="margin:50px">
-        <a href="~/Attendance/Delete/1" class="btn btn-outline-danger">Remove This Attendance Record</a>
+    <div class="col-lg">
+        <div style="margin:50px">
+            
+                <div class="input-group" style="margin: 30px">
+                    <div class="input-group-prepend">
+                        <a href="~/Attendance/Details/1">
+                        <span class="input-group-text" id="">Go to Another Date</span>
+                        </a>
+                    </div>
+                    <input type="text" class="form-control">
+                </div>
+
+
+        </div>
+        <div style="margin-left:80px">
+            <a href="~/Attendance/Delete/1" class="btn btn-outline-danger">Remove This Attendance Record</a>
+        </div>
     </div>
+
 </div>
 <div>
     <h4>Attendance Details:</h4>
-    <br/>
+    <br />
 </div>
 <div class="row">
     <div class="col-3" style="margin: 10px">
