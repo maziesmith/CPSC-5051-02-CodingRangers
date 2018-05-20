@@ -1,8 +1,13 @@
 ﻿@{
-    ViewBag.Title = "Students";
+    ViewBag.Title = "Attendance Index";
 }
 <br />
 <br />
+<h4>Prototype</h4>
+<div>
+    <img src="~/Content/img/AttendanceIndex.png" />
+</div>
+<br/>
 
 <h4>Current Development</h4>
 <br />
@@ -12,7 +17,7 @@
     <ol class="breadcrumb">
         <li class="breadcrumb-item" aria-current="page"> <a href="~/AdminHome">Admin Home</a></li>
         <li class="breadcrumb-item" aria-current="page"> <a href="~/Attendance">Attendance</a></li>
-        <li class="breadcrumb-item active" aria-current="page">Index</li>
+        <li class="breadcrumb-item active" aria-current="page">5.1.2018</li>
         <li style="padding-left: 600px">
             <div style="height: 5px">
                 <a href="~/Attendance/Create" class="btn btn-outline-primary btn-sm" style="width: 200px">Add New</a>
@@ -24,96 +29,117 @@
 
 <div class="row">
     <div style="margin-left: 15px; margin-right: 600px">
-        <h2>Manage Attendance</h2>
+        <h2>Manage Attendance for 5/1/2018</h2>
     </div>
 
 </div>
 
 <br />
 <div class="alert alert-success" role="alert">
-    First, please enter a date:
+    To Select a Different Date, Enter the Date, Then Click "Update"
 </div>
-<div class="input-group" style="margin-top: 30px; margin-bottom: 30px" >
-    <div class="input-group-prepend">
-        <span class="input-group-text" id="">Date</span>
+<div class=" row">
+    <div class=" col-3">
+        <div class="input-group" style="margin-top: 30px; margin-bottom: 30px">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="">Date</span>
+            </div>
+            <input type="text" class="form-control">
+        </div>
     </div>
-    <input type="text" class="form-control">
+
+    <div class="col-3" style="margin-top:30px">
+        <a href="~/Attendance/Index" class="btn btn-outline-primary btn-sm" style="width: 200px">Update</a>
+    </div>
 </div>
 <div class="alert alert-success" role="alert">
-    Then, click on a student to see attendance details:
+    Click on a Card to See Details
 </div>
 <div class="row" style="margin-top: 70px">
-    <div class="col-3" align="center" style="padding-bottom: 50px">
-        <a href="~/Attendance/Details/1">
-            <img src="~/Content/img/boy1.png" width="100" height="100" />
-            <br />
-            <span>
-                Allen
-            </span>
-        </a>
+    <div class=" col-sm-2" align="center" style="margin: 10px">
+        <div class="card" style="width: 150px; height: 300px">
+            <a href="~/Attendance/Details/1">
+                <img class="card-img-top" src="~/Content/img/boy1.png" style="height: 140px; width: 140px; margin: 5px">
+                <h6>Allen </h6>
+                <h6>5/1/2018 </h6>
+                <div class="card-body">
+                    <span class="badge badge-pill badge-success">On Time (5)</span>
+                    <span class="badge badge-pill badge-info">Left Early</span>
+                </div>
+            </a>
+        </div>
     </div>
-    <div class="col-3" align="center" style="padding-bottom: 50px">
-        <a href="~/Attendance/Details/1">
-            <img src="~/Content/img/girl1.png" width="100" height="100" />
-            <br />
-            <span>
-                Christina
-            </span>
-        </a>
+    <div class=" col-sm-2" align="center" style="margin: 10px">
+        <div class="card" style="width: 150px; height: 300px">
+            <a href="~/Attendance/Details/1">
+                <img class="card-img-top" src="~/Content/img/boy2.png" style="height: 140px; width: 140px; margin: 5px">
+                <h6>Mike </h6>
+                <h6>5/1/2018 </h6>
+                <div class="card-body">
+                    <span class="badge badge-pill badge-success">On Time (20)</span>
+                </div>
+            </a>
+        </div>
     </div>
-    <div class="col-3" align="center" style="padding-bottom: 50px">
-        <a href="~/Attendance/Details/1">
-            <img src="~/Content/img/boy2.png" width="100" height="100" />
-            <br />
-            <span>
-                Allen
-            </span>
-        </a>
+    <div class=" col-sm-2" align="center" style="margin: 10px">
+        <div class="card" style="width: 150px; height: 300px">
+            <a href="~/Attendance/Details/1">
+                <img class="card-img-top" src="~/Content/img/boy1.png" style="height: 140px; width: 140px; margin: 5px">
+                <h6>Joel </h6>
+                <h6>5/1/2018 </h6>
+                <div class="card-body">
+                    <span class="badge badge-pill badge-warning">Absent Excused</span>
+                </div>
+            </a>
+        </div>
     </div>
-    <div class="col-3" align="center" style="padding-bottom: 50px">
-        <a href="~/Attendance/Details/1">
-            <img src="~/Content/img/girl2.png" width="100" height="100" />
-            <br />
-            <span>
-                Christina
-            </span>
-        </a>
+    <div class=" col-sm-2" align="center" style="margin: 10px">
+        <div class="card" style="width: 150px; height: 300px">
+            <a href="~/Attendance/Details/1">
+                <img class="card-img-top" src="~/Content/img/girl1.png" style="height: 140px; width: 140px; margin: 5px">
+                <h6>Katy </h6>
+                <h6>5/1/2018 </h6>
+                <div class="card-body">
+                    <span class="badge badge-pill badge-danger">Absent Unexcused</span>
+                </div>
+            </a>
+        </div>
     </div>
-    <div class="col-3" align="center" style="padding-bottom: 50px">
-        <a href="~/Attendance/Details/1">
-            <img src="~/Content/img/boy1.png" width="100" height="100" />
-            <br />
-            <span>
-                Allen
-            </span>
-        </a>
+    <div class=" col-sm-2" align="center" style="margin: 10px">
+        <div class="card" style="width: 150px; height: 300px">
+            <a href="~/Attendance/Details/1">
+                <img class="card-img-top" src="~/Content/img/girl2.png" style="height: 140px; width: 140px; margin: 5px">
+                <h6>Linda </h6>
+                <h6>5/1/2018 </h6>
+                <div class="card-body">
+                    <span class="badge badge-pill badge-dark">Late </span>
+                </div>
+            </a>
+        </div>
     </div>
-    <div class="col-3" align="center" style="padding-bottom: 50px">
-        <a href="~/Attendance/Details/1">
-            <img src="~/Content/img/girl1.png" width="100" height="100" />
-            <br />
-            <span>
-                Christina
-            </span>
-        </a>
+    <div class=" col-sm-2" align="center" style="margin: 10px">
+        <div class="card" style="width: 150px; height: 300px">
+            <a href="~/Attendance/Details/1">
+                <img class="card-img-top" src="~/Content/img/boy1.png" style="height: 140px; width: 140px; margin: 5px">
+                <h6>Yanny </h6>
+                <h6>5/1/2018 </h6>
+                <div class="card-body">
+                    <span class="badge badge-pill badge-success">On Time (4)</span>
+                </div>
+            </a>
+        </div>
     </div>
-    <div class="col-3" align="center" style="padding-bottom: 50px">
-        <a href="~/Attendance/Details/1">
-            <img src="~/Content/img/boy2.png" width="100" height="100" />
-            <br />
-            <span>
-                Allen
-            </span>
-        </a>
-    </div>
-    <div class="col-3" align="center" style="padding-bottom: 50px">
-        <a href="~/Attendance/Details/1">
-            <img src="~/Content/img/girl2.png" width="100" height="100" />
-            <br />
-            <span>
-                Christina
-            </span>
-        </a>
+    <div class=" col-sm-2" align="center" style="margin: 10px">
+        <div class="card" style="width: 150px; height: 300px">
+            <a href="~/Attendance/Details/1">
+                <img class="card-img-top" src="~/Content/img/girl1.png" style="height: 140px; width: 140px; margin: 5px">
+                <h6>Laura </h6>
+                <h6>5/1/2018 </h6>
+                <div class="card-body">
+                    <span class="badge badge-pill badge-success">On Time (1)</span>
+                </div>
+            </a>
+        </div>
     </div>
 </div>
 <br />
