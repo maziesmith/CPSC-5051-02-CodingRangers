@@ -220,11 +220,15 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\img\AdminHome.png" />
+    <Content Include="Content\img\AttendanceIndex.png" />
     <Content Include="Content\img\boy1.png" />
     <Content Include="Content\img\boy2.png" />
     <Content Include="Content\img\girl1.png" />
     <Content Include="Content\img\girl2.png" />
+    <Content Include="Content\img\StudentsCreate.png" />
+    <Content Include="Content\img\StudentsDelete.png" />
     <Content Include="Content\img\StudentsDetails.png" />
+    <Content Include="Content\img\StudentsEdit.png" />
     <Content Include="Content\img\StudentsIndex.png" />
     <Content Include="Content\img\SUinterlock.png" />
     <Content Include="favicon.ico" />
