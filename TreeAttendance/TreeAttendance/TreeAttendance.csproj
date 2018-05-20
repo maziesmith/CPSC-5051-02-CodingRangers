@@ -306,6 +306,7 @@
     <Content Include="Views\Attendance\Create.cshtml" />
     <Content Include="Views\Attendance\Delete.cshtml" />
     <Content Include="Views\AdminHome\Reports.cshtml" />
+    <Content Include="Views\AdminHome\ReportsIndex.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
