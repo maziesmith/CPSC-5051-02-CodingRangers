@@ -199,6 +199,7 @@
     <Compile Include="Controllers\AdminHomeController.cs" />
     <Compile Include="Controllers\AttendanceController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\KioskController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\StudentsController.cs" />
     <Compile Include="Global.asax.cs">
@@ -227,13 +228,16 @@
     <Content Include="Content\img\AttendanceIndex.png" />
     <Content Include="Content\img\boy1.png" />
     <Content Include="Content\img\boy2.png" />
+    <Content Include="Content\img\forrest.png" />
     <Content Include="Content\img\girl1.png" />
     <Content Include="Content\img\girl2.png" />
+    <Content Include="Content\img\group.png" />
     <Content Include="Content\img\StudentsCreate.png" />
     <Content Include="Content\img\StudentsDelete.png" />
     <Content Include="Content\img\StudentsDetails.png" />
     <Content Include="Content\img\StudentsEdit.png" />
     <Content Include="Content\img\StudentsIndex2.png" />
+    <Content Include="Content\img\StudentTree.png" />
     <Content Include="Content\img\SUinterlock.png" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -307,6 +311,8 @@
     <Content Include="Views\Attendance\Delete.cshtml" />
     <Content Include="Views\AdminHome\Reports.cshtml" />
     <Content Include="Views\AdminHome\ReportsIndex.cshtml" />
+    <Content Include="Views\Kiosk\Index.cshtml" />
+    <Content Include="Views\Kiosk\KioskTree.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
