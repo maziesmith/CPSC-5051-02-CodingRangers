@@ -240,6 +240,7 @@
     <Content Include="Content\img\StudentsIndex2.png" />
     <Content Include="Content\img\StudentTree.png" />
     <Content Include="Content\img\SUinterlock.png" />
+    <Content Include="Content\img\TreesIndex.png" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
