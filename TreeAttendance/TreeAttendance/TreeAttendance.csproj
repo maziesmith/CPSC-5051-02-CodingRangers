@@ -314,10 +314,10 @@
     <Content Include="Views\AdminHome\ReportsIndex.cshtml" />
     <Content Include="Views\Kiosk\Index.cshtml" />
     <Content Include="Views\Kiosk\KioskTree.cshtml" />
+    <Content Include="Views\Trees\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Trees\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
