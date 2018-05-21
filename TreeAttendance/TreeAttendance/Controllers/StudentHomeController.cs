@@ -13,5 +13,18 @@ namespace TreeAttendance.Controllers
         {
             return View();
         }
+
+        // GET: OverallPerformance
+        public ActionResult OverallPerformance()
+        {
+            return View();
+        }
+
+
+        // GET: Attendance
+        public ActionResult Attendance()
+        {
+            return View();
+        }
     }
 }
