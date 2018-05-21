@@ -1,0 +1,70 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<br />
+
+<p style=" text-align: right;">Hello, Student!</p>
+
+<html>
+<head>
+    <style>
+        body {
+            background-color: lightblue;
+        }
+        ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+
+        li {
+            float: right;
+        }
+
+        li a {
+            display: block;
+            padding: 16px;
+            background-color: none;
+        }
+
+
+        /* Create two equal columns that floats next to each other */
+        .column {
+            float: left;
+            width: 50%;
+            padding: 10px;
+        }
+
+        /* Clear floats after the columns */
+        .row:after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+    </style>
+</head>
+<body>
+
+    <ul>
+        <li><a href="#Attendance">Attendace</a></li>
+        <li><a href="#OverallPerformance">Overall Performance</a></li>
+
+    </ul>
+    <div class="row">
+        <div class="column">
+            <img src="~/Content/img/smalltree.png " width="400" height="400" />
+            <p>Congratulation, your tree is at state 2.</p>
+            <p>To the next state, leaves earned: 22🍂</p>
+        </div>
+        <div class="column">
+            <img src="~/Content/img/bigtree.png" width="400" height="400" />
+            <p>Next state !!!</p>
+        </div>
+    </div>
+
+</body>
+
+</html>

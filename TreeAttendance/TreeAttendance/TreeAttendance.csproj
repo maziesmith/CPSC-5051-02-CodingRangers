@@ -201,6 +201,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\KioskController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\StudentHomeController.cs" />
     <Compile Include="Controllers\StudentsController.cs" />
     <Compile Include="Controllers\TreesController.cs" />
     <Compile Include="Global.asax.cs">
@@ -222,17 +223,21 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\img\AdminHome.png" />
+    <Content Include="Content\img\Attendance.png" />
     <Content Include="Content\img\AttendanceCreate.png" />
     <Content Include="Content\img\AttendanceDelete.png" />
     <Content Include="Content\img\AttendanceDetails.png" />
     <Content Include="Content\img\AttendanceEdit.png" />
     <Content Include="Content\img\AttendanceIndex.png" />
+    <Content Include="Content\img\bigtree.png" />
     <Content Include="Content\img\boy1.png" />
     <Content Include="Content\img\boy2.png" />
     <Content Include="Content\img\forrest.png" />
     <Content Include="Content\img\girl1.png" />
     <Content Include="Content\img\girl2.png" />
     <Content Include="Content\img\group.png" />
+    <Content Include="Content\img\Overall.png" />
+    <Content Include="Content\img\smalltree.png" />
     <Content Include="Content\img\StudentsCreate.png" />
     <Content Include="Content\img\StudentsDelete.png" />
     <Content Include="Content\img\StudentsDetails.png" />
@@ -316,6 +321,9 @@
     <Content Include="Views\Kiosk\Index.cshtml" />
     <Content Include="Views\Kiosk\KioskTree.cshtml" />
     <Content Include="Views\Trees\Index.cshtml" />
+    <Content Include="Views\StudentHome\Index.cshtml" />
+    <Content Include="Views\StudentHome\Attendance.cshtml" />
+    <Content Include="Views\StudentHome\OverallPerformance.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
