@@ -24,6 +24,10 @@ namespace TreeAttendance.Models
         /// </summary>
         public StudentModel Student { get; set; }
         /// <summary>
+        /// True if this is and excused absence.
+        /// </summary>
+        public bool ExcusedAbsence { get; set; }
+        /// <summary>
         /// Maintains a list of AttendanceCheckInModel. If there are 3 check-ins on this day by this student, then the list size will be 3.
         /// </summary>
         public List<AttendanceCheckInModel> AttendanceCheckIns { get; set; }
