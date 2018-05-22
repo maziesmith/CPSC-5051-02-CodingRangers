@@ -37,7 +37,7 @@ namespace TreeAttendance.Models
             AttendanceCheckIns = new List<AttendanceCheckInModel>();
 
             AttendanceCheckIns.Add(new AttendanceCheckInModel());
-            AttendanceCheckIns.Last().AttendanceModel = this;
+            AttendanceCheckIns.Last().Attendance = this;
         }
         /// <summary>
         /// Constuctor, Student and SchoolDay not set.
@@ -62,7 +62,7 @@ namespace TreeAttendance.Models
         {
             AttendanceCheckIns.Last().ClockOut = time;
             AttendanceCheckIns.Add(new AttendanceCheckInModel());
-            AttendanceCheckIns.Last().AttendanceModel = this;
+            AttendanceCheckIns.Last().Attendance = this;
         }
     }
 }

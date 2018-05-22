@@ -27,7 +27,7 @@ namespace TreeAttendance.Models
         /// <summary>
         /// The Attendance model this check-in belongs to.
         /// </summary>
-        public AttendanceModel AttendanceModel { get; set; }
+        public AttendanceModel Attendance { get; set; }
         /// <summary>
         /// Constuctor
         /// </summary>
