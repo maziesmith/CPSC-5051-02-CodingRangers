@@ -330,6 +330,7 @@
     <Content Include="Views\StudentHome\Attendance.cshtml" />
     <Content Include="Views\StudentHome\OverallPerformance.cshtml" />
     <Content Include="Views\Trees\Details.cshtml" />
+    <Content Include="Views\Trees\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
