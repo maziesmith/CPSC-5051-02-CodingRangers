@@ -76,13 +76,8 @@ namespace TreeAttendance.Backend
         /// <param name="student">student to delete</param>
         internal static void DeleteStudent(StudentModel student)
         {
-            for (int i = 0; i < StudentListBackend.StudentList.Count; i++)
-            {
-                if (StudentListBackend.StudentList[i].Id.Equals(student.Id))
-                {
-                    StudentListBackend.StudentList.RemoveAt(i);
-                }
-            }
+            StudentModel stu = GetStudentModel(student.Id);
+            StudentListBackend.StudentList.Remove(stu);
         }
         /// <summary>
         /// gets the SchoolDayModel
@@ -139,13 +134,8 @@ namespace TreeAttendance.Backend
         /// <param name="schoolDay">The model to delete</param>
         internal static void DeleteSchoolDayModel(SchoolDayModel schoolDay)
         {
-            for (int i = 0; i < SchoolDayListBackend.SchoolDayList.Count; i++)
-            {
-                if (SchoolDayListBackend.SchoolDayList[i].Id.Equals(schoolDay.Id))
-                {
-                    SchoolDayListBackend.SchoolDayList.RemoveAt(i);
-                }
-            }
+            SchoolDayModel schd = GetSchoolDayModel(schoolDay.Id);
+            SchoolDayListBackend.SchoolDayList.Remove(schd);
         }
         /// <summary>
         /// gets the AtendanceModel with the given id

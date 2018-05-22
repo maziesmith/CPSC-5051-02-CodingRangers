@@ -20,10 +20,10 @@ namespace TreeAttendance.Models
         public String Id { get; set; }
 
         [Display(Name = "Check-in Time", Description = "Check-in time")]
-        public DateTime CheckIn { get; set; }
+        public string CheckIn { get; set; }
 
         [Display(Name = "Check-out Time", Description = "Check-out time")]
-        public DateTime CheckOut { get; set; }
+        public string CheckOut { get; set; }
         /// <summary>
         /// The Attendance model this check-in belongs to.
         /// </summary>
