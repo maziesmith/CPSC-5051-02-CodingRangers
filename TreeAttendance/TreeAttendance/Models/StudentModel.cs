@@ -74,10 +74,9 @@ namespace TreeAttendance.Models
         /// <param name="id">The ID, must be unique</param>
         /// <param name="profileUrl">The profile picture url</param>
 
-        public StudentModel(string name, string id, string profileUrl)
+        public StudentModel(string name, string profileUrl)
         {
             Initialize();
-            Id = id;
             Name = name;
             ProfilePictureUri = profileUrl;
         }

@@ -25,7 +25,7 @@ namespace TreeAttendance.Models
         /// The expected hours of this school day.
         /// </summary>
         [Display(Name = "Expected Hours", Description = "Expected hours")]
-        public int ExpectedHours { get; set; }
+        public double ExpectedHours { get; set; }
         /// <summary>
         /// Maintains a list of attendance of this school day.
         /// </summary>
@@ -37,6 +37,18 @@ namespace TreeAttendance.Models
         {
             AttendanceList = new List<AttendanceModel>();
             Id = Guid.NewGuid().ToString();
+        }
+        /// <summary>
+        /// Constructor, call this when creating a school day.
+        /// </summary>
+        /// <param name="date"></param>
+        /// <param name="expectedHours"></param>
+        public SchoolDayModel(string date, double expectedHours)
+        {
+            AttendanceList = new List<AttendanceModel>();
+            Id = Guid.NewGuid().ToString();
+            Date = date;
+            ExpectedHours = expectedHours;
         }
     }
 }

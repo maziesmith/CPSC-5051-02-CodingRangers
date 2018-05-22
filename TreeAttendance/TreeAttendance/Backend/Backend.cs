@@ -5,9 +5,10 @@ using System.Web;
 using TreeAttendance.Models;
 
 namespace TreeAttendance.Backend
-{
+{   
     public static class Backend
     {
+        public const double DefaultExpectedHours = 6;
         /// <summary>
         /// Maintains a StudentListModel
         /// </summary>
@@ -32,7 +33,15 @@ namespace TreeAttendance.Backend
             StudentListBackend = new StudentListModel();
             SchoolDayListBackend = new SchoolDayListModel();
             //seed
-
+            //create student profiles
+            CreateStudent(new StudentModel("Allen", "boy1.png"));
+            CreateStudent(new StudentModel("Mike", "boy2.png"));
+            CreateStudent(new StudentModel("Yanny", "girl1.png"));
+            CreateStudent(new StudentModel("Laurel", "girl2.png"));
+            //create school days
+            CreateSchoolDay(new SchoolDayModel("05/01/2018", DefaultExpectedHours));
+            CreateSchoolDay(new SchoolDayModel("05/02/2018", DefaultExpectedHours));
+            CreateSchoolDay(new SchoolDayModel("05/03/2018", DefaultExpectedHours));
         }
         /// <summary>
         /// gets the StudemtModel with the given id
