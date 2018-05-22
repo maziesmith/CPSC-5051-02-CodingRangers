@@ -50,9 +50,9 @@ namespace TreeAttendance.Models
         /// Set clock-in time.
         /// </summary>
         /// <param name="time"></param>
-        public void SetClockInTime(DateTime time)
+        public void SetCheckInTime(DateTime time)
         {
-            AttendanceCheckIns.Last().ClockIn = time;
+            AttendanceCheckIns.Last().CheckIn = time;
         }
         /// <summary>
         /// Set clock-out time. After the time is set, a new AttendanceCheckInModel is created a the end of the AttendanceCheckIns list.
@@ -60,7 +60,7 @@ namespace TreeAttendance.Models
         /// <param name="time"></param>
         public void SetClockOutTime(DateTime time)
         {
-            AttendanceCheckIns.Last().ClockOut = time;
+            AttendanceCheckIns.Last().CheckOut = time;
             AttendanceCheckIns.Add(new AttendanceCheckInModel());
             AttendanceCheckIns.Last().Attendance = this;
         }

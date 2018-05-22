@@ -28,7 +28,7 @@ namespace TreeAttendance.Models
         /// </summary>
         [Display(Name = "Profile", Description = "Profile Picture")]
         [Required(ErrorMessage = "Profile picture is required")]
-        public string ProfilePictureUrl { get; set; }
+        public string ProfilePictureUri { get; set; }
 
         /// <summary>
         /// The Tree stage, a number from 1 to 5
@@ -55,7 +55,7 @@ namespace TreeAttendance.Models
             Id = Guid.NewGuid().ToString();
             TreeStage = 1;
             LeafCount = 0;
-            ProfilePictureUrl = "boy1.png";
+            ProfilePictureUri = "boy1.png";
             AttendanceList = new List<AttendanceModel>();
         }
 
@@ -79,7 +79,7 @@ namespace TreeAttendance.Models
             Initialize();
             Id = id;
             Name = name;
-            ProfilePictureUrl = profileUrl;
+            ProfilePictureUri = profileUrl;
         }
     }
 }
