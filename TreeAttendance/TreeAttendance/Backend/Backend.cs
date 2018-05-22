@@ -48,7 +48,6 @@ namespace TreeAttendance.Backend
                     return stu;
                 }
             }
-
             return null;
         }
         /// <summary>
@@ -78,6 +77,12 @@ namespace TreeAttendance.Backend
         {
             StudentModel stu = GetStudentModel(student.Id);
             StudentListBackend.StudentList.Remove(stu);
+            //deletes attendance records of this student from schooldays' attendancelist
+            foreach(var att in stu.AttendanceList)
+            {
+                SchoolDayModel schd = GetSchoolDayModel(att.SchoolDay.Id);
+                schd.AttendanceList.Remove(att);
+            }
         }
         /// <summary>
         /// gets the SchoolDayModel
@@ -132,10 +137,16 @@ namespace TreeAttendance.Backend
         /// Deletes the given SchoolDayModel
         /// </summary>
         /// <param name="schoolDay">The model to delete</param>
-        internal static void DeleteSchoolDayModel(SchoolDayModel schoolDay)
+        internal static void DeleteSchoolDay(SchoolDayModel schoolDay)
         {
             SchoolDayModel schd = GetSchoolDayModel(schoolDay.Id);
             SchoolDayListBackend.SchoolDayList.Remove(schd);
+            //deletes attendance records of this school day from students' attendancelist
+            foreach (var att in schd.AttendanceList)
+            {
+                StudentModel stu = GetStudentModel(att.Student.Id);
+                stu.AttendanceList.Remove(att);
+            }
         }
         /// <summary>
         /// gets the AtendanceModel with the given id
