@@ -22,10 +22,14 @@ namespace TreeAttendance.Models
         [Required(ErrorMessage = "Date required")]
         public string Date { get; set; }
         /// <summary>
+        /// The expected hours of this school day.
+        /// </summary>
+        [Display(Name = "Expected Hours", Description = "Expected hours")]
+        public int ExpectedHours { get; set; }
+        /// <summary>
         /// Maintains a list of attendance of this school day.
         /// </summary>
         public List<AttendanceModel> AttendanceList { get; set; }
-
         /// <summary>
         /// Constructor, Id is randomly generated
         /// </summary>
