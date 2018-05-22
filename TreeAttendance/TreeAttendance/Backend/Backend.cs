@@ -31,13 +31,8 @@ namespace TreeAttendance.Backend
         {
             StudentListBackend = new StudentListModel();
             SchoolDayListBackend = new SchoolDayListModel();
-            //StudentModel student1 = new StudentModel("Allen", "01", "boy1.png");
-            //StudentModel student2 = new StudentModel("Linda", "02", "girl1.png");
-            //StudentListBackend.StudentList.Add(student1);
-            //StudentListBackend.StudentList.Add(student2);
+            //seed
 
-            //AddSchoolDay(DateTime.Parse("05/01/2018"));
-            //AddSchoolDay(DateTime.Parse("05/02/2018"));
         }
         /// <summary>
         /// gets the StudemtModel with the given id
@@ -230,17 +225,48 @@ namespace TreeAttendance.Backend
             {
                 foreach (var att in stu.AttendanceList)
                 {
-                    foreach (var period in att.AttendanceCheckIns)
+                    foreach (var checkIn in att.AttendanceCheckIns)
                     {
-                        if (period.Id.Equals(id))
+                        if (checkIn.Id.Equals(id))
                         {
-                            return period;
+                            return checkIn;
                         }
                     }
                 }
             }
-
             return null;
+        }
+        /// <summary>
+        /// Creates an AttendanceCheckInModel
+        /// </summary>
+        /// <param name="checkIn">AttendanceCheckInModel to create from</param>
+        /// <returns></returns>
+        internal static void CreateAttendanceCheckIn(AttendanceCheckInModel checkIn)
+        {
+            AttendanceModel attendance = GetAttendanceModel(checkIn.Attendance.Id);
+            attendance.AttendanceCheckIns.Add(new AttendanceCheckInModel());
+        }
+        /// <summary>
+        /// Edits an AttendanceCheckInModel
+        /// </summary>
+        /// <param name="checkIn">AttendanceCheckInModel to edit</param>
+        /// <returns></returns>
+        internal static void EditAttendanceCheckIn(AttendanceCheckInModel checkIn)
+        {
+            AttendanceCheckInModel CheckIn = GetAttendanceCheckIn(checkIn.Id);
+            CheckIn.CheckIn = checkIn.CheckIn;
+            CheckIn.CheckOut = checkIn.CheckOut;
+        }
+        /// <summary>
+        /// Deletes an AttendanceCheckInModel
+        /// </summary>
+        /// <param name="checkIn">AttendanceCheckInModel to delete</param>
+        /// <returns></returns>
+        internal static void DeleteAttendanceCheckIn(AttendanceCheckInModel checkIn)
+        {
+            AttendanceCheckInModel CheckIn = GetAttendanceCheckIn(checkIn.Id);
+            AttendanceModel attendance = GetAttendanceModel(checkIn.Attendance.Id);
+            attendance.AttendanceCheckIns.Remove(CheckIn);            
         }
 
     }
