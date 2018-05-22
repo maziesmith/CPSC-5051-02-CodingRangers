@@ -198,21 +198,11 @@ namespace TreeAttendance.Backend
         /// <param name="attendance">AttendanceModel to delete</param>
         internal static void DeleteAttendance(AttendanceModel attendance)
         {
-            for (int i = 0; i < SchoolDayListBackend.SchoolDayList.Count; i++)
-            {
-                if (SchoolDayListBackend.SchoolDayList[i].Id.Equals(attendance.SchoolDay.Id))
-                {
-                    SchoolDayListBackend.SchoolDayList[i].AttendanceList.Remove(attendance);
-                }
-            }
-
-            for (int i = 0; i < StudentListBackend.StudentList.Count; i++)
-            {
-                if (StudentListBackend.StudentList[i].Id.Equals(attendance.Student.Id))
-                {
-                    StudentListBackend.StudentList[i].AttendanceList.Remove(attendance);
-                }
-            }
+            AttendanceModel att = GetAttendanceModel(attendance.Id);
+            SchoolDayModel schd = GetSchoolDayModel(att.SchoolDay.Id);
+            StudentModel stu = GetStudentModel(att.Student.Id);
+            schd.AttendanceList.Remove(att);
+            stu.AttendanceList.Remove(att);
         }
         /// <summary>
         /// Gets the AttendanceCheckInModel
