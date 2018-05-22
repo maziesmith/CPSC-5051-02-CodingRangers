@@ -42,6 +42,10 @@ namespace TreeAttendance.Models
         [Display(Name = "LeafCount", Description = "Leaf Count")]
         public int LeafCount { get; set; }
 
+        /// <summary>
+        /// A list of this student's attendance records
+        /// </summary>
+        public List<AttendanceModel> AttendanceList { get; set; }
 
         /// <summary>
         /// The default for new student
@@ -52,6 +56,7 @@ namespace TreeAttendance.Models
             TreeStage = 1;
             LeafCount = 0;
             ProfilePictureUrl = "boy1.png";
+            AttendanceList = new List<AttendanceModel>();
         }
 
         /// <summary>

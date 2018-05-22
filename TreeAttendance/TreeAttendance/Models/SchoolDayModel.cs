@@ -7,5 +7,6 @@ namespace TreeAttendance.Models
 {
     public class SchoolDayModel
     {
+
     }
 }
