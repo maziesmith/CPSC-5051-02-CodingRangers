@@ -1,0 +1,35 @@
+﻿@model TreeAttendance.Models.StudentModel
+@{
+    ViewBag.Title = "Attendance by Student";
+}
+<br />
+<br />
+
+
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item" aria-current="page"> <a href="~/AdminHome">Admin Home</a></li>
+        <li class="breadcrumb-item" aria-current="page"> <a href="~/Attendance">Attendance</a></li>
+        <li class="breadcrumb-item active" aria-current="page">By Student: @Model.Name</li>
+    </ol>
+</nav>
+<div class="row">
+    <div align="center" style="padding:70px">
+        <img src="~/Content/img/@Model.ProfilePictureUri" width="100" height="100" />
+        <br />
+        <div style="padding: 7px">
+            @Model.Name
+        </div>
+    </div>
+</div>
+<div>
+    @foreach (var item in Model.AttendanceList)
+    {
+        <div class="row">
+            <a href="~/Attendance/Details/@item.Id">
+                @item.SchoolDay.Date
+            </a>
+        </div>
+    }
+</div>
+

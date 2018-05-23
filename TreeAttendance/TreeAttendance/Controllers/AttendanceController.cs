@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 
 namespace TreeAttendance.Controllers
 {
@@ -11,7 +7,22 @@ namespace TreeAttendance.Controllers
         // GET: Attendance
         public ActionResult Index()
         {
-            return View();
+            var myData = Backend.Backend.StudentListBackend.StudentList;
+            return View(myData);
+        }
+
+        // GET: Attendance
+        public ActionResult ByStudent(string id = null)
+        {
+            var myData = Backend.Backend.GetStudentModel(id);
+            return View(myData);
+        }
+
+        // GET: Attendance/IndexByDate
+        public ActionResult IndexByDate()
+        {
+            var myData = Backend.Backend.SchoolDayListBackend.SchoolDayList;
+            return View(myData);
         }
 
         // GET: Attendance/Details/5
