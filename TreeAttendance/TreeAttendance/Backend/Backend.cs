@@ -36,18 +36,24 @@ namespace TreeAttendance.Backend
             //create student profiles
             CreateStudent(new StudentModel("Allen", "boy1.png"));
             CreateStudent(new StudentModel("Mike", "boy2.png"));
-            
-            //create school days
-            CreateSchoolDay(new SchoolDayModel("05/01/2018", DefaultExpectedHours));
-            CreateSchoolDay(new SchoolDayModel("05/02/2018", DefaultExpectedHours));
-
-            //create more student profiles
             CreateStudent(new StudentModel("Yanny", "girl1.png"));
+
+            //create 15 school days
+            for (int i = 1; i < 16; i++)
+            {
+                string date = "5/" + i + "/2018";
+                CreateSchoolDay(new SchoolDayModel(date, DefaultExpectedHours));
+            }           
+
+            //create 1 more student profiles            
             CreateStudent(new StudentModel("Laurel", "girl2.png"));
 
-            //create more school days
-            CreateSchoolDay(new SchoolDayModel("05/03/2018", DefaultExpectedHours));
-            CreateSchoolDay(new SchoolDayModel("05/06/2018", DefaultExpectedHours));
+            //create  15 more school days
+            for (int i = 16; i < 31; i++)
+            {
+                string date = "5/" + i + "/2018";
+                CreateSchoolDay(new SchoolDayModel(date, DefaultExpectedHours));
+            }
 
             //some sample check-in records, used to generate check-in records ramdomly.
             //sample Check-in record, on time, stay
