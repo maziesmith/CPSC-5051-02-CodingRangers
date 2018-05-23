@@ -26,9 +26,10 @@ namespace TreeAttendance.Controllers
         }
 
         // GET: Attendance/Details/5
-        public ActionResult Details(int id)
+        public ActionResult Details(string id = null)
         {
-            return View();
+            var myData = Backend.Backend.GetAttendanceModel(id);
+            return View(myData);
         }
 
         // GET: Attendance/Create
