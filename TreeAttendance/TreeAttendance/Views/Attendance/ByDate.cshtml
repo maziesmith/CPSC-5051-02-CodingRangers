@@ -16,16 +16,22 @@
 <div class="row">
     @foreach (var item in Model.AttendanceList)
     {
-    <div class="col-4" align="center">
-        <a id="@item.Id" href="~/Attendance/Details/@item.Id">
-            <img src="~/Content/img/@item.Student.ProfilePictureUri" width="100" height="100" />
-            <br />
-            <span>
-                @item.Student.Name
-            </span>
-        </a>
-    </div>
+        <div class="col-4" align="center">
+            <a id="@item.Id" href="~/Attendance/Details/@item.Id">
+                <img src="~/Content/img/@item.Student.ProfilePictureUri" width="100" height="100" />
+                <br />
+                <span>
+                    @item.Student.Name
+                </span>
+            </a>
+        </div>
 
     }
 </div>
 
+@*<div>
+    Missing a Record on This Day?
+    <br />
+    <br />
+    <a href="~/Attendance/Create/@Model.Id" class="btn btn-outline-primary">Add a New Record</a>
+</div>*@

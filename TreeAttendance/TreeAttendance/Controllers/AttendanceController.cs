@@ -39,27 +39,39 @@ namespace TreeAttendance.Controllers
             return View(myData);
         }
 
-        // GET: Attendance/Create
-        public ActionResult Create()
-        {
-            return View();
-        }
+        //// GET: Attendance/Create
+        //public ActionResult Create(string id = null)
+        //{
+        //    var myData = new Models.ViewModels.CreateAttendanceViewModel();
+        //    myData.SchoolDay = Backend.Backend.GetSchoolDayModel(id);
+        //    myData.StudentList = Backend.Backend.StudentListBackend.StudentList;
+        //    return View(myData);
+        //}
 
-        // POST: Attendance/Create
-        [HttpPost]
-        public ActionResult Create(FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add insert logic here
+        //// POST: Attendance/Create
+        //[HttpPost]
+        //public ActionResult Create([Bind(Include=
+        //                                "SelectedStudentId,"+
+        //                                "SchoolDay,"+
+        //                                "StudentList,"+
+        //                                "")] Models.ViewModels.CreateAttendanceViewModel data)
+        //{
+        //    if (!ModelState.IsValid)
+        //    {
+        //        // Send back for edit, with Error Message
+        //        return View(data);
+        //    }
 
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
+        //    if (data == null)
+        //    {
+        //        // Send to Error Page
+        //        return RedirectToAction("Error", new { route = "Home", action = "Error" });
+        //    }
+        //    Models.StudentModel stu = Backend.Backend.GetStudentModel(data.SelectedStudentId);
+        //    Models.AttendanceModel att = new Models.AttendanceModel(stu, data.SchoolDay);
+        //    Backend.Backend.CreateAttendance(att);
+        //    return RedirectToAction("Index");
+        //}
 
         // GET: Attendance/Edit/5
         public ActionResult Edit(int id)
@@ -84,25 +96,42 @@ namespace TreeAttendance.Controllers
         }
 
         // GET: Attendance/Delete/5
-        public ActionResult Delete(int id)
+        public ActionResult Delete(string id = null)
         {
-            return View();
+            var myData = Backend.Backend.GetAttendanceModel(id);
+            return View(myData);
         }
 
         // POST: Attendance/Delete/5
         [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        public ActionResult Delete([Bind(Include=
+                                        "Id,"+
+                                        "SchoolDay,"+
+                                        "Student,"+
+                                        "ExcusedAbsence,"+
+                                        "")] Models.AttendanceModel data)
         {
-            try
-            {
-                // TODO: Add delete logic here
+            //if (!ModelState.IsValid)
+            //{
+            //    // Send back for edit, with Error Message
+            //    return View(data);
+            //}
 
-                return RedirectToAction("Index");
-            }
-            catch
+            if (data == null)
             {
-                return View();
+                // Send to Error Page
+                return RedirectToAction("Error", new { route = "Home", action = "Error" });
             }
+
+            if (string.IsNullOrEmpty(data.Id))
+            {
+                // Sind back for Edit
+                return View(data);
+            }
+
+            Backend.Backend.DeleteAttendance(data);
+
+            return RedirectToAction("Index");
         }
     }
 }
