@@ -96,25 +96,41 @@ namespace TreeAttendance.Controllers
         }
 
         // GET: Students/Delete/5
-        public ActionResult Delete(int id)
+        public ActionResult Delete(string id = null)
         {
-            return View();
+            var myData = Backend.Backend.GetStudentModel(id);
+            return View(myData);
         }
 
         // POST: Students/Delete/5
         [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        public ActionResult Delete([Bind(Include=
+                                        "Id,"+
+                                        "Name,"+
+                                        "ProfilePictureUri,"+
+                                        "")] Models.StudentModel data)
         {
-            try
+            if (!ModelState.IsValid)
             {
-                // TODO: Add delete logic here
+                // Send back for edit, with Error Message
+                return View(data);
+            }
 
-                return RedirectToAction("Index");
-            }
-            catch
+            if (data == null)
             {
-                return View();
+                // Send to Error Page
+                return RedirectToAction("Error", new { route = "Home", action = "Error" });
             }
+
+            if (string.IsNullOrEmpty(data.Id))
+            {
+                // Sind back for Edit
+                return View(data);
+            }
+
+            Backend.Backend.DeleteStudent(data);
+
+            return RedirectToAction("Index");
         }
     }
 }
