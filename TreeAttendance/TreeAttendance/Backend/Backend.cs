@@ -48,13 +48,77 @@ namespace TreeAttendance.Backend
             //create more school days
             CreateSchoolDay(new SchoolDayModel("05/03/2018", DefaultExpectedHours));
             CreateSchoolDay(new SchoolDayModel("05/06/2018", DefaultExpectedHours));
-            
+
+            //some sample check-in records, used to generate check-in records ramdomly.
+            //sample Check-in record, on time, stay
+            void TypeA(AttendanceModel att)
+            {
+                CreateAttendanceCheckIn(new AttendanceCheckInModel(att, "08:45:00", "15:45:00"));
+            };
+            //sample Check-in record, late, stay
+            void TypeB(AttendanceModel att)
+            {
+                CreateAttendanceCheckIn(new AttendanceCheckInModel(att, "09:15:00", "15:45:00"));
+            };
+            //sample Check-in record, late, left early
+            void TypeC(AttendanceModel att)
+            {
+                CreateAttendanceCheckIn(new AttendanceCheckInModel(att, "09:15:00", "13:30:00"));
+            };
+            //sample Check-in record, absent unexcused
+            void TypeD(AttendanceModel att)
+            {
+                CreateAttendanceCheckIn(new AttendanceCheckInModel(att, "", ""));
+            };
+            //sample Check-in record, absent excused
+            void TypeE(AttendanceModel att)
+            {
+                CreateAttendanceCheckIn(new AttendanceCheckInModel(att, "", ""));
+                att.ExcusedAbsence = true;
+            };
+            //sample Check-in record, multiple check-ins
+            void TypeF(AttendanceModel att)
+            {
+                CreateAttendanceCheckIn(new AttendanceCheckInModel(att, "08:45:00", "10:30:00"));
+                CreateAttendanceCheckIn(new AttendanceCheckInModel(att, "13:00:00", "15:45:00"));
+            };
+
+            Random rng = new Random();
+            //generates check-in records randomly
+            void Rng(AttendanceModel att)
+            {
+                int num = rng.Next(1, 7); //generates a random int between 1 and 6
+                switch (num)
+                {
+                    case 1:
+                        TypeA(att);
+                        break;
+                    case 2:
+                        TypeB(att);
+                        break;
+                    case 3:
+                        TypeC(att);
+                        break;
+                    case 4:
+                        TypeD(att);
+                        break;
+                    case 5:
+                        TypeE(att);
+                        break;
+                    default:
+                        TypeF(att);
+                        break;
+                }
+            }
+
+
             //Create one Check-in for each Attendance
             foreach (var schd in SchoolDayListBackend.SchoolDayList)
             {
                 foreach (var att in schd.AttendanceList)
                 {
-                    CreateAttendanceCheckIn(new AttendanceCheckInModel(att, "08:45:00", "15:45:00"));
+                    //generates check-in records randomly
+                    Rng(att);
                 }
             }
         }
