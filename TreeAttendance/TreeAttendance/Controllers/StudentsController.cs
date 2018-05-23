@@ -21,23 +21,40 @@ namespace TreeAttendance.Controllers
         // GET: Students/Create
         public ActionResult Create()
         {
-            return View();
+            var myData = new Models.StudentModel();
+            myData.ProfilePictureUri = "boy1.png";
+            return View(myData);
         }
 
         // POST: Students/Create
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Create([Bind(Include=
+                                        "Id,"+
+                                        "Name,"+
+                                        "ProfilePictureUri,"+
+                                        "")] Models.StudentModel data)
         {
-            try
+            if (!ModelState.IsValid)
             {
-                // TODO: Add insert logic here
+                // Send back for edit, with Error Message
+                return View(data);
+            }
 
-                return RedirectToAction("Index");
-            }
-            catch
+            if (data == null)
             {
-                return View();
+                // Send to Error Page
+                return RedirectToAction("Error", new { route = "Home", action = "Error" });
             }
+
+            if (string.IsNullOrEmpty(data.Id))
+            {
+                // Sind back for Edit
+                return View(data);
+            }
+
+            Backend.Backend.CreateStudent(data);
+
+            return RedirectToAction("Index");
         }
 
         // GET: Students/Edit/5

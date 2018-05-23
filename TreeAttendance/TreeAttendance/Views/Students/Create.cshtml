@@ -1,15 +1,8 @@
-﻿@{
+﻿@model TreeAttendance.Models.StudentModel
+@{
     ViewBag.Title = "Create Student";
 }
 <br />
-<br />
-<h4>Prototype</h4>
-<div>
-    <img src="~/Content/img/StudentsCreate.png" />
-</div>
-
-<br /><br />
-<h4>Current Development</h4>
 <br />
 
 
@@ -23,26 +16,36 @@
 
 <div class="row">
     <div class="col-4">
-        <div class="input-group" style="margin: 30px">
-            <div class="input-group-prepend">
-                <span class="input-group-text" id="">Name</span>
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="row">
+                <div class="col-sm-2 text-right">
+                    @Html.DisplayNameFor(m => m.Name)
+                </div>
+                <div class="col-sm-2">
+                    @Html.EditorFor(m => m.Name)
+                </div>
             </div>
-            <input type="text" class="form-control">
-        </div>
-        <div class="input-group" style="margin: 30px">
-            <div class="input-group-prepend">
-                <span class="input-group-text" id="">Profile Picture Uri</span>
+
+            <div class="row">
+                <div class="col-sm-2 text-right">
+                    @Html.DisplayNameFor(m => m.ProfilePictureUri)
+                </div>
+                <div class="col-sm-2">
+                    @Html.EditorFor(m => m.ProfilePictureUri)
+                </div>
             </div>
-            <input type="text" class="form-control">
-        </div>
-        <div class="row" style="margin: 30px">
-            <div style="margin-right: 30px">
-                @Html.ActionLink("Cancel", "Index", null, new { @class = "btn btn-success" })
+            <div class="row" style="margin: 30px">
+                <div style="margin-right: 30px">
+                    @Html.ActionLink("Cancel", "Index", null, new { @class = "btn btn-success" })
+                </div>
+                <div style="margin-right: 30px">
+                    <input type="submit" value="Create" class="btn btn-primary">
+                </div>
             </div>
-            <div style="margin-right: 30px">
-                <input type="submit" value="Create" class="btn btn-primary">
-            </div>
-        </div>
+        }
     </div>
 </div>
 
