@@ -25,6 +25,13 @@ namespace TreeAttendance.Controllers
             return View(myData);
         }
 
+        // GET: Attendance
+        public ActionResult ByDate(string id = null)
+        {
+            var myData = Backend.Backend.GetSchoolDayModel(id);
+            return View(myData);
+        }
+
         // GET: Attendance/Details/5
         public ActionResult Details(string id = null)
         {

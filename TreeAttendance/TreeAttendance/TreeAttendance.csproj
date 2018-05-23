@@ -339,6 +339,8 @@
     <Content Include="Views\Trees\Details.cshtml" />
     <Content Include="Views\Trees\Edit.cshtml" />
     <Content Include="Views\Attendance\ByStudent.cshtml" />
+    <Content Include="Views\Attendance\IndexByDate.cshtml" />
+    <Content Include="Views\Attendance\ByDate.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
