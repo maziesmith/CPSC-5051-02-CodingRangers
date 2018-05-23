@@ -95,6 +95,44 @@ namespace TreeAttendance.Controllers
             }
         }
 
+        // GET: Attendance/Edit/5
+        public ActionResult EditCheckIn(string id = null)
+        {
+            var myData = Backend.Backend.GetAttendanceCheckIn(id);
+            return View(myData);
+        }
+
+        // POST: Attendance/Edit/5
+        [HttpPost]
+        public ActionResult EditCheckIn([Bind(Include=
+                                        "Id,"+
+                                        "CheckIn,"+
+                                        "CheckOut,"+
+                                        "")] Models.AttendanceCheckInModel data)
+        {
+            if (!ModelState.IsValid)
+            {
+                // Send back for edit, with Error Message
+                return View(data);
+            }
+
+            if (data == null)
+            {
+                // Send to Error Page
+                return RedirectToAction("Error", new { route = "Home", action = "Error" });
+            }
+
+            if (string.IsNullOrEmpty(data.Id))
+            {
+                // Sind back for Edit
+                return View(data);
+            }
+
+            Backend.Backend.EditAttendanceCheckIn(data);
+            Models.AttendanceCheckInModel checkIn = Backend.Backend.GetAttendanceCheckIn(data.Id);
+            return RedirectToAction("Details", "Attendance", new {id = checkIn.Attendance.Id });
+        }
+
         // GET: Attendance/Delete/5
         public ActionResult Delete(string id = null)
         {

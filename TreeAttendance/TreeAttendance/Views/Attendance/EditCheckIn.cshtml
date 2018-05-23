@@ -1,0 +1,69 @@
+﻿@model TreeAttendance.Models.AttendanceCheckInModel
+@{
+    ViewBag.Title = "EditCheckIn";
+}
+
+
+
+<br />
+<br />
+
+
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item" aria-current="page"> <a href="~/AdminHome">Admin Home</a></li>
+        <li class="breadcrumb-item" aria-current="page"> <a href="~/Attendance">Attendance</a></li>
+        <li class="breadcrumb-item" aria-current="page"><a href="~/Attendance/Details/@Model.Attendance.Id">@Model.Attendance.Student.Name, @Model.Attendance.SchoolDay.Date</a></li>
+        <li class="breadcrumb-item" aria-current="page active">Edit Check-in</li>
+    </ol>
+</nav>
+
+<h2>Edit Check-in</h2>
+<div class="row">
+    <div align="center" style="padding:15px">
+        <img src="~/Content/img/@Model.Attendance.Student.ProfilePictureUri" width="100" height="100" />
+        <br />
+        <div style="padding: 10px">
+            @Model.Attendance.Student.Name
+        </div>
+        <div style="padding: 10px">
+            @Model.Attendance.SchoolDay.Date
+        </div>
+    </div>
+
+
+</div>
+<div class="col-4">
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="row">
+            <div class="col-sm-2 text-right">
+                @Html.DisplayNameFor(m => m.CheckIn)
+            </div>
+            <div class="col-sm-2">
+                @Html.EditorFor(m => m.CheckIn)
+                @Html.ValidationMessageFor(m => m.CheckIn)
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-2 text-right">
+                @Html.DisplayNameFor(m => m.CheckOut)
+            </div>
+            <div class="col-sm-2">
+                @Html.EditorFor(m => m.CheckOut)
+                @Html.ValidationMessageFor(m => m.CheckOut)
+            </div>
+        </div>
+        <div class="row" style="margin: 30px">
+            <div style="margin-right: 30px">
+                @Html.ActionLink("Cancel", "Details", "Attendance", new { id = Model.Attendance.Id }, new { @class = "btn btn-success" })
+            </div>
+            <div style="margin-right: 30px">
+                <input type="submit" value="Save" class="btn btn-primary">
+            </div>
+        </div>
+    }
+</div>
