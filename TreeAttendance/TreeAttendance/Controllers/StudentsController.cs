@@ -58,25 +58,41 @@ namespace TreeAttendance.Controllers
         }
 
         // GET: Students/Edit/5
-        public ActionResult Edit(int id)
+        public ActionResult Edit(string id = null)
         {
-            return View();
+            var myData = Backend.Backend.GetStudentModel(id);
+            return View(myData);
         }
 
         // POST: Students/Edit/5
         [HttpPost]
-        public ActionResult Edit()
+        public ActionResult Edit([Bind(Include=
+                                        "Id,"+
+                                        "Name,"+
+                                        "ProfilePictureUri,"+
+                                        "")] Models.StudentModel data)
         {
-            try
+            if (!ModelState.IsValid)
             {
-                // TODO: Add update logic here
+                // Send back for edit, with Error Message
+                return View(data);
+            }
 
-                return RedirectToAction("Index");
-            }
-            catch
+            if (data == null)
             {
-                return View();
+                // Send to Error Page
+                return RedirectToAction("Error", new { route = "Home", action = "Error" });
             }
+
+            if (string.IsNullOrEmpty(data.Id))
+            {
+                // Sind back for Edit
+                return View(data);
+            }
+
+            Backend.Backend.EditStudent(data);
+
+            return RedirectToAction("Index");
         }
 
         // GET: Students/Delete/5
