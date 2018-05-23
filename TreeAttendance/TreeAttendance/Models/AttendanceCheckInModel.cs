@@ -35,5 +35,18 @@ namespace TreeAttendance.Models
         {
             Id = Guid.NewGuid().ToString();
         }
+        /// <summary>
+        /// Constructor, call this when creating a check-in.
+        /// </summary>
+        /// <param name="checkIn"></param>
+        /// <param name="checkOut"></param>
+        public AttendanceCheckInModel(AttendanceModel attendance, string checkIn, string checkOut)
+        {
+            Id = Guid.NewGuid().ToString();
+            Attendance = attendance;
+            //Attendance.AttendanceCheckIns.Add(this);
+            CheckIn = checkIn;
+            CheckOut = checkOut;
+        }
     }
 }

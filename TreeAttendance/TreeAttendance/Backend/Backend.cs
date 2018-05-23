@@ -36,12 +36,18 @@ namespace TreeAttendance.Backend
             //create student profiles
             CreateStudent(new StudentModel("Allen", "boy1.png"));
             CreateStudent(new StudentModel("Mike", "boy2.png"));
-            CreateStudent(new StudentModel("Yanny", "girl1.png"));
-            CreateStudent(new StudentModel("Laurel", "girl2.png"));
+            
             //create school days
             CreateSchoolDay(new SchoolDayModel("05/01/2018", DefaultExpectedHours));
             CreateSchoolDay(new SchoolDayModel("05/02/2018", DefaultExpectedHours));
+
+            //create more student profiles
+            CreateStudent(new StudentModel("Yanny", "girl1.png"));
+            CreateStudent(new StudentModel("Laurel", "girl2.png"));
+
+            //create more school days
             CreateSchoolDay(new SchoolDayModel("05/03/2018", DefaultExpectedHours));
+            CreateSchoolDay(new SchoolDayModel("05/06/2018", DefaultExpectedHours));
         }
         /// <summary>
         /// gets the StudemtModel with the given id
@@ -244,7 +250,7 @@ namespace TreeAttendance.Backend
         internal static void CreateAttendanceCheckIn(AttendanceCheckInModel checkIn)
         {
             AttendanceModel attendance = GetAttendanceModel(checkIn.Attendance.Id);
-            attendance.AttendanceCheckIns.Add(new AttendanceCheckInModel());
+            attendance.AttendanceCheckIns.Add(checkIn);           
         }
         /// <summary>
         /// Edits an AttendanceCheckInModel

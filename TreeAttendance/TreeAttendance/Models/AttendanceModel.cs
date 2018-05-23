@@ -39,9 +39,6 @@ namespace TreeAttendance.Models
         {
             Id = Guid.NewGuid().ToString();
             AttendanceCheckIns = new List<AttendanceCheckInModel>();
-
-            AttendanceCheckIns.Add(new AttendanceCheckInModel());
-            AttendanceCheckIns.Last().Attendance = this;
         }
         /// <summary>
         /// Constuctor, Student and SchoolDay not set.
@@ -49,6 +46,19 @@ namespace TreeAttendance.Models
         public AttendanceModel()
         {
             Initialize();
+        }
+        /// <summary>
+        /// Constructor, call this when creating an attendance record
+        /// </summary>
+        /// <param name="student"></param>
+        /// <param name="schoolDay"></param>
+        public AttendanceModel(StudentModel student, SchoolDayModel schoolDay)
+        {
+            Initialize();
+            Student = student;
+            //Student.AttendanceList.Add(this);
+            SchoolDay = schoolDay;
+            //SchoolDay.AttendanceList.Add(this);
         }
         ///// <summary>
         ///// Set clock-in time.
