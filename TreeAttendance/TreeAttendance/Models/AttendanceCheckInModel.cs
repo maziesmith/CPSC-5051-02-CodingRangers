@@ -7,7 +7,7 @@ using System.ComponentModel.DataAnnotations;
 namespace TreeAttendance.Models
 {
     /// <summary>
-    /// This class represents a check-in record of a student on a schoolday, maintains clock-in and clock-out time pair.
+    /// This class represents a check-in record of a student on a schoolday, maintains check-in and check-out time pair. One AttendanceModel can have multiple AttendanceCheckInModels
     /// </summary>
     public class AttendanceCheckInModel
     {

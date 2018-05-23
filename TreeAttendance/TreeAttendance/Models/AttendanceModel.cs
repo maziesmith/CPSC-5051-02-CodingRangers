@@ -6,6 +6,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace TreeAttendance.Models
 {
+    //this class models an attendance record of a particular student on a particular day
     public class AttendanceModel
     {
         /// <summary>

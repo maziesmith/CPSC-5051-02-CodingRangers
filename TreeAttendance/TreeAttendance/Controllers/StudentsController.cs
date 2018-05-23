@@ -7,13 +7,15 @@ namespace TreeAttendance.Controllers
         // GET: Students
         public ActionResult Index()
         {
-            return View();
+            var myData = Backend.Backend.StudentListBackend.StudentList;
+            return View(myData);
         }
 
         // GET: Students/Details/5
-        public ActionResult Details(int id)
+        public ActionResult Details(string id = null)
         {
-            return View();
+            var myData = Backend.Backend.GetStudentModel(id);
+            return View(myData);
         }
 
         // GET: Students/Create

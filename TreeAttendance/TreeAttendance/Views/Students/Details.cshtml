@@ -1,14 +1,8 @@
-﻿@{
-    ViewBag.Title = "Students";
+﻿@model TreeAttendance.Models.StudentModel
+@{
+    ViewBag.Title = "Students Details";
 }
 <br />
-<br />
-<h4>Prototype</h4>
-<div>
-    <img src="~/Content/img/StudentsDetails.png" />
-</div>
-<br /><br />
-<h4>Current Development</h4>
 <br />
 
 
@@ -16,12 +10,12 @@
     <ol class="breadcrumb">
         <li class="breadcrumb-item" aria-current="page"> <a href="~/AdminHome">Admin Home</a></li>
         <li class="breadcrumb-item" aria-current="page"> <a href="~/Students">Students</a></li>
-        <li class="breadcrumb-item active" aria-current="page">Allen</li>
+        <li class="breadcrumb-item active" aria-current="page">@Model.Name</li>
     </ol>
 </nav>
 <div class="row">
     <div style="margin-left: 15px; margin-right: 50px">
-        <a href="~/Students/Edit/1" class="btn btn-outline-primary" style="width: 200px">Edit Profile</a>
+        <a href="~/Students/Edit/@Model.Id" class="btn btn-outline-primary" style="width: 200px">Edit Profile</a>
     </div>
     <div class="dropdown" style="margin-right: 50px">
         <button class="btn btn-outline-primary dropdown-toggle" style="width: 200px" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -30,20 +24,20 @@
         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" style="width: 200px">
             <a class="dropdown-item btn" href="~/Attendance/Details/1">Attendance</a>
             <a class="dropdown-item btn" href="~/AdminHome/Reports">Reports</a>
-            <a class="dropdown-item btn" href="#">Tree</a>
+            <a class="dropdown-item btn" href="~/Trees/Details/1">Tree</a>
         </div>
     </div>
     <div style="margin-left: 15px; margin-right: 50px">
-        <a href="~/Students/Delete/1" class="btn btn-outline-danger" style="width: 200px">Remove</a>
+        <a href="~/Students/Delete/@Model.Id" class="btn btn-outline-danger" style="width: 200px">Remove</a>
     </div>
 
 </div>
 <div class="row">
     <div align="center" style="padding:70px">
-        <img src="~/Content/img/boy1.png" width="100" height="100" />
+        <img src="~/Content/img/@Model.ProfilePictureUri" width="100" height="100" />
         <br />
         <div style="padding: 7px">
-            Allen
+            @Model.Name
         </div>
     </div>
 </div>
