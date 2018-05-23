@@ -48,6 +48,15 @@ namespace TreeAttendance.Backend
             //create more school days
             CreateSchoolDay(new SchoolDayModel("05/03/2018", DefaultExpectedHours));
             CreateSchoolDay(new SchoolDayModel("05/06/2018", DefaultExpectedHours));
+            
+            //Create one Check-in for each Attendance
+            foreach (var schd in SchoolDayListBackend.SchoolDayList)
+            {
+                foreach (var att in schd.AttendanceList)
+                {
+                    CreateAttendanceCheckIn(new AttendanceCheckInModel(att, "08:45:00", "15:45:00"));
+                }
+            }
         }
         /// <summary>
         /// gets the StudemtModel with the given id
@@ -126,11 +135,7 @@ namespace TreeAttendance.Backend
             //create attendance records based on current student list
             foreach (var student in StudentListBackend.StudentList)
             {
-                AttendanceModel att = new AttendanceModel()
-                {
-                    SchoolDay = SchoolDayListBackend.SchoolDayList.Last(),
-                    Student = student
-                };
+                AttendanceModel att = new AttendanceModel(student, SchoolDayListBackend.SchoolDayList.Last());
                 //add the attendance to the AttendanceList of the school day
                 SchoolDayListBackend.SchoolDayList.Last().AttendanceList.Add(att);
                 //add the attendance to the AttendanceList of the student
