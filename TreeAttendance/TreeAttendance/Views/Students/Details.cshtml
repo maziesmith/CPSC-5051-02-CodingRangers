@@ -15,30 +15,33 @@
 <div class="page-header">Student Details</div>
 
 <div class="row">
-    <div style="margin-left: 15px; margin-right: 50px">
-        <a href="~/Students/Edit/@Model.Id" class="btn btn-outline-primary" style="width: 200px">Edit Profile</a>
-    </div>
-    <div class="dropdown" style="margin-right: 50px">
-        <button class="btn btn-outline-primary dropdown-toggle" style="width: 200px" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Jump to
-        </button>
-        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" style="width: 200px">
-            <a class="dropdown-item btn" href="~/Attendance/ByStudent/@Model.Id">Attendance</a>
-            <a class="dropdown-item btn" href="~/AdminHome/Reports">Reports</a>
-            <a class="dropdown-item btn" href="~/Trees/Details/1">Tree</a>
-        </div>
-    </div>
-    <div style="margin-left: 15px; margin-right: 50px">
-        <a href="~/Students/Delete/@Model.Id" class="btn btn-outline-danger" style="width: 200px">Remove</a>
+    <div class="col-3" align="center">
+            <img src="~/Content/img/@Model.ProfilePictureUri" width="100" height="100" />
+            <div class="label">
+                @Model.Name
+            </div>
     </div>
 </div>
+<br/>
 <div class="row">
-    <div align="center" style="padding:70px">
-        <img src="~/Content/img/@Model.ProfilePictureUri" width="100" height="100" />
-        <br />
-        <div style="padding: 7px">
-            @Model.Name
-        </div>
+    <div class="col-sm-1">
+        <a href="~/Students/Index" class="btn btn-success" style="width: 80px">Cancel</a>
+    </div>
+    <div class="col-sm-1">
+        <a href="~/Students/Edit/@Model.Id" class="btn btn-primary" style="width: 80px">Edit</a>
+    </div>
+    @*<div class="dropdown" style="margin-right: 50px">
+            <button class="btn btn-outline-primary dropdown-toggle" style="width: 200px" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Jump to
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" style="width: 200px">
+                <a class="dropdown-item btn" href="~/Attendance/ByStudent/@Model.Id">Attendance</a>
+                <a class="dropdown-item btn" href="~/AdminHome/Reports">Reports</a>
+                <a class="dropdown-item btn" href="~/Trees/Details/1">Tree</a>
+            </div>
+        </div>*@
+    <div class="col-sm-1">
+        <a href="~/Students/Delete/@Model.Id" class="btn btn-danger" style="width: 80px">Remove</a>
     </div>
 </div>
 
