@@ -9,48 +9,53 @@
         <li class="breadcrumb-item" aria-current="page"> <a href="~/AdminHome">Admin Home</a></li>
         <li class="breadcrumb-item" aria-current="page"> <a href="~/Students">Students</a></li>
         <li class="breadcrumb-item active" aria-current="page">Index</li>
-
     </ol>
 </nav>
-<div>
-    <div class="">
-        <div class="page-header">Manage Students</div>
-    </div>
 
-    <div class="row">
 
-        @{
-            if (Model.Count == 0)
-            {
-                <br />
-                <p>No Students in the System</p>
-                <br />
-            }
-            else
-            {
-                foreach (var item in Model)
-                {
-                    <div class="col-3" align="center">
-                        <a id="@item.Id" href="~/Students/Details/@item.Id">
-                            <img src="~/Content/img/@item.ProfilePictureUri" width="100" height="100" />
-                            <div class="label">
-                                @item.Name
-                            </div>
-                        </a>
-                    </div>
+<div class="page-header">Manage Students</div>
+<ul class="nav nav-tabs">
+    <li class="nav-item">
+        <a class="nav-link active" href="~/Students/Index">Current Students</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="#">Noncurrent Students</a>
+    </li>
+</ul>
+<div class="row">
 
-                }
-            }
-            <div class="col-3" align="center">
-                <a href="~/Students/Create/">
-                    <img src="~/Content/img/Add.png" width="80" height="80" />
-                    <br />
-                    <div class="label">
-                        Create
-                    </div>
-                </a>
-            </div>
+    @{
+        if (Model.Count == 0)
+        {
+            <br />
+            <p>No Students in the System</p>
+            <br />
         }
+        else
+        {
+            foreach (var item in Model)
+            {
+                <div class="col-3" align="center">
+                    <a id="@item.Id" href="~/Students/Details/@item.Id">
+                        <img src="~/Content/img/@item.ProfilePictureUri" width="100" height="100" />
+                        <div class="label">
+                            @item.Name
+                        </div>
+                    </a>
+                </div>
 
-    </div>
+            }
+        }
+        <div class="col-3" align="center">
+            <a href="~/Students/Create/">
+                <img src="~/Content/img/Add.png" width="80" height="80" />
+                <br />
+                <div class="label">
+                    Create
+                </div>
+            </a>
+        </div>
+    }
+
 </div>
+
