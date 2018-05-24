@@ -13,8 +13,11 @@
 </nav>
 
 <div class="page-header">Create a New Student Profile</div>
-<br/>
-<form class="input-form">
+<br />
+@using (Html.BeginForm())
+{
+    <p class="alert alert-info">All fields are <strong>required</strong>.</p>
+    @Html.AntiForgeryToken()
     <div class="form-group">
         @Html.LabelFor(m => m.Name)
         @Html.TextBoxFor(m => m.Name, new { @class = "form-control" })
@@ -31,10 +34,11 @@
             <a href="~/Students/Index" class="btn btn-success" style="width: 80px">Cancel</a>
         </div>
         <div class="col-sm-1">
-            <input type="submit" value="Create" class="btn btn-primary" style="width: 80px">
+            <button type="submit" class="btn btn-primary">Create</button>
         </div>
     </div>
-</form>
+}
+
 
 
 
