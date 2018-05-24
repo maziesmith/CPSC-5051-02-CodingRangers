@@ -11,6 +11,7 @@ namespace TreeAttendance.Models
         /// Maintains a list of all current students.
         /// </summary>
         public List<StudentModel> StudentList { get; set; }
+        
         /// <summary>
         /// Constructor, the list is empty initially.
         /// </summary>

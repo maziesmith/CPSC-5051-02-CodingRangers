@@ -11,6 +11,7 @@ namespace TreeAttendance.Models
         /// Maintains a list of all school days so far
         /// </summary>
         public List<SchoolDayModel> SchoolDayList { get; set; }
+        
         /// <summary>
         /// Constructor, The list is empty initially
         /// </summary>

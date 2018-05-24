@@ -19,11 +19,20 @@ namespace TreeAttendance.Models
         [Required(ErrorMessage = "Id is required")]
         public String Id { get; set; }
 
+        /// <summary>
+        /// Clock-in time
+        /// </summary>
         [Display(Name = "Check-in Time", Description = "Check-in time")]
-        public string CheckIn { get; set; }
+        [Required(ErrorMessage = "Check-in time is required")]
+        public DateTime CheckIn { get; set; }
 
+        /// <summary>
+        /// Clock-out time
+        /// </summary>
         [Display(Name = "Check-out Time", Description = "Check-out time")]
-        public string CheckOut { get; set; }
+        [Required(ErrorMessage = "Check-out time is required")]
+        public DateTime CheckOut { get; set; }
+        
         /// <summary>
         /// The Attendance model this check-in belongs to.
         /// </summary>
@@ -31,16 +40,18 @@ namespace TreeAttendance.Models
         /// <summary>
         /// Constuctor
         /// </summary>
+
         public AttendanceCheckInModel()
         {
             Id = Guid.NewGuid().ToString();
         }
+        
         /// <summary>
         /// Constructor, call this when creating a check-in.
         /// </summary>
         /// <param name="checkIn"></param>
         /// <param name="checkOut"></param>
-        public AttendanceCheckInModel(AttendanceModel attendance, string checkIn, string checkOut)
+        public AttendanceCheckInModel(AttendanceModel attendance, DateTime checkIn, DateTime checkOut)
         {
             Id = Guid.NewGuid().ToString();
             Attendance = attendance;

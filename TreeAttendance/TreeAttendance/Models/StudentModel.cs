@@ -72,13 +72,12 @@ namespace TreeAttendance.Models
         /// </summary>
         /// <param name="name">The Name to call the student</param>
         /// <param name="id">The ID, must be unique</param>
-        /// <param name="profileUrl">The profile picture url</param>
-
-        public StudentModel(string name, string profileUrl)
+        /// <param name="profileUri">The profile picture url</param>
+        public StudentModel(string name, string profileUri)
         {
             Initialize();
             Name = name;
-            ProfilePictureUri = profileUrl;
+            ProfilePictureUri = profileUri;
         }
     }
 }
