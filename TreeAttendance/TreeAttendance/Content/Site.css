@@ -23,7 +23,8 @@ textarea {
 }
 
 .breadcrumb {
-    background-color: aliceblue;
+    background-color:white;
+    
 }
 
 .col-3 {
@@ -41,5 +42,10 @@ textarea {
 .input-form {
     padding-left: 10px;
 }
+
+.nav-tabs {
+    padding-top: 10px;
+}
+
 
 

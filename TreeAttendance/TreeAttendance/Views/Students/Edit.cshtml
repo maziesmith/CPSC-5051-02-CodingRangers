@@ -3,11 +3,29 @@
     ViewBag.Title = "Edit Student Profile";
 }
 
-<br />
+<ul class="nav nav-tabs">
+    <li class="nav-item">
+        <a class="nav-link" href="~/AdminHome/Index">Dashboard</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link active" href="~/Students/Index">Students</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="~/Attendance/Index">Attendance</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="~/AdminHome/ReportsIndex">Reports</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="~/Trees/Index">Trees</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="~/AdminHome/Calendar">Calendar</a>
+    </li>
+</ul>
 
 <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
-        <li class="breadcrumb-item" aria-current="page"> <a href="~/AdminHome">Admin Home</a></li>
         <li class="breadcrumb-item" aria-current="page"> <a href="~/Students">Students</a></li>
         <li class="breadcrumb-item" aria-current="page"><a href="~/Students/Details/@Model.Id">@Model.Name</a></li>
         <li class="breadcrumb-item" aria-current="page active">Edit Profile</li>

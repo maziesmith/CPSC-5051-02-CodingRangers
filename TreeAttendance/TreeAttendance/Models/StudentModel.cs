@@ -26,7 +26,7 @@ namespace TreeAttendance.Models
         /// <summary>
         /// Url of the profile picture, if url = "profile.png", the file can be found under "Content/Img" folder
         /// </summary>
-        [Display(Name = "Profile", Description = "Profile Picture")]
+        [Display(Name = "Profile Picture", Description = "Profile picture")]
         [Required(ErrorMessage = "Profile picture is required")]
         public string ProfilePictureUri { get; set; }
 
