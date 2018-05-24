@@ -30,8 +30,12 @@ textarea {
     padding-top: 50px;
 }
 .label {
-    padding: 10px
+    padding: 10px;
 }
-
+.page-header {
+    padding-left: 10px;
+    font-family:sans-serif;
+    font-size:40px;
+}
 
 
