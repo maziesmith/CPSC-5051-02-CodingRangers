@@ -27,11 +27,11 @@ textarea {
     background-color: aliceblue;
 }
 
-.container-index {
+.col-3 {
     padding-top: 50px;
 }
-.col-4 {
-    padding-bottom: 50px
+.label {
+    padding: 10px
 }
 
 

@@ -3,21 +3,20 @@
     ViewBag.Title = "Students";
 }
 <br />
-<br />
 
 <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
         <li class="breadcrumb-item" aria-current="page"> <a href="~/AdminHome">Admin Home</a></li>
         <li class="breadcrumb-item" aria-current="page"> <a href="~/Students">Students</a></li>
         <li class="breadcrumb-item active" aria-current="page">Index</li>
-        <li style="padding-left: 600px">
-            <div style="height: 5px">
-                <a href="~/Students/Create" class="btn btn-outline-primary btn-sm" style="width: 200px">Create a New Student Profile</a>
-            </div>
-        </li>
+
     </ol>
 </nav>
-<div class="container-index">
+<div class="body-content">
+    <div class="row">
+        <h4>Manage Students</h4>
+    </div>
+
     <div class="row">
 
         @{
@@ -31,18 +30,26 @@
             {
                 foreach (var item in Model)
                 {
-                    <div class="col-4" align="center">
+                    <div class="col-3" align="center">
                         <a id="@item.Id" href="~/Students/Details/@item.Id">
                             <img src="~/Content/img/@item.ProfilePictureUri" width="100" height="100" />
-                            <br />
-                            <span>
+                            <div class="label">
                                 @item.Name
-                            </span>
+                            </div>
                         </a>
                     </div>
 
                 }
             }
+            <div class="col-3" align="center">
+                <a href="~/Students/Create/">
+                    <img src="~/Content/img/Add.png" width="100" height="100" />
+                    <br />
+                    <div class="label">
+                        Create
+                    </div>
+                </a>
+            </div>
         }
 
     </div>
