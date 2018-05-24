@@ -4,62 +4,50 @@
 }
 
 <br />
-<br />
-
 
 <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
         <li class="breadcrumb-item" aria-current="page"> <a href="~/AdminHome">Admin Home</a></li>
         <li class="breadcrumb-item" aria-current="page"> <a href="~/Students">Students</a></li>
         <li class="breadcrumb-item" aria-current="page"><a href="~/Students/Details/@Model.Id">@Model.Name</a></li>
-        <li class="breadcrumb-item" aria-current="page active">Update Profile</li>
+        <li class="breadcrumb-item" aria-current="page active">Edit Profile</li>
     </ol>
 </nav>
 
+<div class="page-header">Edit Profile</div>
 <div class="row">
-    <div class="col-4" align="center" style="padding:70px">
-            <img src="~/Content/img/@Model.ProfilePictureUri" width="100" height="100" />
-            <br />
-            <div style="padding: 7px">
-                @Model.Name
-            </div>
-    </div>
-    <div class="col-4">
-        @using (Html.BeginForm())
-        {
-            @Html.AntiForgeryToken()
-
-            <div class="row">
-                <div class="col-sm-2 text-right">
-                    @Html.DisplayNameFor(m => m.Name)
-                </div>
-                <div class="col-sm-2">
-                    @Html.EditorFor(m => m.Name)
-                    @Html.ValidationMessageFor(m => m.Name)
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-sm-2 text-right">
-                    @Html.DisplayNameFor(m => m.ProfilePictureUri)
-                </div>
-                <div class="col-sm-2">
-                    @Html.EditorFor(m => m.ProfilePictureUri)
-                    @Html.ValidationMessageFor(m => m.ProfilePictureUri)
-                </div>
-            </div>
-            <div class="row" style="margin: 30px">
-                <div style="margin-right: 30px">
-                    @Html.ActionLink("Cancel", "Index", null, new { @class = "btn btn-success" })
-                </div>
-                <div style="margin-right: 30px">
-                    <input type="submit" value="Save" class="btn btn-primary">
-                </div>
-            </div>
-        }
+    <div class="col-3" align="center">
+        <img src="~/Content/img/@Model.ProfilePictureUri" width="100" height="100" />
+        <div class="label">
+            @Model.Name
+        </div>
     </div>
 </div>
-
+<br/>
+@using (Html.BeginForm())
+{
+    <p class="alert alert-info">All fields are <strong>required</strong>.</p>
+    @Html.AntiForgeryToken()
+    <div class="form-group">
+        @Html.LabelFor(m => m.Name)
+        @Html.TextBoxFor(m => m.Name, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Name)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.ProfilePictureUri)
+        @Html.TextBoxFor(m => m.ProfilePictureUri, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.ProfilePictureUri)
+    </div>
+    <br />
+    <div class="row">
+        <div class="col-sm-1">
+            <a href="~/Students/Details/@Model.Id" class="btn btn-success" style="width: 80px">Cancel</a>
+        </div>
+        <div class="col-sm-1">
+            <button type="submit" class="btn btn-primary" style="width: 80px">Save</button>
+        </div>
+    </div>
+}
 
 
 
