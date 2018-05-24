@@ -26,11 +26,11 @@ namespace TreeAttendance.Models
         /// The student of the attendance record
         /// </summary>
         public StudentModel Student { get; set; }
-        
-        /// <summary>
-        /// True if this is and excused absence.
-        /// </summary>
-        public Enum ExcusedAbsence { get; set; }
+
+        ///// <summary>
+        ///// True if this is and excused absence.
+        ///// </summary>
+        //public enum ExcusedAbsence { }
         
         /// <summary>
         /// Maintains a list of AttendanceCheckInModel. If there are 3 check-ins on this day by this student, then the list size will be 3.

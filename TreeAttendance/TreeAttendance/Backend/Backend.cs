@@ -8,7 +8,6 @@ namespace TreeAttendance.Backend
 {   
     public static class Backend
     {
-        public const double DefaultExpectedHours = 6;
         /// <summary>
         /// Maintains a StudentListModel
         /// </summary>
@@ -42,7 +41,7 @@ namespace TreeAttendance.Backend
             for (int i = 1; i < 16; i++)
             {
                 string date = "5/" + i + "/2018";
-                CreateSchoolDay(new SchoolDayModel(date, DefaultExpectedHours));
+                CreateSchoolDay(new SchoolDayModel(DateTime.Parse(date), new TimeSpan (6, 0, 0)));
             }           
 
             //create 1 more student profiles            
@@ -52,41 +51,41 @@ namespace TreeAttendance.Backend
             for (int i = 16; i < 31; i++)
             {
                 string date = "5/" + i + "/2018";
-                CreateSchoolDay(new SchoolDayModel(date, DefaultExpectedHours));
+                CreateSchoolDay(new SchoolDayModel(DateTime.Parse(date), new TimeSpan(6, 0, 0)));
             }
 
             //some sample check-in records, used to generate check-in records ramdomly.
             //sample Check-in record, on time, stay
             void TypeA(AttendanceModel att)
             {
-                CreateAttendanceCheckIn(new AttendanceCheckInModel(att, "08:45:00", "15:45:00"));
+                CreateAttendanceCheckIn(new AttendanceCheckInModel(att, DateTime.Parse("08:45:00"), DateTime.Parse("15:45:00")));
             };
             //sample Check-in record, late, stay
             void TypeB(AttendanceModel att)
             {
-                CreateAttendanceCheckIn(new AttendanceCheckInModel(att, "09:15:00", "15:45:00"));
+                CreateAttendanceCheckIn(new AttendanceCheckInModel(att, DateTime.Parse("09:15:00"), DateTime.Parse("15:45:00")));
             };
             //sample Check-in record, late, left early
             void TypeC(AttendanceModel att)
             {
-                CreateAttendanceCheckIn(new AttendanceCheckInModel(att, "09:15:00", "13:30:00"));
+                CreateAttendanceCheckIn(new AttendanceCheckInModel(att, DateTime.Parse("09:15:00"), DateTime.Parse("13:30:00")));
             };
             //sample Check-in record, absent unexcused
             void TypeD(AttendanceModel att)
             {
-                CreateAttendanceCheckIn(new AttendanceCheckInModel(att, "", ""));
+                CreateAttendanceCheckIn(new AttendanceCheckInModel(att, DateTime.MinValue, DateTime.MinValue));
             };
             //sample Check-in record, absent excused
             void TypeE(AttendanceModel att)
             {
-                CreateAttendanceCheckIn(new AttendanceCheckInModel(att, "", ""));
-                att.ExcusedAbsence = true;
+                CreateAttendanceCheckIn(new AttendanceCheckInModel(att, DateTime.MinValue, DateTime.MinValue));
+                //att.ExcusedAbsence = 1;
             };
             //sample Check-in record, multiple check-ins
             void TypeF(AttendanceModel att)
             {
-                CreateAttendanceCheckIn(new AttendanceCheckInModel(att, "08:45:00", "10:30:00"));
-                CreateAttendanceCheckIn(new AttendanceCheckInModel(att, "13:00:00", "15:45:00"));
+                CreateAttendanceCheckIn(new AttendanceCheckInModel(att, DateTime.Parse("08:45:00"), DateTime.Parse("10:30:00")));
+                CreateAttendanceCheckIn(new AttendanceCheckInModel(att, DateTime.Parse("13:00:00"), DateTime.Parse("15:45:00")));
             };
 
             Random rng = new Random();
@@ -281,7 +280,7 @@ namespace TreeAttendance.Backend
         {
             string id = attendance.Id;
             AttendanceModel att = GetAttendanceModel(id);
-            att.ExcusedAbsence = attendance.ExcusedAbsence;
+            //att.ExcusedAbsence = attendance.ExcusedAbsence;
         }
         /// <summary>
         /// Deletes the given attendance
