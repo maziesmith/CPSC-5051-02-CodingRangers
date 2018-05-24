@@ -1,10 +1,8 @@
 ﻿@model TreeAttendance.Models.StudentModel
 @{
-    ViewBag.Title = "Create Student";
+    ViewBag.Title = "Create Student Profile";
 }
 <br />
-<br />
-
 
 <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
@@ -14,45 +12,29 @@
     </ol>
 </nav>
 
-<div class="row">
-    <div class="col-4">
-        @using (Html.BeginForm())
-        {
-            @Html.AntiForgeryToken()
-
-            <div class="row">
-                <div class="col-sm-2 text-right">
-                    @Html.DisplayNameFor(m => m.Name)
-                </div>
-                <div class="col-sm-2">
-                    @Html.EditorFor(m => m.Name)
-                    @Html.ValidationMessageFor(m => m.Name)
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-sm-2 text-right">
-                    @Html.DisplayNameFor(m => m.ProfilePictureUri)
-                </div>
-                <div class="col-sm-2">
-                    @Html.EditorFor(m => m.ProfilePictureUri)
-                    @Html.ValidationMessageFor(m => m.ProfilePictureUri)
-                </div>
-            </div>
-            <div class="row" style="margin: 30px">
-                <div style="margin-right: 30px">
-                    @Html.ActionLink("Cancel", "Index", null, new { @class = "btn btn-success" })
-                </div>
-                <div style="margin-right: 30px">
-                    <input type="submit" value="Create" class="btn btn-primary">
-                </div>
-            </div>
-        }
+<div class="page-header">Create a New Student Profile</div>
+<br/>
+<form class="input-form">
+    <div class="form-group">
+        @Html.LabelFor(m => m.Name)
+        @Html.TextBoxFor(m => m.Name, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Name)
     </div>
-</div>
-
-
-
+    <div class="form-group">
+        @Html.LabelFor(m => m.ProfilePictureUri)
+        @Html.TextBoxFor(m => m.ProfilePictureUri, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.ProfilePictureUri)
+    </div>
+    <br />
+    <div class="row">
+        <div class="col-sm-1">
+            <a href="~/Students/Index" class="btn btn-success" style="width: 80px">Cancel</a>
+        </div>
+        <div class="col-sm-1">
+            <input type="submit" value="Create" class="btn btn-primary" style="width: 80px">
+        </div>
+    </div>
+</form>
 
 
 
