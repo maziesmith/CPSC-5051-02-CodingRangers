@@ -34,50 +34,34 @@
 
 <div class="page-header">Edit Check-in</div>
 <div class="row">
-    <div align="center" style="padding:15px">
+    <div class="col-3" align="center">
         <img src="~/Content/img/@Model.Attendance.Student.ProfilePictureUri" width="100" height="100" />
-        <br />
-        <div style="padding: 10px">
+        <div class="label">
             @Model.Attendance.Student.Name
         </div>
-        <div style="padding: 10px">
-            @Model.Attendance.SchoolDay.Date
+    </div>
+</div>
+@using (Html.BeginForm())
+{
+    <p class="alert alert-info">All fields are <strong>required</strong>.</p>
+    @Html.AntiForgeryToken()
+    <div class="form-group">
+        @Html.LabelFor(m => m.CheckIn)
+        @Html.TextBoxFor(m => m.CheckIn, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.CheckIn)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.CheckOut)
+        @Html.TextBoxFor(m => m.CheckOut, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.CheckOut)
+    </div>
+    <br />
+    <div class="row">
+        <div class="col-sm-1">
+            <a href="~/Attendance/Details/@Model.Attendance.Id" class="btn btn-success" style="width: 80px">Cancel</a>
+        </div>
+        <div class="col-sm-1">
+            <button type="submit" class="btn btn-primary" style="width: 80px">Save</button>
         </div>
     </div>
-
-
-</div>
-<div class="col-4">
-    @using (Html.BeginForm())
-    {
-        @Html.AntiForgeryToken()
-
-        <div class="row">
-            <div class="col-sm-2 text-right">
-                @Html.DisplayNameFor(m => m.CheckIn)
-            </div>
-            <div class="col-sm-2">
-                @Html.EditorFor(m => m.CheckIn)
-                @Html.ValidationMessageFor(m => m.CheckIn)
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-sm-2 text-right">
-                @Html.DisplayNameFor(m => m.CheckOut)
-            </div>
-            <div class="col-sm-2">
-                @Html.EditorFor(m => m.CheckOut)
-                @Html.ValidationMessageFor(m => m.CheckOut)
-            </div>
-        </div>
-        <div class="row" style="margin: 30px">
-            <div style="margin-right: 30px">
-                @Html.ActionLink("Cancel", "Details", "Attendance", new { id = Model.Attendance.Id }, new { @class = "btn btn-success" })
-            </div>
-            <div style="margin-right: 30px">
-                <input type="submit" value="Save" class="btn btn-primary">
-            </div>
-        </div>
-    }
-</div>
+}

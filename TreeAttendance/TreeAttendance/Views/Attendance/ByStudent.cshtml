@@ -29,7 +29,7 @@
         <li class="breadcrumb-item active" aria-current="page">By Student: @Model.Name</li>
     </ol>
 </nav>
-<div class="page-header">Find Attendance by Date</div>
+<div class="page-header">Find Attendance by Student</div>
 <div class="row">
     <div align="center" style="padding:70px">
         <img src="~/Content/img/@Model.ProfilePictureUri" width="100" height="100" />
@@ -39,15 +39,15 @@
         </div>
     </div>
 </div>
-<div class="container-index">
-    <div class="row">
-        @foreach (var item in Model.AttendanceList)
-        {
-            <div class="col-4">
-                <a href="~/Attendance/Details/@item.Id">
-                    @item.SchoolDay.Date
-                </a>
-            </div>
-        }
-    </div>
+
+<div class="row" id="row-left-margin">
+    @foreach (var item in Model.AttendanceList)
+    {
+        <div class="col-4">
+            <a href="~/Attendance/Details/@item.Id">
+                @item.SchoolDay.Date
+            </a>
+        </div>
+    }
 </div>
+
