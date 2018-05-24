@@ -22,14 +22,15 @@
         </div>
     </div>
 </div>
-<div>
-    @foreach (var item in Model.AttendanceList)
-    {
-        <div class="row">
-            <a href="~/Attendance/Details/@item.Id">
-                @item.SchoolDay.Date
-            </a>
-        </div>
-    }
+<div class="container-index">
+    <div class="row">
+        @foreach (var item in Model.AttendanceList)
+        {
+            <div class="col-4">
+                <a href="~/Attendance/Details/@item.Id">
+                    @item.SchoolDay.Date
+                </a>
+            </div>
+        }
+    </div>
 </div>
-
