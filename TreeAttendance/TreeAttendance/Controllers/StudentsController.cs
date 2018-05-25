@@ -1,21 +1,23 @@
 ﻿using System.Web.Mvc;
+using TreeAttendance.Backend;
 
 namespace TreeAttendance.Controllers
 {
     public class StudentsController : Controller
     {
-        // GET: Students
+        // The Backend Data source
+        private StudentBackend StudentBackend = StudentBackend.Instance;
+
+        // GET: Student
+        /// <summary>
+        /// Index, the page that shows all the Students
+        /// </summary>
+        /// <returns></returns>
         public ActionResult Index()
         {
-            var myData = Backend.Backend.StudentListBackend.StudentList;
-            return View(myData);
-        }
-
-        // GET: Students/Details/5
-        public ActionResult Details(string id = null)
-        {
-            var myData = Backend.Backend.GetStudentModel(id);
-            return View(myData);
+            // Load the list of data into the StudentList
+            var myDataList = StudentBackend.Index();
+            return View(myDataList);
         }
 
         // GET: Students/Create
