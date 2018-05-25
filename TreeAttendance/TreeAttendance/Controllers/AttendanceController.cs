@@ -148,11 +148,11 @@ namespace TreeAttendance.Controllers
                                         "Uri,"+
                                         "")] AttendanceCheckInViewModel data)
         {
-            //if (!ModelState.IsValid)
-            //{
-            //    // Send back for edit
-            //    return View(data);
-            //}
+            if (!ModelState.IsValid)
+            {
+                // Send back for edit
+                return View(data);
+            }
 
             if (data == null)
             {

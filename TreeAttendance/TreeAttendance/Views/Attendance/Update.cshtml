@@ -45,8 +45,6 @@
 {
     <p class="alert alert-info">All fields are <strong>required</strong>.</p>
     @Html.AntiForgeryToken()
-    @Html.HiddenFor(m => m.AttendanceId)
-    @Html.HiddenFor(m => m.Index)
     <div class="form-group">
         @Html.LabelFor(m => m.CheckIn)
         @Html.TextBoxFor(m => m.CheckIn, new { @class = "form-control" })
