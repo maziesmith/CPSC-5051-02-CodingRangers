@@ -20,12 +20,12 @@ namespace TreeAttendance.Models
         /// <summary>
         /// The school day of this attendance record
         /// </summary>
-        public SchoolDayModel SchoolDay { get; set; }
+        public string SchoolDayId { get; set; }
 
         /// <summary>
         /// The student of the attendance record
         /// </summary>
-        public StudentModel Student { get; set; }
+        public string StudentId { get; set; }
 
         ///// <summary>
         ///// True if this is and excused absence.
@@ -59,12 +59,12 @@ namespace TreeAttendance.Models
         /// </summary>
         /// <param name="student"></param>
         /// <param name="schoolDay"></param>
-        public AttendanceModel(StudentModel student, SchoolDayModel schoolDay)
+        public AttendanceModel(string student, string schoolDay)
         {
             Initialize();
-            Student = student;
+            StudentId = student;
             //Student.AttendanceList.Add(this);
-            SchoolDay = schoolDay;
+            SchoolDayId = schoolDay;
             //SchoolDay.AttendanceList.Add(this);
         }
     }
