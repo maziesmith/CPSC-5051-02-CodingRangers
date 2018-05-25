@@ -196,8 +196,10 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Backend\Backend.cs" />
-    <Compile Include="Backend\ISchoolDayInterface.cs" />
-    <Compile Include="Backend\IStudentInterface.cs" />
+    <Compile Include="Backend\SchoolDayBackend.cs" />
+    <Compile Include="Backend\SchoolDayDataSourceMock.cs" />
+    <Compile Include="Backend\SchoolDayInterface.cs" />
+    <Compile Include="Backend\StudentInterface.cs" />
     <Compile Include="Backend\StudentBackend.cs" />
     <Compile Include="Backend\StudentDataSourceMock.cs" />
     <Compile Include="Controllers\AccountController.cs" />

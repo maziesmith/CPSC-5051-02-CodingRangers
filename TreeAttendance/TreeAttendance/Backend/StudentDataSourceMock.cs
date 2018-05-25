@@ -9,7 +9,7 @@ namespace TreeAttendance.Backend
     /// <summary>
     /// Holds the Student Data as a Mock Data set, used for Unit Testing, System Testing, Offline Development etc.
     /// </summary>
-    public class StudentDataSourceMock : IStudentInterface
+    public class StudentDataSourceMock : StudentInterface
     {
         /// <summary>
         /// Make into a singleton

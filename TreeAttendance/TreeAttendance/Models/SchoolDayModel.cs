@@ -53,7 +53,7 @@ namespace TreeAttendance.Models
         {
             AttendanceList = new List<AttendanceModel>();
             Id = Guid.NewGuid().ToString();
-            Date = date;
+            Date = date.Date;
             ExpectedHours = expectedHours;
         }
     }

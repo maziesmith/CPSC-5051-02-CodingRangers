@@ -8,19 +8,19 @@ using TreeAttendance.Models.Enums;
 namespace TreeAttendance.Backend
 {
     /// <summary>
-    /// Student Backend handles the business logic and data for Students
+    /// SchoolDay Backend handles the business logic and data for SchoolDays
     /// </summary>
-    public class StudentBackend
+    public class SchoolDayBackend
     {
         /// <summary>
         /// Make into a Singleton
         /// </summary>
-        private static volatile StudentBackend instance;
+        private static volatile SchoolDayBackend instance;
         private static object syncRoot = new Object();
 
-        private StudentBackend() { }
+        private SchoolDayBackend() { }
 
-        public static StudentBackend Instance
+        public static SchoolDayBackend Instance
         {
             get
             {
@@ -30,7 +30,7 @@ namespace TreeAttendance.Backend
                     {
                         if (instance == null)
                         {
-                            instance = new StudentBackend();
+                            instance = new SchoolDayBackend();
                             SetDataSource(SystemGlobals.Instance.DataSourceValue);
                         }
                     }
@@ -41,7 +41,7 @@ namespace TreeAttendance.Backend
         }
 
         // Get the Datasource to use
-        private static StudentInterface DataSource;
+        private static SchoolDayInterface DataSource;
 
         /// <summary>
         /// Switches between Live, and Mock Datasets
@@ -56,15 +56,15 @@ namespace TreeAttendance.Backend
             }
 
             // Default is to use the Mock
-            DataSource = StudentDataSourceMock.Instance;
+            DataSource = SchoolDayDataSourceMock.Instance;
         }
 
         /// <summary>
-        /// Makes a new Student
+        /// Makes a new SchoolDay
         /// </summary>
         /// <param name="data"></param>
-        /// <returns>Student Passed In</returns>
-        public StudentModel Create(StudentModel data)
+        /// <returns>SchoolDay Passed In</returns>
+        public SchoolDayModel Create(SchoolDayModel data)
         {
             DataSource.Create(data);
             return data;
@@ -75,7 +75,7 @@ namespace TreeAttendance.Backend
         /// </summary>
         /// <param name="id"></param>
         /// <returns>Null or valid data</returns>
-        public StudentModel Read(string id)
+        public SchoolDayModel Read(string id)
         {
             if (string.IsNullOrEmpty(id))
             {
@@ -91,7 +91,7 @@ namespace TreeAttendance.Backend
         /// </summary>
         /// <param name="data"></param>
         /// <returns>Null or updated data</returns>
-        public StudentModel Update(StudentModel data)
+        public SchoolDayModel Update(SchoolDayModel data)
         {
             if (data == null)
             {
@@ -130,8 +130,8 @@ namespace TreeAttendance.Backend
         /// <summary>
         /// Return the full dataset
         /// </summary>
-        /// <returns>List of Students</returns>
-        public List<StudentModel> Index()
+        /// <returns>List of SchoolDays</returns>
+        public List<SchoolDayModel> Index()
         {
             var myData = DataSource.Index();
             return myData;
@@ -146,10 +146,10 @@ namespace TreeAttendance.Backend
         }
 
         /// <summary>
-        /// Returns the First Student in the system
+        /// Returns the First SchoolDay in the system
         /// </summary>
         /// <returns>Null or valid data</returns>
-        public StudentModel GetDefault()
+        public SchoolDayModel GetDefault()
         {
             var myReturn = DataSource.Index().First();
             return myReturn;

@@ -3,24 +3,23 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using TreeAttendance.Models;
-using TreeAttendance.Models.Enums;
 
 namespace TreeAttendance.Backend
 {
     /// <summary>
-    /// Student Backend handles the business logic and data for Students
+    /// Holds the SchoolDay Data as a Mock Data set, used for Unit Testing, System Testing, Offline Development etc.
     /// </summary>
-    public class StudentBackend
+    public class SchoolDayDataSourceMock : SchoolDayInterface
     {
         /// <summary>
-        /// Make into a Singleton
+        /// Make into a singleton
         /// </summary>
-        private static volatile StudentBackend instance;
+        private static volatile SchoolDayDataSourceMock instance;
         private static object syncRoot = new Object();
 
-        private StudentBackend() { }
+        private SchoolDayDataSourceMock() { }
 
-        public static StudentBackend Instance
+        public static SchoolDayDataSourceMock Instance
         {
             get
             {
@@ -30,8 +29,8 @@ namespace TreeAttendance.Backend
                     {
                         if (instance == null)
                         {
-                            instance = new StudentBackend();
-                            SetDataSource(SystemGlobals.Instance.DataSourceValue);
+                            instance = new SchoolDayDataSourceMock();
+                            instance.Initialize();
                         }
                     }
                 }
@@ -40,33 +39,20 @@ namespace TreeAttendance.Backend
             }
         }
 
-        // Get the Datasource to use
-        private static StudentInterface DataSource;
-
         /// <summary>
-        /// Switches between Live, and Mock Datasets
+        /// The Data for the SchoolDays
         /// </summary>
-        /// <param name="dataSourceEnum"></param>
-        public static void SetDataSource(DataSourceEnum dataSourceEnum)
-        {
-            if (dataSourceEnum == DataSourceEnum.SQL)
-            {
-                // SQL not hooked up yet...
-                throw new NotImplementedException();
-            }
-
-            // Default is to use the Mock
-            DataSource = StudentDataSourceMock.Instance;
-        }
+        private List<SchoolDayModel> SchoolDayList = new List<SchoolDayModel>();
 
         /// <summary>
-        /// Makes a new Student
+        /// Makes a new SchoolDay
         /// </summary>
         /// <param name="data"></param>
-        /// <returns>Student Passed In</returns>
-        public StudentModel Create(StudentModel data)
+        /// <returns>SchoolDay Passed In</returns>
+        public SchoolDayModel Create(SchoolDayModel data)
         {
-            DataSource.Create(data);
+            SchoolDayList.Add(data);
+
             return data;
         }
 
@@ -75,14 +61,14 @@ namespace TreeAttendance.Backend
         /// </summary>
         /// <param name="id"></param>
         /// <returns>Null or valid data</returns>
-        public StudentModel Read(string id)
+        public SchoolDayModel Read(string id)
         {
             if (string.IsNullOrEmpty(id))
             {
                 return null;
             }
 
-            var myReturn = DataSource.Read(id);
+            var myReturn = SchoolDayList.Find(n => n.Id == id);
             return myReturn;
         }
 
@@ -91,22 +77,15 @@ namespace TreeAttendance.Backend
         /// </summary>
         /// <param name="data"></param>
         /// <returns>Null or updated data</returns>
-        public StudentModel Update(StudentModel data)
+        public SchoolDayModel Update(SchoolDayModel data)
         {
             if (data == null)
             {
                 return null;
             }
+            var myReturn = SchoolDayList.Find(n => n.Id == data.Id);
 
-            var myData = DataSource.Read(data.Id);
-            if (myData == null)
-            {
-                // Not found
-                return null;
-            }
-
-            // Update the record
-            var myReturn = DataSource.Update(data);
+            myReturn.ExpectedHours = data.ExpectedHours;
 
             return myReturn;
         }
@@ -123,36 +102,40 @@ namespace TreeAttendance.Backend
                 return false;
             }
 
-            var myReturn = DataSource.Delete(Id);
+            var myData = SchoolDayList.Find(n => n.Id == Id);
+            var myReturn = SchoolDayList.Remove(myData);
             return myReturn;
         }
 
         /// <summary>
         /// Return the full dataset
         /// </summary>
-        /// <returns>List of Students</returns>
-        public List<StudentModel> Index()
+        /// <returns>List of SchoolDays</returns>
+        public List<SchoolDayModel> Index()
         {
-            var myData = DataSource.Index();
-            return myData;
+            return SchoolDayList;
         }
 
         /// <summary>
-        /// Helper function that resets the DataSource, and rereads it.
+        /// Reset the Data, and reload it
         /// </summary>
         public void Reset()
         {
-            DataSource.Reset();
+            SchoolDayList.Clear();
+            Initialize();
         }
 
         /// <summary>
-        /// Returns the First Student in the system
+        /// Create Placeholder Initial Data
         /// </summary>
-        /// <returns>Null or valid data</returns>
-        public StudentModel GetDefault()
+        public void Initialize()
         {
-            var myReturn = DataSource.Index().First();
-            return myReturn;
+            //create 15 school days
+            for (int i = 1; i < 16; i++)
+            {
+                string date = "5/" + i + "/2018";
+                Create(new SchoolDayModel(DateTime.Parse(date), new TimeSpan(6, 0, 0)));
+            }
         }
     }
 }

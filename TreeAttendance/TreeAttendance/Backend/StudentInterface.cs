@@ -9,7 +9,7 @@ namespace TreeAttendance.Backend
     /// <summary>
     /// The interface for the Student DataSource.
     /// </summary>
-    public interface IStudentInterface
+    public interface StudentInterface
     {
         StudentModel Create(StudentModel data);
         StudentModel Read(string id);
