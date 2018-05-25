@@ -1,6 +1,8 @@
 ﻿using System.Web.Mvc;
 using TreeAttendance.Backend;
 using TreeAttendance.Models;
+using TreeAttendance.Models.ViewModels;
+using System.Collections.Generic;
 
 namespace TreeAttendance.Controllers
 {
@@ -47,7 +49,21 @@ namespace TreeAttendance.Controllers
         // GET: Attendance
         public ActionResult ByDate(string id = null)
         {
-            var myData = AttendanceBackend.IndexBySchoolDay(id);
+            var myAttendanceList = AttendanceBackend.IndexBySchoolDay(id);
+            var myData = new AttendanceByDateViewModel();
+            myData.AttendanceList = new List<AttendanceViewModel>();
+            foreach (var item in myAttendanceList)
+            {
+                var myViewModel = new AttendanceViewModel
+                {
+                    Attendance = item,
+                    Date = SchoolDayBackend.Read(item.SchoolDayId).Date.ToString("MM/dd/yyyy"),
+                    StudentName = StudentBackend.Read(item.StudentId).Name,
+                    Uri = StudentBackend.Read(item.StudentId).ProfilePictureUri
+                };
+                myData.AttendanceList.Add(myViewModel);
+            }
+            myData.Date = SchoolDayBackend.Read(id).Date.ToString("MM/dd/yyyy");
             return View(myData);
         }
 
@@ -59,8 +75,14 @@ namespace TreeAttendance.Controllers
         // GET: Student/Details/5
         public ActionResult Read(string id = null)
         {
-            var myData = AttendanceBackend.Read(id);
-
+            var myAttendance = AttendanceBackend.Read(id);
+            var myData = new AttendanceViewModel
+            {
+                Attendance = myAttendance,
+                Date = SchoolDayBackend.Read(myAttendance.SchoolDayId).Date.ToString("MM/dd/yyyy"),
+                StudentName = StudentBackend.Read(myAttendance.StudentId).Name,
+                Uri = StudentBackend.Read(myAttendance.StudentId).ProfilePictureUri
+            };
             if (myData == null)
             {
                 RedirectToAction("Error", "Home", "Invalid Record");

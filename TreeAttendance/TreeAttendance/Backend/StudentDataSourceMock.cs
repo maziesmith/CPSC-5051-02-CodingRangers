@@ -130,10 +130,10 @@ namespace TreeAttendance.Backend
         /// </summary>
         public void Initialize()
         {
-            Create(new StudentModel("Mike", "boy1.png"));
-            Create(new StudentModel("Doug", "boy2.png"));
-            Create(new StudentModel("Jea", "girl1.png"));
-            Create(new StudentModel("Sue", "girl2.png"));
+            Create(new StudentModel("Allen", "boy1.png"));
+            Create(new StudentModel("Mike", "boy2.png"));
+            Create(new StudentModel("Yanny", "girl1.png"));
+            Create(new StudentModel("Laurel", "girl2.png"));
         }
     }
 }

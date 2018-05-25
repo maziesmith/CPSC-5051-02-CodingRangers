@@ -1,4 +1,4 @@
-﻿@model TreeAttendance.Models.SchoolDayModel
+﻿@model TreeAttendance.Models.ViewModels.AttendanceByDateViewModel
 @{
     ViewBag.Title = "Attendance by School Day";
 }
@@ -33,22 +33,15 @@
 <div class="row" id="row-left-margin">
     @foreach (var item in Model.AttendanceList)
     {
-        <div class="col-4" align="center">
-            <a id="@item.Id" href="~/Attendance/Details/@item.Id">
-                <img src="~/Content/img/@item.Student.ProfilePictureUri" width="100" height="100" />
+        <div class="col-3" align="center">
+            <a href="~/Attendance/Read/@item.Attendance.Id">
+                <img src="~/Content/img/@item.Uri" width="100" height="100" />
                 <br />
                 <span>
-                    @item.Student.Name
+                    @item.StudentName
                 </span>
             </a>
         </div>
 
     }
 </div>
-
-@*<div>
-    Missing a Record on This Day?
-    <br />
-    <br />
-    <a href="~/Attendance/Create/@Model.Id" class="btn btn-outline-primary">Add a New Record</a>
-</div>*@
