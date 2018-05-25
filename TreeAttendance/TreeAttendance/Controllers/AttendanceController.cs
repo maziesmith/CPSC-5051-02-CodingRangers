@@ -40,7 +40,20 @@ namespace TreeAttendance.Controllers
         // GET: Attendance
         public ActionResult ByStudent(string id = null)
         {
-            var myData = AttendanceBackend.IndexByStudent(id);
+            var myAttendanceList = AttendanceBackend.IndexByStudent(id);
+            var myData = new AttendanceByStudentViewModel();
+            myData.AttendanceList = new List<AttendanceViewModel>();
+            foreach (var item in myAttendanceList)
+            {
+                var myViewModel = new AttendanceViewModel
+                {
+                    Attendance = item,
+                    Date = SchoolDayBackend.Read(item.SchoolDayId).Date.ToString("MM/dd/yyyy"),
+                };
+                myData.AttendanceList.Add(myViewModel);
+            }
+            myData.StudentName = StudentBackend.Read(id).Name;
+            myData.Uri = StudentBackend.Read(id).ProfilePictureUri;
             return View(myData);
         }
 
@@ -57,7 +70,6 @@ namespace TreeAttendance.Controllers
                 var myViewModel = new AttendanceViewModel
                 {
                     Attendance = item,
-                    Date = SchoolDayBackend.Read(item.SchoolDayId).Date.ToString("MM/dd/yyyy"),
                     StudentName = StudentBackend.Read(item.StudentId).Name,
                     Uri = StudentBackend.Read(item.StudentId).ProfilePictureUri
                 };
