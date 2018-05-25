@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using TreeAttendance.Models;
 using TreeAttendance.Models.Enums;
+using TreeAttendance.Models.ViewModels;
 
 namespace TreeAttendance.Backend
 {
@@ -91,14 +92,14 @@ namespace TreeAttendance.Backend
         /// </summary>
         /// <param name="data"></param>
         /// <returns>Null or updated data</returns>
-        public AttendanceModel Update(AttendanceModel data)
+        public AttendanceModel Update(AttendanceCheckInViewModel data)
         {
             if (data == null)
             {
                 return null;
             }
 
-            var myData = DataSource.Read(data.Id);
+            var myData = DataSource.Read(data.AttendanceId);
             if (myData == null)
             {
                 // Not found

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using TreeAttendance.Models;
+using TreeAttendance.Models.ViewModels;
 
 namespace TreeAttendance.Backend
 {
@@ -13,7 +14,7 @@ namespace TreeAttendance.Backend
     {
         AttendanceModel Create(AttendanceModel data);
         AttendanceModel Read(string id);
-        AttendanceModel Update(AttendanceModel data);
+        AttendanceModel Update(AttendanceCheckInViewModel data);
         bool Delete(string id);
         List<AttendanceModel> Index();
         List<AttendanceModel> IndexByStudent(string id);

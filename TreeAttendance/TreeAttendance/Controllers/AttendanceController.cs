@@ -125,7 +125,9 @@ namespace TreeAttendance.Controllers
             myData.CheckIn = myAttendance.AttendanceCheckIns[index].CheckIn;
             myData.CheckOut = myAttendance.AttendanceCheckIns[index].CheckOut;
             myData.Index = index;
-
+            myData.Date = SchoolDayBackend.Read(myAttendance.SchoolDayId).Date.ToString("MM/dd/yyyy");
+            myData.StudentName = StudentBackend.Read(myAttendance.StudentId).Name;
+            myData.Uri = StudentBackend.Read(myAttendance.StudentId).ProfilePictureUri;
             return View(myData);
         }
 
@@ -141,6 +143,9 @@ namespace TreeAttendance.Controllers
                                         "CheckIn,"+
                                         "CheckOut,"+
                                         "Index,"+
+                                        "Date,"+
+                                        "StudentName,"+
+                                        "Uri,"+
                                         "")] AttendanceCheckInViewModel data)
         {
             if (!ModelState.IsValid)
