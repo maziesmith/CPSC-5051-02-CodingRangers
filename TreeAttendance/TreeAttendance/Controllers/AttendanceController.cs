@@ -88,6 +88,10 @@ namespace TreeAttendance.Controllers
         public ActionResult Read(string id = null)
         {
             var myAttendance = AttendanceBackend.Read(id);
+            if (myAttendance == null)
+            {
+                RedirectToAction("Error", "Home", "Invalid Record");
+            }
             var myData = new AttendanceViewModel
             {
                 Attendance = myAttendance,
@@ -109,14 +113,19 @@ namespace TreeAttendance.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         // GET: Student/Edit/5
-        public ActionResult Update(string id = null)
+        public ActionResult Update(string id = null, int index = 0)
         {
-            var myData = AttendanceBackend.Read(id);
-
-            if (myData == null)
+            var myAttendance = AttendanceBackend.Read(id);
+            if (myAttendance == null)
             {
                 RedirectToAction("Error", "Home", "Invalid Record");
             }
+            var myData = new AttendanceCheckInViewModel();
+            myData.AttendanceId = myAttendance.Id;
+            myData.CheckIn = myAttendance.AttendanceCheckIns[index].CheckIn;
+            myData.CheckOut = myAttendance.AttendanceCheckIns[index].CheckOut;
+            myData.Index = index;
+
             return View(myData);
         }
 
@@ -128,10 +137,11 @@ namespace TreeAttendance.Controllers
         // POST: Student/Update/5
         [HttpPost]
         public ActionResult Update([Bind(Include=
-                                        "Id,"+
-                                        "Name,"+
-                                        "ProfilePicutureUri,"+
-                                        "")] AttendanceModel data)
+                                        "AttendanceId,"+
+                                        "CheckIn,"+
+                                        "CheckOut,"+
+                                        "Index,"+
+                                        "")] AttendanceCheckInViewModel data)
         {
             if (!ModelState.IsValid)
             {
@@ -145,7 +155,7 @@ namespace TreeAttendance.Controllers
                 return RedirectToAction("Error", new { route = "Home", action = "Error" });
             }
 
-            if (string.IsNullOrEmpty(data.Id))
+            if (string.IsNullOrEmpty(data.AttendanceId))
             {
                 // Send back for edit
                 return View(data);
