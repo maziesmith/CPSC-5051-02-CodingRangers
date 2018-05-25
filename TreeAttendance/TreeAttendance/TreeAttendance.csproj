@@ -351,6 +351,8 @@
     <Content Include="Views\Attendance\IndexByDate.cshtml" />
     <Content Include="Views\Attendance\ByDate.cshtml" />
     <Content Include="Views\Attendance\EditCheckIn.cshtml" />
+    <Content Include="Views\Students\Read.cshtml" />
+    <Content Include="Views\Students\Update.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
