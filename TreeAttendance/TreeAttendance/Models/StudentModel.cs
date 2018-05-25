@@ -43,11 +43,6 @@ namespace TreeAttendance.Models
         public int LeafCount { get; set; }
 
         /// <summary>
-        /// A list of this student's attendance records
-        /// </summary>
-        public List<AttendanceModel> AttendanceList { get; set; }
-
-        /// <summary>
         /// The default for new student
         /// </summary>
         public void Initialize()
@@ -56,7 +51,6 @@ namespace TreeAttendance.Models
             TreeStage = 1;
             LeafCount = 0;
             ProfilePictureUri = "boy1.png";
-            AttendanceList = new List<AttendanceModel>();
         }
 
         /// <summary>

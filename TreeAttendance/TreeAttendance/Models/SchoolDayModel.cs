@@ -31,16 +31,10 @@ namespace TreeAttendance.Models
         public TimeSpan ExpectedHours { get; set; }
         
         /// <summary>
-        /// Maintains a list of attendance of this school day.
-        /// </summary>
-        public List<AttendanceModel> AttendanceList { get; set; }
-        
-        /// <summary>
         /// Constructor, Id is randomly generated
         /// </summary>
         public SchoolDayModel()
         {
-            AttendanceList = new List<AttendanceModel>();
             Id = Guid.NewGuid().ToString();
         }
         
@@ -51,7 +45,6 @@ namespace TreeAttendance.Models
         /// <param name="expectedHours"></param>
         public SchoolDayModel(DateTime date, TimeSpan expectedHours)
         {
-            AttendanceList = new List<AttendanceModel>();
             Id = Guid.NewGuid().ToString();
             Date = date.Date;
             ExpectedHours = expectedHours;

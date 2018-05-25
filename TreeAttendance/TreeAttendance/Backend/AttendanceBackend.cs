@@ -138,6 +138,26 @@ namespace TreeAttendance.Backend
         }
 
         /// <summary>
+        /// Return a subset of the dataset of the school day
+        /// </summary>
+        /// <returns>List of Attendances</returns>
+        public List<AttendanceModel> IndexBySchoolDay(string id)
+        {
+            var myData = DataSource.IndexBySchoolDay(id);
+            return myData;
+        }
+
+        /// <summary>
+        /// Return a subset of the dataset of the student
+        /// </summary>
+        /// <returns>List of Attendances</returns>
+        public List<AttendanceModel> IndexByStudent(string id)
+        {
+            var myData = DataSource.IndexByStudent(id);
+            return myData;
+        }
+
+        /// <summary>
         /// Helper function that resets the DataSource, and rereads it.
         /// </summary>
         public void Reset()

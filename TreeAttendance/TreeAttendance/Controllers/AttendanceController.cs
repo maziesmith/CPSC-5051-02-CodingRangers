@@ -1,118 +1,107 @@
 ﻿using System.Web.Mvc;
+using TreeAttendance.Backend;
+using TreeAttendance.Models;
 
 namespace TreeAttendance.Controllers
 {
     public class AttendanceController : Controller
     {
-        // GET: Attendance
+        // The Backend Data source
+        private StudentBackend StudentBackend = StudentBackend.Instance;
+        private SchoolDayBackend SchoolDayBackend = SchoolDayBackend.Instance;
+        private AttendanceBackend AttendanceBackend = AttendanceBackend.Instance;
+
+        // GET: Student
+        /// <summary>
+        /// Index, the page that shows all the Students
+        /// </summary>
+        /// <returns></returns>
         public ActionResult Index()
         {
-            var myData = Backend.Backend.StudentListBackend.StudentList;
-            return View(myData);
+            // Load the list of data into the StudentList
+            var myDataList = StudentBackend.Index();
+            return View(myDataList);
+        }
+
+        // GET: Student
+        /// <summary>
+        /// Index, the page that shows all the Students
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult IndexByDate()
+        {
+            // Load the list of data into the StudentList
+            var myDataList = SchoolDayBackend.Index();
+            return View(myDataList);
         }
 
         // GET: Attendance
         public ActionResult ByStudent(string id = null)
         {
-            var myData = Backend.Backend.GetStudentModel(id);
+            var myData = AttendanceBackend.IndexByStudent(id);
             return View(myData);
         }
 
-        // GET: Attendance/IndexByDate
-        public ActionResult IndexByDate()
-        {
-            var myData = Backend.Backend.SchoolDayListBackend.SchoolDayList;
-            return View(myData);
-        }
+
 
         // GET: Attendance
         public ActionResult ByDate(string id = null)
         {
-            var myData = Backend.Backend.GetSchoolDayModel(id);
+            var myData = AttendanceBackend.IndexBySchoolDay(id);
             return View(myData);
         }
 
-        // GET: Attendance/Details/5
-        public ActionResult Details(string id = null)
+        /// <summary>
+        /// Read information on a single Student
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        // GET: Student/Details/5
+        public ActionResult Read(string id = null)
         {
-            var myData = Backend.Backend.GetAttendanceModel(id);
-            return View(myData);
-        }
+            var myData = AttendanceBackend.Read(id);
 
-        //// GET: Attendance/Create
-        //public ActionResult Create(string id = null)
-        //{
-        //    var myData = new Models.ViewModels.CreateAttendanceViewModel();
-        //    myData.SchoolDay = Backend.Backend.GetSchoolDayModel(id);
-        //    myData.StudentList = Backend.Backend.StudentListBackend.StudentList;
-        //    return View(myData);
-        //}
-
-        //// POST: Attendance/Create
-        //[HttpPost]
-        //public ActionResult Create([Bind(Include=
-        //                                "SelectedStudentId,"+
-        //                                "SchoolDay,"+
-        //                                "StudentList,"+
-        //                                "")] Models.ViewModels.CreateAttendanceViewModel data)
-        //{
-        //    if (!ModelState.IsValid)
-        //    {
-        //        // Send back for edit, with Error Message
-        //        return View(data);
-        //    }
-
-        //    if (data == null)
-        //    {
-        //        // Send to Error Page
-        //        return RedirectToAction("Error", new { route = "Home", action = "Error" });
-        //    }
-        //    Models.StudentModel stu = Backend.Backend.GetStudentModel(data.SelectedStudentId);
-        //    Models.AttendanceModel att = new Models.AttendanceModel(stu, data.SchoolDay);
-        //    Backend.Backend.CreateAttendance(att);
-        //    return RedirectToAction("Index");
-        //}
-
-        // GET: Attendance/Edit/5
-        public ActionResult Edit(int id)
-        {
-            return View();
-        }
-
-        // POST: Attendance/Edit/5
-        [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
-        {
-            try
+            if (myData == null)
             {
-                // TODO: Add update logic here
-
-                return RedirectToAction("Index");
+                RedirectToAction("Error", "Home", "Invalid Record");
             }
-            catch
-            {
-                return View();
-            }
-        }
 
-        // GET: Attendance/Edit/5
-        public ActionResult EditCheckIn(string id = null)
-        {
-            var myData = Backend.Backend.GetAttendanceCheckIn(id);
             return View(myData);
         }
 
-        // POST: Attendance/Edit/5
+        /// <summary>
+        /// This will show the details of the Student to update
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        // GET: Student/Edit/5
+        public ActionResult Update(string id = null)
+        {
+            var myData = AttendanceBackend.Read(id);
+
+            if (myData == null)
+            {
+                RedirectToAction("Error", "Home", "Invalid Record");
+            }
+            return View(myData);
+        }
+
+        /// <summary>
+        /// This updates the Student based on the information posted from the udpate page
+        /// </summary>
+        /// <param name="data"></param>
+        /// <returns></returns>
+        // POST: Student/Update/5
         [HttpPost]
-        public ActionResult EditCheckIn([Bind(Include=
+        public ActionResult Update([Bind(Include=
                                         "Id,"+
-                                        "CheckIn,"+
-                                        "CheckOut,"+
-                                        "")] Models.AttendanceCheckInModel data)
+                                        "Name,"+
+                                        "ProfilePicutureUri,"+
+                                        "")] AttendanceModel data)
         {
             if (!ModelState.IsValid)
             {
-                // Send back for edit, with Error Message
+                // Send back for edit
                 return View(data);
             }
 
@@ -124,52 +113,67 @@ namespace TreeAttendance.Controllers
 
             if (string.IsNullOrEmpty(data.Id))
             {
-                // Sind back for Edit
+                // Send back for edit
                 return View(data);
             }
 
-            Backend.Backend.EditAttendanceCheckIn(data);
-            Models.AttendanceCheckInModel checkIn = Backend.Backend.GetAttendanceCheckIn(data.Id);
-            return RedirectToAction("Details", "Attendance", new {id = checkIn.Attendance.Id });
+            AttendanceBackend.Update(data);
+
+            return RedirectToAction("Index");
         }
 
-        // GET: Attendance/Delete/5
+        /// <summary>
+        /// This shows the Student info to be deleted
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        // GET: Student/Delete/5
         public ActionResult Delete(string id = null)
         {
-            var myData = Backend.Backend.GetAttendanceModel(id);
+            var myData = AttendanceBackend.Read(id);
+
+            if (myData == null)
+            {
+                RedirectToAction("Error", "Home", "Invalid Record");
+            }
+
             return View(myData);
         }
 
-        // POST: Attendance/Delete/5
+        /// <summary>
+        /// This deletes the Student sent up as a post from the Student delete page
+        /// </summary>
+        /// <param name="data"></param>
+        /// <returns></returns>
+        // POST: Student/Delete/5
         [HttpPost]
         public ActionResult Delete([Bind(Include=
                                         "Id,"+
-                                        "SchoolDay,"+
-                                        "Student,"+
-                                        "ExcusedAbsence,"+
-                                        "")] Models.AttendanceModel data)
+                                        "Name,"+
+                                        "ProfilePicutureUri,"+
+                                        "")] AttendanceModel data)
         {
-            //if (!ModelState.IsValid)
-            //{
-            //    // Send back for edit, with Error Message
-            //    return View(data);
-            //}
-
+            if (!ModelState.IsValid)
+            {
+                // Send back for edit
+                return View(data);
+            }
             if (data == null)
             {
-                // Send to Error Page
+                // Send to Error page
                 return RedirectToAction("Error", new { route = "Home", action = "Error" });
             }
 
             if (string.IsNullOrEmpty(data.Id))
             {
-                // Sind back for Edit
+                // Send back for Edit
                 return View(data);
             }
 
-            Backend.Backend.DeleteAttendance(data);
+            AttendanceBackend.Delete(data.Id);
 
             return RedirectToAction("Index");
         }
     }
 }
+

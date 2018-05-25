@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using TreeAttendance.Models;
 
 namespace TreeAttendance.Backend
@@ -164,7 +162,75 @@ namespace TreeAttendance.Backend
         /// </summary>
         public void Initialize()
         {
+            foreach (var item in SchoolDayBackend.Instance.Index())
+            {
+                foreach (var item2 in StudentBackend.Instance.Index())
+                {
+                    //create attendance and use rng to create check-in records
+                    Rng(Create(new AttendanceModel(item2.Id, item.Id)));
+                }
+            }
+        }
+        //some sample check-in records, used to generate check-in records ramdomly.
+        //sample Check-in record, on time, stay
+        void TypeA(AttendanceModel att)
+        {
+            att.CheckIn(DateTime.Parse("08:37:00"));
+        }
+        //sample Check-in record, late, stay
+        void TypeB(AttendanceModel att)
+        {
+            att.CheckIn(DateTime.Parse("09:15:00"));
+        }
+        //sample Check-in record, late, left early
+        void TypeC(AttendanceModel att)
+        {
+            att.CheckIn(DateTime.Parse("09:15:00"));
+            att.CheckOut(DateTime.Parse("12:00:00"));
+        }
+        //sample Check-in record, absent unexcused
+        void TypeD(AttendanceModel att)
+        {
+        }
+        //sample Check-in record, absent excused
+        void TypeE(AttendanceModel att)
+        {
+            att.SetExcused();
+        }
+        //sample Check-in record, multiple check-ins
+        void TypeF(AttendanceModel att)
+        {
+            att.CheckIn(DateTime.Parse("08:37:00"));
+            att.CheckOut(DateTime.Parse("09:45:00"));
+            att.CheckIn(DateTime.Parse("13:00:00"));
+        }
 
+        Random rng = new Random();
+        //generates check-in records randomly
+        void Rng(AttendanceModel att)
+        {
+            int num = rng.Next(1, 7); //generates a random int between 1 and 6
+            switch (num)
+            {
+                case 1:
+                    TypeA(att);
+                    break;
+                case 2:
+                    TypeB(att);
+                    break;
+                case 3:
+                    TypeC(att);
+                    break;
+                case 4:
+                    TypeD(att);
+                    break;
+                case 5:
+                    TypeE(att);
+                    break;
+                default:
+                    TypeF(att);
+                    break;
+            }
         }
     }
 }

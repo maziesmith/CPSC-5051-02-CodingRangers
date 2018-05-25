@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.ComponentModel.DataAnnotations;
+using System.Linq;
+using TreeAttendance.Models.Enums;
 
 namespace TreeAttendance.Models
 {
@@ -27,11 +27,13 @@ namespace TreeAttendance.Models
         /// </summary>
         public string StudentId { get; set; }
 
-        ///// <summary>
-        ///// True if this is and excused absence.
-        ///// </summary>
-        //public enum ExcusedAbsence { }
-        
+        /// <summary>
+        /// The status of the attendance, for example currently logged in, out
+        /// </summary>
+        [Display(Name = "Current Status", Description = "Status of the attendance")]
+        [Required(ErrorMessage = "Status is required")]
+        public AttendanceStatusEnum Status { get; set; }
+
         /// <summary>
         /// Maintains a list of AttendanceCheckInModel. If there are 3 check-ins on this day by this student, then the list size will be 3.
         /// </summary>
@@ -44,6 +46,8 @@ namespace TreeAttendance.Models
         {
             Id = Guid.NewGuid().ToString();
             AttendanceCheckIns = new List<AttendanceCheckInModel>();
+            //absent unexcused by default
+            Status = AttendanceStatusEnum.AbsentUnexcused;
         }
 
         /// <summary>
@@ -63,9 +67,79 @@ namespace TreeAttendance.Models
         {
             Initialize();
             StudentId = student;
-            //Student.AttendanceList.Add(this);
             SchoolDayId = schoolDay;
-            //SchoolDay.AttendanceList.Add(this);
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="time"></param>
+        public void CheckIn(DateTime time)
+        {
+            AttendanceCheckIns.Add(new AttendanceCheckInModel(time));
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="time"></param>
+        public void CheckOut(DateTime time)
+        {
+            AttendanceCheckIns.Last().CheckOut = time.TimeOfDay;
+            ComputeStatus();
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="checkIn"></param>
+        /// <param name="checkOut"></param>
+        /// <param name="index"></param>
+        public void Edit(DateTime checkIn, DateTime checkOut, int index)
+        {
+            AttendanceCheckIns[index].CheckIn = checkIn.TimeOfDay;
+            AttendanceCheckIns[index].CheckOut = checkOut.TimeOfDay;
+            ComputeStatus();
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        private void ComputeStatus()
+        {
+            //if checked in on time
+            if (TimeSpan.Compare(AttendanceCheckIns.First().CheckIn, SystemGlobals.Instance.DefaultStartTime) == 1)
+            {
+                if (TimeSpan.Compare(AttendanceCheckIns.First().CheckOut, SystemGlobals.Instance.DefaultEndTime) == 0)
+                {
+                    Status = AttendanceStatusEnum.Late;
+                }
+                else
+                {
+                    Status = AttendanceStatusEnum.LateLeft;
+                }
+            }
+            else
+            {
+                if (TimeSpan.Compare(AttendanceCheckIns.First().CheckOut, SystemGlobals.Instance.DefaultEndTime) == 0)
+                {
+                    Status = AttendanceStatusEnum.OnTime;
+                }
+                else
+                {
+                    Status = AttendanceStatusEnum.OnTimeLeft;
+                }
+            }
+        }
+
+        public void SetExcused()
+        {
+            Status = AttendanceStatusEnum.AbsentExcused;
+        }
+
+        public void SetUnExcused()
+        {
+            Status = AttendanceStatusEnum.AbsentUnexcused;
         }
     }
 }

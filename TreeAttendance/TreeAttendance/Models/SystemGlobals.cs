@@ -41,5 +41,14 @@ namespace TreeAttendance.Models
         // The Enum to use for the current data source
         // Default to Mock
         public DataSourceEnum DataSourceValue = DataSourceEnum.Mock;
+
+        //The default expected hours of a school day
+        public TimeSpan DefaultExpectedHours = new TimeSpan(7, 0, 0);
+
+        //The default start time of a school day
+        public TimeSpan DefaultStartTime = new TimeSpan(8, 45, 0);
+
+        //The default end time of a school day
+        public TimeSpan DefaultEndTime = new TimeSpan(15, 45, 0);
     }
 }
