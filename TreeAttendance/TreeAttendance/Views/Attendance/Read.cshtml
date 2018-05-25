@@ -43,7 +43,7 @@
     @for (int i = 0; i < Model.Attendance.AttendanceCheckIns.Count(); i++)
     {
         <div class="card" style="width: 250px;">
-            <div class="card-header">Check-in @i</div>
+            <div class="card-header">Check-in #@(i+1)</div>
             <div class="card-body">
                 <div style="padding: 15px">Check-in Time:<br /> @Model.Attendance.AttendanceCheckIns[i].CheckIn</div>
 
