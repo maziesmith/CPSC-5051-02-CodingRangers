@@ -1,6 +1,8 @@
 ﻿using System.Web.Mvc;
 using TreeAttendance.Backend;
 using TreeAttendance.Models;
+using TreeAttendance.Models.ViewModels;
+using System.Collections.Generic;
 
 namespace TreeAttendance.Controllers
 {
@@ -38,7 +40,20 @@ namespace TreeAttendance.Controllers
         // GET: Attendance
         public ActionResult ByStudent(string id = null)
         {
-            var myData = AttendanceBackend.IndexByStudent(id);
+            var myAttendanceList = AttendanceBackend.IndexByStudent(id);
+            var myData = new AttendanceByStudentViewModel();
+            myData.AttendanceList = new List<AttendanceViewModel>();
+            foreach (var item in myAttendanceList)
+            {
+                var myViewModel = new AttendanceViewModel
+                {
+                    Attendance = item,
+                    Date = SchoolDayBackend.Read(item.SchoolDayId).Date.ToString("MM/dd/yyyy"),
+                };
+                myData.AttendanceList.Add(myViewModel);
+            }
+            myData.StudentName = StudentBackend.Read(id).Name;
+            myData.Uri = StudentBackend.Read(id).ProfilePictureUri;
             return View(myData);
         }
 
@@ -47,7 +62,20 @@ namespace TreeAttendance.Controllers
         // GET: Attendance
         public ActionResult ByDate(string id = null)
         {
-            var myData = AttendanceBackend.IndexBySchoolDay(id);
+            var myAttendanceList = AttendanceBackend.IndexBySchoolDay(id);
+            var myData = new AttendanceByDateViewModel();
+            myData.AttendanceList = new List<AttendanceViewModel>();
+            foreach (var item in myAttendanceList)
+            {
+                var myViewModel = new AttendanceViewModel
+                {
+                    Attendance = item,
+                    StudentName = StudentBackend.Read(item.StudentId).Name,
+                    Uri = StudentBackend.Read(item.StudentId).ProfilePictureUri
+                };
+                myData.AttendanceList.Add(myViewModel);
+            }
+            myData.Date = SchoolDayBackend.Read(id).Date.ToString("MM/dd/yyyy");
             return View(myData);
         }
 
@@ -59,8 +87,18 @@ namespace TreeAttendance.Controllers
         // GET: Student/Details/5
         public ActionResult Read(string id = null)
         {
-            var myData = AttendanceBackend.Read(id);
-
+            var myAttendance = AttendanceBackend.Read(id);
+            if (myAttendance == null)
+            {
+                RedirectToAction("Error", "Home", "Invalid Record");
+            }
+            var myData = new AttendanceViewModel
+            {
+                Attendance = myAttendance,
+                Date = SchoolDayBackend.Read(myAttendance.SchoolDayId).Date.ToString("MM/dd/yyyy"),
+                StudentName = StudentBackend.Read(myAttendance.StudentId).Name,
+                Uri = StudentBackend.Read(myAttendance.StudentId).ProfilePictureUri
+            };
             if (myData == null)
             {
                 RedirectToAction("Error", "Home", "Invalid Record");
@@ -75,14 +113,21 @@ namespace TreeAttendance.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         // GET: Student/Edit/5
-        public ActionResult Update(string id = null)
+        public ActionResult Update(string id = null, int index = 0)
         {
-            var myData = AttendanceBackend.Read(id);
-
-            if (myData == null)
+            var myAttendance = AttendanceBackend.Read(id);
+            if (myAttendance == null)
             {
                 RedirectToAction("Error", "Home", "Invalid Record");
             }
+            var myData = new AttendanceCheckInViewModel();
+            myData.AttendanceId = myAttendance.Id;
+            myData.CheckIn = myAttendance.AttendanceCheckIns[index].CheckIn;
+            myData.CheckOut = myAttendance.AttendanceCheckIns[index].CheckOut;
+            myData.Index = index;
+            myData.Date = SchoolDayBackend.Read(myAttendance.SchoolDayId).Date.ToString("MM/dd/yyyy");
+            myData.StudentName = StudentBackend.Read(myAttendance.StudentId).Name;
+            myData.Uri = StudentBackend.Read(myAttendance.StudentId).ProfilePictureUri;
             return View(myData);
         }
 
@@ -94,16 +139,20 @@ namespace TreeAttendance.Controllers
         // POST: Student/Update/5
         [HttpPost]
         public ActionResult Update([Bind(Include=
-                                        "Id,"+
-                                        "Name,"+
-                                        "ProfilePicutureUri,"+
-                                        "")] AttendanceModel data)
+                                        "AttendanceId,"+
+                                        "CheckIn,"+
+                                        "CheckOut,"+
+                                        "Index,"+
+                                        "Date,"+
+                                        "StudentName,"+
+                                        "Uri,"+
+                                        "")] AttendanceCheckInViewModel data)
         {
-            if (!ModelState.IsValid)
-            {
-                // Send back for edit
-                return View(data);
-            }
+            //if (!ModelState.IsValid)
+            //{
+            //    // Send back for edit
+            //    return View(data);
+            //}
 
             if (data == null)
             {
@@ -111,7 +160,7 @@ namespace TreeAttendance.Controllers
                 return RedirectToAction("Error", new { route = "Home", action = "Error" });
             }
 
-            if (string.IsNullOrEmpty(data.Id))
+            if (string.IsNullOrEmpty(data.AttendanceId))
             {
                 // Send back for edit
                 return View(data);

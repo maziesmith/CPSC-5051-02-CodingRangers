@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using TreeAttendance.Models;
+using TreeAttendance.Models.ViewModels;
 
 namespace TreeAttendance.Backend
 {
@@ -48,7 +49,7 @@ namespace TreeAttendance.Backend
         /// <param name="data"></param>
         /// <returns>Attendance Passed In</returns>
         public AttendanceModel Create(AttendanceModel data)
-        {
+        {       
             AttendanceList.Add(data);
             return data;
         }
@@ -74,16 +75,16 @@ namespace TreeAttendance.Backend
         /// </summary>
         /// <param name="data"></param>
         /// <returns>Null or updated data</returns>
-        public AttendanceModel Update(AttendanceModel data)
+        public AttendanceModel Update(AttendanceCheckInViewModel data)
         {
             if (data == null)
             {
                 return null;
             }
-            var myReturn = AttendanceList.Find(n => n.Id == data.Id);
+            var myReturn = AttendanceList.Find(n => n.Id == data.AttendanceId);
 
-            myReturn.SchoolDayId = data.SchoolDayId;
-            myReturn.StudentId = data.StudentId;
+            myReturn.AttendanceCheckIns[data.Index].CheckIn = data.CheckIn;
+            myReturn.AttendanceCheckIns[data.Index].CheckOut = data.CheckOut;
 
             return myReturn;
         }

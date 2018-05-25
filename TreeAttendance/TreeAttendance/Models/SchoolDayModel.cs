@@ -46,7 +46,7 @@ namespace TreeAttendance.Models
         public SchoolDayModel(DateTime date, TimeSpan expectedHours)
         {
             Id = Guid.NewGuid().ToString();
-            Date = date.Date;
+            Date = date;
             ExpectedHours = expectedHours;
         }
     }
