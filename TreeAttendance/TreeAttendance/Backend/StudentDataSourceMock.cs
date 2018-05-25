@@ -3,24 +3,23 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using TreeAttendance.Models;
-using TreeAttendance.Models.Enums;
 
 namespace TreeAttendance.Backend
 {
     /// <summary>
-    /// Student Backend handles the business logic and data for Students
+    /// Holds the Student Data as a Mock Data set, used for Unit Testing, System Testing, Offline Development etc.
     /// </summary>
-    public class StudentBackend
+    public class StudentDataSourceMock : IStudentInterface
     {
         /// <summary>
-        /// Make into a Singleton
+        /// Make into a singleton
         /// </summary>
-        private static volatile StudentBackend instance;
+        private static volatile StudentDataSourceMock instance;
         private static object syncRoot = new Object();
 
-        private StudentBackend() { }
+        private StudentDataSourceMock() { }
 
-        public static StudentBackend Instance
+        public static StudentDataSourceMock Instance
         {
             get
             {
@@ -30,8 +29,8 @@ namespace TreeAttendance.Backend
                     {
                         if (instance == null)
                         {
-                            instance = new StudentBackend();
-                            SetDataSource(SystemGlobals.Instance.DataSourceValue);
+                            instance = new StudentDataSourceMock();
+                            instance.Initialize();
                         }
                     }
                 }
@@ -40,24 +39,10 @@ namespace TreeAttendance.Backend
             }
         }
 
-        // Get the Datasource to use
-        private static IStudentInterface DataSource;
-
         /// <summary>
-        /// Switches between Live, and Mock Datasets
+        /// The Data for the Students
         /// </summary>
-        /// <param name="dataSourceEnum"></param>
-        public static void SetDataSource(DataSourceEnum dataSourceEnum)
-        {
-            if (dataSourceEnum == DataSourceEnum.SQL)
-            {
-                // SQL not hooked up yet...
-                throw new NotImplementedException();
-            }
-
-            // Default is to use the Mock
-            DataSource = StudentDataSourceMock.Instance;
-        }
+        private List<StudentModel> StudentList = new List<StudentModel>();
 
         /// <summary>
         /// Makes a new Student
@@ -66,7 +51,7 @@ namespace TreeAttendance.Backend
         /// <returns>Student Passed In</returns>
         public StudentModel Create(StudentModel data)
         {
-            DataSource.Create(data);
+            StudentList.Add(data);
             return data;
         }
 
@@ -82,7 +67,7 @@ namespace TreeAttendance.Backend
                 return null;
             }
 
-            var myReturn = DataSource.Read(id);
+            var myReturn = StudentList.Find(n => n.Id == id);
             return myReturn;
         }
 
@@ -97,16 +82,10 @@ namespace TreeAttendance.Backend
             {
                 return null;
             }
+            var myReturn = StudentList.Find(n => n.Id == data.Id);
 
-            var myData = DataSource.Read(data.Id);
-            if (myData == null)
-            {
-                // Not found
-                return null;
-            }
-
-            // Update the record
-            var myReturn = DataSource.Update(data);
+            myReturn.Name = data.Name;
+            myReturn.ProfilePictureUri = data.ProfilePictureUri;
 
             return myReturn;
         }
@@ -123,7 +102,8 @@ namespace TreeAttendance.Backend
                 return false;
             }
 
-            var myReturn = DataSource.Delete(Id);
+            var myData = StudentList.Find(n => n.Id == Id);
+            var myReturn = StudentList.Remove(myData);
             return myReturn;
         }
 
@@ -133,26 +113,27 @@ namespace TreeAttendance.Backend
         /// <returns>List of Students</returns>
         public List<StudentModel> Index()
         {
-            var myData = DataSource.Index();
-            return myData;
+            return StudentList;
         }
 
         /// <summary>
-        /// Helper function that resets the DataSource, and rereads it.
+        /// Reset the Data, and reload it
         /// </summary>
         public void Reset()
         {
-            DataSource.Reset();
+            StudentList.Clear();
+            Initialize();
         }
 
         /// <summary>
-        /// Returns the First Student in the system
+        /// Create Placeholder Initial Data
         /// </summary>
-        /// <returns>Null or valid data</returns>
-        public StudentModel GetDefault()
+        public void Initialize()
         {
-            var myReturn = DataSource.Index().First();
-            return myReturn;
+            Create(new StudentModel("Mike", null));
+            Create(new StudentModel("Doug", null));
+            Create(new StudentModel("Jea", null));
+            Create(new StudentModel("Sue", null));
         }
     }
 }

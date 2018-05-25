@@ -196,7 +196,10 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Backend\Backend.cs" />
+    <Compile Include="Backend\ISchoolDayInterface.cs" />
+    <Compile Include="Backend\IStudentInterface.cs" />
     <Compile Include="Backend\StudentBackend.cs" />
+    <Compile Include="Backend\StudentDataSourceMock.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdminHomeController.cs" />
     <Compile Include="Controllers\AttendanceController.cs" />
@@ -212,12 +215,14 @@
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AttendanceCheckInModel.cs" />
     <Compile Include="Models\AttendanceModel.cs" />
+    <Compile Include="Models\Enums\DataSourceEnum.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\SchoolDayListModel.cs" />
     <Compile Include="Models\SchoolDayModel.cs" />
     <Compile Include="Models\StudentListModel.cs" />
     <Compile Include="Models\StudentModel.cs" />
+    <Compile Include="Models\SystemGlobals.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
