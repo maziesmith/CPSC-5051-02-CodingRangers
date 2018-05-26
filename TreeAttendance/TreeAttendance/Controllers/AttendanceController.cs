@@ -99,10 +99,6 @@ namespace TreeAttendance.Controllers
                 StudentName = StudentBackend.Read(myAttendance.StudentId).Name,
                 Uri = StudentBackend.Read(myAttendance.StudentId).ProfilePictureUri
             };
-            if (myData == null)
-            {
-                RedirectToAction("Error", "Home", "Invalid Record");
-            }
 
             return View(myData);
         }
@@ -168,7 +164,7 @@ namespace TreeAttendance.Controllers
 
             AttendanceBackend.Update(data);
 
-            return RedirectToAction("Index");
+            return RedirectToAction("Read", null, new{id = data.AttendanceId } );
         }
 
         /// <summary>
