@@ -93,16 +93,16 @@ namespace TreeAttendance.Backend
         /// <summary>
         /// Remove the Data item if it is in the list
         /// </summary>
-        /// <param name="dd"></param>
+        /// <param name="data"></param>
         /// <returns>True for success, else false</returns>
-        public bool Delete(string id)
+        public bool Delete(string Id)
         {
-            if (string.IsNullOrEmpty(id))
+            if (string.IsNullOrEmpty(Id))
             {
                 return false;
             }
 
-            var myData = StudentList.Find(n => n.Id == id);
+            var myData = StudentList.Find(n => n.Id == Id);
             var myReturn = StudentList.Remove(myData);
             return myReturn;
         }
@@ -130,10 +130,10 @@ namespace TreeAttendance.Backend
         /// </summary>
         public void Initialize()
         {
-            Create(new StudentModel("Allen", "boy1.jpg"));
-            Create(new StudentModel("Mike", "boy2.jpg"));
-            Create(new StudentModel("Yanny", "girl1.jpg"));
-            Create(new StudentModel("Laurel", "girl2.jpg"));
+            Create(new StudentModel("Allen", "boy1.png"));
+            Create(new StudentModel("Mike", "boy2.png"));
+            Create(new StudentModel("Yanny", "girl1.png"));
+            Create(new StudentModel("Laurel", "girl2.png"));
         }
     }
 }
