@@ -96,10 +96,10 @@ namespace TreeAttendance.Models
         /// <param name="checkIn"></param>
         /// <param name="checkOut"></param>
         /// <param name="index"></param>
-        public void Edit(DateTime checkIn, DateTime checkOut, int index)
+        public void Edit(TimeSpan checkIn, TimeSpan checkOut, int index)
         {
-            AttendanceCheckIns[index].CheckIn = checkIn.TimeOfDay;
-            AttendanceCheckIns[index].CheckOut = checkOut.TimeOfDay;
+            AttendanceCheckIns[index].CheckIn = checkIn;
+            AttendanceCheckIns[index].CheckOut = checkOut;
             ComputeStatus();
         }
 

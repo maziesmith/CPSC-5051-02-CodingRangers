@@ -83,8 +83,7 @@ namespace TreeAttendance.Backend
             }
             var myReturn = AttendanceList.Find(n => n.Id == data.AttendanceId);
 
-            myReturn.AttendanceCheckIns[data.Index].CheckIn = data.CheckIn;
-            myReturn.AttendanceCheckIns[data.Index].CheckOut = data.CheckOut;
+            myReturn.Edit(data.CheckIn, data.CheckOut, data.Index);
 
             return myReturn;
         }
