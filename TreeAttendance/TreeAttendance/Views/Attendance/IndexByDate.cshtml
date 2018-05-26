@@ -32,6 +32,7 @@
 </nav>
 
 <div class="page-header">Attendance</div>
+<br/>
 <ul class="nav nav-pills nav-fill">
     <li class="nav-item">
         <a class="nav-link" href="~/Attendance/Index">Find by Student</a>
@@ -42,32 +43,22 @@
 </ul>
 <br />
 <br />
-
-<div class="container-index">
-    <div class="row">
-
-        @{
-            if (Model.Count == 0)
+@if (Model.Count == 0)
+{
+    <br />
+    <p>No school day in the System</p>
+    <br />
+}
+else
+{
+    <div class="col-2">
+        <div class="list-group">
+            @foreach (var item in Model)
             {
-                <br />
-                <p>No school day in the System</p>
-                <br />
+                <a href="~/Attendance/ByDate/@item.Id" class="list-group-item list-group-item-action list-group-item-success">@item.Date.ToString("MM/dd/yyyy")</a>
             }
-            else
-            {
-                foreach (var item in Model)
-                {
-                    <div class="col-4">
-                        <a id="@item.Id" href="~/Attendance/ByDate/@item.Id">
-                            <span>
-                                @item.Date.ToString("MM/dd/yyyy")
-                            </span>
-                        </a>
-                    </div>
-
-                }
-            }
-        }
-
+        </div>
     </div>
-</div>
+
+}
+

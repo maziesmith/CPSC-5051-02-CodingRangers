@@ -30,24 +30,29 @@
     </ol>
 </nav>
 <div class="page-header">Find Attendance by Student</div>
-<div class="row">
-    <div align="center" style="padding:70px">
-        <img src="~/Content/img/@Model.Uri" width="100" height="100" />
-        <br />
-        <div style="padding: 7px">
-            @Model.StudentName
-        </div>
+<div class="col-3" align="center">
+    <img class="profile-img" src="/Content/img/@Model.Uri" />
+    <div class="label">
+        @Model.StudentName
     </div>
 </div>
-
-<div class="row" id="row-left-margin">
-    @foreach (var item in Model.AttendanceList)
-    {
-        <div class="col-4">
-            <a href="~/Attendance/Read/@item.Attendance.Id">
-                @item.Date
-            </a>
+<br/>
+@if (Model.AttendanceList.Count == 0)
+{
+    <br />
+    <p>No attendance record of this student</p>
+    <br />
+}
+else
+{
+    <div class="col-2">
+        <div class="list-group">
+            @foreach (var item in Model.AttendanceList)
+            {
+                <a href="~/Attendance/ByDate/@item.Attendance.Id" class="list-group-item list-group-item-action list-group-item-success">@item.Date</a>
+            }
         </div>
-    }
-</div>
+    </div>
+
+}
 

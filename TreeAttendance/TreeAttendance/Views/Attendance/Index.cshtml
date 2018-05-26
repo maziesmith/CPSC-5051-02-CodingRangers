@@ -32,6 +32,7 @@
 </nav>
 
 <div class="page-header">Attendance</div>
+<br/>
 <ul class="nav nav-pills nav-fill">
     <li class="nav-item">
         <a class="nav-link active" href="~/Attendance/Index">Find by Student</a>
@@ -57,7 +58,7 @@
             {
                 <div class="col-3" align="center">
                     <a id="@item.Id" href="~/Attendance/ByStudent/@item.Id">
-                        <img src="~/Content/img/@item.ProfilePictureUri" width="100" height="100" />
+                        <img class="profile-img" src="/Content/img/@item.ProfilePictureUri"/>
                         <div class="label">
                             @item.Name
                         </div>
