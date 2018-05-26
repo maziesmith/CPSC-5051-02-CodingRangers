@@ -33,25 +33,23 @@
 
 <div class="page-header">Student Details</div>
 
-<div class="row justify-content-center" >
+<div>
     <div class="col-3" align="center">
         <img class ="profile-img" src="/Content/img/@Model.ProfilePictureUri"/>
         <div class="label">
             @Model.Name
         </div>
+        <br/>
+        <div>
+            <a href="~/Students/Update/@Model.Id" class="btn btn-primary custom">Edit</a>
+        </div>
+        <br/>
+        <div>
+            <a href="~/Students/Delete/@Model.Id" class="btn btn-danger custom">Remove</a>
+        </div>
+        <br />
     </div>
 </div>
 <br />
-<div class="row justify-content-center">
 
-    <a href="~/Students/Update/@Model.Id" class="btn btn-primary custom">Edit</a>
-
-
-
-</div>
-<br/>
-<div class="row justify-content-center">
-    <a href="~/Students/Delete/@Model.Id" class="btn btn-danger custom">Remove</a>
-</div>
-<br />
 
