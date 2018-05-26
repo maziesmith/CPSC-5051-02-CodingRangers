@@ -49,7 +49,7 @@ else
         <div class="list-group">
             @foreach (var item in Model.AttendanceList)
             {
-                <a href="~/Attendance/ByDate/@item.Attendance.Id" class="list-group-item list-group-item-action list-group-item-success">@item.Date</a>
+                <a href="~/Attendance/Read/@item.Attendance.Id" class="list-group-item list-group-item-action list-group-item-success">@item.Date</a>
             }
         </div>
     </div>
