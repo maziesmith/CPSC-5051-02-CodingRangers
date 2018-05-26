@@ -1,4 +1,5 @@
-﻿@model TreeAttendance.Models.ViewModels.AttendanceByDateViewModel
+﻿@using TreeAttendance.Models.Enums
+@model TreeAttendance.Models.ViewModels.AttendanceByDateViewModel
 @{
     ViewBag.Title = "Attendance by School Day";
 }
@@ -37,12 +38,54 @@
             <a href="~/Attendance/Read/@item.Attendance.Id">
                 <img class="profile-img" src="~/Content/img/@item.Uri" />
                 <br />
-                <span>
+                <div class="label">
                     @item.StudentName
-                </span>
+                </div>
+                @if (item.Attendance.Status == AttendanceStatusEnum.AbsentUnexcused)
+                {
+                    <div>
+                        <span class="badge badge-pill badge-danger">Absent Unexcused</span>
+                    </div>
+                }
+                else if (item.Attendance.Status == AttendanceStatusEnum.AbsentExcused)
+                {
+                    <div>
+                        <span class="badge badge-pill badge-warning">Absent Excused</span>
+                    </div>
+                }
+                else if (item.Attendance.Status == AttendanceStatusEnum.Late)
+                {
+                    <div>
+                        <span class="badge badge-pill badge-dark">Late</span>
+                    </div>
+                }
+                else if (item.Attendance.Status == AttendanceStatusEnum.LateLeft)
+                {
+                    <div>
+                        <span class="badge badge-pill badge-dark">Late</span>
+                    </div>
+                    <div>
+                        <span class="badge badge-pill badge-info">Left Early</span>
+                    </div>
+                }
+                else if (item.Attendance.Status == AttendanceStatusEnum.OnTime)
+                {
+                    <div>
+                        <span class="badge badge-pill badge-success">On Time</span>
+                    </div>
+                }
+                else if (item.Attendance.Status == AttendanceStatusEnum.OnTimeLeft)
+                {
+                    <div>
+                        <span class="badge badge-pill badge-success">On time</span>
+                    </div>
+                    <div>
+                        <span class="badge badge-pill badge-info">Left Early</span>
+                    </div>
+                }
             </a>
         </div>
 
     }
 </div>
-<br/>
+<br />

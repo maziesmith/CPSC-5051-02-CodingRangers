@@ -77,6 +77,7 @@ namespace TreeAttendance.Models
         public void CheckIn(DateTime time)
         {
             AttendanceCheckIns.Add(new AttendanceCheckInModel(time));
+            ComputeStatus();
         }
 
         /// <summary>

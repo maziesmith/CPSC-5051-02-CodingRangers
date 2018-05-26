@@ -1,4 +1,5 @@
-﻿@model TreeAttendance.Models.ViewModels.AttendanceViewModel
+﻿@using TreeAttendance.Models.Enums
+@model TreeAttendance.Models.ViewModels.AttendanceViewModel
 @{
     ViewBag.Title = "Attendance Details";
 }
@@ -36,21 +37,64 @@
         <div class="label">
             @Model.StudentName
         </div>
+        @if (Model.Attendance.Status == AttendanceStatusEnum.AbsentUnexcused)
+        {
+            <div>
+                <span class="badge badge-pill badge-danger">Absent Unexcused</span>
+            </div>
+        }
+        else if (Model.Attendance.Status == AttendanceStatusEnum.AbsentExcused)
+        {
+            <div>
+                <span class="badge badge-pill badge-warning">Absent Excused</span>
+            </div>
+        }
+        else if (Model.Attendance.Status == AttendanceStatusEnum.Late)
+        {
+            <div>
+                <span class="badge badge-pill badge-dark">Late</span>
+            </div>
+        }
+        else if (Model.Attendance.Status == AttendanceStatusEnum.LateLeft)
+        {
+            <div>
+                <span class="badge badge-pill badge-dark">Late</span>
+            </div>
+            <div>
+                <span class="badge badge-pill badge-info">Left Early</span>
+            </div>
+        }
+        else if (Model.Attendance.Status == AttendanceStatusEnum.OnTime)
+        {
+            <div>
+                <span class="badge badge-pill badge-success">On Time</span>
+            </div>
+        }
+        else if (Model.Attendance.Status == AttendanceStatusEnum.OnTimeLeft)
+        {
+            <div>
+                <span class="badge badge-pill badge-success">On time</span>
+            </div>
+            <div>
+                <span class="badge badge-pill badge-info">Left Early</span>
+            </div>
+        }
     </div>
 </div>
-<br />
-<div class="row" id="row-left-margin">
+<div class="row">
     @for (int i = 0; i < Model.Attendance.AttendanceCheckIns.Count(); i++)
     {
-        <div class="card" style="width: 250px;">
-            <div class="card-header">Check-in #@(i+1)</div>
-            <div class="card-body">
-                <div style="padding: 15px">Check-in Time:<br /> @Model.Attendance.AttendanceCheckIns[i].CheckIn</div>
+        <div class="col-3">
+            <div class="card" style="width: 250px;">
+                <div class="card-header">Check-in #@(i + 1)</div>
+                <div class="card-body">
+                    <div style="padding: 15px">Check-in Time:<br /> @Model.Attendance.AttendanceCheckIns[i].CheckIn</div>
 
-                <div style="padding: 15px">Check-out Time:<br /> @Model.Attendance.AttendanceCheckIns[i].CheckOut</div>
-                <br />
-                <div>
-                    <a href="~/Attendance/Update/@Model.Attendance.Id/@i" class="btn btn-outline-primary btn-sm" style="width: 200px">Edit</a>
+                    <div style="padding: 15px">Check-out Time:<br /> @Model.Attendance.AttendanceCheckIns[i].CheckOut</div>
+                    <br />
+                    <div>
+                        <a href="~/Attendance/Update/@Model.Attendance.Id/@i" class="btn btn-outline-primary btn-sm" style="width: 200px">Edit</a>
+                    </div>
                 </div>
             </div>
         </div>

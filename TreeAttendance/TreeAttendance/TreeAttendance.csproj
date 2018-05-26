@@ -348,7 +348,6 @@
     <Content Include="Views\Students\Create.cshtml" />
     <Content Include="Views\Students\Delete.cshtml" />
     <Content Include="Views\Attendance\Index.cshtml" />
-    <Content Include="Views\Attendance\Details.cshtml" />
     <Content Include="Views\Attendance\Edit.cshtml" />
     <Content Include="Views\Attendance\Delete.cshtml" />
     <Content Include="Views\AdminHome\Reports.cshtml" />
