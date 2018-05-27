@@ -136,7 +136,7 @@ namespace TreeAttendance.Controllers
 
             StudentBackend.Update(data);
 
-            return RedirectToAction("Index");
+            return RedirectToAction("Read", null, new {id = data.Id});
         }
 
         /// <summary>
