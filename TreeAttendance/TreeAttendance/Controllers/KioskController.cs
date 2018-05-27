@@ -4,6 +4,7 @@ using TreeAttendance.Models.ViewModels;
 using System.Web.Mvc;
 using System.Linq;
 using System.Collections.Generic;
+using System;
 
 namespace TreeAttendance.Controllers
 {
@@ -65,6 +66,10 @@ namespace TreeAttendance.Controllers
             {
                 return RedirectToAction("Error", "Home", "Invalid Data");
             }
+            if (TimeSpan.Compare(DateTime.Now.TimeOfDay, SystemGlobals.Instance.DefaultEndTime) > 0)
+            {
+                return Content("Can not check in, school already ended.");
+            }
 
             AttendanceBackend.CheckIn(id);
             return RedirectToAction("Index");
@@ -76,6 +81,11 @@ namespace TreeAttendance.Controllers
             if (string.IsNullOrEmpty(id))
             {
                 return RedirectToAction("Error", "Home", "Invalid Data");
+            }
+
+            if (TimeSpan.Compare(DateTime.Now.TimeOfDay, SystemGlobals.Instance.DefaultEndTime) > 0)
+            {
+                return Content("Can not check out, school already ended.");
             }
 
             AttendanceBackend.CheckOut(id);
