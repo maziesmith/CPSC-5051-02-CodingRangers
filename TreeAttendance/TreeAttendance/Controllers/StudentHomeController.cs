@@ -6,6 +6,7 @@ using System.Web.Mvc;
 
 namespace TreeAttendance.Controllers
 {
+    // Access student page
     public class StudentHomeController : Controller
     {
         // GET: StudentHome
