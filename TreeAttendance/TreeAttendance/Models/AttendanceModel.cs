@@ -111,7 +111,7 @@ namespace TreeAttendance.Models
             //if checked in on time
             if (TimeSpan.Compare(AttendanceCheckIns.First().CheckIn, SystemGlobals.Instance.DefaultStartTime) == 1)
             {
-                if (TimeSpan.Compare(AttendanceCheckIns.First().CheckOut, SystemGlobals.Instance.DefaultEndTime) == 0)
+                if (TimeSpan.Compare(AttendanceCheckIns.First().CheckOut, SystemGlobals.Instance.DefaultEndTime) >= 0)
                 {
                     Status = AttendanceStatusEnum.Late;
                 }
@@ -122,7 +122,7 @@ namespace TreeAttendance.Models
             }
             else
             {
-                if (TimeSpan.Compare(AttendanceCheckIns.First().CheckOut, SystemGlobals.Instance.DefaultEndTime) == 0)
+                if (TimeSpan.Compare(AttendanceCheckIns.First().CheckOut, SystemGlobals.Instance.DefaultEndTime) >= 0)
                 {
                     Status = AttendanceStatusEnum.OnTime;
                 }
