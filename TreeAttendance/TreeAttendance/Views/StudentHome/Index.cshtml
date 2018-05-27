@@ -10,6 +10,7 @@
 <html>
 <head>
     <style>
+        /*Background color*/
         body {
             background-color: none;
         }
@@ -20,6 +21,7 @@
             overflow: hidden;
         }
 
+        /*text to the right*/
         li {
             float: right;
         }
@@ -48,17 +50,20 @@
 </head>
 <body>
 
+    //Create Attendance and Overall button and link them to new page
     <ul>
-        <li><a href="~/StudentHome/Attendance">Attendace</a></li>
-        <li><a href="~/StudentHome/OverallPerformance">Overall Performance</a></li>
+        <li><a href="~/StudentHome/Attendance" class="btn btn-outline-primary" role="button">Attendace</a></li>
+        <li><a href="~/StudentHome/OverallPerformance" class="btn btn-outline-primary" role="button">Overall Performance</a></li>
 
     </ul>
     <div class="row">
+        // Create first column for the current tree, with the message
         <div class="column">
             <img src="~/Content/img/smalltree.png " width="400" height="400" />
-            <p style="font-size: 20px;">Congratulation, your tree is at state 2.</pstyle="font-size:>
+            <p style="font-size: 20px;">Congratulation, your tree is at state 2.</p>
             <p style="font-size: 20px;">To the next state, leaves earned: 22🍂</p>
         </div>
+        // Create a second column with the next stage preview
         <div class="column">
             <img src="~/Content/img/bigtree.png" width="400" height="400" />
             <p style="font-size: 20px;">Next state !!!</p>
