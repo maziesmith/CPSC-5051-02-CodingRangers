@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using TreeAttendance.Models;
 using TreeAttendance.Models.Enums;
 using TreeAttendance.Models.ViewModels;
@@ -71,6 +70,7 @@ namespace TreeAttendance.Backend
             return data;
         }
 
+
         /// <summary>
         /// Return the data for the id passed in
         /// </summary>
@@ -92,7 +92,7 @@ namespace TreeAttendance.Backend
         /// </summary>
         /// <param name="data"></param>
         /// <returns>Null or updated data</returns>
-        public AttendanceModel Update(AttendanceCheckInViewModel data)
+        public AttendanceModel CreateCheckIn(AttendanceCheckInViewModel data)
         {
             if (data == null)
             {
@@ -107,7 +107,32 @@ namespace TreeAttendance.Backend
             }
 
             // Update the record
-            var myReturn = DataSource.Update(data);
+            var myReturn = DataSource.CreateCheckIn(data);
+
+            return myReturn;
+        }
+
+        /// <summary>
+        /// Update all attributes to be what is passed in
+        /// </summary>
+        /// <param name="data"></param>
+        /// <returns>Null or updated data</returns>
+        public AttendanceModel UpdateCheckIn(AttendanceCheckInViewModel data)
+        {
+            if (data == null)
+            {
+                return null;
+            }
+
+            var myData = DataSource.Read(data.AttendanceId);
+            if (myData == null)
+            {
+                // Not found
+                return null;
+            }
+
+            // Update the record
+            var myReturn = DataSource.UpdateCheckIn(data);
 
             return myReturn;
         }

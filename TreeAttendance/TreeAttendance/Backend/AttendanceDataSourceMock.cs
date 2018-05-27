@@ -75,7 +75,25 @@ namespace TreeAttendance.Backend
         /// </summary>
         /// <param name="data"></param>
         /// <returns>Null or updated data</returns>
-        public AttendanceModel Update(AttendanceCheckInViewModel data)
+        public AttendanceModel CreateCheckIn(AttendanceCheckInViewModel data)
+        {
+            if (data == null)
+            {
+                return null;
+            }
+            var myReturn = AttendanceList.Find(n => n.Id == data.AttendanceId);
+            myReturn.AttendanceCheckIns.Add(new AttendanceCheckInModel(SystemGlobals.Instance.DefaultStartTime));
+            myReturn.Edit(data.CheckIn, data.CheckOut, data.Index);
+
+            return myReturn;
+        }
+
+        /// <summary>
+        /// Update all attributes to be what is passed in
+        /// </summary>
+        /// <param name="data"></param>
+        /// <returns>Null or updated data</returns>
+        public AttendanceModel UpdateCheckIn(AttendanceCheckInViewModel data)
         {
             if (data == null)
             {

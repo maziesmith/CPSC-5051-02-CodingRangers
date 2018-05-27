@@ -367,8 +367,9 @@
     <Content Include="Views\Students\Read.cshtml" />
     <Content Include="Views\Students\Update.cshtml" />
     <Content Include="Views\Calendar\Index.cshtml" />
-    <Content Include="Views\Attendance\Update.cshtml" />
+    <Content Include="Views\Attendance\UpdateCheckIn.cshtml" />
     <Content Include="Views\Attendance\Read.cshtml" />
+    <Content Include="Views\Attendance\CreateCheckIn.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

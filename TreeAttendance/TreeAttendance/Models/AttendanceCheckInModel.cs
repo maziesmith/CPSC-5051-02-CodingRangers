@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.ComponentModel.DataAnnotations;
 
 namespace TreeAttendance.Models
@@ -32,11 +29,11 @@ namespace TreeAttendance.Models
         /// </summary>
         /// <param name="checkIn"></param>
         /// <param name="checkOut"></param>
-        public AttendanceCheckInModel(DateTime checkIn)
+        public AttendanceCheckInModel(TimeSpan checkIn)
         {
 
             //Attendance.AttendanceCheckIns.Add(this);
-            CheckIn = checkIn.TimeOfDay;
+            CheckIn = checkIn;
             CheckOut = SystemGlobals.Instance.DefaultEndTime;
         }
     }

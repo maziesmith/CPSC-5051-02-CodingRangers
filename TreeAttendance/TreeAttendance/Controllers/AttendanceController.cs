@@ -1,8 +1,8 @@
-﻿using System.Web.Mvc;
+﻿using System.Collections.Generic;
+using System.Web.Mvc;
 using TreeAttendance.Backend;
 using TreeAttendance.Models;
 using TreeAttendance.Models.ViewModels;
-using System.Collections.Generic;
 
 namespace TreeAttendance.Controllers
 {
@@ -109,7 +109,7 @@ namespace TreeAttendance.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         // GET: Student/Edit/5
-        public ActionResult Update(string id = null, int index = 0)
+        public ActionResult CreateCheckIn(string id = null)
         {
             var myAttendance = AttendanceBackend.Read(id);
             if (myAttendance == null)
@@ -118,9 +118,8 @@ namespace TreeAttendance.Controllers
             }
             var myData = new AttendanceCheckInViewModel();
             myData.AttendanceId = myAttendance.Id;
-            myData.CheckIn = myAttendance.AttendanceCheckIns[index].CheckIn;
-            myData.CheckOut = myAttendance.AttendanceCheckIns[index].CheckOut;
-            myData.Index = index;
+            myData.CheckIn = SystemGlobals.Instance.DefaultStartTime;
+            myData.CheckOut = SystemGlobals.Instance.DefaultEndTime;
             myData.Date = SchoolDayBackend.Read(myAttendance.SchoolDayId).Date.ToString("MM/dd/yyyy");
             myData.StudentName = StudentBackend.Read(myAttendance.StudentId).Name;
             myData.Uri = StudentBackend.Read(myAttendance.StudentId).ProfilePictureUri;
@@ -134,7 +133,7 @@ namespace TreeAttendance.Controllers
         /// <returns></returns>
         // POST: Student/Update/5
         [HttpPost]
-        public ActionResult Update([Bind(Include=
+        public ActionResult CreateCheckIn([Bind(Include=
                                         "AttendanceId,"+
                                         "CheckIn,"+
                                         "CheckOut,"+
@@ -162,7 +161,71 @@ namespace TreeAttendance.Controllers
                 return View(data);
             }
 
-            AttendanceBackend.Update(data);
+            AttendanceBackend.CreateCheckIn(data);
+
+            return RedirectToAction("Read", null, new { id = data.AttendanceId });
+        }
+
+        /// <summary>
+        /// This will show the details of the Student to update
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        // GET: Student/Edit/5
+        public ActionResult UpdateCheckIn(string id = null, int index = 0)
+        {
+            var myAttendance = AttendanceBackend.Read(id);
+            if (myAttendance == null)
+            {
+                RedirectToAction("Error", "Home", "Invalid Record");
+            }
+            var myData = new AttendanceCheckInViewModel();
+            myData.AttendanceId = myAttendance.Id;
+            myData.CheckIn = myAttendance.AttendanceCheckIns[index].CheckIn;
+            myData.CheckOut = myAttendance.AttendanceCheckIns[index].CheckOut;
+            myData.Index = index;
+            myData.Date = SchoolDayBackend.Read(myAttendance.SchoolDayId).Date.ToString("MM/dd/yyyy");
+            myData.StudentName = StudentBackend.Read(myAttendance.StudentId).Name;
+            myData.Uri = StudentBackend.Read(myAttendance.StudentId).ProfilePictureUri;
+            return View(myData);
+        }
+
+        /// <summary>
+        /// This updates the Student based on the information posted from the udpate page
+        /// </summary>
+        /// <param name="data"></param>
+        /// <returns></returns>
+        // POST: Student/Update/5
+        [HttpPost]
+        public ActionResult UpdateCheckIn([Bind(Include=
+                                        "AttendanceId,"+
+                                        "CheckIn,"+
+                                        "CheckOut,"+
+                                        "Index,"+
+                                        "Date,"+
+                                        "StudentName,"+
+                                        "Uri,"+
+                                        "")] AttendanceCheckInViewModel data)
+        {
+            if (!ModelState.IsValid)
+            {
+                // Send back for edit
+                return View(data);
+            }
+
+            if (data == null)
+            {
+                // Send to Error Page
+                return RedirectToAction("Error", new { route = "Home", action = "Error" });
+            }
+
+            if (string.IsNullOrEmpty(data.AttendanceId))
+            {
+                // Send back for edit
+                return View(data);
+            }
+
+            AttendanceBackend.UpdateCheckIn(data);
 
             return RedirectToAction("Read", null, new{id = data.AttendanceId } );
         }

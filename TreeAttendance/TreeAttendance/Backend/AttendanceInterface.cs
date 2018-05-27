@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System.Collections.Generic;
 using TreeAttendance.Models;
 using TreeAttendance.Models.ViewModels;
 
@@ -13,8 +10,9 @@ namespace TreeAttendance.Backend
     public interface AttendanceInterface
     {
         AttendanceModel Create(AttendanceModel data);
+        AttendanceModel CreateCheckIn(AttendanceCheckInViewModel data);
         AttendanceModel Read(string id);
-        AttendanceModel Update(AttendanceCheckInViewModel data);
+        AttendanceModel UpdateCheckIn(AttendanceCheckInViewModel data);
         bool Delete(string id);
         List<AttendanceModel> Index();
         List<AttendanceModel> IndexByStudent(string id);
