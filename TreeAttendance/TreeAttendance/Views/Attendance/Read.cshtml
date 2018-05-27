@@ -86,7 +86,10 @@
     {
         <div class="col-3">
             <div class="card card-custom">
-                <div class="card-header">Check-in #@(i + 1)</div>
+                <div class="card-header">
+                    Check-in #@(i + 1)
+                    <a href="~/Attendance/DeleteCheckIn/@Model.Attendance.Id/@i" class="btn btn-outline-danger btn-sm btn-right">Remove</a>
+                </div>
                 <div class="card-body">
                     <div style="padding: 15px">Check-in Time:<br /> @Model.Attendance.AttendanceCheckIns[i].CheckIn</div>
 
@@ -94,9 +97,6 @@
                     <br />
                     <div>
                         <a href="~/Attendance/UpdateCheckIn/@Model.Attendance.Id/@i" class="btn btn-outline-primary btn-sm" style="width: 200px">Edit</a>
-                    </div>
-                    <div>
-                        <a href="~/Attendance/DeleteCheckIn/@Model.Attendance.Id/@i" class="btn btn-outline-danger btn-sm" style="width: 200px">Remove</a>
                     </div>
                 </div>
             </div>
