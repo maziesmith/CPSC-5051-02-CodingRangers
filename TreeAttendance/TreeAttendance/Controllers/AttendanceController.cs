@@ -238,12 +238,18 @@ namespace TreeAttendance.Controllers
         // GET: Student/Delete/5
         public ActionResult Delete(string id = null)
         {
-            var myData = AttendanceBackend.Read(id);
-
-            if (myData == null)
+            var myAttendance = AttendanceBackend.Read(id);
+            if (myAttendance == null)
             {
                 RedirectToAction("Error", "Home", "Invalid Record");
             }
+            var myData = new AttendanceViewModel
+            {
+                Attendance = myAttendance,
+                Date = SchoolDayBackend.Read(myAttendance.SchoolDayId).Date.ToString("MM/dd/yyyy"),
+                StudentName = StudentBackend.Read(myAttendance.StudentId).Name,
+                Uri = StudentBackend.Read(myAttendance.StudentId).ProfilePictureUri
+            };
 
             return View(myData);
         }

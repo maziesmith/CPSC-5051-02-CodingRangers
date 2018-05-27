@@ -1,4 +1,4 @@
-﻿@model TreeAttendance.Models.AttendanceModel
+﻿@model TreeAttendance.Models.ViewModels.AttendanceViewModel
 @{
     ViewBag.Title = "Remove Attendance";
 }
@@ -27,21 +27,20 @@
 <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
         <li class="breadcrumb-item" aria-current="page"> <a href="~/Attendance">Attendance</a></li>
-        <li class="breadcrumb-item" aria-current="page"><a href="~/Attendance/Details">@Model.Student.Name, @Model.SchoolDay.Date</a></li>
+        <li class="breadcrumb-item" aria-current="page"><a href="~/Attendance/Read/@Model.Attendance.Id">@Model.StudentName, @Model.Date</a></li>
         <li class="breadcrumb-item" aria-current="page active">Remove</li>
     </ol>
 </nav>
 <div class="page-header">Remove Attendance</div>
 
 <div class="row">
-    <div align="center" style="padding:70px">
-        <img src="~/Content/img/@Model.Student.ProfilePictureUri" width="100" height="100" />
-        <br />
-        <div style="padding: 7px">
-            @Model.Student.Name
+    <div class="col-3" align="center">
+        <img src="~/Content/img/@Model.Uri" width="100" height="100" />
+        <div class="label">
+            @Model.StudentName
         </div>
-        <div style="padding: 7px">
-            @Model.SchoolDay.Date
+        <div class="label">
+            @Model.Date
         </div>
     </div>
 </div>
@@ -50,14 +49,11 @@
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    @Html.HiddenFor(m => m.SchoolDay)
-    @Html.HiddenFor(m => m.Student)
-    //@Html.HiddenFor(m => m.ExcusedAbsence)
     <p class="alert alert-danger">Are you sure you want to <strong>remove</strong> this attendance record?</p>
     <br/>
     <div class="row">
         <div class="col-sm-1">
-            @Html.ActionLink("Cancel", "Index", new { id = Model.Id }, new { @class = "btn btn-success" })
+            @Html.ActionLink("Cancel", "Read", new { id = Model.Attendance.Id }, new { @class = "btn btn-success" })
         </div>
         <div class="col-sm-1">
             <input type="submit" value="Remove" class="btn btn-danger">
