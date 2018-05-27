@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using TreeAttendance.Models;
 using TreeAttendance.Models.ViewModels;
 
@@ -181,6 +182,30 @@ namespace TreeAttendance.Backend
                 }
             }
             return list;
+        }
+
+        public bool CheckIn(string id)
+        {
+            if (string.IsNullOrEmpty(id))
+            {
+                return false;
+            }
+
+            var myData = AttendanceList.Find(n => n.Id == id);
+            myData.CheckIn(DateTime.Now);
+            return true;
+        }
+
+        public bool CheckOut(string id)
+        {
+            if (string.IsNullOrEmpty(id))
+            {
+                return false;
+            }
+
+            var myData = AttendanceList.Find(n => n.Id == id);
+            myData.CheckOut(DateTime.Now);
+            return true;
         }
 
         /// <summary>

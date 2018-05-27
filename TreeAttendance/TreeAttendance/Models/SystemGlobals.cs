@@ -50,5 +50,8 @@ namespace TreeAttendance.Models
 
         //The default end time of a school day
         public TimeSpan DefaultEndTime = new TimeSpan(15, 45, 0);
+
+        //Today's date
+        public DateTime Today = DateTime.Now.Date;
     }
 }

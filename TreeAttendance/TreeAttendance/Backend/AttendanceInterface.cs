@@ -18,6 +18,8 @@ namespace TreeAttendance.Backend
         List<AttendanceModel> Index();
         List<AttendanceModel> IndexByStudent(string id);
         List<AttendanceModel> IndexBySchoolDay(string id);
+        bool CheckIn(string id);
+        bool CheckOut(string id);
         void Reset();
     }
 }

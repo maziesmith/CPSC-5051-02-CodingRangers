@@ -189,6 +189,10 @@ namespace TreeAttendance.Backend
         /// <returns>List of Attendances</returns>
         public List<AttendanceModel> IndexBySchoolDay(string id)
         {
+            if (string.IsNullOrEmpty(id))
+            {
+                return null;
+            }
             var myData = DataSource.IndexBySchoolDay(id);
             return myData;
         }
@@ -199,8 +203,32 @@ namespace TreeAttendance.Backend
         /// <returns>List of Attendances</returns>
         public List<AttendanceModel> IndexByStudent(string id)
         {
+            if (string.IsNullOrEmpty(id))
+            {
+                return null;
+            }
             var myData = DataSource.IndexByStudent(id);
             return myData;
+        }
+
+        public bool CheckIn(string id)
+        {
+            if (string.IsNullOrEmpty(id))
+            {
+                return false;
+            }
+            var myReturn = DataSource.CheckIn(id);
+            return myReturn;
+        }
+
+        public bool CheckOut(string id)
+        {
+            if (string.IsNullOrEmpty(id))
+            {
+                return false;
+            }
+            var myReturn = DataSource.CheckOut(id);
+            return myReturn;
         }
 
         /// <summary>
