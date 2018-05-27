@@ -37,9 +37,8 @@ namespace TreeAttendance.Controllers
         public ActionResult ResetApp()
         {
             Backend.StudentBackend.Instance.Reset();
-            Backend.AttendanceBackend.Instance.Reset();
             Backend.SchoolDayBackend.Instance.Reset();
-
+            Backend.AttendanceBackend.Instance.Reset();
             return RedirectToAction("Index");
         }
     }
