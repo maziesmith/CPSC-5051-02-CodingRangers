@@ -113,14 +113,14 @@ namespace TreeAttendance.Backend
         /// <returns>Null or updated data</returns>
         public bool DeleteCheckIn(string id, int index)
         {
-            var myData = AttendanceList.Find(n => n.Id == id);
-            if(index > myData.AttendanceCheckIns.Count)
+            if (string.IsNullOrEmpty(id))
             {
                 return false;
             }
-            myData.AttendanceCheckIns.RemoveAt(index);
-            return true;
 
+            var myData = AttendanceList.Find(n => n.Id == id);
+
+            return myData.Delete(index);
         }
 
         /// <summary>

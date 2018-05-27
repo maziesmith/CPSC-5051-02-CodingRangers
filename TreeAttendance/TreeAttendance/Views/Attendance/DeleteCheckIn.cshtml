@@ -54,10 +54,11 @@
         </div>
     </div>
 </div>
-<br/>
+<br />
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
+    @Html.HiddenFor(m => m.AttendanceId)
     <p class="alert alert-danger">Are you sure you want to <strong>remove</strong> this attendance check-in?</p>
     <br />
     <div class="row">

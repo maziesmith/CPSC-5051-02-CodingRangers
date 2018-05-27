@@ -49,8 +49,9 @@
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
+    @Html.HiddenFor(m => m.Attendance.Id)
     <p class="alert alert-danger">Are you sure you want to <strong>remove</strong> this attendance record?</p>
-    <br/>
+    <br />
     <div class="row">
         <div class="col-sm-1">
             @Html.ActionLink("Cancel", "Read", new { id = Model.Attendance.Id }, new { @class = "btn btn-success" })

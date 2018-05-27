@@ -103,13 +103,29 @@ namespace TreeAttendance.Models
             ComputeStatus();
         }
 
+        public bool Delete(int index)
+        {
+            if (index > AttendanceCheckIns.Count)
+            {
+                return false;
+            }
+            AttendanceCheckIns.RemoveAt(index);
+            ComputeStatus();
+            return true;
+        }
+
         /// <summary>
         /// 
         /// </summary>
         private void ComputeStatus()
         {
+            //if no check-in record
+            if(AttendanceCheckIns.Count == 0)
+            {
+                Status = AttendanceStatusEnum.AbsentUnexcused;
+            }
             //if checked in on time
-            if (TimeSpan.Compare(AttendanceCheckIns.First().CheckIn, SystemGlobals.Instance.DefaultStartTime) == 1)
+            else if (TimeSpan.Compare(AttendanceCheckIns.First().CheckIn, SystemGlobals.Instance.DefaultStartTime) == 1)
             {
                 if (TimeSpan.Compare(AttendanceCheckIns.First().CheckOut, SystemGlobals.Instance.DefaultEndTime) >= 0)
                 {

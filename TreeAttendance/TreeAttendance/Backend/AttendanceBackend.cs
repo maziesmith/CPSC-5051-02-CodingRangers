@@ -154,7 +154,6 @@ namespace TreeAttendance.Backend
 
             // Update the record
             var myReturn = DataSource.DeleteCheckIn(Id, Index);
-
             return myReturn;
         }
 
