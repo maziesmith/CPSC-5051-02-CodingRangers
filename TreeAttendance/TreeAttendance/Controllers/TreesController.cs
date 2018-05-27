@@ -15,7 +15,7 @@ namespace TreeAttendance.Controllers
         }
 
         // GET: Trees/Details/5
-        public ActionResult Details(int id)
+        public ActionResult Details()
         {
             return View();
         }
