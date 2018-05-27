@@ -26,5 +26,21 @@ namespace TreeAttendance.Controllers
 
             return View();
         }
+
+        public ActionResult Error(string id = "Error")
+        {
+            ViewBag.Message = "id";
+
+            return View();
+        }
+
+        public ActionResult ResetApp()
+        {
+            Backend.StudentBackend.Instance.Reset();
+            Backend.AttendanceBackend.Instance.Reset();
+            Backend.SchoolDayBackend.Instance.Reset();
+
+            return RedirectToAction("Index");
+        }
     }
 }
