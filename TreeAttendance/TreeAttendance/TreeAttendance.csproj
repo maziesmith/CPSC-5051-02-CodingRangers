@@ -281,6 +281,7 @@
     <Content Include="Content\img\StudentsIndex2.png" />
     <Content Include="Content\img\StudentTree.png" />
     <Content Include="Content\img\SUinterlock.png" />
+    <Content Include="Content\img\TreeIcon.png" />
     <Content Include="Content\img\TreesDetails.png" />
     <Content Include="Content\img\TreesEdit.png" />
     <Content Include="Content\img\TreesIndex.png" />
