@@ -1,0 +1,101 @@
+﻿@using TreeAttendance.Models.Enums
+@model TreeAttendance.Models.ViewModels.AttendanceByStudentViewModel
+@{
+    ViewBag.Title = "Attendance by Student";
+}
+<ul class="nav nav-tabs nav-fill">
+    <li class="nav-item">
+        <a class="nav-link" href="~/AdminHome/Index"><h5>Dashboard</h5></a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="~/Students/Index"><h5>Students</h5></a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link active" href="~/Attendance/Index"><h5>Attendance</h5></a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="~/AdminHome/ReportsIndex"><h5>Reports</h5></a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="~/Trees/Index"><h5>Trees</h5></a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="~/AdminHome/Calendar"><h5>Calendar</h5></a>
+    </li>
+</ul>
+
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item" aria-current="page"> <a href="~/Attendance">Attendance</a></li>
+        <li class="breadcrumb-item active" aria-current="page">By Student: @Model.StudentName</li>
+    </ol>
+</nav>
+<div class="page-header">@Model.StudentName</div>
+@*<div class="col-3" align="center">
+    <img class="profile-img" src="/Content/img/@Model.Uri" />
+    <div class="label">
+        @Model.StudentName
+    </div>
+</div>*@
+<br />
+@if (Model.AttendanceList.Count == 0)
+{
+    <br />
+    <p>No attendance record of this student</p>
+    <br />
+}
+else
+{
+    <div class="col-4">
+        <div class="list-group">
+            @foreach (var item in Model.AttendanceList)
+            {
+                <a href="~/Attendance/Read/@item.Attendance.Id" class="list-group-item list-group-item-action list-group-item-success">
+                    @item.Date &nbsp;&nbsp;&nbsp;&nbsp;
+                    @if (item.Attendance.Status == AttendanceStatusEnum.AbsentUnexcused)
+                    {
+
+                        <span class="badge badge-pill badge-danger">Absent Unexcused</span>
+
+                    }
+                    else if (item.Attendance.Status == AttendanceStatusEnum.AbsentExcused)
+                    {
+
+                        <span class="badge badge-pill badge-warning">Absent Excused</span>
+
+                    }
+                    else if (item.Attendance.Status == AttendanceStatusEnum.Late)
+                    {
+
+                        <span class="badge badge-pill badge-dark">Late</span>
+
+                    }
+                    else if (item.Attendance.Status == AttendanceStatusEnum.LateLeft)
+                    {
+
+                        <span class="badge badge-pill badge-dark">Late</span>
+
+                        <span class="badge badge-pill badge-info">Left Early</span>
+
+                    }
+                    else if (item.Attendance.Status == AttendanceStatusEnum.OnTime)
+                    {
+
+                        <span class="badge badge-pill badge-success">On Time</span>
+
+                    }
+                    else if (item.Attendance.Status == AttendanceStatusEnum.OnTimeLeft)
+                    {
+
+                        <span class="badge badge-pill badge-success">On time</span>
+
+                        <span class="badge badge-pill badge-info">Left Early</span>
+
+                    }
+                </a>
+            }
+        </div>
+    </div>
+
+}
+

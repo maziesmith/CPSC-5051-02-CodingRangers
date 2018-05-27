@@ -1,14 +1,31 @@
 ﻿@{
     ViewBag.Title = "Students Reports";
 }
-<br />
-<br />
-<h4>Student Reports</h4>
 
-<br /><br />
-<h4>Current Development</h4>
-<br />
+@*Navigation bar that let's the admin move between pages easily *@
 
+<ul class="nav nav-tabs nav-fill">
+    <li class="nav-item">
+        <a class="nav-link" href="~/AdminHome/Index"><h5>Dashboard</h5></a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="~/Students/Index"><h5>Students</h5></a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="~/Attendance/Index"><h5>Attendance</h5></a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link active" href="~/AdminHome/ReportsIndex"><h5>Reports</h5></a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="~/Trees/Index"><h5>Trees</h5></a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="~/AdminHome/Calendar"><h5>Calendar</h5></a>
+    </li>
+</ul>
+
+@* Let's the user quickly know where in the website they are *@
 
 <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
@@ -17,6 +34,12 @@
         <li class="breadcrumb-item" aria-current="page"> <a href="~/AdminHome/Reportsindex">ReportsIndex</a></li>
     </ol>
 </nav>
+
+@* Let's the user know what page they are on *@
+
+<div class="page-header">Reports</div>
+
+@* Let's the user see reports of individual students or class *@
 
 <div class="row" style="margin-top: 70px">
     <div class="col-3" align="center"style="padding-bottom: 50px">
@@ -42,7 +65,7 @@
             <img src="~/Content/img/boy2.png" width="100" height="100" />
             <br />
             <span>
-                Allen
+                Mike
             </span>
         </a>
     </div>
