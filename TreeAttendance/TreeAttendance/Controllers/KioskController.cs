@@ -68,11 +68,11 @@ namespace TreeAttendance.Controllers
             }
             if (TimeSpan.Compare(DateTime.Now.TimeOfDay, SystemGlobals.Instance.DefaultEndTime) > 0)
             {
-                return Content("Can not check in, school already ended.");
+                return RedirectToAction("Error", "Home", "Can not check in, school already ended");
             }
 
             AttendanceBackend.CheckIn(id);
-            return RedirectToAction("Index");
+            return RedirectToAction("KioskTree");
         }
 
         // GET: Kiosk/SetLogout/5
@@ -85,7 +85,7 @@ namespace TreeAttendance.Controllers
 
             if (TimeSpan.Compare(DateTime.Now.TimeOfDay, SystemGlobals.Instance.DefaultEndTime) > 0)
             {
-                return Content("Can not check out, school already ended.");
+                return RedirectToAction("Error", "Home", "Can not check out, school already ended");
             }
 
             AttendanceBackend.CheckOut(id);
