@@ -138,6 +138,27 @@ namespace TreeAttendance.Backend
         }
 
         /// <summary>
+        /// Update all attributes to be what is passed in
+        /// </summary>
+        /// <param name="data"></param>
+        /// <returns>Null or updated data</returns>
+        public bool DeleteCheckIn(string Id, int Index)
+        {
+
+            var myData = DataSource.Read(Id);
+            if (myData == null)
+            {
+                // Not found
+                return false;
+            }
+
+            // Update the record
+            var myReturn = DataSource.DeleteCheckIn(Id, Index);
+
+            return myReturn;
+        }
+
+        /// <summary>
         /// Remove the Data item if it is in the list
         /// </summary>
         /// <param name="data"></param>

@@ -107,6 +107,23 @@ namespace TreeAttendance.Backend
         }
 
         /// <summary>
+        /// Update all attributes to be what is passed in
+        /// </summary>
+        /// <param name="data"></param>
+        /// <returns>Null or updated data</returns>
+        public bool DeleteCheckIn(string id, int index)
+        {
+            var myData = AttendanceList.Find(n => n.Id == id);
+            if(index > myData.AttendanceCheckIns.Count)
+            {
+                return false;
+            }
+            myData.AttendanceCheckIns.RemoveAt(index);
+            return true;
+
+        }
+
+        /// <summary>
         /// Remove the Data item if it is in the list
         /// </summary>
         /// <param name="data"></param>

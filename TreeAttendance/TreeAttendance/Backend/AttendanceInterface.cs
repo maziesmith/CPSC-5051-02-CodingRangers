@@ -13,6 +13,7 @@ namespace TreeAttendance.Backend
         AttendanceModel CreateCheckIn(AttendanceCheckInViewModel data);
         AttendanceModel Read(string id);
         AttendanceModel UpdateCheckIn(AttendanceCheckInViewModel data);
+        bool DeleteCheckIn(string id, int index);
         bool Delete(string id);
         List<AttendanceModel> Index();
         List<AttendanceModel> IndexByStudent(string id);
