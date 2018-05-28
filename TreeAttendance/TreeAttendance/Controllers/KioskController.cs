@@ -66,10 +66,10 @@ namespace TreeAttendance.Controllers
             {
                 return RedirectToAction("Error", "Home", "Invalid Data");
             }
-            if (TimeSpan.Compare(DateTime.Now.TimeOfDay, SystemGlobals.Instance.DefaultEndTime) > 0)
-            {
-                return RedirectToAction("Error", "Home", "Can not check in, school already ended");
-            }
+            //if (TimeSpan.Compare(DateTime.Now.TimeOfDay, SystemGlobals.Instance.DefaultEndTime) > 0)
+            //{
+            //    return RedirectToAction("Error", "Home", "Can not check in, school already ended");
+            //}
 
             AttendanceBackend.CheckIn(id);
             return RedirectToAction("KioskTree");
@@ -83,10 +83,10 @@ namespace TreeAttendance.Controllers
                 return RedirectToAction("Error", "Home", "Invalid Data");
             }
 
-            if (TimeSpan.Compare(DateTime.Now.TimeOfDay, SystemGlobals.Instance.DefaultEndTime) > 0)
-            {
-                return RedirectToAction("Error", "Home", "Can not check out, school already ended");
-            }
+            //if (TimeSpan.Compare(DateTime.Now.TimeOfDay, SystemGlobals.Instance.DefaultEndTime) > 0)
+            //{
+            //    return RedirectToAction("Error", "Home", "Can not check out, school already ended");
+            //}
 
             AttendanceBackend.CheckOut(id);
             return RedirectToAction("Index");
