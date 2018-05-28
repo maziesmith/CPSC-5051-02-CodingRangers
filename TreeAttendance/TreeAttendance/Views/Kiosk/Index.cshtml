@@ -42,6 +42,12 @@
             else
             {
                 <div>
+                    Checked in at:
+                </div>
+                <div>
+                    @item.Attendance.AttendanceCheckIns.Last().CheckIn
+                </div>
+                <div>
                     <a href="~/Kiosk/CheckOut/@item.Attendance.Id" class="btn btn-warning">Check Out</a>
                 </div>
             }
