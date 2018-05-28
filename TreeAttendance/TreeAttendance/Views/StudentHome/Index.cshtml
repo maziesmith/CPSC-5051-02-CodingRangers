@@ -7,69 +7,69 @@
 
 <p style=" text-align: right;">Hello, Student!</p>
 
-<html>
-<head>
-    <style>
-        /*Background color*/
-        body {
-            background-color: none;
-        }
-        ul {
-            list-style-type: none;
-            margin: 0;
-            padding: 0;
-            overflow: hidden;
-        }
+@*<html>
+    <head>
+        <style>
+            /*Background color*/
+            body {
+                background-color: none;
+            }
+            ul {
+                list-style-type: none;
+                margin: 0;
+                padding: 0;
+                overflow: hidden;
+            }
 
-        /*text to the right*/
-        li {
-            float: right;
-        }
+            /*text to the right*/
+            li {
+                float: right;
+            }
 
-        li a {
-            display: block;
-            padding: 16px;
-            background-color: none;
-        }
+            li a {
+                display: block;
+                padding: 16px;
+                background-color: none;
+            }
 
 
-        /* Create two equal columns that floats next to each other */
-        .column {
-            float: left;
-            width: 50%;
-            padding: 10px;
-        }
+            /* Create two equal columns that floats next to each other */
+            .column {
+                float: left;
+                width: 50%;
+                padding: 10px;
+            }
 
-        /* Clear floats after the columns */
-        .row:after {
-            content: "";
-            display: table;
-            clear: both;
-        }
-    </style>
-</head>
-<body>
+            /* Clear floats after the columns */
+            .row:after {
+                content: "";
+                display: table;
+                clear: both;
+            }
+        </style>
+    </head>
+    <body>*@
 
-    <!-- Create Attendance and Overall button and link them to new page -->
-    <ul>
-        <li><a href="~/AdminHome/Reports" class="btn btn-outline-primary" role="button">Attendance</a></li>
-        <li><a href="~/AdminHome/Reports" class="btn btn-outline-primary" role="button">Overall Performance</a></li>
+<!-- Create Attendance and Overall button and link them to new page -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="~/StudentHome/Attendance"><div class="btn btn-primary my-2 my-sm-0">Attendance</div></a>
+    <a class="navbar-brand" href="~/StudentHome/OverallPerformance"><div class="btn btn-primary my-2 my-sm-0">Reports</div></a>
+</nav>
 
-    </ul>
-    <div class="row">
-        <!-- Create first column for the current tree, with the message -->
-        <div class="column">
-            <img src="~/Content/img/smalltree.png " width="400" height="400" />
-            <p style="font-size: 20px;">Congratulation, your tree is at state 2.</p>
-            <p style="font-size: 20px;">To the next state, leaves earned: 22🍂</p>
-        </div>
-        <!-- Create a second column with the next stage preview -->
-        <div class="column">
-            <img src="~/Content/img/bigtree.png" width="400" height="400" />
-            <p style="font-size: 20px;">Next state !!!</p>
-        </div>
+<div class="row">
+    <!-- Create first column for the current tree, with the message -->
+    <div class="col-6">
+        <img src="~/Content/img/tree1-3-01.png" width="400" height="400" />
+        <p style="font-size: 20px;">Congratulation, your tree is at state 3.</p>
+        <p style="font-size: 20px;">To the next state, leaves earned: 22🍂</p>
     </div>
+    <!-- Create a second column with the next stage preview -->
+    <div class="col-6">
+        <img src="~/Content/img/tree1-4-01.png" width="400" height="400" />
+        <p style="font-size: 20px;">Next state !!!</p>
+    </div>
+</div>
 
-</body>
+@*</body>
 
-</html>
+    </html>*@
