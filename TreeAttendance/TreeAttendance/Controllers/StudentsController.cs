@@ -26,36 +26,36 @@ namespace TreeAttendance.Controllers
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        // GET: Student/Details/5
         public ActionResult Read(string id = null)
         {
             var myData = StudentBackend.Read(id);
 
             if (myData == null)
             {
-                RedirectToAction("Error", "Home", "Invalid Record");
+                //Send to Error Page
+                RedirectToAction("Error", "Home", new { id = "Invalid Record" });
             }
 
             return View(myData);
         }
 
         /// <summary>
-        /// This opens up the make a new Student screen
+        /// This opens up the create a new student profile page
         /// </summary>
         /// <returns></returns>
-        // GET: Student/Create
         public ActionResult Create()
         {
             var myData = new StudentModel();
+
             return View(myData);
         }
 
         /// <summary>
-        /// Make a new Student sent in by the create Student screen
+        /// Make a new Student sent in by the create a new student profile page
         /// </summary>
         /// <param name="collection"></param>
         /// <returns></returns>
-        // POST: Student/Create
+        // POST Create
         [HttpPost]
         public ActionResult Create([Bind(Include=
                                         "Id,"+
@@ -91,7 +91,7 @@ namespace TreeAttendance.Controllers
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        // GET: Student/Edit/5
+        // GET: Update
         public ActionResult Update(string id = null)
         {
             var myData = StudentBackend.Read(id);
@@ -104,11 +104,11 @@ namespace TreeAttendance.Controllers
         }
 
         /// <summary>
-        /// This updates the Student based on the information posted from the udpate page
+        /// This updates the Student based on the information posted from the update page
         /// </summary>
         /// <param name="data"></param>
         /// <returns></returns>
-        // POST: Student/Update/5
+        // POST: Update
         [HttpPost]
         public ActionResult Update([Bind(Include=
                                         "Id,"+
@@ -144,7 +144,7 @@ namespace TreeAttendance.Controllers
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        // GET: Student/Delete/5
+        // GET: Delete
         public ActionResult Delete(string id = null)
         {
             var myData = StudentBackend.Read(id);
@@ -162,7 +162,7 @@ namespace TreeAttendance.Controllers
         /// </summary>
         /// <param name="data"></param>
         /// <returns></returns>
-        // POST: Student/Delete/5
+        // POST: Delete
         [HttpPost]
         public ActionResult Delete([Bind(Include=
                                         "Id,"+
