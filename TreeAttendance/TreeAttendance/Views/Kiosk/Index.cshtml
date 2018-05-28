@@ -45,7 +45,7 @@
                     Checked in at:
                 </div>
                 <div>
-                    @item.Attendance.AttendanceCheckIns.Last().CheckIn
+                    @item.Attendance.AttendanceCheckIns.Last().CheckIn.ToString(@"hh\:mm\:ss")
                 </div>
                 <div>
                     <a href="~/Kiosk/CheckOut/@item.Attendance.Id" class="btn btn-warning">Check Out</a>
