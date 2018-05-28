@@ -1,7 +1,7 @@
 ﻿namespace TreeAttendance.Models.Enums
 {
     /// <summary>
-    /// Check-in Status Options
+    /// Attendance Status Options
     /// </summary>
     public enum AttendanceStatusEnum
     {
