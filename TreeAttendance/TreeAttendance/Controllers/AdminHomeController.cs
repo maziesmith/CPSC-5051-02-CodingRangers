@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 
 namespace TreeAttendance.Controllers
 {
@@ -23,6 +19,16 @@ namespace TreeAttendance.Controllers
         /// <returns></returns>
         /// GET:AdminHome/Reports
         public ActionResult Reports()
+        {
+            return View();
+        }
+
+        /// <summary>
+        /// Generates the whole class's attendance reports
+        /// </summary>
+        /// <returns></returns>
+        /// GET:AdminHome/ClassReports
+        public ActionResult ClassReports()
         {
             return View();
         }
