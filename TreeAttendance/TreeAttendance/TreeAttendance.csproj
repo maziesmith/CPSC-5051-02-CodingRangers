@@ -273,6 +273,7 @@
     <Content Include="Content\img\girl1.png" />
     <Content Include="Content\img\girl2.png" />
     <Content Include="Content\img\group.png" />
+    <Content Include="Content\img\leafIcon.png" />
     <Content Include="Content\img\Overall.png" />
     <Content Include="Content\img\PointierTrees.png" />
     <Content Include="Content\img\ReportsDetails.png" />
