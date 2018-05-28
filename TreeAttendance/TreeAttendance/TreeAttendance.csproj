@@ -274,8 +274,10 @@
     <Content Include="Content\img\girl2.png" />
     <Content Include="Content\img\group.png" />
     <Content Include="Content\img\Overall.png" />
+    <Content Include="Content\img\PointierTrees.png" />
     <Content Include="Content\img\ReportsDetails.png" />
     <Content Include="Content\img\ReportsIndex.png" />
+    <Content Include="Content\img\RoundTrees.png" />
     <Content Include="Content\img\smalltree.png" />
     <Content Include="Content\img\stdTable1.png" />
     <Content Include="Content\img\stdTable2.png" />
