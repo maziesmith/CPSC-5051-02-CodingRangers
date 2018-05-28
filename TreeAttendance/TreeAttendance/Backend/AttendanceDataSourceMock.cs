@@ -184,6 +184,11 @@ namespace TreeAttendance.Backend
             return list;
         }
 
+        /// <summary>
+        /// Check in action, set check-in time of given attendance to server time
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public bool CheckIn(string id)
         {
             if (string.IsNullOrEmpty(id))
@@ -196,6 +201,11 @@ namespace TreeAttendance.Backend
             return true;
         }
 
+        /// <summary>
+        /// Check out action, set check-out time of given attendance to server time
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public bool CheckOut(string id)
         {
             if (string.IsNullOrEmpty(id))
