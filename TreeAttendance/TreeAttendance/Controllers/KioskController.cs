@@ -18,14 +18,17 @@ namespace TreeAttendance.Controllers
 
 
         /// <summary>
-        /// Return the list of students with the status of logged in or out
+        /// Return the list of students with the check-in status, student of the week, and class forest
         /// </summary>
         /// <returns></returns>
         // GET: Kiosk
         public ActionResult Index()
         {
+            //Load today's attendance list
             var lastSchoolDay = SchoolDayBackend.Index().Last();
             var myAttendanceList = AttendanceBackend.IndexBySchoolDay(lastSchoolDay.Id);
+
+            //create view model
             var myData = new AttendanceByDateViewModel();
             myData.AttendanceList = new List<AttendanceViewModel>();
             foreach (var item in myAttendanceList)
@@ -39,17 +42,25 @@ namespace TreeAttendance.Controllers
                 myData.AttendanceList.Add(myViewModel);
             }
             myData.Date = lastSchoolDay.Date.ToString("MM/dd/yyyy");
+
             return View(myData);
         }
 
+        /// <summary>
+        /// Go to the next day, create a brand new kiosk check-in page, this is for demo purposes
+        /// </summary>
+        /// <returns></returns>
         public ActionResult SetNewDay()
         {
-
+            //create a new school day
             var lastSchoolDay = new SchoolDayModel(SystemGlobals.Instance.Today, SystemGlobals.Instance.DefaultExpectedHours);
             SchoolDayBackend.Create(lastSchoolDay);
+
+            //load student list
             var studentList = StudentBackend.Index();
             foreach (var item in studentList)
             {
+                //create attendance record for each student
                 AttendanceBackend.Create(new AttendanceModel(item.Id, lastSchoolDay.Id));
             }
             //increment today's date
@@ -59,12 +70,16 @@ namespace TreeAttendance.Controllers
         }
 
 
-        // GET: Kiosk/SetLogout/5
+        /// <summary>
+        /// Check in action, check in time is set to current server time
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public ActionResult CheckIn(string id)
         {
             if (string.IsNullOrEmpty(id))
             {
-                return RedirectToAction("Error", "Home", "Invalid Data");
+                return RedirectToAction("Error", "Home", "Invalid Record");
             }
             //if (TimeSpan.Compare(DateTime.Now.TimeOfDay, SystemGlobals.Instance.DefaultEndTime) > 0)
             //{
@@ -72,10 +87,15 @@ namespace TreeAttendance.Controllers
             //}
 
             AttendanceBackend.CheckIn(id);
+
             return RedirectToAction("KioskTree");
         }
 
-        // GET: Kiosk/SetLogout/5
+        /// <summary>
+        /// Check cout action, check out time is set to current server time
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public ActionResult CheckOut(string id)
         {
             if (string.IsNullOrEmpty(id))
@@ -92,17 +112,10 @@ namespace TreeAttendance.Controllers
             return RedirectToAction("Index");
         }
 
-        //// GET: Kiosk/SetLogout/5
-        //public ActionResult SetLogout(string id)
-        //{
-        //    if (string.IsNullOrEmpty(id))
-        //    {
-        //        return RedirectToAction("Error", "Home", "Invalid Data");
-        //    }
-
-        //    StudentBackend.ToggleStatusById(id);
-        //    return RedirectToAction("Index");
-        //}
+        /// <summary>
+        /// Sent to this page after student check in, displays tree info
+        /// </summary>
+        /// <returns></returns>
         public ActionResult KioskTree()
         {
             return View();
