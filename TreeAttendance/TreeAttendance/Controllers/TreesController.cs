@@ -31,27 +31,6 @@ namespace TreeAttendance.Controllers
             return View();
         }
 
-        // GET: Trees/Create
-        public ActionResult Create()
-        {
-            return View();
-        }
-
-        // POST: Trees/Create
-        [HttpPost]
-        public ActionResult Create(FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add insert logic here
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
         // GET: Trees/Edit/5
         /// <summary>
         /// ToDo: Admin can edit tree stages and leaves count here
@@ -79,26 +58,5 @@ namespace TreeAttendance.Controllers
             }
         }
 
-        // GET: Trees/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
-        // POST: Trees/Delete/5
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add delete logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
     }
 }
