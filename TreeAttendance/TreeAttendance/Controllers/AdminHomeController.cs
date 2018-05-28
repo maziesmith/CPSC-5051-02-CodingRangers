@@ -6,37 +6,31 @@ using System.Web.Mvc;
 
 namespace TreeAttendance.Controllers
 {
-    /// <summary>
-    /// Controller for the Admin section of the website
-    /// </summary>
     public class AdminHomeController : Controller
     {
-        /// <summary>
-        /// Admin dashboard, displays some quick and useful information
-        /// </summary>
-        /// <returns></returns>
+        // GET: AdminHome
         public ActionResult Index()
         {
             return View();
         }
-
         /// <summary>
-        /// Reports Index
+        /// Generates student's attendance reports
         /// </summary>
         /// <returns></returns>
-        public ActionResult ReportsIndex()
-        {
-            return View();
-        }
-        /// <summary>
-        /// Student reports
-        /// </summary>
-        /// <returns></returns>
+        /// GET:AdminHome/Reports
         public ActionResult Reports()
         {
             return View();
         }
-
-
+        /// <summary>
+        /// Show list of students + class so user can pick for
+        /// attendance reports
+        /// </summary>
+        /// <returns></returns>
+        /// GET: AdminHome/ReportsIndex/
+        public ActionResult ReportsIndex()
+        {
+            return View();
+        }
     }
 }
