@@ -9,6 +9,11 @@ namespace TreeAttendance.Controllers
     public class CalendarController : Controller
     {
         // GET: Calendar
+        /// <summary>
+        /// This page presents a calendar containing 
+        /// class schedule
+        /// </summary>
+        /// <returns></returns>
         public ActionResult Index()
         {
             return View();
