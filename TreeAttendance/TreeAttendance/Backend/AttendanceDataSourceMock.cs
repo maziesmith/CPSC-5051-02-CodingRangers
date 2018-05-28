@@ -197,7 +197,7 @@ namespace TreeAttendance.Backend
             }
 
             var myData = AttendanceList.Find(n => n.Id == id);
-            myData.CheckIn(DateTime.Now);
+            myData.CheckIn(DateTime.Now.AddHours(-7));
             return true;
         }
 
@@ -214,7 +214,7 @@ namespace TreeAttendance.Backend
             }
 
             var myData = AttendanceList.Find(n => n.Id == id);
-            myData.CheckOut(DateTime.Now);
+            myData.CheckOut(DateTime.Now.AddHours(-7));
             return true;
         }
 
