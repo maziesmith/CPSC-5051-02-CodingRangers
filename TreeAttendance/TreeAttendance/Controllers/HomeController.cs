@@ -29,7 +29,7 @@ namespace TreeAttendance.Controllers
 
         public ActionResult Error(string id = "Error")
         {
-            ViewBag.Message = "id";
+            ViewBag.Message = id;
 
             return View();
         }
