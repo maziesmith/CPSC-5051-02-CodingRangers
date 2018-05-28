@@ -13,34 +13,39 @@ namespace TreeAttendance.Controllers
         private SchoolDayBackend SchoolDayBackend = SchoolDayBackend.Instance;
         private AttendanceBackend AttendanceBackend = AttendanceBackend.Instance;
 
-        // GET: Student
         /// <summary>
         /// Index, the page that shows all the Students
         /// </summary>
         /// <returns></returns>
         public ActionResult Index()
         {
-            // Load the list of data into the StudentList
+            // Load the list of data into the myDataList
             var myDataList = StudentBackend.Index();
             return View(myDataList);
         }
 
-        // GET: Student
         /// <summary>
-        /// Index, the page that shows all the Students
+        /// Index, the page that shows all the school days
         /// </summary>
         /// <returns></returns>
         public ActionResult IndexByDate()
         {
-            // Load the list of data into the StudentList
+            // Load the list of data into myDataList
             var myDataList = SchoolDayBackend.Index();
             return View(myDataList);
         }
 
-        // GET: Attendance
+        /// <summary>
+        /// Sub-index showing all attendance records of a student
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public ActionResult ByStudent(string id = null)
         {
+            //Load the list of data into myAttendanceList 
             var myAttendanceList = AttendanceBackend.IndexByStudent(id);
+
+            //create view model
             var myData = new AttendanceByStudentViewModel();
             myData.AttendanceList = new List<AttendanceViewModel>();
             foreach (var item in myAttendanceList)
@@ -54,15 +59,23 @@ namespace TreeAttendance.Controllers
             }
             myData.StudentName = StudentBackend.Read(id).Name;
             myData.Uri = StudentBackend.Read(id).ProfilePictureUri;
+
             return View(myData);
         }
 
 
 
-        // GET: Attendance
+        /// <summary>
+        /// Sub-index showing all attendance records of a school day
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public ActionResult ByDate(string id = null)
         {
+            //Load the list of data into myAttendanceList
             var myAttendanceList = AttendanceBackend.IndexBySchoolDay(id);
+
+            //create view model
             var myData = new AttendanceByDateViewModel();
             myData.AttendanceList = new List<AttendanceViewModel>();
             foreach (var item in myAttendanceList)
@@ -76,22 +89,27 @@ namespace TreeAttendance.Controllers
                 myData.AttendanceList.Add(myViewModel);
             }
             myData.Date = SchoolDayBackend.Read(id).Date.ToString("MM/dd/yyyy");
+
             return View(myData);
         }
 
         /// <summary>
-        /// Read information on a single Student
+        /// Read information on an attendance record
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        // GET: Student/Details/5
         public ActionResult Read(string id = null)
         {
+            //Load the record
             var myAttendance = AttendanceBackend.Read(id);
+
             if (myAttendance == null)
             {
+                //Send to home error page
                 RedirectToAction("Error", "Home", "Invalid Record");
             }
+
+            //create view model
             var myData = new AttendanceViewModel
             {
                 Attendance = myAttendance,
@@ -104,18 +122,23 @@ namespace TreeAttendance.Controllers
         }
 
         /// <summary>
-        /// This will show the details of the Student to update
+        /// This opens up the create a new check-in page
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        // GET: Student/Edit/5
+        // GET: CreateCheckIn
         public ActionResult CreateCheckIn(string id = null)
         {
+            //Load the record
             var myAttendance = AttendanceBackend.Read(id);
+
             if (myAttendance == null)
             {
+                //Send to home error page
                 RedirectToAction("Error", "Home", "Invalid Record");
             }
+
+            //create view model
             var myData = new AttendanceCheckInViewModel();
             myData.AttendanceId = myAttendance.Id;
             myData.CheckIn = SystemGlobals.Instance.DefaultStartTime;
@@ -123,15 +146,16 @@ namespace TreeAttendance.Controllers
             myData.Date = SchoolDayBackend.Read(myAttendance.SchoolDayId).Date.ToString("MM/dd/yyyy");
             myData.StudentName = StudentBackend.Read(myAttendance.StudentId).Name;
             myData.Uri = StudentBackend.Read(myAttendance.StudentId).ProfilePictureUri;
+
             return View(myData);
         }
 
         /// <summary>
-        /// This updates the Student based on the information posted from the udpate page
+        /// Make a new check-in record sent in by the create a new check-in page
         /// </summary>
         /// <param name="data"></param>
         /// <returns></returns>
-        // POST: Student/Update/5
+        // POST: CreateCheckIn
         [HttpPost]
         public ActionResult CreateCheckIn([Bind(Include=
                                         "AttendanceId,"+
@@ -167,11 +191,11 @@ namespace TreeAttendance.Controllers
         }
 
         /// <summary>
-        /// This will show the details of the Student to update
+        /// This will show the details of the check-in to update
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        // GET: Student/Edit/5
+        // GET: UpdateCheckIn
         public ActionResult UpdateCheckIn(string id = null, int index = 0)
         {
             var myAttendance = AttendanceBackend.Read(id);
@@ -191,11 +215,11 @@ namespace TreeAttendance.Controllers
         }
 
         /// <summary>
-        /// This updates the Student based on the information posted from the udpate page
+        /// This updates the check-in based on the information posted from the update check-in page
         /// </summary>
         /// <param name="data"></param>
         /// <returns></returns>
-        // POST: Student/Update/5
+        // POST: UpdateCheckIn
         [HttpPost]
         public ActionResult UpdateCheckIn([Bind(Include=
                                         "AttendanceId,"+
@@ -231,11 +255,11 @@ namespace TreeAttendance.Controllers
         }
 
         /// <summary>
-        /// This will show the details of the Student to update
+        /// This will show the details of the check-in to delete
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        // GET: Student/Edit/5
+        // GET: DeleteCheckIn
         public ActionResult DeleteCheckIn(string id = null, int index = 0)
         {
             var myAttendance = AttendanceBackend.Read(id);
@@ -254,11 +278,11 @@ namespace TreeAttendance.Controllers
         }
 
         /// <summary>
-        /// This updates the Student based on the information posted from the udpate page
+        /// This delets the check-in based on the information posted from the delete check-in page
         /// </summary>
         /// <param name="data"></param>
         /// <returns></returns>
-        // POST: Student/Update/5
+        // POST: DeleteCheckIn
         [HttpPost]
         public ActionResult DeleteCheckIn([Bind(Include=
                                         "AttendanceId,"+
@@ -294,11 +318,11 @@ namespace TreeAttendance.Controllers
         }
 
         /// <summary>
-        /// This shows the Student info to be deleted
+        /// This shows the attendance record info to be deleted
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        // GET: Student/Delete/5
+        // GET: Delete
         public ActionResult Delete(string id = null)
         {
             var myAttendance = AttendanceBackend.Read(id);
@@ -318,11 +342,11 @@ namespace TreeAttendance.Controllers
         }
 
         /// <summary>
-        /// This deletes the Student sent up as a post from the Student delete page
+        /// This deletes the Attendance record sent up as a post from the attendance delete page
         /// </summary>
         /// <param name="data"></param>
         /// <returns></returns>
-        // POST: Student/Delete/5
+        // POST: Delete
         [HttpPost]
         public ActionResult Delete([Bind(Include=
                                         "Id,"+
