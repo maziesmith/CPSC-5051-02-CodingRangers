@@ -1,5 +1,4 @@
-﻿
-@{
+﻿@{
     ViewBag.Title = "Index";
 }
 <ul class="nav nav-tabs nav-fill">
@@ -33,80 +32,119 @@
     </ol>
 </nav>
 
+
+@*<div class="row">
+
+    @{
+        if (Model.Count == 0)
+        {
+            <br />
+            <p>No Students in the System</p>
+            <br />
+        }
+        else
+        {
+            foreach (var item in Model)
+            {
+                <div class="col-3" align="center">
+                    <a id="@item.Id" href="~/Students/Read/@item.Id">
+                        <img class="profile-img" src="~/Content/img/@item.ProfilePictureUri" />
+                        <div class="label">
+                            @item.Name
+                        </div>
+                    </a>
+                </div>
+
+            }
+        }
+        <div class="col-3" align="center">
+            <a href="~/Students/Create/">
+                <img src="~/Content/img/Add.png" width="80" height="80" />
+                <br />
+                <div class="label">
+                    Create
+                </div>
+            </a>
+        </div>
+    }
+
+</div>*@
+
+
 <div class="row" style="margin-top: 70px">
-    <div class="col-3" align="center" style="padding-bottom: 50px">
-        <a href="~/Trees/Details/1">
-            <img src="~/Content/img/boy1.png" width="100" height="100" />
-            <br />
-            <span>
-                Allen
-            </span>
-        </a>
+        <div class="col-3" align="center" style="padding-bottom: 50px">
+            <a href="~/Trees/Details/1">
+                <img src="~/Content/img/boy1.png" width="100" height="100" />
+                <br />
+                <span>
+                    Allen
+                </span>
+            </a>
+        </div>
+        <div class="col-3" align="center" style="padding-bottom: 50px">
+            <a href="~/Trees/Details/1">
+                <img src="~/Content/img/girl1.png" width="100" height="100" />
+                <br />
+                <span>
+                    Christina
+                </span>
+            </a>
+        </div>
+        <div class="col-3" align="center" style="padding-bottom: 50px">
+            <a href="~/Trees/Details/1">
+                <img src="~/Content/img/boy2.png" width="100" height="100" />
+                <br />
+                <span>
+                    Allen
+                </span>
+            </a>
+        </div>
+        <div class="col-3" align="center" style="padding-bottom: 50px">
+            <a href="~/Trees/Details/1">
+                <img src="~/Content/img/girl2.png" width="100" height="100" />
+                <br />
+                <span>
+                    Christina
+                </span>
+            </a>
+        </div>
+        <div class="col-3" align="center" style="padding-bottom: 50px">
+            <a href="~/Trees/Details/1">
+                <img src="~/Content/img/boy1.png" width="100" height="100" />
+                <br />
+                <span>
+                    Allen
+                </span>
+            </a>
+        </div>
+        <div class="col-3" align="center" style="padding-bottom: 50px">
+            <a href="~/Students/Details/1">
+                <img src="~/Content/img/girl1.png" width="100" height="100" />
+                <br />
+                <span>
+                    Christina
+                </span>
+            </a>
+        </div>
+        <div class="col-3" align="center" style="padding-bottom: 50px">
+            <a href="~/Trees/Details/1">
+                <img src="~/Content/img/boy2.png" width="100" height="100" />
+                <br />
+                <span>
+                    Allen
+                </span>
+            </a>
+        </div>
+        <div class="col-3" align="center" style="padding-bottom: 50px">
+            <a href="~/Trees/Details/1">
+                <img src="~/Content/img/girl2.png" width="100" height="100" />
+                <br />
+                <span>
+                    Christina
+                </span>
+            </a>
+        </div>
     </div>
-    <div class="col-3" align="center" style="padding-bottom: 50px">
-        <a href="~/Trees/Details/1">
-            <img src="~/Content/img/girl1.png" width="100" height="100" />
-            <br />
-            <span>
-                Christina
-            </span>
-        </a>
-    </div>
-    <div class="col-3" align="center" style="padding-bottom: 50px">
-        <a href="~/Trees/Details/1">
-            <img src="~/Content/img/boy2.png" width="100" height="100" />
-            <br />
-            <span>
-                Allen
-            </span>
-        </a>
-    </div>
-    <div class="col-3" align="center" style="padding-bottom: 50px">
-        <a href="~/Trees/Details/1">
-            <img src="~/Content/img/girl2.png" width="100" height="100" />
-            <br />
-            <span>
-                Christina
-            </span>
-        </a>
-    </div>
-    <div class="col-3" align="center" style="padding-bottom: 50px">
-        <a href="~/Trees/Details/1">
-            <img src="~/Content/img/boy1.png" width="100" height="100" />
-            <br />
-            <span>
-                Allen
-            </span>
-        </a>
-    </div>
-    <div class="col-3" align="center" style="padding-bottom: 50px">
-        <a href="~/Students/Details/1">
-            <img src="~/Content/img/girl1.png" width="100" height="100" />
-            <br />
-            <span>
-                Christina
-            </span>
-        </a>
-    </div>
-    <div class="col-3" align="center" style="padding-bottom: 50px">
-        <a href="~/Trees/Details/1">
-            <img src="~/Content/img/boy2.png" width="100" height="100" />
-            <br />
-            <span>
-                Allen
-            </span>
-        </a>
-    </div>
-    <div class="col-3" align="center" style="padding-bottom: 50px">
-        <a href="~/Trees/Details/1">
-            <img src="~/Content/img/girl2.png" width="100" height="100" />
-            <br />
-            <span>
-                Christina
-            </span>
-        </a>
-    </div>
-</div>
 
 
 
