@@ -60,6 +60,7 @@ namespace TreeAttendance.Controllers
             Backend.StudentBackend.Instance.Reset();
             Backend.SchoolDayBackend.Instance.Reset();
             Backend.AttendanceBackend.Instance.Reset();
+
             return RedirectToAction("Index");
         }
     }
