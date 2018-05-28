@@ -265,6 +265,10 @@
     <Content Include="Content\img\boy1.png" />
     <Content Include="Content\img\boy2.png" />
     <Content Include="Content\img\calendar.png" />
+    <Content Include="Content\img\classTable1.png" />
+    <Content Include="Content\img\classTable2.png" />
+    <Content Include="Content\img\classTable3.png" />
+    <Content Include="Content\img\classTable4.png" />
     <Content Include="Content\img\forrest.png" />
     <Content Include="Content\img\girl1.png" />
     <Content Include="Content\img\girl2.png" />
@@ -273,6 +277,12 @@
     <Content Include="Content\img\ReportsDetails.png" />
     <Content Include="Content\img\ReportsIndex.png" />
     <Content Include="Content\img\smalltree.png" />
+    <Content Include="Content\img\stdTable1.png" />
+    <Content Include="Content\img\stdTable2.png" />
+    <Content Include="Content\img\stdTable3.png" />
+    <Content Include="Content\img\stdTable4.png" />
+    <Content Include="Content\img\stdTable5.png" />
+    <Content Include="Content\img\stdTable6.png" />
     <Content Include="Content\img\StudentsCreate.png" />
     <Content Include="Content\img\StudentsDelete.png" />
     <Content Include="Content\img\StudentsDetails.png" />
