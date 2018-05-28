@@ -71,7 +71,7 @@ namespace TreeAttendance.Models
         }
 
         /// <summary>
-        /// 
+        /// Check in action, create a new check-in and set check-in time to given time
         /// </summary>
         /// <param name="time"></param>
         public void CheckIn(DateTime time)
@@ -81,7 +81,7 @@ namespace TreeAttendance.Models
         }
 
         /// <summary>
-        /// 
+        /// Check out action, set the last check-out time to given time
         /// </summary>
         /// <param name="time"></param>
         public void CheckOut(DateTime time)
@@ -91,11 +91,11 @@ namespace TreeAttendance.Models
         }
 
         /// <summary>
-        /// 
+        /// Update the check-in record, call this when updating check-ins
         /// </summary>
         /// <param name="checkIn"></param>
         /// <param name="checkOut"></param>
-        /// <param name="index"></param>
+        /// <param name="index">The index of the check-in record to update</param>
         public void Edit(TimeSpan checkIn, TimeSpan checkOut, int index)
         {
             AttendanceCheckIns[index].CheckIn = checkIn;
@@ -103,6 +103,11 @@ namespace TreeAttendance.Models
             ComputeStatus();
         }
 
+        /// <summary>
+        /// Delete the check-in record
+        /// </summary>
+        /// <param name="index">The index of the check-in record to delete</param>
+        /// <returns></returns>
         public bool Delete(int index)
         {
             if (index > AttendanceCheckIns.Count)
@@ -115,7 +120,7 @@ namespace TreeAttendance.Models
         }
 
         /// <summary>
-        /// 
+        /// Compute the attendance status based on check-in and check-out time
         /// </summary>
         private void ComputeStatus()
         {
@@ -127,21 +132,26 @@ namespace TreeAttendance.Models
             //if checked in on time
             else if (TimeSpan.Compare(AttendanceCheckIns.First().CheckIn, SystemGlobals.Instance.DefaultStartTime) == 1)
             {
+                //stay
                 if (TimeSpan.Compare(AttendanceCheckIns.First().CheckOut, SystemGlobals.Instance.DefaultEndTime) >= 0)
                 {
                     Status = AttendanceStatusEnum.Late;
                 }
+                //left
                 else
                 {
                     Status = AttendanceStatusEnum.LateLeft;
                 }
             }
+            //late
             else
             {
+                //stay
                 if (TimeSpan.Compare(AttendanceCheckIns.First().CheckOut, SystemGlobals.Instance.DefaultEndTime) >= 0)
                 {
                     Status = AttendanceStatusEnum.OnTime;
                 }
+                //left
                 else
                 {
                     Status = AttendanceStatusEnum.OnTimeLeft;
@@ -149,11 +159,17 @@ namespace TreeAttendance.Models
             }
         }
 
+        /// <summary>
+        /// set attendance status to absent excused
+        /// </summary>
         public void SetExcused()
         {
             Status = AttendanceStatusEnum.AbsentExcused;
         }
 
+        /// <summary>
+        /// set attendance status to absent unexcused
+        /// </summary>
         public void SetUnExcused()
         {
             Status = AttendanceStatusEnum.AbsentUnexcused;
