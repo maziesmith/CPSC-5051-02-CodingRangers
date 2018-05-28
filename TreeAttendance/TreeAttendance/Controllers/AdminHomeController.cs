@@ -8,11 +8,15 @@ namespace TreeAttendance.Controllers
 {
     public class AdminHomeController : Controller
     {
-        // GET: AdminHome
+        /// <summary>
+        /// Admin dashboard, shows quick and helpful information
+        /// </summary>
+        /// <returns></returns>
         public ActionResult Index()
         {
             return View();
         }
+
         /// <summary>
         /// Generates student's attendance reports
         /// </summary>
@@ -22,6 +26,7 @@ namespace TreeAttendance.Controllers
         {
             return View();
         }
+
         /// <summary>
         /// Show list of students + class so user can pick for
         /// attendance reports
