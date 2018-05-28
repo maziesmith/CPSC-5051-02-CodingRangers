@@ -33,7 +33,7 @@
                     <a href="~/Kiosk/CheckIn/@item.Attendance.Id" class="btn btn-success">Check In</a>
                 </div>
             }
-            else if (TimeSpan.Compare(item.Attendance.AttendanceCheckIns.Last().CheckOut, SystemGlobals.Instance.DefaultEndTime) == -1)
+            else if (TimeSpan.Compare(item.Attendance.AttendanceCheckIns.Last().CheckOut, SystemGlobals.Instance.DefaultEndTime) != 0)
             {
                 <div>
                     <a href="~/Kiosk/CheckIn/@item.Attendance.Id" class="btn btn-success">Check In</a>
