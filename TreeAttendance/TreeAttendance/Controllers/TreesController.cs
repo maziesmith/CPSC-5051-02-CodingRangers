@@ -58,7 +58,7 @@ namespace TreeAttendance.Controllers
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        public ActionResult Edit(int id)
+        public ActionResult Edit()
         {
             return View();
         }
