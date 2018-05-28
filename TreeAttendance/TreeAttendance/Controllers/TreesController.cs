@@ -3,19 +3,30 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using TreeAttendance.Backend;
+using TreeAttendance.Models;
 
 namespace TreeAttendance.Controllers
 {
     public class TreesController : Controller
     {
         // GET: Trees
+        /// <summary>
+        /// This page presents all students' trees
+        /// </summary>
+        /// <returns></returns>
         public ActionResult Index()
-        {
-            return View();
+        {      
+            return View();          
         }
 
         // GET: Trees/Details/5
-        public ActionResult Details(int id)
+        /// <summary>
+        ///ToDo: Detail information of each tree
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult Details()
         {
             return View();
         }
@@ -33,7 +44,6 @@ namespace TreeAttendance.Controllers
             try
             {
                 // TODO: Add insert logic here
-
                 return RedirectToAction("Index");
             }
             catch
@@ -43,7 +53,12 @@ namespace TreeAttendance.Controllers
         }
 
         // GET: Trees/Edit/5
-        public ActionResult Edit(int id)
+        /// <summary>
+        /// ToDo: Admin can edit tree stages and leaves count here
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public ActionResult Edit()
         {
             return View();
         }
