@@ -4,17 +4,26 @@
     ViewBag.Title = "Index";
 }
 
-<br />
 
-<h2>Student of the week</h2>
-<div class="col-3" align="center">
-    <img class="profile-img" src="~/Content/img/boy2.png" />
-    <br />
-    <div class="label">
-        Mike
+<div class="row">
+    <div class="col-6" align="center">
+        <h2 class="text-center">@Model.Date</h2>
+        <iframe class="clock" src="http://free.timeanddate.com/clock/i69eo221/n234/fs48/fc090/tct/pct/ftb" frameborder="0" width="325" height="57" allowTransparency="true"></iframe>
+        <h2>Check In Below</h2>
     </div>
+    <div class="col-4" align="center">
+        <h4>Student of the week</h4>
+        <img class="profile-img" src="~/Content/img/boy2.png" />
+        <br />
+        <div class="label">
+            Mike
+        </div>
+    </div>
+
+
 </div>
-<h2>@Model.Date, Check In Below</h2>
+
+
 
 
 <div class="row">
@@ -65,3 +74,6 @@
 <div>
     <a href="~/Kiosk/SetNewDay" class="btn btn-warning">New Day</a>
 </div>
+
+
+
