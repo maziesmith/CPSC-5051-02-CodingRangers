@@ -45,6 +45,12 @@
             else if (TimeSpan.Compare(item.Attendance.AttendanceCheckIns.Last().CheckOut, SystemGlobals.Instance.DefaultEndTime) != 0)
             {
                 <div>
+                    Checked out at:
+                </div>
+                <div>
+                    @item.Attendance.AttendanceCheckIns.Last().CheckOut.ToString(@"hh\:mm\:ss")
+                </div>
+                <div>
                     <a href="~/Kiosk/CheckIn/@item.Attendance.Id" class="btn btn-success">Check In</a>
                 </div>
             }
