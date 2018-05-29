@@ -4,7 +4,6 @@
     ViewBag.Title = "Index";
 }
 
-
 <div class="row">
     <div class="col-6" align="center">
         <h2 class="text-center">@Model.Date</h2>
@@ -30,7 +29,7 @@
     @foreach (var item in Model.AttendanceList)
     {
         <div class="col-3" align="center">
-            <img class="profile-img" src="~/Content/img/@item.Uri" />
+            <img class="profile-img rounded-circle" src="~/Content/img/@item.Uri" />
             <br />
             <div class="label">
                 @item.StudentName
