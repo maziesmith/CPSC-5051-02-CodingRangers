@@ -100,3 +100,18 @@ textarea {
 .bg-custom {
     background-color:rebeccapurple;
 }
+
+.breadcrumb {
+    background-color: darkseagreen;
+}
+
+.jumbotron {
+    background-color: darkseagreen;
+}
+
+.navbar {
+    background-color: darkseagreen;
+}
+.active-custom {
+    background-color: darkseagreen;
+}
