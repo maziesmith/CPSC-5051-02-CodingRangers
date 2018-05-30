@@ -34,6 +34,7 @@
 <div class="text-center">
     <h5>Read, Add, Update and Remove Student Profiles</h5>
 </div>
+<br/>
 <div class="row">
     @{
         if (Model.Count == 0)
@@ -59,7 +60,7 @@
         }
         <div class="col-3" align="center">
             <a href="~/Students/Create/">
-                <img src="~/Content/img/AddBtn.png" width="80" height="80" />
+                <img class="profile-img" src="~/Content/img/AddIcon.png" />
                 <br />
                 <div class="label">
                     Create

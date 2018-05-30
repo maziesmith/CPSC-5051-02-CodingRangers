@@ -254,6 +254,7 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\img\AddBtn.png" />
+    <Content Include="Content\img\AddIcon.png" />
     <Content Include="Content\img\AdminHome.png" />
     <Content Include="Content\img\Attendance.png" />
     <Content Include="Content\img\AttendanceCreate.png" />

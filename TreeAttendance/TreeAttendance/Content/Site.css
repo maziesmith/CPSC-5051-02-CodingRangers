@@ -72,6 +72,11 @@ textarea {
     width: 25px;
 }
 
+.profile-img-lg {
+    height: 200px;
+    width: 200px;
+}
+
 .card-custom {
     height: 310px;
     width: 250px;

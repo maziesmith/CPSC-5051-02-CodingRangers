@@ -33,18 +33,18 @@
 </nav>
 
 <div class="page-header">Student Details</div>
-
+<br />
 <div>
     <div class="col-3" align="center">
-        <img class ="profile-img rounded-circle" src="/Content/img/@Model.ProfilePictureUri"/>
+        <img class="profile-img rounded-circle" src="/Content/img/@Model.ProfilePictureUri" />
         <div class="label">
             @Model.Name
         </div>
-        <br/>
+        <br />
         <div>
             <a href="~/Students/Update/@Model.Id" class="btn btn-primary custom">Edit</a>
         </div>
-        <br/>
+        <br />
         <div>
             <a href="~/Students/Delete/@Model.Id" class="btn btn-danger custom">Remove</a>
         </div>
