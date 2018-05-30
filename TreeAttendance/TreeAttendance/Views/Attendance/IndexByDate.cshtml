@@ -54,16 +54,14 @@
     }
     else
     {
-
-        for (int i = Model.Count - 1; i >= 0; i--)
-        {
-            <div class="col-2">
-                <a href="~/Attendance/ByDate/@Model[i].Id" class="label">
-                    <h5>@Model[i].Date.ToString("MM/dd/yyyy")</h5>
-                </a>
-            </div>
-        }
-
+        <div class="row">
+            @for (int i = Model.Count - 1; i >= 0; i--)
+            {
+            <a href="~/Attendance/ByDate/@Model[i].Id" class="btn btn-primary btn-date">
+                @Model[i].Date.ToString("D")
+            </a>
+            }
+        </div>
 
     }
 

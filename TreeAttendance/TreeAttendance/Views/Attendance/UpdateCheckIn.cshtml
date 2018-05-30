@@ -37,11 +37,12 @@
     <img src="~/Content/img/@Model.Uri" width="100" height="100" />
     <div class="label">
         @Model.StudentName
+        <br/>
+        @Model.Date.ToString("D")
     </div>
-    <div class="label">
-        @Model.Date
-    </div>
+
 </div>
+<br/>
 @using (Html.BeginForm())
 {
     @Html.HiddenFor(m => m.AttendanceId)
