@@ -37,48 +37,51 @@
         <div class="label">
             @Model.StudentName
         </div>
+        <div class="label">
+            @Model.Date
+        </div>
         @if (Model.Attendance.Status == AttendanceStatusEnum.AbsentUnexcused)
-        {
-            <div>
-                <span class="badge badge-pill badge-danger">Absent Unexcused</span>
-            </div>
-        }
-        else if (Model.Attendance.Status == AttendanceStatusEnum.AbsentExcused)
-        {
-            <div>
-                <span class="badge badge-pill badge-warning">Absent Excused</span>
-            </div>
-        }
-        else if (Model.Attendance.Status == AttendanceStatusEnum.Late)
-        {
-            <div>
-                <span class="badge badge-pill badge-dark">Late</span>
-            </div>
-        }
-        else if (Model.Attendance.Status == AttendanceStatusEnum.LateLeft)
-        {
-            <div>
-                <span class="badge badge-pill badge-dark">Late</span>
-            </div>
-            <div>
-                <span class="badge badge-pill badge-info">Left Early</span>
-            </div>
-        }
-        else if (Model.Attendance.Status == AttendanceStatusEnum.OnTime)
-        {
-            <div>
-                <span class="badge badge-pill badge-success">On Time</span>
-            </div>
-        }
-        else if (Model.Attendance.Status == AttendanceStatusEnum.OnTimeLeft)
-        {
-            <div>
-                <span class="badge badge-pill badge-success">On time</span>
-            </div>
-            <div>
-                <span class="badge badge-pill badge-info">Left Early</span>
-            </div>
-        }
+    {
+        <div>
+            <span class="badge badge-pill badge-danger">Absent Unexcused</span>
+        </div>
+}
+else if (Model.Attendance.Status == AttendanceStatusEnum.AbsentExcused)
+{
+    <div>
+        <span class="badge badge-pill badge-warning">Absent Excused</span>
+    </div>
+}
+else if (Model.Attendance.Status == AttendanceStatusEnum.Late)
+{
+    <div>
+        <span class="badge badge-pill badge-dark">Late</span>
+    </div>
+}
+else if (Model.Attendance.Status == AttendanceStatusEnum.LateLeft)
+{
+    <div>
+        <span class="badge badge-pill badge-dark">Late</span>
+    </div>
+    <div>
+        <span class="badge badge-pill badge-info">Left Early</span>
+    </div>
+}
+else if (Model.Attendance.Status == AttendanceStatusEnum.OnTime)
+{
+    <div>
+        <span class="badge badge-pill badge-success">On Time</span>
+    </div>
+}
+else if (Model.Attendance.Status == AttendanceStatusEnum.OnTimeLeft)
+{
+    <div>
+        <span class="badge badge-pill badge-success">On time</span>
+    </div>
+    <div>
+        <span class="badge badge-pill badge-info">Left Early</span>
+    </div>
+}
     </div>
 </div>
 <div class="row">

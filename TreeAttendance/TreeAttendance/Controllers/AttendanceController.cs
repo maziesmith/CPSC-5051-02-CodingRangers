@@ -53,7 +53,7 @@ namespace TreeAttendance.Controllers
                 var myViewModel = new AttendanceViewModel
                 {
                     Attendance = item,
-                    Date = SchoolDayBackend.Read(item.SchoolDayId).Date.ToString("MM/dd/yyyy"),
+                    Date = SchoolDayBackend.Read(item.SchoolDayId).Date,
                 };
                 myData.AttendanceList.Add(myViewModel);
             }
@@ -113,7 +113,7 @@ namespace TreeAttendance.Controllers
             var myData = new AttendanceViewModel
             {
                 Attendance = myAttendance,
-                Date = SchoolDayBackend.Read(myAttendance.SchoolDayId).Date.ToString("MM/dd/yyyy"),
+                Date = SchoolDayBackend.Read(myAttendance.SchoolDayId).Date,
                 StudentName = StudentBackend.Read(myAttendance.StudentId).Name,
                 Uri = StudentBackend.Read(myAttendance.StudentId).ProfilePictureUri
             };
@@ -333,7 +333,7 @@ namespace TreeAttendance.Controllers
             var myData = new AttendanceViewModel
             {
                 Attendance = myAttendance,
-                Date = SchoolDayBackend.Read(myAttendance.SchoolDayId).Date.ToString("MM/dd/yyyy"),
+                Date = SchoolDayBackend.Read(myAttendance.SchoolDayId).Date,
                 StudentName = StudentBackend.Read(myAttendance.StudentId).Name,
                 Uri = StudentBackend.Read(myAttendance.StudentId).ProfilePictureUri
             };
