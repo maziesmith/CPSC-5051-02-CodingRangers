@@ -67,6 +67,11 @@ textarea {
     width: 100px;
 }
 
+.profile-img-sm {
+    height: 25px;
+    width: 25px;
+}
+
 .card-custom {
     height: 310px;
     width: 250px;

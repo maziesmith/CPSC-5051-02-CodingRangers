@@ -26,66 +26,111 @@
 
 <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
+        <li class="breadcrumb-item" aria-current="page"><a href="~/AdminHome">Admin</a></li>
         <li class="breadcrumb-item" aria-current="page"> <a href="~/Attendance">Attendance</a></li>
-        <li class="breadcrumb-item active" aria-current="page">By SchoolDay: @Model.Date</li>
+        <li class="breadcrumb-item active" aria-current="page">By Date: @Model.Date</li>
     </ol>
 </nav>
 <div class="page-header">@Model.Date</div>
-<div class="row">
-    @foreach (var item in Model.AttendanceList)
-    {
-        <div class="col-3" align="center">
-            <a href="~/Attendance/Read/@item.Attendance.Id">
-                <img class="profile-img" src="~/Content/img/@item.Uri" />
-                <br />
-                <div class="label">
-                    @item.StudentName
-                </div>
-                @if (item.Attendance.Status == AttendanceStatusEnum.AbsentUnexcused)
-                {
-                    <div>
-                        <span class="badge badge-pill badge-danger">Absent Unexcused</span>
-                    </div>
-                }
-                else if (item.Attendance.Status == AttendanceStatusEnum.AbsentExcused)
-                {
-                    <div>
-                        <span class="badge badge-pill badge-warning">Absent Excused</span>
-                    </div>
-                }
-                else if (item.Attendance.Status == AttendanceStatusEnum.Late)
-                {
-                    <div>
-                        <span class="badge badge-pill badge-dark">Late</span>
-                    </div>
-                }
-                else if (item.Attendance.Status == AttendanceStatusEnum.LateLeft)
-                {
-                    <div>
-                        <span class="badge badge-pill badge-dark">Late</span>
-                    </div>
-                    <div>
-                        <span class="badge badge-pill badge-info">Left Early</span>
-                    </div>
-                }
-                else if (item.Attendance.Status == AttendanceStatusEnum.OnTime)
-                {
-                    <div>
-                        <span class="badge badge-pill badge-success">On Time</span>
-                    </div>
-                }
-                else if (item.Attendance.Status == AttendanceStatusEnum.OnTimeLeft)
-                {
-                    <div>
-                        <span class="badge badge-pill badge-success">On time</span>
-                    </div>
-                    <div>
-                        <span class="badge badge-pill badge-info">Left Early</span>
-                    </div>
-                }
-            </a>
-        </div>
-
-    }
+<div class="text-center">
+    <h5>Attendance Records of @Model.Date</h5>
 </div>
+<br />
+@if (Model.AttendanceList.Count == 0)
+{
+    <br />
+    <p>No attendance record of this date</p>
+    <br />
+}
+else
+{
+    <div class="bg-white">
+        <table class="table table-striped">
+            <thead>
+                <tr class="thead">
+                    <th></th>
+                    <th>Student</th>
+                    <th>Status</th>
+                    <th>Check-in Time</th>
+                    <th>Check-out Time</th>
+                    <th>Details</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.AttendanceList)
+                {
+                    <tr>
+                        <td>
+                            <img class="profile-img-sm" src="~/Content/img/@item.Uri" />
+                        </td>
+                        <td>
+                            @item.StudentName
+                        </td>
+                        <td>
+                            @if (item.Attendance.Status == AttendanceStatusEnum.AbsentUnexcused)
+                            {
+
+                                <span class="badge badge-pill badge-danger">Absent Unexcused</span>
+
+                            }
+                            else if (item.Attendance.Status == AttendanceStatusEnum.AbsentExcused)
+                            {
+
+                                <span class="badge badge-pill badge-warning">Absent Excused</span>
+
+                            }
+                            else if (item.Attendance.Status == AttendanceStatusEnum.Late)
+                            {
+
+                                <span class="badge badge-pill badge-dark">Late</span>
+
+                            }
+                            else if (item.Attendance.Status == AttendanceStatusEnum.LateLeft)
+                            {
+
+                                <span class="badge badge-pill badge-dark">Late</span>
+
+                                <span class="badge badge-pill badge-info">Left Early</span>
+
+                            }
+                            else if (item.Attendance.Status == AttendanceStatusEnum.OnTime)
+                            {
+
+                                <span class="badge badge-pill badge-success">On Time</span>
+
+                            }
+                            else if (item.Attendance.Status == AttendanceStatusEnum.OnTimeLeft)
+                            {
+
+                                <span class="badge badge-pill badge-success">On time</span>
+
+                                <span class="badge badge-pill badge-info">Left Early</span>
+
+                            }
+                        </td>
+                        <td>
+                            @if (@item.Attendance.AttendanceCheckIns.Count != 0)
+                            {
+                                @item.Attendance.AttendanceCheckIns.First().CheckIn
+                            }
+
+                        </td>
+                        <td>
+                            @if (@item.Attendance.AttendanceCheckIns.Count != 0)
+                            {
+                                @item.Attendance.AttendanceCheckIns.First().CheckOut
+                            }
+                        </td>
+                        <td>
+                            <a href="~/Attendance/Read/@item.Attendance.Id">
+                                Details
+                            </a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+}
+
 <br />
