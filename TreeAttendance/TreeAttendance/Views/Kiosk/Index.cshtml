@@ -3,82 +3,85 @@
 @{
     ViewBag.Title = "Index";
 }
-
-<div class="row">
-    <div class="col-6" align="center">
-        <h2 class="text-center">@Model.Date.ToString("D")</h2>
-        <iframe class="clock" src="http://free.timeanddate.com/clock/i69eo221/n234/fs48/fc090/tct/pct/ftb" frameborder="0" width="325" height="57" allowTransparency="true"></iframe>
-        <h2>Check In Below</h2>
-    </div>
-    <div class="col-4" align="center">
-        <h4>Student of the week</h4>
-        <img class="profile-img" src="~/Content/img/boy2.png" />
-        <br />
-        <div class="label">
-            Mike
+<div style="background-color:skyblue">
+    <div class="row">
+        <div class="col-6" align="center">
+            <h2 class="text-center">@Model.Date.ToString("D")</h2>
+            <iframe class="clock" src="http://free.timeanddate.com/clock/i69eo221/n234/fs48/fc090/tct/pct/ftb" frameborder="0" width="325" height="57" allowTransparency="true"></iframe>
+            <h2>Check In Below</h2>
         </div>
-    </div>
-
-
-</div>
-
-
-
-
-<div class="row">
-    @foreach (var item in Model.AttendanceList)
-    {
-        <div class="col-3" align="center">
-            <img class="profile-img rounded-circle" src="~/Content/img/@item.Uri" />
+        <div class="col-4" align="center">
+            <h4>Student of the week</h4>
+            <img class="profile-img" src="~/Content/img/boy2.png" />
             <br />
             <div class="label">
-                @item.StudentName
+                Mike
             </div>
-
-            @if (item.Attendance.AttendanceCheckIns.Count == 0)
-            {
-                <div>
-                    <a href="~/Kiosk/CheckIn/@item.Attendance.Id" class="btn btn-success">Check In</a>
-                </div>
-            }
-            else if (TimeSpan.Compare(item.Attendance.AttendanceCheckIns.Last().CheckOut, SystemGlobals.Instance.DefaultEndTime) != 0)
-            {
-                <div>
-                    Checked out at:
-                </div>
-                <div>
-                    @item.Attendance.AttendanceCheckIns.Last().CheckOut.ToString(@"hh\:mm\:ss")
-                </div>
-                <div>
-                    <a href="~/Kiosk/CheckIn/@item.Attendance.Id" class="btn btn-success">Check In</a>
-                </div>
-            }
-            else
-            {
-                <div>
-                    Checked in at:
-                </div>
-                <div>
-                    @item.Attendance.AttendanceCheckIns.Last().CheckIn.ToString(@"hh\:mm\:ss")
-                </div>
-                <div>
-                    <a href="~/Kiosk/CheckOut/@item.Attendance.Id" class="btn btn-warning">Check Out</a>
-                </div>
-            }
         </div>
-    }
-</div>
-<br />
-<hr />
-<span style="font-size: 30px; color: #990000;">
-    Class Forrest
-</span>
 
-<img src="~/Content/img/forrest.png" width="1200" height="500" />
 
-<div>
-    <a href="~/Kiosk/SetNewDay" class="btn btn-warning">New Day</a>
+    </div>
+
+
+
+
+    <div class="row">
+        @foreach (var item in Model.AttendanceList)
+        {
+            <div class="col-3" align="center">
+                <img class="profile-img rounded-circle" src="~/Content/img/@item.Uri" />
+                <br />
+                <div class="label">
+                    @item.StudentName
+                </div>
+
+                @if (item.Attendance.AttendanceCheckIns.Count == 0)
+                {
+                    <div>
+                        <a href="~/Kiosk/CheckIn/@item.Attendance.Id" class="btn btn-success">Check In</a>
+                    </div>
+                }
+                else if (TimeSpan.Compare(item.Attendance.AttendanceCheckIns.Last().CheckOut, SystemGlobals.Instance.DefaultEndTime) != 0)
+                {
+                    <div>
+                        Checked out at:
+                    </div>
+                    <div>
+                        @item.Attendance.AttendanceCheckIns.Last().CheckOut.ToString(@"hh\:mm\:ss")
+                    </div>
+                    <div>
+                        <a href="~/Kiosk/CheckIn/@item.Attendance.Id" class="btn btn-success">Check In</a>
+                    </div>
+                }
+                else
+                {
+                    <div>
+                        Checked in at:
+                    </div>
+                    <div>
+                        @item.Attendance.AttendanceCheckIns.Last().CheckIn.ToString(@"hh\:mm\:ss")
+                    </div>
+                    <div>
+                        <a href="~/Kiosk/CheckOut/@item.Attendance.Id" class="btn btn-warning">Check Out</a>
+                    </div>
+                }
+            </div>
+        }
+    </div>
+    <br />
+    <span style="font-size: 30px; color: #990000;">
+        Class Forrest
+    </span>
+
+    <img src="~/Content/img/forrest.png" width="1110" height="500" />
+
+    <div>
+        <a href="~/Kiosk/SetNewDay" class="btn btn-primary">New Day</a>
+    </div>
+    <br/>
 </div>
+
+
 
 
 
