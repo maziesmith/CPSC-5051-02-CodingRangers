@@ -52,6 +52,9 @@ namespace TreeAttendance.Controllers
         /// <returns></returns>
         public ActionResult SetNewDay()
         {
+            //increment today's date
+            SystemGlobals.Instance.Today = SystemGlobals.Instance.Today.AddDays(1);
+
             //create a new school day
             var lastSchoolDay = new SchoolDayModel(SystemGlobals.Instance.Today, SystemGlobals.Instance.DefaultExpectedHours);
             SchoolDayBackend.Create(lastSchoolDay);
@@ -63,8 +66,6 @@ namespace TreeAttendance.Controllers
                 //create attendance record for each student
                 AttendanceBackend.Create(new AttendanceModel(item.Id, lastSchoolDay.Id));
             }
-            //increment today's date
-            SystemGlobals.Instance.Today = SystemGlobals.Instance.Today.AddDays(1);
 
             return RedirectToAction("Index");
         }
