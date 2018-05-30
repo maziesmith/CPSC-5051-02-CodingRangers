@@ -36,12 +36,10 @@
 
 <div class="page-header">Remove Student Profile</div>
 
-<div>
-    <div class="col-3" align="center">
-        <img class="profile-img rounded-circle" src="~/Content/img/@Model.ProfilePictureUri"/>
-        <div class="label">
-            @Model.Name
-        </div>
+<div class="text-center">
+    <img class="profile-img rounded-circle" src="~/Content/img/@Model.ProfilePictureUri" />
+    <div class="label">
+        @Model.Name
     </div>
 </div>
 <br />
@@ -53,13 +51,12 @@
     @Html.HiddenFor(m => m.ProfilePictureUri)
     <p class="alert alert-danger">Are you sure you want to <strong>remove</strong> this student profile?</p>
     <br />
-    <div class="row">
-        <div class="col-sm-1">
-            <a href="~/Students/Read/@Model.Id" class="btn btn-success" style="width: 80px">Cancel</a>
-        </div>
-        <div class="col-sm-1">
-            <button type="submit" class="btn btn-danger" style="width: 80px">Remove</button>
-        </div>
+    <div>
+        <a href="~/Students/Read/@Model.Id" class="btn btn-success" style="width: 80px">Cancel</a>
+    </div>
+    <br />
+    <div>
+        <button type="submit" class="btn btn-danger" style="width: 80px">Remove</button>
     </div>
 }
 
