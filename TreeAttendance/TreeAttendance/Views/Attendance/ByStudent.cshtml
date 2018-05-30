@@ -26,12 +26,16 @@
 
 <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
+        <li class="breadcrumb-item" aria-current="page"><a href="~/AdminHome">Admin</a></li>
         <li class="breadcrumb-item" aria-current="page"> <a href="~/Attendance">Attendance</a></li>
         <li class="breadcrumb-item active" aria-current="page">By Student: @Model.StudentName</li>
     </ol>
 </nav>
 <div class="page-header">@Model.StudentName</div>
 
+<div class="text-center">
+    <h5>Past Attendance Records of @Model.StudentName</h5>
+</div>
 <br />
 @if (Model.AttendanceList.Count == 0)
 {
@@ -41,17 +45,118 @@
 }
 else
 {
-    <div class="col-4">
-        <div class="list-group">
-            @for (int i = Model.AttendanceList.Count - 1; i >= 0; i--)
-            {
-                var item = Model.AttendanceList[i];
-                <a href="~/Attendance/Read/@item.Attendance.Id" class="list-group-item list-group-item-action list-group-item-success">
-                    @item.Date &nbsp;&nbsp;&nbsp;&nbsp;
-                    @if (item.Attendance.Status == AttendanceStatusEnum.AbsentUnexcused)
-                    {
+    <div class="bg-white">
+        <table class="table table-striped">
+            <thead>
+                <tr class="thead">
+                    <th>Date</th>
+                    <th>Status</th>
+                    <th>Check-in Time</th>
+                    <th>Check-out Time</th>
+                    <th>Details</th>
+                </tr>
+            </thead>
+            <tbody>
+                @for (int i = Model.AttendanceList.Count - 1; i >= Model.AttendanceList.Count - 11; i--)
+                {
+                    var item = Model.AttendanceList[i];
+                    <tr>
+                        <td>@item.Date</td>
+                        <td>
+                            @if (item.Attendance.Status == AttendanceStatusEnum.AbsentUnexcused)
+                            {
 
-                        <span class="badge badge-pill badge-danger">Absent Unexcused</span>
+                                <span class="badge badge-pill badge-danger">Absent Unexcused</span>
+
+                            }
+                            else if (item.Attendance.Status == AttendanceStatusEnum.AbsentExcused)
+                            {
+
+                                <span class="badge badge-pill badge-warning">Absent Excused</span>
+
+                            }
+                            else if (item.Attendance.Status == AttendanceStatusEnum.Late)
+                            {
+
+                                <span class="badge badge-pill badge-dark">Late</span>
+
+                            }
+                            else if (item.Attendance.Status == AttendanceStatusEnum.LateLeft)
+                            {
+
+                                <span class="badge badge-pill badge-dark">Late</span>
+
+                                <span class="badge badge-pill badge-info">Left Early</span>
+
+                            }
+                            else if (item.Attendance.Status == AttendanceStatusEnum.OnTime)
+                            {
+
+                                <span class="badge badge-pill badge-success">On Time</span>
+
+                            }
+                            else if (item.Attendance.Status == AttendanceStatusEnum.OnTimeLeft)
+                            {
+
+                                <span class="badge badge-pill badge-success">On time</span>
+
+                                <span class="badge badge-pill badge-info">Left Early</span>
+
+                            }
+                        </td>
+                        <td>
+                            @if (@item.Attendance.AttendanceCheckIns.Count != 0)
+                            {
+                                @item.Attendance.AttendanceCheckIns.First().CheckIn
+                            }
+
+                        </td>
+                        <td>
+                            @if (@item.Attendance.AttendanceCheckIns.Count != 0)
+                            {
+                                @item.Attendance.AttendanceCheckIns.First().CheckOut
+                            }
+                        </td>
+                        <td>
+                            <a href="~/Attendance/Read/@item.Attendance.Id">
+                                Details
+                            </a>
+                        </td>
+                    </tr>
+                }
+
+
+            </tbody>
+        </table>
+    </div>
+    <p>
+        <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+            See More
+        </a>
+    </p>
+    <div class="collapse" id="collapseExample">
+        <div class="bg-white">
+            <table class="table table-striped">
+                <thead>
+                    <tr class="thead">
+                        <th>Date</th>
+                        <th>Status</th>
+                        <th>Check-in Time</th>
+                        <th>Check-out Time</th>
+                        <th>Details</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @for (int i = Model.AttendanceList.Count - 12; i >= 0; i--)
+                {
+                    var item = Model.AttendanceList[i];
+                    <tr>
+                        <td>@item.Date</td>
+                        <td>
+                            @if (item.Attendance.Status == AttendanceStatusEnum.AbsentUnexcused)
+                        {
+
+                            <span class="badge badge-pill badge-danger">Absent Unexcused</span>
 
                     }
                     else if (item.Attendance.Status == AttendanceStatusEnum.AbsentExcused)
@@ -59,39 +164,61 @@ else
 
                         <span class="badge badge-pill badge-warning">Absent Excused</span>
 
-                    }
-                    else if (item.Attendance.Status == AttendanceStatusEnum.Late)
-                    {
+                }
+                else if (item.Attendance.Status == AttendanceStatusEnum.Late)
+                {
 
-                        <span class="badge badge-pill badge-dark">Late</span>
+                    <span class="badge badge-pill badge-dark">Late</span>
 
-                    }
-                    else if (item.Attendance.Status == AttendanceStatusEnum.LateLeft)
-                    {
-
-                        <span class="badge badge-pill badge-dark">Late</span>
-
-                        <span class="badge badge-pill badge-info">Left Early</span>
-
-                    }
-                    else if (item.Attendance.Status == AttendanceStatusEnum.OnTime)
-                    {
-
-                        <span class="badge badge-pill badge-success">On Time</span>
-
-                    }
-                    else if (item.Attendance.Status == AttendanceStatusEnum.OnTimeLeft)
-                    {
-
-                        <span class="badge badge-pill badge-success">On time</span>
-
-                        <span class="badge badge-pill badge-info">Left Early</span>
-
-                    }
-                </a>
             }
+            else if (item.Attendance.Status == AttendanceStatusEnum.LateLeft)
+            {
+
+                <span class="badge badge-pill badge-dark">Late</span>
+
+                <span class="badge badge-pill badge-info">Left Early</span>
+
+        }
+        else if (item.Attendance.Status == AttendanceStatusEnum.OnTime)
+        {
+
+            <span class="badge badge-pill badge-success">On Time</span>
+
+    }
+    else if (item.Attendance.Status == AttendanceStatusEnum.OnTimeLeft)
+    {
+
+        <span class="badge badge-pill badge-success">On time</span>
+
+        <span class="badge badge-pill badge-info">Left Early</span>
+
+}
+                        </td>
+                        <td>
+                            @if (@item.Attendance.AttendanceCheckIns.Count != 0)
+                        {
+                            @item.Attendance.AttendanceCheckIns.First().CheckIn
+                    }
+
+                        </td>
+                        <td>
+                            @if (@item.Attendance.AttendanceCheckIns.Count != 0)
+                        {
+                            @item.Attendance.AttendanceCheckIns.First().CheckOut
+                    }
+                        </td>
+                        <td>
+                            <a href="~/Attendance/Read/@item.Attendance.Id">
+                                Details
+                            </a>
+                        </td>
+                    </tr>
+            }
+
+
+                </tbody>
+            </table>
         </div>
     </div>
-
 }
 
