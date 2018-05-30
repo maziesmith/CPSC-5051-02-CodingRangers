@@ -4,16 +4,19 @@
     ViewBag.Title = "Index";
 }
 <div style="background-color:skyblue">
+    <br/>
     <div class="row">
-        <div class="col-6" align="center">
-            <h2 class="text-center">@Model.Date.ToString("D")</h2>
-            <iframe class="clock" src="http://free.timeanddate.com/clock/i69eo221/n234/fs48/fc090/tct/pct/ftb" frameborder="0" width="325" height="57" allowTransparency="true"></iframe>
-            <h2>Check In Below</h2>
-        </div>
-        <div class="col-4" align="center">
-            <h4>Student of the week</h4>
-            <img class="profile-img" src="~/Content/img/boy2.png" />
+        <div class="col-9" align="center">
+            <h2 class="text-center text-light">@Model.Date.ToString("D")</h2>
             <br />
+            <iframe src="http://free.timeanddate.com/clock/i69guuih/n234/fn7/fs45/fcfff/tct/pct/ftb/th1" frameborder="0" width="206" height="65" allowTransparency="true"></iframe>
+            <br /><br />
+            <h2 class="text-light">Please Check in below</h2>
+        </div>
+        <div class="card bg-light" align="center" >
+            <div class="card-header">Student of the week</div>
+            <br/>
+            <img class="profile-img rounded-circle" src="~/Content/img/boy2.png" />
             <div class="label">
                 Mike
             </div>
@@ -21,9 +24,9 @@
 
 
     </div>
+    <br/>
 
-
-
+    <hr/>
 
     <div class="row">
         @foreach (var item in Model.AttendanceList)
@@ -69,9 +72,7 @@
         }
     </div>
     <br />
-    <span style="font-size: 30px; color: #990000;">
-        Class Forrest
-    </span>
+ 
 
     <img src="~/Content/img/forrest.png" width="1110" height="500" />
 
