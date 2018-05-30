@@ -38,7 +38,6 @@ textarea {
     padding-bottom: 10px;
     font-family:sans-serif;
     font-size:30px;
-    color:forestgreen;
     text-align:center;
     font-weight:bold;
 }
@@ -93,25 +92,17 @@ textarea {
     margin: 10px;
 }
 
-.table-custom {
-    margin: 14px;
-}
-
-.bg-custom {
-    background-color:rebeccapurple;
-}
 
 .breadcrumb {
-    background-color: darkseagreen;
+    border-bottom: outset;
+    border-left: outset;
+    border-right: outset;
+    border-bottom-width: 1px;
+    border-left-width: 1px;
+    border-right-width: 1px;
 }
 
-.jumbotron {
-    background-color: darkseagreen;
+.card {
+    background-color:white;
 }
 
-.navbar {
-    background-color: darkseagreen;
-}
-.active-custom {
-    background-color: darkseagreen;
-}
