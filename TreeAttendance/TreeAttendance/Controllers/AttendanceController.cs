@@ -88,7 +88,7 @@ namespace TreeAttendance.Controllers
                 };
                 myData.AttendanceList.Add(myViewModel);
             }
-            myData.Date = SchoolDayBackend.Read(id).Date.ToString("MM/dd/yyyy");
+            myData.Date = SchoolDayBackend.Read(id).Date;
 
             return View(myData);
         }

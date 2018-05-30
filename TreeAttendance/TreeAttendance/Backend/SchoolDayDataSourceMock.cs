@@ -130,11 +130,14 @@ namespace TreeAttendance.Backend
         /// </summary>
         public void Initialize()
         {
-            //create 15 school days
-            for (int i = 1; i < 16; i++)
+            //create school days
+            for (int i = 30; i >= 0; i--)
             {
-                string date = "5/" + i + "/2018";
-                Create(new SchoolDayModel(DateTime.Parse(date), new TimeSpan(6, 0, 0)));
+                DateTime date = SystemGlobals.Instance.Today.AddDays(-i);
+                if((date.DayOfWeek != DayOfWeek.Saturday) && (date.DayOfWeek != DayOfWeek.Sunday))
+                {
+                    Create(new SchoolDayModel(SystemGlobals.Instance.Today.AddDays(-i), new TimeSpan(6, 0, 0)));
+                }               
             }
         }
     }

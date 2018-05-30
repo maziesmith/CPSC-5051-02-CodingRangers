@@ -28,13 +28,11 @@
     <ol class="breadcrumb">
         <li class="breadcrumb-item" aria-current="page"><a href="~/AdminHome">Admin</a></li>
         <li class="breadcrumb-item" aria-current="page"> <a href="~/Attendance">Attendance</a></li>
-        <li class="breadcrumb-item active" aria-current="page">By Date: @Model.Date</li>
+        <li class="breadcrumb-item active" aria-current="page">By Date: @Model.Date.ToString("D")</li>
     </ol>
 </nav>
-<div class="page-header">@Model.Date</div>
-<div class="text-center">
-    <h5>Attendance Records of @Model.Date</h5>
-</div>
+<div class="page-header">Attendance Records of @Model.Date.ToString("D")</div>
+
 <br />
 @if (Model.AttendanceList.Count == 0)
 {

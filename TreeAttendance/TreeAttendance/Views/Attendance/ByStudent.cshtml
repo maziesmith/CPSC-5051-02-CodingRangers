@@ -31,11 +31,8 @@
         <li class="breadcrumb-item active" aria-current="page">By Student: @Model.StudentName</li>
     </ol>
 </nav>
-<div class="page-header">@Model.StudentName</div>
+<div class="page-header">Past Attendance Records of @Model.StudentName</div>
 
-<div class="text-center">
-    <h5>Past Attendance Records of @Model.StudentName</h5>
-</div>
 <br />
 @if (Model.AttendanceList.Count == 0)
 {

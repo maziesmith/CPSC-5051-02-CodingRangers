@@ -41,7 +41,7 @@ namespace TreeAttendance.Controllers
                 };
                 myData.AttendanceList.Add(myViewModel);
             }
-            myData.Date = lastSchoolDay.Date.ToString("MM/dd/yyyy");
+            myData.Date = lastSchoolDay.Date;
 
             return View(myData);
         }
@@ -53,7 +53,11 @@ namespace TreeAttendance.Controllers
         public ActionResult SetNewDay()
         {
             //increment today's date
-            SystemGlobals.Instance.Today = SystemGlobals.Instance.Today.AddDays(1);
+            do
+            {
+                SystemGlobals.Instance.Today = SystemGlobals.Instance.Today.AddDays(1);
+            } while ((SystemGlobals.Instance.Today.DayOfWeek == DayOfWeek.Saturday) || (SystemGlobals.Instance.Today.DayOfWeek == DayOfWeek.Sunday));
+
 
             //create a new school day
             var lastSchoolDay = new SchoolDayModel(SystemGlobals.Instance.Today, SystemGlobals.Instance.DefaultExpectedHours);
