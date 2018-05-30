@@ -26,7 +26,7 @@
 
 <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
-        <li class="breadcrumb-item" aria-current="page"> <a href="~/AdminHome">Admin Home</a></li>
+        <li class="breadcrumb-item" aria-current="page"> <a href="~/AdminHome">Admin</a></li>
         <li class="breadcrumb-item" aria-current="page"> <a href="~/Students">Students</a></li>
         <li class="breadcrumb-item active" aria-current="page">@Model.Name</li>
     </ol>
@@ -36,7 +36,7 @@
 
 <div>
     <div class="col-3" align="center">
-        <img class ="profile-img" src="/Content/img/@Model.ProfilePictureUri"/>
+        <img class ="profile-img rounded-circle" src="/Content/img/@Model.ProfilePictureUri"/>
         <div class="label">
             @Model.Name
         </div>

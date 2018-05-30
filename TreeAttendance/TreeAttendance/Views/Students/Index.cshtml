@@ -24,16 +24,17 @@
 </ul>
 <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
-        <li class="breadcrumb-item" aria-current="page"><a href="~/AdminHome">Admin Home</a></li>
-        <li class="breadcrumb-item" aria-current="page"> <a href="~/Students">Students</a></li>
+        <li class="breadcrumb-item" aria-current="page"><a href="~/AdminHome">Admin</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Students</li>
     </ol>
 </nav>
 
 
 <div class="page-header">Student Profiles</div>
-
+<div class="text-center">
+    <h5>You can Read, Add, Update and Remove Student Profiles here</h5>
+</div>
 <div class="row">
-
     @{
         if (Model.Count == 0)
         {
@@ -47,7 +48,7 @@
             {
                 <div class="col-3" align="center">
                     <a id="@item.Id" href="~/Students/Read/@item.Id">
-                        <img class="profile-img" src="~/Content/img/@item.ProfilePictureUri" />
+                        <img class="profile-img rounded-circle" src="~/Content/img/@item.ProfilePictureUri" />
                         <div class="label">
                             @item.Name
                         </div>

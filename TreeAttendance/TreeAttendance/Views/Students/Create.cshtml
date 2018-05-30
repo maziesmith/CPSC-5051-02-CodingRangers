@@ -25,7 +25,7 @@
 
 <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
-        <li class="breadcrumb-item" aria-current="page"><a href="~/AdminHome">Admin Home</a></li>
+        <li class="breadcrumb-item" aria-current="page"><a href="~/AdminHome">Admin</a></li>
         <li class="breadcrumb-item" aria-current="page"> <a href="~/Students">Students</a></li>
         <li class="breadcrumb-item" aria-current="page active">Create a New Student Profile</li>
     </ol>
@@ -35,17 +35,17 @@
 <br />
 @using (Html.BeginForm())
 {
-    <p class="alert alert-info">All fields are <strong>required</strong>.</p>
+    <p class="alert alert-primary">All fields are <strong>required</strong>.</p>
     @Html.AntiForgeryToken()
     <div class="form-group">
         @Html.LabelFor(m => m.Name)
         @Html.TextBoxFor(m => m.Name, new { @class = "form-control" })
-        @Html.ValidationMessageFor(m => m.Name)
+        @Html.ValidationMessageFor(m => m.Name, null, new { @class = "text-danger" })
     </div>
     <div class="form-group">
         @Html.LabelFor(m => m.ProfilePictureUri)
         @Html.TextBoxFor(m => m.ProfilePictureUri, new { @class = "form-control" })
-        @Html.ValidationMessageFor(m => m.ProfilePictureUri)
+        @Html.ValidationMessageFor(m => m.ProfilePictureUri, null, new { @class = "text-danger" })
     </div>
     <br />
     <div class="row">
