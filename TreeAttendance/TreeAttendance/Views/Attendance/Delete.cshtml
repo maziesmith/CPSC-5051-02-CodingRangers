@@ -27,40 +27,37 @@
 <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
         <li class="breadcrumb-item" aria-current="page"> <a href="~/Attendance">Attendance</a></li>
-        <li class="breadcrumb-item" aria-current="page"><a href="~/Attendance/Read/@Model.Attendance.Id">@Model.StudentName, @Model.Date</a></li>
+        <li class="breadcrumb-item" aria-current="page"><a href="~/Attendance/Read/@Model.Attendance.Id">@Model.StudentName, @Model.Date.ToString("D")</a></li>
         <li class="breadcrumb-item" aria-current="page active">Remove</li>
     </ol>
 </nav>
 <div class="page-header">Remove Attendance</div>
 
-<div class="row">
-    <div class="col-3" align="center">
-        <img src="~/Content/img/@Model.Uri" width="100" height="100" />
+<div class="text-center">
+
+        <img class="profile-img" src="~/Content/img/@Model.Uri" />
         <div class="label">
             @Model.StudentName
+            <br/>
+            @Model.Date.ToString("D")
         </div>
-        <div class="label">
-            @Model.Date
-        </div>
-    </div>
 </div>
 
-
+<br/>
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
     @Html.HiddenFor(m => m.Attendance.Id)
     <p class="alert alert-danger">Are you sure you want to <strong>remove</strong> this attendance record?</p>
     <br />
-    <div class="row">
-        <div class="col-sm-1">
-            @Html.ActionLink("Cancel", "Read", new { id = Model.Attendance.Id }, new { @class = "btn btn-success" })
-        </div>
-        <div class="col-sm-1">
-            <input type="submit" value="Remove" class="btn btn-danger">
-        </div>
-
-
+    <div>
+        @Html.ActionLink("Cancel", "Read", new { id = Model.Attendance.Id }, new { @class = "btn btn-success custom" })
     </div>
+    <br/>
+    <div>
+        <input type="submit" value="Remove" class="btn btn-danger custom">
+    </div>
+
+
 }
 

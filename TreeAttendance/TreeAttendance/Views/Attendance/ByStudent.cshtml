@@ -58,7 +58,7 @@ else
                 {
                     var item = Model.AttendanceList[i];
                     <tr>
-                        <td>@item.Date</td>
+                        <td>@item.Date.ToString("D")</td>
                         <td>
                             @if (item.Attendance.Status == AttendanceStatusEnum.AbsentUnexcused)
                             {

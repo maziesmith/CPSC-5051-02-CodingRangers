@@ -28,30 +28,25 @@
 <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
         <li class="breadcrumb-item" aria-current="page"> <a href="~/Attendance">Attendance</a></li>
-        <li class="breadcrumb-item" aria-current="page"><a href="~/Attendance/Read/@Model.AttendanceId">@Model.StudentName, @Model.Date</a></li>
+        <li class="breadcrumb-item" aria-current="page"><a href="~/Attendance/Read/@Model.AttendanceId">@Model.StudentName, @Model.Date.ToString("D")</a></li>
         <li class="breadcrumb-item" aria-current="page active">Delete Check-in #@(Model.Index + 1)</li>
     </ol>
 </nav>
 
 <div class="page-header">Remove Check-in</div>
-<div class="row">
-    <div class="col-3" align="center">
-        <img src="~/Content/img/@Model.Uri" width="100" height="100" />
-        <div class="label">
-            @Model.StudentName
-        </div>
-        <div class="label">
-            @Model.Date
-        </div>
-        <div class="label">
-            Check-in #@(Model.Index + 1)
-        </div>
-        <div class="label">
-            Check-in Time:<br /> @Model.CheckIn
-        </div>
-        <div class="label">
-            Check-out Time:<br /> @Model.CheckOut
-        </div>
+<br />
+<div class="text-center">
+    <img class="profile-img" src="~/Content/img/@Model.Uri" />
+    <div class="label">
+        @Model.StudentName
+        <br />
+        @Model.Date
+        <br />
+        Check-in #@(Model.Index + 1)
+        <br />
+        Check-in Time:<br /> @Model.CheckIn
+        <br />
+        Check-out Time:<br /> @Model.CheckOut
     </div>
 </div>
 <br />
@@ -61,14 +56,13 @@
     @Html.HiddenFor(m => m.AttendanceId)
     <p class="alert alert-danger">Are you sure you want to <strong>remove</strong> this attendance check-in?</p>
     <br />
-    <div class="row">
-        <div class="col-sm-1">
-            @Html.ActionLink("Cancel", "Read", new { id = Model.AttendanceId }, new { @class = "btn btn-success" })
+        <div>
+            @Html.ActionLink("Cancel", "Read", new { id = Model.AttendanceId }, new { @class = "btn btn-success custom" })
         </div>
-        <div class="col-sm-1">
-            <input type="submit" value="Remove" class="btn btn-danger">
+        <br/>
+        <div>
+            <input type="submit" value="Remove" class="btn btn-danger custom">
         </div>
 
 
-    </div>
 }
