@@ -1,10 +1,10 @@
-﻿using TreeAttendance.Backend;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web.Mvc;
+using TreeAttendance.Backend;
 using TreeAttendance.Models;
 using TreeAttendance.Models.ViewModels;
-using System.Web.Mvc;
-using System.Linq;
-using System.Collections.Generic;
-using System;
 
 namespace TreeAttendance.Controllers
 {
@@ -122,6 +122,15 @@ namespace TreeAttendance.Controllers
         /// </summary>
         /// <returns></returns>
         public ActionResult KioskTree()
+        {
+            return View();
+        }
+
+        /// <summary>
+        /// Kiosk Login
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult Login()
         {
             return View();
         }

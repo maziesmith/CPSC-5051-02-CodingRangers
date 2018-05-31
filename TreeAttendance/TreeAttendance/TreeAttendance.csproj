@@ -376,6 +376,7 @@
     <Content Include="Views\AdminHome\ClassReports.cshtml" />
     <Content Include="Views\AdminHome\Login.cshtml" />
     <Content Include="Views\StudentHome\Login.cshtml" />
+    <Content Include="Views\Kiosk\Login.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
