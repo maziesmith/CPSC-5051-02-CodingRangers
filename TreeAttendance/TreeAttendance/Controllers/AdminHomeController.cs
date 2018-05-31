@@ -43,5 +43,14 @@ namespace TreeAttendance.Controllers
         {
             return View();
         }
+
+        /// <summary>
+        /// Admin Login
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult Login()
+        {
+            return View();
+        }
     }
 }

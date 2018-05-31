@@ -374,6 +374,7 @@
     <Content Include="Views\Attendance\CreateCheckIn.cshtml" />
     <Content Include="Views\Attendance\DeleteCheckIn.cshtml" />
     <Content Include="Views\AdminHome\ClassReports.cshtml" />
+    <Content Include="Views\AdminHome\Login.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
