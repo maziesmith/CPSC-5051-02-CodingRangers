@@ -57,6 +57,7 @@ namespace TreeAttendance.Controllers
         /// <returns></returns>
         public ActionResult ResetApp()
         {
+            Models.SystemGlobals.Instance.Today = DateTime.Now.AddHours(-7);
             Backend.StudentBackend.Instance.Reset();
             Backend.SchoolDayBackend.Instance.Reset();
             Backend.AttendanceBackend.Instance.Reset();

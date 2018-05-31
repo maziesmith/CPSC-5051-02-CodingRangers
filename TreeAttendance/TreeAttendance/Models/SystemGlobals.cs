@@ -52,6 +52,6 @@ namespace TreeAttendance.Models
         public TimeSpan DefaultEndTime = new TimeSpan(15, 45, 0);
 
         //Today's date, for demo purposes
-        public DateTime Today = DateTime.Now.Date;
+        public DateTime Today = DateTime.Now.AddHours(-7);
     }
 }
