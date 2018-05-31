@@ -109,14 +109,15 @@ else
                         <td>
                             @if (@item.Attendance.AttendanceCheckIns.Count != 0)
                             {
-                                @item.Attendance.AttendanceCheckIns.First().CheckIn
+                                @item.Attendance.AttendanceCheckIns.First().CheckIn.ToString(@"hh\:mm")
+
                             }
 
                         </td>
                         <td>
                             @if (@item.Attendance.AttendanceCheckIns.Count != 0)
                             {
-                                @item.Attendance.AttendanceCheckIns.First().CheckOut
+                                @item.Attendance.AttendanceCheckIns.First().CheckOut.ToString(@"hh\:mm")
                             }
                         </td>
                         <td>

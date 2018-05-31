@@ -44,9 +44,9 @@
         <br />
         Check-in #@(Model.Index + 1)
         <br />
-        Check-in Time:<br /> @Model.CheckIn
+        Check-in Time:<br /> @Model.CheckIn.ToString(@"hh\:mm")
         <br />
-        Check-out Time:<br /> @Model.CheckOut
+        Check-out Time:<br /> @Model.CheckOut.ToString(@"hh\:mm")
     </div>
 </div>
 <br />

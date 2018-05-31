@@ -31,9 +31,7 @@ namespace TreeAttendance.Models
         /// <param name="checkOut"></param>
         public AttendanceCheckInModel(TimeSpan checkIn)
         {
-
-            //Attendance.AttendanceCheckIns.Add(this);
-            CheckIn = checkIn;
+            CheckIn = new TimeSpan(checkIn.Hours, checkIn.Minutes, 0);
             CheckOut = SystemGlobals.Instance.DefaultEndTime;
         }
     }

@@ -53,5 +53,6 @@ namespace TreeAttendance.Models
 
         //Today's date, for demo purposes
         public DateTime Today = DateTime.Now.AddHours(-7);
+
     }
 }

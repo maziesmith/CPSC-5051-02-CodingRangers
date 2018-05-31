@@ -33,7 +33,7 @@
 </nav>
 
 <div class="page-header">Create Check-in</div>
-<br/>
+<br />
 <div class="text-center">
     <img src="~/Content/img/@Model.Uri" width="100" height="100" />
     <div class="label">
@@ -47,6 +47,9 @@
 {
     @Html.HiddenFor(m => m.AttendanceId)
     @Html.HiddenFor(m => m.Index)
+    @Html.HiddenFor(m => m.Uri)
+    @Html.HiddenFor(m => m.Date)
+    @Html.HiddenFor(m => m.StudentName)
     <p class="alert alert-info">All fields are <strong>required</strong>.</p>
     @Html.AntiForgeryToken()
     <div class="form-group">
@@ -56,7 +59,7 @@
     </div>
     <div class="form-group">
         @Html.LabelFor(m => m.CheckOut)
-        @Html.TextBoxFor(m => m.CheckOut, new { @class = "form-control" })
+        @Html.TextBoxFor(m => m.CheckOut, new {@class = "form-control" })
         @Html.ValidationMessageFor(m => m.CheckOut)
     </div>
     <br />

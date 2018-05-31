@@ -86,7 +86,7 @@ namespace TreeAttendance.Models
         /// <param name="time"></param>
         public void CheckOut(DateTime time)
         {
-            AttendanceCheckIns.Last().CheckOut = time.TimeOfDay;
+            AttendanceCheckIns.Last().CheckOut = new TimeSpan(time.Hour, time.Minute, 0);
             ComputeStatus();
         }
 

@@ -9,7 +9,7 @@
         <div class="col-9" align="center">
             <h2 class="text-center text-light">@Model.Date.ToString("D")</h2>
             <br />
-            <iframe src="http://free.timeanddate.com/clock/i69guuih/n234/fn7/fs45/fcfff/tct/pct/ftb/th1" frameborder="0" width="206" height="65" allowTransparency="true"></iframe>
+            <iframe src="http://free.timeanddate.com/clock/i69i8yxu/n234/fs48/fcfff/tct/pct/th1/ts1" frameborder="0" width="123" height="57" allowTransparency="true"></iframe>
             <br /><br />
             <h2 class="text-light">Please Check in below</h2>
         </div>
@@ -50,7 +50,7 @@
                         Checked out at:
                     </div>
                     <div>
-                        @item.Attendance.AttendanceCheckIns.Last().CheckOut.ToString(@"hh\:mm\:ss")
+                        @item.Attendance.AttendanceCheckIns.Last().CheckOut.ToString(@"hh\:mm")
                     </div>
                     <div>
                         <a href="~/Kiosk/CheckIn/@item.Attendance.Id" class="btn btn-success">Check In</a>
@@ -62,7 +62,7 @@
                         Checked in at:
                     </div>
                     <div>
-                        @item.Attendance.AttendanceCheckIns.Last().CheckIn.ToString(@"hh\:mm\:ss")
+                        @item.Attendance.AttendanceCheckIns.Last().CheckIn.ToString(@"hh\:mm")
                     </div>
                     <div>
                         <a href="~/Kiosk/CheckOut/@item.Attendance.Id" class="btn btn-warning">Check Out</a>

@@ -37,16 +37,19 @@
     <img src="~/Content/img/@Model.Uri" width="100" height="100" />
     <div class="label">
         @Model.StudentName
-        <br/>
+        <br />
         @Model.Date.ToString("D")
     </div>
 
 </div>
-<br/>
+<br />
 @using (Html.BeginForm())
 {
     @Html.HiddenFor(m => m.AttendanceId)
     @Html.HiddenFor(m => m.Index)
+    @Html.HiddenFor(m => m.Uri)
+    @Html.HiddenFor(m => m.Date)
+    @Html.HiddenFor(m => m.StudentName)
     <p class="alert alert-info">All fields are <strong>required</strong>.</p>
     @Html.AntiForgeryToken()
     <div class="form-group">

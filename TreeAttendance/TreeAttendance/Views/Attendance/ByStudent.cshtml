@@ -104,14 +104,16 @@ else
                         <td>
                             @if (@item.Attendance.AttendanceCheckIns.Count != 0)
                             {
-                                @item.Attendance.AttendanceCheckIns.First().CheckIn
+                                var inTime = string.Format("{0:00}:{1:00}", @item.Attendance.AttendanceCheckIns.First().CheckIn.Hours, @item.Attendance.AttendanceCheckIns.First().CheckIn.Minutes);
+                                @inTime
                             }
 
                         </td>
                         <td>
                             @if (@item.Attendance.AttendanceCheckIns.Count != 0)
                             {
-                                @item.Attendance.AttendanceCheckIns.First().CheckOut
+                                var outTime = string.Format("{0:00}:{1:00}", @item.Attendance.AttendanceCheckIns.First().CheckOut.Hours, @item.Attendance.AttendanceCheckIns.First().CheckOut.Minutes);
+                                @outTime
                             }
                         </td>
                         <td>
@@ -141,7 +143,7 @@ else
             </div>
         </div>
     </div>
-    <br/>
+    <br />
     <div class="collapse" id="collapseExample">
         <div class="bg-white">
             <table class="table table-striped">
@@ -205,14 +207,14 @@ else
                             <td>
                                 @if (@item.Attendance.AttendanceCheckIns.Count != 0)
                                 {
-                                    @item.Attendance.AttendanceCheckIns.First().CheckIn
+                                    @item.Attendance.AttendanceCheckIns.First().CheckIn.ToString(@"hh\:mm")
                                 }
 
                             </td>
                             <td>
                                 @if (@item.Attendance.AttendanceCheckIns.Count != 0)
                                 {
-                                    @item.Attendance.AttendanceCheckIns.First().CheckOut
+                                    @item.Attendance.AttendanceCheckIns.First().CheckOut.ToString(@"hh\:mm")
                                 }
                             </td>
                             <td>
