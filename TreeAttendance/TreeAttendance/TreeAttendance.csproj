@@ -354,8 +354,6 @@
     <Content Include="Views\Students\Delete.cshtml" />
     <Content Include="Views\Attendance\Index.cshtml" />
     <Content Include="Views\Attendance\Delete.cshtml" />
-    <Content Include="Views\AdminHome\Reports.cshtml" />
-    <Content Include="Views\AdminHome\ReportsIndex.cshtml" />
     <Content Include="Views\Kiosk\Index.cshtml" />
     <Content Include="Views\Kiosk\KioskTree.cshtml" />
     <Content Include="Views\Trees\Index.cshtml" />
@@ -374,7 +372,6 @@
     <Content Include="Views\Attendance\Read.cshtml" />
     <Content Include="Views\Attendance\CreateCheckIn.cshtml" />
     <Content Include="Views\Attendance\DeleteCheckIn.cshtml" />
-    <Content Include="Views\AdminHome\ClassReports.cshtml" />
     <Content Include="Views\AdminHome\Login.cshtml" />
     <Content Include="Views\StudentHome\Login.cshtml" />
     <Content Include="Views\Kiosk\Login.cshtml" />
