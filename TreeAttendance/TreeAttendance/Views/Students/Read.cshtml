@@ -12,23 +12,27 @@
 </nav>
 
 <div class="page-header">Student Details</div>
-<br />
-<br />
-<div class="text-center">
+<div class="row justify-content-md-center">
+    <div class="col-lg-auto" style="display:flex; text-align:center">
+        <div class="col">
+            <div>
+                <img class="profile-img rounded-circle" src="/Content/img/@Model.ProfilePictureUri" />
+            </div>
+            <div class="label">
+                @Model.Name
+            </div>
+            <br />
+            <div>
+                <a href="~/Students/Update/@Model.Id" class="btn btn-primary btn-block">Edit</a>
+            </div>
+            <br />
+            <div>
+                <a href="~/Students/Delete/@Model.Id" class="btn btn-danger btn-block">Remove</a>
+            </div>
+        </div>
 
-        <img class="profile-img rounded-circle" src="/Content/img/@Model.ProfilePictureUri" />
-        <div class="label">
-            @Model.Name
-        </div>
         <br />
-        <div>
-            <a href="~/Students/Update/@Model.Id" class="btn btn-primary custom">Edit</a>
-        </div>
-        <br />
-        <div>
-            <a href="~/Students/Delete/@Model.Id" class="btn btn-danger custom">Remove</a>
-        </div>
-        <br />
+    </div>
 </div>
 <br />
 
