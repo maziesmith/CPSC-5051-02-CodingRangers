@@ -135,3 +135,7 @@ textarea {
     height: 15rem;
     margin: 10px;
 }
+
+.row-custom {
+    margin: 20px;
+}

@@ -64,8 +64,7 @@
                     <span class="badge badge-pill badge-info">Left Early</span>
                 </div>
             }
-            <br />
-            <div class="row">
+            <div class="row row-custom">
                 @for (int i = 0; i < Model.Attendance.AttendanceCheckIns.Count(); i++)
                 {
                     <div class="card col-card">
@@ -73,7 +72,7 @@
                             Check-in #@(i + 1)
                             <a href="~/Attendance/DeleteCheckIn/@Model.Attendance.Id/@i" class="text-danger float-right">Remove</a>
                         </div>
-                        <div class="card-body text-right">
+                        <div class="card-body">
                             <div class="label">Check-in Time: @Model.Attendance.AttendanceCheckIns[i].CheckIn.ToString(@"hh\:mm")</div>
                             <div class="label">Check-out Time: @Model.Attendance.AttendanceCheckIns[i].CheckOut.ToString(@"hh\:mm")</div>
                             <br />
