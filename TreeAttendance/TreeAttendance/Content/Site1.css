@@ -70,8 +70,8 @@ textarea {
 }
 
 .profile-img-lg {
-    height: 200px;
-    width: 200px;
+    height: 150px;
+    width: 150px;
 }
 
 .card-custom {
@@ -128,4 +128,10 @@ textarea {
 
 .col-custom {
     width: 300px;
+}
+
+.col-card {
+    width: 15rem;
+    height: 15rem;
+    margin: 10px;
 }

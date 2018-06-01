@@ -12,96 +12,91 @@
 </nav>
 <div class="page-header">Attendance Details</div>
 <br />
-<div class="text-center">
-    <img src="~/Content/img/@Model.Uri" width="100" height="100" />
-    <div class="label">
-        @Model.StudentName
-        <br />
-        @Model.Date.ToString("D")
-    </div>
+<div class="row justify-content-lg-center">
+    <div class="col-lg-auto" style="display:flex; text-align:center">
+        <div class="col" style="width: 1200px">
+            <img src="~/Content/img/@Model.Uri" width="100" height="100" />
+            <div class="label">
+                @Model.StudentName
+                <br />
+                @Model.Date.ToString("D")
+            </div>
 
-    @if (Model.Attendance.Status == AttendanceStatusEnum.AbsentUnexcused)
-    {
-        <div>
-            <span class="badge badge-pill badge-danger">Absent Unexcused</span>
-        </div>
-    }
-    else if (Model.Attendance.Status == AttendanceStatusEnum.AbsentExcused)
-    {
-        <div>
-            <span class="badge badge-pill badge-warning">Absent Excused</span>
-        </div>
-    }
-    else if (Model.Attendance.Status == AttendanceStatusEnum.Late)
-    {
-        <div>
-            <span class="badge badge-pill badge-dark">Late</span>
-        </div>
-    }
-    else if (Model.Attendance.Status == AttendanceStatusEnum.LateLeft)
-    {
-        <div>
-            <span class="badge badge-pill badge-dark">Late</span>
-        </div>
-        <div>
-            <span class="badge badge-pill badge-info">Left Early</span>
-        </div>
-    }
-    else if (Model.Attendance.Status == AttendanceStatusEnum.OnTime)
-    {
-        <div>
-            <span class="badge badge-pill badge-success">On Time</span>
-        </div>
-    }
-    else if (Model.Attendance.Status == AttendanceStatusEnum.OnTimeLeft)
-    {
-        <div>
-            <span class="badge badge-pill badge-success">On time</span>
-        </div>
-        <div>
-            <span class="badge badge-pill badge-info">Left Early</span>
-        </div>
-    }
-</div>
-<div class="row">
-    @for (int i = 0; i < Model.Attendance.AttendanceCheckIns.Count(); i++)
-    {
-        <div class="col-3">
-            <div class="card card-custom">
-                <div class="card-header">
-                    Check-in #@(i + 1)
-                    <a href="~/Attendance/DeleteCheckIn/@Model.Attendance.Id/@i" class="btn btn-outline-danger btn-sm btn-right">Remove</a>
+            @if (Model.Attendance.Status == AttendanceStatusEnum.AbsentUnexcused)
+            {
+                <div>
+                    <span class="badge badge-pill badge-danger">Absent Unexcused</span>
                 </div>
-                <div class="card-body">
-                    <div style="padding: 15px">Check-in Time:<br /> @Model.Attendance.AttendanceCheckIns[i].CheckIn.ToString(@"hh\:mm")</div>
+            }
+            else if (Model.Attendance.Status == AttendanceStatusEnum.AbsentExcused)
+            {
+                <div>
+                    <span class="badge badge-pill badge-warning">Absent Excused</span>
+                </div>
+            }
+            else if (Model.Attendance.Status == AttendanceStatusEnum.Late)
+            {
+                <div>
+                    <span class="badge badge-pill badge-dark">Late</span>
+                </div>
+            }
+            else if (Model.Attendance.Status == AttendanceStatusEnum.LateLeft)
+            {
+                <div>
+                    <span class="badge badge-pill badge-dark">Late</span>
+                </div>
+                <div>
+                    <span class="badge badge-pill badge-info">Left Early</span>
+                </div>
+            }
+            else if (Model.Attendance.Status == AttendanceStatusEnum.OnTime)
+            {
+                <div>
+                    <span class="badge badge-pill badge-success">On Time</span>
+                </div>
+            }
+            else if (Model.Attendance.Status == AttendanceStatusEnum.OnTimeLeft)
+            {
+                <div>
+                    <span class="badge badge-pill badge-success">On time</span>
+                </div>
+                <div>
+                    <span class="badge badge-pill badge-info">Left Early</span>
+                </div>
+            }
+            <br />
+            <div class="row">
+                @for (int i = 0; i < Model.Attendance.AttendanceCheckIns.Count(); i++)
+                {
+                    <div class="card col-card">
+                        <div class="card-header text-left">
+                            Check-in #@(i + 1)
+                            <a href="~/Attendance/DeleteCheckIn/@Model.Attendance.Id/@i" class="text-danger float-right">Remove</a>
+                        </div>
+                        <div class="card-body text-right">
+                            <div class="label">Check-in Time: @Model.Attendance.AttendanceCheckIns[i].CheckIn.ToString(@"hh\:mm")</div>
+                            <div class="label">Check-out Time: @Model.Attendance.AttendanceCheckIns[i].CheckOut.ToString(@"hh\:mm")</div>
+                            <br />
+                            <a href="~/Attendance/UpdateCheckIn/@Model.Attendance.Id/@i" class="btn btn-outline-primary btn-sm btn-block">Edit</a>
+                        </div>
+                    </div>
 
-                    <div style="padding: 15px">Check-out Time:<br /> @Model.Attendance.AttendanceCheckIns[i].CheckOut.ToString(@"hh\:mm")</div>
-                    <br />
-                    <div>
-                        <a href="~/Attendance/UpdateCheckIn/@Model.Attendance.Id/@i" class="btn btn-outline-primary btn-sm" style="width: 200px">Edit</a>
+                }
+                <div class="card col-card text-center">
+                    <div class="card-header">Add a New Check-In</div>
+                    <div class="card-body justify-content-sm-center">
+                        <a href="~/Attendance/CreateCheckIn/@Model.Attendance.Id">
+                            <img class="profile-img-lg" src="~/Content/img/AddIcon.png" />
+                        </a>
                     </div>
                 </div>
+
             </div>
-        </div>
-    }
-    <div class="col-3">
-        <div class="card card-custom">
-            <div class="card-header">Add a New Check-In</div>
-            <div class="card-body">
-                <a href="~/Attendance/CreateCheckIn/@Model.Attendance.Id">
-                    <img class="profile-img-lg" src="~/Content/img/AddIcon.png" />
-                </a>
-            </div>
+
         </div>
     </div>
 </div>
 
-
-
-@*<br />
-    <a href="~/Attendance/Excuse/1" class="btn btn-outline-primary">Excused Absence?</a>
-    <br />
-    <br />*@<br />
 
 <br />
 <br />

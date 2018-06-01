@@ -34,7 +34,7 @@ else
                 </tr>
             </thead>
             <tbody>
-                @for (int i = Model.AttendanceList.Count - 1; i >= Model.AttendanceList.Count - 11; i--)
+                @for (int i = Model.AttendanceList.Count - 1; i >= Model.AttendanceList.Count - 8; i--)
                 {
                     var item = Model.AttendanceList[i];
                     <tr>
@@ -137,7 +137,7 @@ else
                     </tr>
                 </thead>
                 <tbody>
-                    @for (int i = Model.AttendanceList.Count - 12; i >= 0; i--)
+                    @for (int i = Model.AttendanceList.Count - 9; i >= 0; i--)
                     {
                         var item = Model.AttendanceList[i];
                         <tr>
@@ -212,3 +212,5 @@ else
     </div>
 }
 
+<br/>
+<br />
