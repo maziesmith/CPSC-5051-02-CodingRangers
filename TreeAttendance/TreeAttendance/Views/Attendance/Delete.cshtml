@@ -12,31 +12,36 @@
 </nav>
 <div class="page-header">Remove Attendance</div>
 
-<div class="text-center">
+<br /><br /><br />
+<div class="row justify-content-lg-center">
+    <div class="col-lg-auto" style="display:flex; text-align:center">
+        <div class="col col-custom">
 
-        <img class="profile-img" src="~/Content/img/@Model.Uri" />
-        <div class="label">
-            @Model.StudentName
-            <br/>
-            @Model.Date.ToString("D")
+            <img class="profile-img" src="~/Content/img/@Model.Uri" />
+            <div class="label">
+                @Model.StudentName
+                <br />
+                @Model.Date.ToString("D")
+            </div>
+
+            <br />
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+                @Html.HiddenFor(m => m.Attendance.Id)
+                <p class="alert alert-danger"><strong>Remove</strong> this record?</p>
+                <br />
+                <div>
+                    @Html.ActionLink("Cancel", "Read", new { id = Model.Attendance.Id }, new { @class = "btn btn-success btn-block" })
+                </div>
+                <br />
+                <div>
+                    <input type="submit" value="Remove" class="btn btn-danger btn-block">
+                </div>
+
+
+            }
+
         </div>
+    </div>
 </div>
-
-<br/>
-@using (Html.BeginForm())
-{
-    @Html.AntiForgeryToken()
-    @Html.HiddenFor(m => m.Attendance.Id)
-    <p class="alert alert-danger">Are you sure you want to <strong>remove</strong> this attendance record?</p>
-    <br />
-    <div>
-        @Html.ActionLink("Cancel", "Read", new { id = Model.Attendance.Id }, new { @class = "btn btn-success custom" })
-    </div>
-    <br/>
-    <div>
-        <input type="submit" value="Remove" class="btn btn-danger custom">
-    </div>
-
-
-}
-

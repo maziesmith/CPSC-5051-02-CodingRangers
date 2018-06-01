@@ -12,35 +12,39 @@
 </nav>
 
 <div class="page-header">Remove Check-in</div>
-<br />
-<div class="text-center">
-    <img class="profile-img" src="~/Content/img/@Model.Uri" />
-    <div class="label">
-        @Model.StudentName
-        <br />
-        @Model.Date.ToString("D")
-        <br />
-        Check-in #@(Model.Index + 1)
-        <br />
-        Check-in Time:<br /> @Model.CheckIn.ToString(@"hh\:mm")
-        <br />
-        Check-out Time:<br /> @Model.CheckOut.ToString(@"hh\:mm")
+<br /><br /><br />
+<div class="row justify-content-lg-center">
+    <div class="col-lg-auto" style="display:flex; text-align:center">
+        <div class="col col-custom">
+            <img class="profile-img" src="~/Content/img/@Model.Uri" />
+            <div class="label">
+                @Model.StudentName
+                <br />
+                @Model.Date.ToString("D")
+                <br />
+                Check-in #@(Model.Index + 1)
+                <br />
+                Check-in Time:<br /> @Model.CheckIn.ToString(@"hh\:mm")
+                <br />
+                Check-out Time:<br /> @Model.CheckOut.ToString(@"hh\:mm")
+            </div>
+            <br />
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+                @Html.HiddenFor(m => m.AttendanceId)
+                <p class="alert alert-danger"><strong>Remove</strong> this check-in?</p>
+                <br />
+                <div>
+                    @Html.ActionLink("Cancel", "Read", new { id = Model.AttendanceId }, new { @class = "btn btn-success btn-block" })
+                </div>
+                <br />
+                <div>
+                    <input type="submit" value="Remove" class="btn btn-danger btn-block">
+                </div>
+
+
+            }
+        </div>
     </div>
 </div>
-<br />
-@using (Html.BeginForm())
-{
-    @Html.AntiForgeryToken()
-    @Html.HiddenFor(m => m.AttendanceId)
-    <p class="alert alert-danger">Are you sure you want to <strong>remove</strong> this attendance check-in?</p>
-    <br />
-        <div>
-            @Html.ActionLink("Cancel", "Read", new { id = Model.AttendanceId }, new { @class = "btn btn-success custom" })
-        </div>
-        <br/>
-        <div>
-            <input type="submit" value="Remove" class="btn btn-danger custom">
-        </div>
-
-
-}
