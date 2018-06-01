@@ -1,0 +1,93 @@
+﻿
+@{var controllerName = this.ViewContext.RouteData.Values["controller"].ToString();
+    var actionName = this.ViewContext.RouteData.Values["action"].ToString();}
+@if (!actionName.Equals("Login") &&
+     controllerName.Equals("AdminHome") ||
+     controllerName.Equals("Students") ||
+     controllerName.Equals("Attendance") ||
+     controllerName.Equals("Reports") ||
+     controllerName.Equals("Trees") ||
+     controllerName.Equals("Calendar"))
+{
+    <ul class="nav nav-tabs nav-fill">
+        @if (controllerName.Equals("AdminHome"))
+        {
+            <li class="nav-item">
+                <a class="nav-link active" href="~/AdminHome/Index"><h5>Dashboard</h5></a>
+            </li>
+        }
+        else
+        {
+            <li class="nav-item">
+                <a class="nav-link" href="~/AdminHome/Index"><h5>Dashboard</h5></a>
+            </li>
+        }
+
+        @if (controllerName.Equals("Students"))
+        {
+            <li class="nav-item">
+                <a class="nav-link active" href="~/Students/Index"><h5>Students</h5></a>
+            </li>
+        }
+        else
+        {
+            <li class="nav-item">
+                <a class="nav-link" href="~/Students/Index"><h5>Students</h5></a>
+            </li>
+        }
+
+        @if (controllerName.Equals("Attendance"))
+        {
+            <li class="nav-item">
+                <a class="nav-link active" href="~/Attendance/Index"><h5>Attendance</h5></a>
+            </li>
+        }
+        else
+        {
+            <li class="nav-item">
+                <a class="nav-link" href="~/Attendance/Index"><h5>Attendance</h5></a>
+            </li>
+        }
+
+        @if (controllerName.Equals("Reports"))
+        {
+            <li class="nav-item">
+                <a class="nav-link active" href="~/Reports/Index"><h5>Reports</h5></a>
+            </li>
+        }
+        else
+        {
+            <li class="nav-item">
+                <a class="nav-link" href="~/Reports/Index"><h5>Reports</h5></a>
+            </li>
+        }
+
+        @if (controllerName.Equals("Trees"))
+        {
+            <li class="nav-item">
+                <a class="nav-link active" href="~/Trees/Index"><h5>Trees</h5></a>
+            </li>
+        }
+        else
+        {
+            <li class="nav-item">
+                <a class="nav-link" href="~/Trees/Index"><h5>Trees</h5></a>
+            </li>
+        }
+
+        @if (controllerName.Equals("Calendar"))
+        {
+            <li class="nav-item">
+                <a class="nav-link active" href="~/Calendar/Index"><h5>Calendar</h5></a>
+            </li>
+        }
+        else
+        {
+            <li class="nav-item">
+                <a class="nav-link" href="~/Calendar/Index"><h5>Calendar</h5></a>
+            </li>
+        }
+
+    </ul>
+}
+
