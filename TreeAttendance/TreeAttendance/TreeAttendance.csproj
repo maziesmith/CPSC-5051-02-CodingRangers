@@ -272,11 +272,16 @@
     <Content Include="Content\img\RoundTrees.png" />
     <Content Include="Content\img\smalltree.png" />
     <Content Include="Content\img\stdTable1.png" />
+    <Content Include="Content\img\stdTable1crop.png" />
     <Content Include="Content\img\stdTable2.png" />
+    <Content Include="Content\img\stdTable2crop.png" />
     <Content Include="Content\img\stdTable3.png" />
     <Content Include="Content\img\stdTable4.png" />
+    <Content Include="Content\img\stdTable4crop.png" />
     <Content Include="Content\img\stdTable5.png" />
+    <Content Include="Content\img\stdTable5crop.png" />
     <Content Include="Content\img\stdTable6.png" />
+    <Content Include="Content\img\stdTable6crop.png" />
     <Content Include="Content\img\StudentTree.png" />
     <Content Include="Content\img\SUinterlock.png" />
     <Content Include="Content\img\tree1-1-01.png" />
