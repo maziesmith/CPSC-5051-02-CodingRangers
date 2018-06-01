@@ -1,10 +1,70 @@
 ﻿@{
-    ViewBag.Title = "Reports";
+    ViewBag.Title = "Students Reports";
 }
-<br />
-<br />
-<h4>Student Report</h4>
-<div>
-    <img src="~/Content/img/reports.png" alt= "Mock student report" />
-</div>
 
+
+@* Let's the user quickly know where in the website they are *@
+
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item" aria-current="page"> <a href="~/AdminHome">Admin</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Reports</li>
+    </ol>
+</nav>
+
+@* Let's the user know what page they are on *@
+
+<div class="page-header">Reports</div>
+<div class="text-center">
+    <h5>See Monthly Reports of Students or of the Whole Class</h5>
+</div>
+@* Let's the user see reports of individual students or class *@
+
+<div class="row" style="margin-top: 70px">
+    <div class="col-3" align="center">
+        <a href="~/Reports/ClassReports">
+            <img class="rounded-circle profile-img" src="~/Content/img/group.png"/>
+            <br />
+            <span>
+                Class
+            </span>
+        </a>
+    </div>
+    <div class="col-3" align="center">
+        <a href="~/Reports/StudentReports">
+            <img class="rounded-circle profile-img" src="~/Content/img/boy1.png"/>
+            <br />
+            <span>
+                Allen
+            </span>
+        </a>
+    </div>
+    <div class="col-3" align="center">
+        <a href="~/Reports/StudentReports">
+            <img class="rounded-circle profile-img" src="~/Content/img/boy2.png"/>
+            <br />
+            <span>
+                Mike
+            </span>
+        </a>
+    </div>
+    <div class="col-3" align="center">
+        <a href="~/Reports/StudentReports">
+            <img class="rounded-circle profile-img" src="~/Content/img/girl1.png"/>
+            <br />
+            <span>
+                Yanny
+            </span>
+        </a>
+    </div>
+    <div class="col-3" align="center">
+        <a href="~/Reports/StudentReports">
+            <img class="rounded-circle profile-img" src="~/Content/img/girl2.png"/>
+            <br />
+            <span>
+                Laurel
+            </span>
+        </a>
+    </div>
+</div>
+<br />
