@@ -60,7 +60,7 @@ namespace TreeAttendance.Controllers
         public ActionResult Create([Bind(Include=
                                         "Id,"+
                                         "Name,"+
-                                        "ProfilePicutureUri,"+
+                                        "ProfilePictureUri,"+
                                         "")] StudentModel data)
         {
             if (!ModelState.IsValid)
@@ -113,7 +113,7 @@ namespace TreeAttendance.Controllers
         public ActionResult Update([Bind(Include=
                                         "Id,"+
                                         "Name,"+
-                                        "ProfilePicutureUri,"+
+                                        "ProfilePictureUri,"+
                                         "")] StudentModel data)
         {
             if (!ModelState.IsValid)
@@ -167,7 +167,7 @@ namespace TreeAttendance.Controllers
         public ActionResult Delete([Bind(Include=
                                         "Id,"+
                                         "Name,"+
-                                        "ProfilePicutureUri,"+
+                                        "ProfilePictureUri,"+
                                         "")] StudentModel data)
         {
             if (!ModelState.IsValid)
