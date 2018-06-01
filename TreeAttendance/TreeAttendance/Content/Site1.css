@@ -125,3 +125,7 @@ textarea {
 .justify-content-md-center {
     margin-top: 150px;
 }
+
+.col-custom {
+    width: 300px;
+}
