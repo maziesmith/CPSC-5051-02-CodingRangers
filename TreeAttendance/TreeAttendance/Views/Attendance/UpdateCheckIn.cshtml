@@ -12,39 +12,41 @@
 </nav>
 
 <div class="page-header">Edit Check-in</div>
-<div class="text-center">
-    <img src="~/Content/img/@Model.Uri" width="100" height="100" />
-    <div class="label">
-        @Model.StudentName
-        <br />
-        @Model.Date.ToString("D")
-    </div>
+<br /><br /><br />
+<div class="row justify-content-lg-center">
+    <div class="col-lg-auto" style="display:flex; text-align:center">
+        <div class="col col-custom">
+            <img src="~/Content/img/@Model.Uri" width="100" height="100" />
+            <div class="label">
+                @Model.StudentName
+                <br />
+                @Model.Date.ToString("D")
+            </div>
 
-</div>
-<br />
-@using (Html.BeginForm())
-{
-    @Html.HiddenFor(m => m.AttendanceId)
-    @Html.HiddenFor(m => m.Index)
-    @Html.HiddenFor(m => m.Uri)
-    @Html.HiddenFor(m => m.Date)
-    @Html.HiddenFor(m => m.StudentName)
-    <p class="alert alert-info">All fields are <strong>required</strong>.</p>
-    @Html.AntiForgeryToken()
-    <div class="form-group">
-        @Html.LabelFor(m => m.CheckIn)
-        @Html.TextBoxFor(m => m.CheckIn, new { @class = "form-control" })
-        @Html.ValidationMessageFor(m => m.CheckIn)
-    </div>
-    <div class="form-group">
-        @Html.LabelFor(m => m.CheckOut)
-        @Html.TextBoxFor(m => m.CheckOut, new { @class = "form-control" })
-        @Html.ValidationMessageFor(m => m.CheckOut)
-    </div>
-    <br />
-    <div class="row">
-        <div class="col-sm-1">
-            <button type="submit" class="btn btn-primary" style="width: 80px">Save</button>
+            <br />
+            @using (Html.BeginForm())
+            {
+                @Html.HiddenFor(m => m.AttendanceId)
+                @Html.HiddenFor(m => m.Index)
+                @Html.HiddenFor(m => m.Uri)
+                @Html.HiddenFor(m => m.Date)
+                @Html.HiddenFor(m => m.StudentName)
+                <p class="alert alert-info">All fields are <strong>required</strong>.</p>
+                @Html.AntiForgeryToken()
+                <div class="form-group">
+                    @Html.LabelFor(m => m.CheckIn)
+                    @Html.TextBoxFor(m => m.CheckIn, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.CheckIn)
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.CheckOut)
+                    @Html.TextBoxFor(m => m.CheckOut, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.CheckOut)
+                </div>
+                <br />
+                        <button type="submit" class="btn btn-primary btn-block">Save</button>
+
+            }
         </div>
     </div>
-}
+</div>
