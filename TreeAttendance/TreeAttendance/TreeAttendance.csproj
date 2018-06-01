@@ -283,6 +283,7 @@
     <Content Include="Content\img\stdTable5crop.png" />
     <Content Include="Content\img\stdTable6.png" />
     <Content Include="Content\img\stdTable6crop.png" />
+    <Content Include="Content\img\StudentReportMerge.jpg" />
     <Content Include="Content\img\StudentTree.png" />
     <Content Include="Content\img\SUinterlock.png" />
     <Content Include="Content\img\tree1-1-01.png" />
@@ -308,6 +309,7 @@
     <Content Include="Content\bootstrap-grid.min.css.map" />
     <Content Include="Content\bootstrap-reboot.css.map" />
     <Content Include="Content\bootstrap-reboot.min.css.map" />
+    <Content Include="Content\pdf\StudentReport.pdf" />
     <None Include="Properties\PublishProfiles\TreeAttendance5051 - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />

@@ -37,5 +37,10 @@ namespace TreeAttendance.Controllers
         {
             return View();
         }
+
+        public FileResult Download()
+        {
+            return new FilePathResult("~\\Content\\pdf\\StudentReport.pdf", "application/pdf");
+        }
     }
 }
