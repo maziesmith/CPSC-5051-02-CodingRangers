@@ -1,5 +1,6 @@
 ﻿body {
     padding-bottom: 20px;
+    background-color:lightblue;
 }
 
 /* Set padding to keep content from hitting the edges */
@@ -140,7 +141,3 @@ textarea {
     margin: 20px;
 }
 
-p {
-    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    font-weight:bold;
-}
