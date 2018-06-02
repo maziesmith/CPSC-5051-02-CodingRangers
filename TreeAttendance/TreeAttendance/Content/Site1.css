@@ -141,9 +141,6 @@ textarea {
 }
 
 p {
-    font-family:Arial, Helvetica, sans-serif;
-}
-
-p.thick {
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-weight:bold;
 }
