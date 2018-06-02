@@ -67,7 +67,7 @@
                     display: true,
                     position: 'bottom',
                     fontSize: 20,
-                    text: 'Daily Attended Hours'
+                    text: 'Attended Hours'
                 },
                 responsive: false,
                 scales: {
@@ -82,7 +82,55 @@
 
     </script>
 </div>
+<br/>
+<div class="row justify-content-lg-center">
+    <canvas id="accumulativeChart" width="1150" height="300"></canvas>
+    <script>
+        var ctx = document.getElementById("accumulativeChart").getContext('2d');
+        var myChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: [@String.Join(", ", Model.Date.ToArray())],
 
+                datasets: [{
+                    label: 'Actual',
+                    backgroundColor: [
+                        'rgba(54, 162, 235, 1)',
+                    ],
+                    data: [@String.Join(", ", Model.AccumulativeHoursAttended.ToArray())],
+
+                    borderWidth: 1
+                }, {
+                    label: 'Expected',
+                    backgroundColor: [
+                        'rgba(54, 162, 235, 0.2)',
+                    ],
+                    data: [@String.Join(", ", Model.AccumulativeHoursExpected.ToArray())],
+
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                title: {
+                    display: true,
+                    position: 'bottom',
+                    fontSize: 20,
+                    text: 'Accumulative Attended Hours'
+                },
+                responsive: false,
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }]
+                },
+            }
+        });
+
+    </script>
+</div>
+<br/>
 <div class="row justify-content-lg-center">
     <div class="col-3">
         <canvas id="pieChart" width="300" height="300"></canvas>
@@ -226,51 +274,5 @@
 
 </div>
 <br />
-<div class="row justify-content-lg-center">
-    <canvas id="accumulativeChart" width="1150" height="300"></canvas>
-    <script>
-        var ctx = document.getElementById("accumulativeChart").getContext('2d');
-        var myChart = new Chart(ctx, {
-            type: 'line',
-            data: {
-                labels: [@String.Join(", ", Model.Date.ToArray())],
 
-                datasets: [{
-                    label: 'Actual',
-                    backgroundColor: [
-                        'rgba(54, 162, 235, 1)',
-                    ],
-                    data: [@String.Join(", ", Model.AccumulativeHoursAttended.ToArray())],
-
-                    borderWidth: 1
-                }, {
-                    label: 'Expected',
-                    backgroundColor: [
-                        'rgba(54, 162, 235, 0.2)',
-                    ],
-                    data: [@String.Join(", ", Model.AccumulativeHoursExpected.ToArray())],
-
-                    borderWidth: 1
-                }]
-            },
-            options: {
-                title: {
-                    display: true,
-                    position: 'bottom',
-                    fontSize: 20,
-                    text: 'Accumulative Attended Hours'
-                },
-                responsive: false,
-                scales: {
-                    yAxes: [{
-                        ticks: {
-                            beginAtZero: true
-                        }
-                    }]
-                },
-            }
-        });
-
-    </script>
-</div>
 
