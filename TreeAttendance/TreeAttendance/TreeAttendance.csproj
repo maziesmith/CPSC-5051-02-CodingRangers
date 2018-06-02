@@ -235,6 +235,8 @@
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AttendanceCheckInModel.cs" />
     <Compile Include="Models\AttendanceModel.cs" />
+    <Compile Include="Models\DailyData.cs" />
+    <Compile Include="Models\StudentReport.cs" />
     <Compile Include="Models\Enums\AttendanceStatusEnum.cs" />
     <Compile Include="Models\Enums\DataSourceEnum.cs" />
     <Compile Include="Models\IdentityModels.cs" />
