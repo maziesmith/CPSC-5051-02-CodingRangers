@@ -139,3 +139,11 @@ textarea {
 .row-custom {
     margin: 20px;
 }
+
+p {
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+p.thick {
+    font-weight:bold;
+}
