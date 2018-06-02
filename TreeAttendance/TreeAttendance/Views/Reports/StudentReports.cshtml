@@ -1,4 +1,5 @@
-﻿@{
+﻿@model TreeAttendance.Models.StudentReport
+@{
     ViewBag.Title = "Student Reports";
 }
 
@@ -49,30 +50,14 @@
             type: 'bar',
 
             data: {
-
-                labels: ["5/1", "5/2", "5/3", "5/4", "5/5", "5/8", "5/9", "5/10", "5/13", "5/12", "5/15", "5/16", "5/17", "5/18"],
+                labels: [@String.Join(", ", Model.Date.ToArray())],
 
                 datasets: [{
-                    backgroundColor: [
+                    backgroundColor:
                         'rgba(54, 162, 235, 1)',
-                        'rgba(54, 162, 235, 1)',
-                        'rgba(54, 162, 235, 1)',
-                        'rgba(54, 162, 235, 1)',
-                        'rgba(54, 162, 235, 1)',
-                        'rgba(54, 162, 235, 1)',
-                        'rgba(54, 162, 235, 1)',
-                        'rgba(54, 162, 235, 1)',
-                        'rgba(54, 162, 235, 1)',
-                        'rgba(54, 162, 235, 1)',
-                        'rgba(54, 162, 235, 1)',
-                        'rgba(54, 162, 235, 1)',
-                        'rgba(54, 162, 235, 1)',
-                        'rgba(54, 162, 235, 1)',
-                        'rgba(54, 162, 235, 1)',
-                    ],
-                    label: 'Daily Attended Hours',
+                    label: 'Daily Attended Hours' ,
 
-                    data: [5.5, 3, 6, 4.3, 5, 0, 6, 5, 5.3, 0, 5, 3.2, 6, 5.7, 0, 6, 1.5, 6, 6, 5, 6, 6, 4],
+                    data: [@String.Join(", ", Model.HoursAttended.ToArray())],
 
                     borderWidth: 1
                 }]
@@ -108,7 +93,7 @@
                 data: {
                     labels: ["Present", "Absent Excused", "Absent Unexcused"],
                     datasets: [{
-                        data: [15, 4, 2],
+                        data: [@Model.DaysPresent, @Model.DaysAbsentExcused, @Model.DaysAbsentUnexcused],
                         backgroundColor: [
                             'rgba(75, 192, 192, 0.2)',
                             'rgba(255, 159, 64, 0.2)',
@@ -144,7 +129,7 @@
                 data: {
                     labels: ["Attended Hours", "Missing Hours"],
                     datasets: [{
-                        data: [100, 20],
+                        data: [@Model.TotalHoursAttended, @Model.TotalHoursMissing],
                         backgroundColor: [
                             'rgba(75, 192, 192, 0.2)',
                             'rgba(255, 99, 132, 0.2)',
@@ -178,7 +163,7 @@
                 data: {
                     labels: ["On Time", "Late"],
                     datasets: [{
-                        data: [15, 4],
+                        data: [@Model.DaysOnTime, @Model.DaysLate],
                         backgroundColor: [
                             'rgba(75, 192, 192, 0.2)',
                             'rgba(255, 99, 132, 0.2)',
@@ -212,7 +197,7 @@
                 data: {
                     labels: ["Stayed", "Left Early"],
                     datasets: [{
-                        data: [20, 1],
+                        data: [@Model.DaysStayed, @Model.DaysLeftEarly],
                         backgroundColor: [
                             'rgba(75, 192, 192, 0.2)',
                             'rgba(255, 99, 132, 0.2)',
@@ -248,14 +233,14 @@
         var myChart = new Chart(ctx, {
             type: 'line',
             data: {
-                labels: ["5/1", "5/2", "5/3", "5/4", "5/5", "5/8", "5/9", "5/10", "5/11", "5/12"],
+                labels: [@String.Join(", ", Model.Date.ToArray())],
 
                 datasets: [{
                     label: 'Actual',
                     backgroundColor: [
                         'rgba(54, 162, 235, 1)',
                     ],
-                    data: [6, 12, 16, 16, 22, 28, 30, 36, 40, 46],
+                    data: [@String.Join(", ", Model.AccumulativeHoursAttended.ToArray())],
 
                     borderWidth: 1
                 }, {
@@ -263,7 +248,7 @@
                     backgroundColor: [
                         'rgba(54, 162, 235, 0.2)',
                     ],
-                    data: [6, 12, 18, 24, 30, 36, 42, 48, 54, 60],
+                    data: [@String.Join(", ", Model.AccumulativeHoursExpected.ToArray())],
 
                     borderWidth: 1
                 }]

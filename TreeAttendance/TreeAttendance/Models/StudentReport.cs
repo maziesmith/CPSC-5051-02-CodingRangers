@@ -10,12 +10,16 @@ namespace TreeAttendance.Models
         public string Month { get; set; }
         public string StudentName { get; set; }
         public List<AttendanceModel> Attendance { get; set; }
-        public List<DailyData> data { get; set; }
+        public List<string> Date { get; set; }
+        public List<double> HoursExpected { get; set; }
+        public List<double> HoursAttended { get; set; }
+        public List<double> AccumulativeHoursExpected { get; set; }
+        public List<double> AccumulativeHoursAttended { get; set; }
         public int DaysPresent { get; set; }
         public int DaysAbsentExcused { get; set; }
         public int DaysAbsentUnexcused { get; set; }
-        public double HoursAttended { get; set; }
-        public double HoursMissing { get; set; }
+        public double TotalHoursAttended { get; set; }
+        public double TotalHoursMissing { get; set; }
         public int DaysOnTime { get; set; }
         public int DaysLate { get; set; }
         public int DaysStayed { get; set; }
@@ -26,7 +30,11 @@ namespace TreeAttendance.Models
             Month = month;
             StudentName = studentName;
             Attendance = attendance;
-            data = new List<DailyData>();
+            Date = new List<string>();
+            HoursExpected = new List<double>();
+            HoursAttended = new List<double>();
+            AccumulativeHoursExpected = new List<double>();
+            AccumulativeHoursAttended = new List<double>();
             Calculate();
         }
 
@@ -38,29 +46,27 @@ namespace TreeAttendance.Models
 
         private void CalculateData()
         {
-            Double accumulativeHoursAttended = 0;
-            Double accumulativeHoursExpected = 0;
+            double accumulativeHoursAttended = 0;
+            double accumulativeHoursExpected = 0;
             for (int i = 0; i < Attendance.Count; i++)
             {
                 AttendanceModel att = Attendance[i];
-                Double hours = 0;
-                Double hoursExpected = 0;
+                double hours = 0;
+                double hoursExpected = 0;
                 for (int j = 0; j < att.AttendanceCheckIns.Count; j++)
                 {
-                    AttendanceCheckInModel checkIn = att.AttendanceCheckIns[i];
+                    AttendanceCheckInModel checkIn = att.AttendanceCheckIns[j];
                     hours += checkIn.CheckOut.Subtract(checkIn.CheckIn).TotalHours;
-                    hoursExpected += Backend.SchoolDayBackend.Instance.Read(att.SchoolDayId).ExpectedHours.TotalHours;
+
                 }
+                hoursExpected = Backend.SchoolDayBackend.Instance.Read(att.SchoolDayId).ExpectedHours.TotalHours;
                 accumulativeHoursAttended += hours;
                 accumulativeHoursExpected += hoursExpected;
-                data.Add(new DailyData()
-                {
-                    Date = Backend.SchoolDayBackend.Instance.Read(att.SchoolDayId).Date.ToString("MM/dd"),
-                    HoursAttended = hours,
-                    HoursExpected = hoursExpected,
-                    AccumulativeHoursAttended = accumulativeHoursAttended,
-                    AccumulativeHoursExpected = accumulativeHoursExpected
-                });
+                Date.Add(Backend.SchoolDayBackend.Instance.Read(att.SchoolDayId).Date.ToString("dd"));
+                HoursAttended.Add(hours);
+                HoursExpected.Add(hoursExpected);
+                AccumulativeHoursAttended.Add(accumulativeHoursAttended);
+                AccumulativeHoursExpected.Add(accumulativeHoursExpected);
             }
         }
 
@@ -83,8 +89,8 @@ namespace TreeAttendance.Models
             DaysPresent = Attendance.Count - DaysAbsentExcused - DaysAbsentUnexcused;
             DaysOnTime = DaysPresent - DaysLate;
             DaysStayed = DaysPresent - DaysLeftEarly;
-            HoursAttended = data.Last().AccumulativeHoursAttended;
-            HoursMissing = data.Last().AccumulativeHoursExpected - data.Last().AccumulativeHoursAttended;
+            TotalHoursAttended = AccumulativeHoursAttended.Last();
+            TotalHoursMissing = AccumulativeHoursExpected.Last() - AccumulativeHoursAttended.Last();
         }
     }
 }
