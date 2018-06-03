@@ -41,5 +41,11 @@ namespace TreeAttendance.Controllers
         {
             return View();
         }
+
+        /// Rules Page
+        public ActionResult Rules()
+        {
+            return View();
+        }
     }
 }

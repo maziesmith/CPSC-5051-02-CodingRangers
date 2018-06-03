@@ -262,6 +262,7 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\img\AddIcon.png" />
+    <Content Include="Content\img\background.jpg" />
     <Content Include="Content\img\boy1.png" />
     <Content Include="Content\img\boy2.png" />
     <Content Include="Content\img\calendar.png" />
@@ -401,6 +402,7 @@
     <Content Include="Views\Reports\StudentReports.cshtml" />
     <Content Include="Views\Reports\ClassReports.cshtml" />
     <Content Include="Views\StudentHome\Store.cshtml" />
+    <Content Include="Views\StudentHome\Rules.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
