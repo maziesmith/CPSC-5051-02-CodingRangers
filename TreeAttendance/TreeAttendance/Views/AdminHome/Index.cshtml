@@ -16,32 +16,35 @@
     <h5>Today is @SystemGlobals.Instance.Today.ToString("D")</h5>
 </div>
 <br />
-<div class="card-group">
-    <div class="card text-center">
-        <div class="card-body">
-            <h5 class="card-title">Current</h5>
-            <h5 class="card-title">@Model.Current</h5>
+<a href="~/Attendance/ByDate/@Model.TodayId" class="btn btn-light btn-block dash-btn">
+    <div class="card-group">
+        <div class="card text-center">
+            <div class="card-body">
+                <h5 class="card-title">Current</h5>
+                <h5 class="card-title">@Model.Current</h5>
+            </div>
+        </div>
+        <div class="card text-center">
+            <div class="card-body">
+                <h5 class="card-title">Present</h5>
+                <h5 class="card-title">@Model.Present</h5>
+            </div>
+        </div>
+        <div class="card text-center">
+            <div class="card-body">
+                <h5 class="card-title">On Time</h5>
+                <h5 class="card-title">@Model.OnTime</h5>
+            </div>
+        </div>
+        <div class="card text-center">
+            <div class="card-body">
+                <h5 class="card-title">Left</h5>
+                <h5 class="card-title">@Model.Left</h5>
+            </div>
         </div>
     </div>
-    <div class="card text-center">
-        <div class="card-body">
-            <h5 class="card-title">Present</h5>
-            <h5 class="card-title">@Model.Present</h5>
-        </div>
-    </div>
-    <div class="card text-center">
-        <div class="card-body">
-            <h5 class="card-title">On Time</h5>
-            <h5 class="card-title">@Model.OnTime</h5>
-        </div>
-    </div>
-    <div class="card text-center">
-        <div class="card-body">
-            <h5 class="card-title">Left</h5>
-            <h5 class="card-title">@Model.Left</h5>
-        </div>
-    </div>
-</div>
+</a>
+
 <br />
 <br />
 <div class="text-center">
@@ -57,7 +60,6 @@
                 <th>Hours Attended</th>
                 <th>% of Hours Attended</th>
                 <th>% change</th>
-                <th>Today's Check-in</th>
             </tr>
         </thead>
         <tbody>
@@ -67,7 +69,6 @@
                 <td>27</td>
                 <td>90%</td>
                 <td><div class="text-success">+5%</div></td>
-                <td><div class="text-danger">9:25AM</div></td>
             </tr>
             <tr>
                 <td>Mike</td>
@@ -75,7 +76,6 @@
                 <td>30</td>
                 <td>100%</td>
                 <td><div class="text-success">+5%</div></td>
-                <td><div class="text-success">8:35AM</div></td>
             </tr>
             <tr>
                 <td>Yanny</td>
@@ -83,7 +83,6 @@
                 <td>24</td>
                 <td>80%</td>
                 <td><div class="text-danger">-8%</div></td>
-                <td><div class="text-success">8:43AM</div></td>
             </tr>
             <tr>
                 <td>Laurel</td>
@@ -91,7 +90,6 @@
                 <td>10</td>
                 <td>30%</td>
                 <td><div class="text-danger">-40%</div></td>
-                <td></td>
             </tr>
 
         </tbody>

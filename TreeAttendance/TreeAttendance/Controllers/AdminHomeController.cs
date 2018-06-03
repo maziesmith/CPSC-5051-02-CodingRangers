@@ -22,7 +22,7 @@ namespace TreeAttendance.Controllers
             var today = SchoolDayBackend.Index().Last();
             //Load the list of data into myAttendanceList
             var myAttendanceList = AttendanceBackend.IndexBySchoolDay(today.Id);
-            var myData = new TodayAttendance(myAttendanceList);
+            var myData = new TodayAttendance(myAttendanceList, today.Id);
 
             return View(myData);
         }

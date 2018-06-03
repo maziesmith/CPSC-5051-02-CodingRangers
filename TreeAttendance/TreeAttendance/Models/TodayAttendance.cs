@@ -12,9 +12,11 @@ namespace TreeAttendance.Models
         public int Present { get; set; }
         public int OnTime { get; set; }
         public int Left { get; set; }
-        public TodayAttendance(List<AttendanceModel> attendance)
+        public string TodayId { get; set; }
+        public TodayAttendance(List<AttendanceModel> attendance, string todayId)
         {
             Attendance = attendance;
+            TodayId = todayId;
             Compute();
         }
 

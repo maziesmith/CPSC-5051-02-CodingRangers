@@ -58,7 +58,7 @@ else
 
                 datasets: [{
                     backgroundColor:
-                        'rgba(54, 162, 235, 1)',
+                        'rgba(54, 162, 235, 0.5)',
                     label: 'Daily Attended Hours' ,
 
                     data: [@String.Join(", ", Model.HoursAttended.ToArray())],
@@ -97,9 +97,9 @@ else
                 labels: [@String.Join(", ", Model.Date.ToArray())],
 
                 datasets: [{
-                    label: 'Actual',
+                    label: 'Attended',
                     backgroundColor: [
-                        'rgba(54, 162, 235, 1)',
+                        'rgba(54, 162, 235, 0.5)',
                     ],
                     data: [@String.Join(", ", Model.AccumulativeHoursAttended.ToArray())],
 
@@ -147,12 +147,12 @@ else
                     datasets: [{
                         data: [@Model.DaysPresent, @Model.DaysAbsentExcused, @Model.DaysAbsentUnexcused],
                         backgroundColor: [
-                            'rgba(75, 192, 192, 0.2)',
+                            'rgba(54, 162, 235, 0.2)',
                             'rgba(255, 159, 64, 0.2)',
                             'rgba(255, 99, 132, 0.2)',
                         ],
                         borderColor: [
-                            'rgba(75, 192, 192, 1)',
+                            'rgba(54, 162, 235, 1)',
                             'rgba(255, 159, 64, 1)',
                             'rgba(255, 99, 132, 1)',
                         ],
@@ -183,11 +183,11 @@ else
                     datasets: [{
                         data: [@Model.TotalHoursAttended, @Model.TotalHoursMissing],
                         backgroundColor: [
-                            'rgba(75, 192, 192, 0.2)',
+                            'rgba(54, 162, 235, 0.2)',
                             'rgba(255, 99, 132, 0.2)',
                         ],
                         borderColor: [
-                            'rgba(75, 192, 192, 1)',
+                            'rgba(54, 162, 235, 1)',
                             'rgba(255, 99, 132, 1)',
                         ],
                         borderWidth: 1
@@ -217,11 +217,11 @@ else
                     datasets: [{
                         data: [@Model.DaysOnTime, @Model.DaysLate],
                         backgroundColor: [
-                            'rgba(75, 192, 192, 0.2)',
+                            'rgba(54, 162, 235, 0.2)',
                             'rgba(255, 99, 132, 0.2)',
                         ],
                         borderColor: [
-                            'rgba(75, 192, 192, 1)',
+                            'rgba(54, 162, 235, 1)',
                             'rgba(255, 99, 132, 1)',
                         ],
                         borderWidth: 1
@@ -251,11 +251,11 @@ else
                     datasets: [{
                         data: [@Model.DaysStayed, @Model.DaysLeftEarly],
                         backgroundColor: [
-                            'rgba(75, 192, 192, 0.2)',
+                            'rgba(54, 162, 235, 0.2)',
                             'rgba(255, 99, 132, 0.2)',
                         ],
                         borderColor: [
-                            'rgba(75, 192, 192, 1)',
+                            'rgba(54, 162, 235, 1)',
                             'rgba(255, 99, 132, 1)',
                         ],
                         borderWidth: 1
