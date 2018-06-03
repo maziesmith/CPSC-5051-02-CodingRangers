@@ -244,6 +244,7 @@
     <Compile Include="Models\SchoolDayModel.cs" />
     <Compile Include="Models\StudentModel.cs" />
     <Compile Include="Models\SystemGlobals.cs" />
+    <Compile Include="Models\TodayAttendance.cs" />
     <Compile Include="Models\ViewModels\AttendanceByDateViewModel.cs" />
     <Compile Include="Models\ViewModels\AttendanceByStudentViewModel.cs" />
     <Compile Include="Models\ViewModels\AttendanceCheckInViewModel.cs" />

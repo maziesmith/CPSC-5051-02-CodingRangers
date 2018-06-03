@@ -1,4 +1,5 @@
 ﻿@using TreeAttendance.Models
+@model TreeAttendance.Models.TodayAttendance
 @{
     ViewBag.Title = "Dashboard";
 }
@@ -19,25 +20,25 @@
     <div class="card text-center">
         <div class="card-body">
             <h5 class="card-title">Current</h5>
-            <h5 class="card-title">4</h5>
+            <h5 class="card-title">@Model.Current</h5>
         </div>
     </div>
     <div class="card text-center">
         <div class="card-body">
             <h5 class="card-title">Present</h5>
-            <h5 class="card-title">3</h5>
+            <h5 class="card-title">@Model.Present</h5>
         </div>
     </div>
     <div class="card text-center">
         <div class="card-body">
             <h5 class="card-title">On Time</h5>
-            <h5 class="card-title">2</h5>
+            <h5 class="card-title">@Model.OnTime</h5>
         </div>
     </div>
     <div class="card text-center">
         <div class="card-body">
             <h5 class="card-title">Left</h5>
-            <h5 class="card-title">0</h5>
+            <h5 class="card-title">@Model.Left</h5>
         </div>
     </div>
 </div>
