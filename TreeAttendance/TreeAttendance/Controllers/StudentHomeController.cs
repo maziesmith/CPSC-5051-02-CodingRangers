@@ -6,12 +6,14 @@ namespace TreeAttendance.Controllers
     public class StudentHomeController : Controller
     {
         // GET: StudentHome
+        // Go to student home page
         public ActionResult Index()
         {
             return View();
         }
 
         // GET: OverallPerformance
+        // Access Overall Performance Page
         public ActionResult OverallPerformance()
         {
             return View();
@@ -19,6 +21,7 @@ namespace TreeAttendance.Controllers
 
 
         // GET: Attendance
+        // Go to attendance page
         public ActionResult Attendance()
         {
             return View();
@@ -29,6 +32,12 @@ namespace TreeAttendance.Controllers
         /// </summary>
         /// <returns></returns>
         public ActionResult Login()
+        {
+            return View();
+        }
+
+        /// Student Decoration Store
+        public ActionResult Store()
         {
             return View();
         }
