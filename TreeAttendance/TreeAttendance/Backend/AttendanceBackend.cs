@@ -201,13 +201,13 @@ namespace TreeAttendance.Backend
         /// Return a subset of the dataset of the student
         /// </summary>
         /// <returns>List of Attendances</returns>
-        public List<AttendanceModel> IndexByStudent(string id)
+        public List<AttendanceModel> IndexByStudent(string id, int month)
         {
             if (string.IsNullOrEmpty(id))
             {
                 return null;
             }
-            var myData = DataSource.IndexByStudent(id);
+            var myData = DataSource.IndexByStudent(id, month);
             return myData;
         }
 

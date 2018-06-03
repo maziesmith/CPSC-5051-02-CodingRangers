@@ -154,12 +154,12 @@ namespace TreeAttendance.Backend
         /// Return a subset of the dataset by the given student
         /// </summary>
         /// <returns>List of Attendances</returns>
-        public List<AttendanceModel> IndexByStudent(string id)
+        public List<AttendanceModel> IndexByStudent(string id, int month)
         {
             List<AttendanceModel> list = new List<AttendanceModel>();
             foreach (var item in AttendanceList)
             {
-                if (item.StudentId == id)
+                if (item.StudentId == id &&SchoolDayBackend.Instance.Read(item.SchoolDayId).Date.Month == month)
                 {
                     list.Add(item);
                 }

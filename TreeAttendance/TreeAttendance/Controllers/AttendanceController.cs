@@ -40,10 +40,14 @@ namespace TreeAttendance.Controllers
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        public ActionResult ByStudent(string id = null)
+        public ActionResult ByStudent(string id, int index = 0)
         {
+            if(index == 0)
+            {
+                index = SystemGlobals.Instance.Today.Month;
+            }
             //Load the list of data into myAttendanceList 
-            var myAttendanceList = AttendanceBackend.IndexByStudent(id);
+            var myAttendanceList = AttendanceBackend.IndexByStudent(id, index);
 
             //create view model
             var myData = new AttendanceByStudentViewModel();

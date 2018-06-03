@@ -32,10 +32,14 @@ namespace TreeAttendance.Controllers
         /// </summary>
         /// <returns></returns>
         /// GET:AdminHome/Reports
-        public ActionResult StudentReports(string id)
+        public ActionResult StudentReports(string id, int index = 0)
         {
+            if (index == 0)
+            {
+                index = SystemGlobals.Instance.Today.Month;
+            }
             //Load the list of data into myAttendanceList 
-            var myAttendanceList = AttendanceBackend.IndexByStudent(id);
+            var myAttendanceList = AttendanceBackend.IndexByStudent(id, index);
             var report = new StudentReport(myAttendanceList, "May", "Allen");
             return View(report);
         }

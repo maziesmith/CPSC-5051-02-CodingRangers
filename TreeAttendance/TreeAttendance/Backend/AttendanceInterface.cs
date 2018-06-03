@@ -16,7 +16,7 @@ namespace TreeAttendance.Backend
         bool DeleteCheckIn(string id, int index);
         bool Delete(string id);
         List<AttendanceModel> Index();
-        List<AttendanceModel> IndexByStudent(string id);
+        List<AttendanceModel> IndexByStudent(string id, int month);
         List<AttendanceModel> IndexBySchoolDay(string id);
         bool CheckIn(string id);
         bool CheckOut(string id);

@@ -72,25 +72,34 @@ namespace TreeAttendance.Models
 
         private void CalculateOther()
         {
-            foreach(var item in Attendance)
+            if(Attendance.Count != 0)
             {
-                if(item.Status == Enums.AttendanceStatusEnum.AbsentExcused)
+                foreach (var item in Attendance)
                 {
-                    DaysAbsentExcused++;
-                } else if (item.Status == Enums.AttendanceStatusEnum.AbsentUnexcused)
-                {
-                    DaysAbsentUnexcused++;
-                } else if(item.Status == Enums.AttendanceStatusEnum.Late || item.Status == Enums.AttendanceStatusEnum.LateLeft){
-                    DaysLate++;
-                } if(item.Status == Enums.AttendanceStatusEnum.OnTimeLeft || item.Status == Enums.AttendanceStatusEnum.LateLeft){
-                    DaysLeftEarly++;
+                    if (item.Status == Enums.AttendanceStatusEnum.AbsentExcused)
+                    {
+                        DaysAbsentExcused++;
+                    }
+                    else if (item.Status == Enums.AttendanceStatusEnum.AbsentUnexcused)
+                    {
+                        DaysAbsentUnexcused++;
+                    }
+                    else if (item.Status == Enums.AttendanceStatusEnum.Late || item.Status == Enums.AttendanceStatusEnum.LateLeft)
+                    {
+                        DaysLate++;
+                    }
+                    if (item.Status == Enums.AttendanceStatusEnum.OnTimeLeft || item.Status == Enums.AttendanceStatusEnum.LateLeft)
+                    {
+                        DaysLeftEarly++;
+                    }
                 }
+                DaysPresent = Attendance.Count - DaysAbsentExcused - DaysAbsentUnexcused;
+                DaysOnTime = DaysPresent - DaysLate;
+                DaysStayed = DaysPresent - DaysLeftEarly;
+                TotalHoursAttended = AccumulativeHoursAttended.Last();
+                TotalHoursMissing = AccumulativeHoursExpected.Last() - AccumulativeHoursAttended.Last();
             }
-            DaysPresent = Attendance.Count - DaysAbsentExcused - DaysAbsentUnexcused;
-            DaysOnTime = DaysPresent - DaysLate;
-            DaysStayed = DaysPresent - DaysLeftEarly;
-            TotalHoursAttended = AccumulativeHoursAttended.Last();
-            TotalHoursMissing = AccumulativeHoursExpected.Last() - AccumulativeHoursAttended.Last();
+
         }
     }
 }

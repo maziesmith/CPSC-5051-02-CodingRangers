@@ -27,23 +27,28 @@
                     Select Month
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                    <a class="dropdown-item" href="#">May 2018</a>
-                    <a class="dropdown-item" href="#">April 2018</a>
-                    <a class="dropdown-item" href="#">March 2018</a>
-                    <a class="dropdown-item" href="#">Febuary 2018</a>
-                    <a class="dropdown-item" href="#">January 2018</a>
+                    <a class="dropdown-item" href="/Reports/StudentReports/@Url.RequestContext.RouteData.Values["id"]/6">June 2018</a>
+                    <a class="dropdown-item" href="/Reports/StudentReports/@Url.RequestContext.RouteData.Values["id"]/5">May 2018</a>
+                    <a class="dropdown-item" href="/Reports/StudentReports/@Url.RequestContext.RouteData.Values["id"]/4">April 2018</a>
+                    <a class="dropdown-item" href="/Reports/StudentReports/@Url.RequestContext.RouteData.Values["id"]/3">March 2018</a>
+                    <a class="dropdown-item" href="/Reports/StudentReports/@Url.RequestContext.RouteData.Values["id"]/2">Febuary 2018</a>
+                    <a class="dropdown-item" href="/Reports/StudentReports/@Url.RequestContext.RouteData.Values["id"]/1">January 2018</a>
                 </div>
             </li>
         </ul>
     </div>
 </nav>
+@if (Model.Attendance.Count == 0)
+{
+    <p>No Data of this Month</p>
+}
+else
+{
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.js"></script>
 
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.js"></script>
-
-<div class="row justify-content-lg-center">
-    <canvas id="barChart2" width="1150" height="300"></canvas>
-    <script>
+    <div class="row justify-content-lg-center">
+        <canvas id="barChart2" width="1150" height="300"></canvas>
+        <script>
         var ctx = document.getElementById("barChart2").getContext('2d');
         var myChart = new Chart(ctx, {
             type: 'bar',
@@ -79,12 +84,12 @@
             }
         });
 
-    </script>
-</div>
-<br />
-<div class="row justify-content-lg-center">
-    <canvas id="accumulativeChart" width="1150" height="300"></canvas>
-    <script>
+        </script>
+    </div>
+    <br />
+    <div class="row justify-content-lg-center">
+        <canvas id="accumulativeChart" width="1150" height="300"></canvas>
+        <script>
         var ctx = document.getElementById("accumulativeChart").getContext('2d');
         var myChart = new Chart(ctx, {
             type: 'line',
@@ -127,13 +132,13 @@
             }
         });
 
-    </script>
-</div>
-<br />
-<div class="row justify-content-lg-center">
-    <div class="col-3">
-        <canvas id="pieChart" width="300" height="300"></canvas>
-        <script>
+        </script>
+    </div>
+    <br />
+    <div class="row justify-content-lg-center">
+        <div class="col-3">
+            <canvas id="pieChart" width="300" height="300"></canvas>
+            <script>
             var ctx = document.getElementById("pieChart").getContext('2d');
             var myChart = new Chart(ctx, {
                 type: 'pie',
@@ -165,11 +170,11 @@
                 }
             });
 
-        </script>
-    </div>
-    <div class="col-3">
-        <canvas id="pieChart4" width="300" height="300"></canvas>
-        <script>
+            </script>
+        </div>
+        <div class="col-3">
+            <canvas id="pieChart4" width="300" height="300"></canvas>
+            <script>
             var ctx = document.getElementById("pieChart4").getContext('2d');
             var myChart = new Chart(ctx, {
                 type: 'pie',
@@ -199,11 +204,11 @@
                 }
             });
 
-        </script>
-    </div>
-    <div class="col-3">
-        <canvas id="pieChart2" width="300" height="300"></canvas>
-        <script>
+            </script>
+        </div>
+        <div class="col-3">
+            <canvas id="pieChart2" width="300" height="300"></canvas>
+            <script>
             var ctx = document.getElementById("pieChart2").getContext('2d');
             var myChart = new Chart(ctx, {
                 type: 'pie',
@@ -233,11 +238,11 @@
                 }
             });
 
-        </script>
-    </div>
-    <div class="col-3">
-        <canvas id="pieChart3" width="300" height="300"></canvas>
-        <script>
+            </script>
+        </div>
+        <div class="col-3">
+            <canvas id="pieChart3" width="300" height="300"></canvas>
+            <script>
             var ctx = document.getElementById("pieChart3").getContext('2d');
             var myChart = new Chart(ctx, {
                 type: 'pie',
@@ -267,13 +272,13 @@
                 }
             });
 
-        </script>
+            </script>
+
+        </div>
 
     </div>
-
-</div>
-<br />
+    <br />
 
 
+}
 
-<img class="report-img" src="~/Content/img/StudentReportMerge.jpg" />
