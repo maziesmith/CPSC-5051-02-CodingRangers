@@ -8,16 +8,22 @@ using TreeAttendance.Models;
 
 namespace TreeAttendance.Controllers
 {
+
     public class TreesController : Controller
     {
+        // The Backend Data source
+        private StudentBackend StudentBackend = StudentBackend.Instance;
+
         // GET: Trees
         /// <summary>
         /// This page presents all students' trees
         /// </summary>
         /// <returns></returns>
         public ActionResult Index()
-        {      
-            return View();          
+        {
+            // Load the list of data into the myDataList
+            var myDataList = StudentBackend.Index();
+            return View(myDataList);
         }
 
         // GET: Trees/Details/5
@@ -37,26 +43,25 @@ namespace TreeAttendance.Controllers
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        public ActionResult Edit()
+        public ActionResult Edit(string id = null)
         {
-            return View();
+            if(id == null)
+            {
+                RedirectToAction("Error", "Home", "Invalid Record");
+            } else if (id == "gold") {
+                SystemGlobals.Instance.LeafCount += 3;
+            }
+            else if (id == "silver")
+            {
+                SystemGlobals.Instance.LeafCount += 2;
+            }
+            else if (id == "bronze")
+            {
+                SystemGlobals.Instance.LeafCount += 1;
+            }
+            return RedirectToAction("Details");
         }
 
-        // POST: Trees/Edit/5
-        [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add update logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
 
     }
 }
