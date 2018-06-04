@@ -248,5 +248,15 @@ namespace TreeAttendance.Backend
             var myReturn = DataSource.Index().First();
             return myReturn;
         }
+
+        public bool SetExcused(string id, int index)
+        {
+            if (string.IsNullOrEmpty(id))
+            {
+                return false;
+            }
+            var myReturn = DataSource.SetExcused(id, index);
+            return myReturn;
+        }
     }
 }
