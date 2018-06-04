@@ -379,6 +379,23 @@ namespace TreeAttendance.Controllers
 
             return RedirectToAction("Index");
         }
+
+        /// <summary>
+        /// This shows the attendance record info to be deleted
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        // GET: Delete
+        public ActionResult SetExcused(string id = null, int index = 0)
+        {
+            var myAttendance = AttendanceBackend.Read(id);
+            if (myAttendance == null)
+            {
+                RedirectToAction("Error", "Home", "Invalid Record");
+            }
+            AttendanceBackend.SetExcused(id, index);
+            return RedirectToAction("Read", null, new { id = id });
+        }
     }
 }
 
