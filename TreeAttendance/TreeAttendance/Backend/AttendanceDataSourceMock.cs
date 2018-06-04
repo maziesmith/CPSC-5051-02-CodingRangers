@@ -219,6 +219,36 @@ namespace TreeAttendance.Backend
         }
 
         /// <summary>
+        /// Set excused absent or unexcused absent
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public bool SetExcused(string id, int index)
+        {
+            if (string.IsNullOrEmpty(id))
+            {
+                return false;
+            }
+
+            var myData = AttendanceList.Find(n => n.Id == id);
+            if(myData == null)
+            {
+                return false;
+            }
+            if (index == 1)
+            {
+                myData.Status = Models.Enums.AttendanceStatusEnum.AbsentExcused;
+                return true;
+            }if (index == 0)
+            {
+                myData.Status = Models.Enums.AttendanceStatusEnum.AbsentUnexcused;
+                return true;
+            }
+
+            return false;
+        }
+
+        /// <summary>
         /// Reset the Data, and reload it
         /// </summary>
         public void Reset()

@@ -20,6 +20,7 @@ namespace TreeAttendance.Backend
         List<AttendanceModel> IndexBySchoolDay(string id);
         bool CheckIn(string id);
         bool CheckOut(string id);
+        bool SetExcused(string id, int index);
         void Reset();
     }
 }
