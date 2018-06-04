@@ -269,6 +269,7 @@
     <Content Include="Content\img\boy1.png" />
     <Content Include="Content\img\boy2.png" />
     <Content Include="Content\img\Brand.png" />
+    <Content Include="Content\img\bronze.jpg" />
     <Content Include="Content\img\bush.png" />
     <Content Include="Content\img\butterfly.png" />
     <Content Include="Content\img\calendar.png" />
@@ -283,6 +284,7 @@
     <Content Include="Content\img\forrest.png" />
     <Content Include="Content\img\girl1.png" />
     <Content Include="Content\img\girl2.png" />
+    <Content Include="Content\img\gold.jpg" />
     <Content Include="Content\img\group.png" />
     <Content Include="Content\img\house.png" />
     <Content Include="Content\img\login.jpg" />
@@ -294,6 +296,7 @@
     <Content Include="Content\img\ReportsIndex.png" />
     <Content Include="Content\img\RoundTrees.png" />
     <Content Include="Content\img\sheep.png" />
+    <Content Include="Content\img\silver.jpg" />
     <Content Include="Content\img\smalltree.png" />
     <Content Include="Content\img\snail.png" />
     <Content Include="Content\img\snake.png" />
