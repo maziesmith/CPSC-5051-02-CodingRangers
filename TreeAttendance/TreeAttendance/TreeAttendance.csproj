@@ -263,6 +263,8 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\img\AddIcon.png" />
     <Content Include="Content\img\background.jpg" />
+    <Content Include="Content\img\bee.png" />
+    <Content Include="Content\img\bird.png" />
     <Content Include="Content\img\boy1.png" />
     <Content Include="Content\img\boy2.png" />
     <Content Include="Content\img\Brand.png" />
@@ -274,6 +276,7 @@
     <Content Include="Content\img\classTable3.png" />
     <Content Include="Content\img\classTable4.png" />
     <Content Include="Content\img\deer.png" />
+    <Content Include="Content\img\flower.png" />
     <Content Include="Content\img\forrest.png" />
     <Content Include="Content\img\girl1.png" />
     <Content Include="Content\img\girl2.png" />
@@ -286,6 +289,7 @@
     <Content Include="Content\img\ReportsDetails.png" />
     <Content Include="Content\img\ReportsIndex.png" />
     <Content Include="Content\img\RoundTrees.png" />
+    <Content Include="Content\img\sheep.png" />
     <Content Include="Content\img\smalltree.png" />
     <Content Include="Content\img\stdTable1.png" />
     <Content Include="Content\img\stdTable1crop.png" />
