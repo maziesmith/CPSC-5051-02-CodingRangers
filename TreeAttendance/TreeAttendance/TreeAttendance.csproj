@@ -281,6 +281,7 @@
     <Content Include="Content\img\login.jpg" />
     <Content Include="Content\img\monkey.png" />
     <Content Include="Content\img\PointierTrees.png" />
+    <Content Include="Content\img\progress-bar.png" />
     <Content Include="Content\img\rabbit.png" />
     <Content Include="Content\img\ReportsDetails.png" />
     <Content Include="Content\img\ReportsIndex.png" />
