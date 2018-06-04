@@ -13,48 +13,52 @@
 <div class="page-header">Tree Details</div>
 <br />
 <div class="row">
-    <div class="col-6">
+    <div class="col text-center">
         <h4>
             Current Tree Stage: 3
         </h4>
         <img src="~/Content/img/tree1-3-01.png" class="tree-img" />
     </div>
+    <div class="col text-center">
 
+        <div class="col text-center">
+            <h4>
+                Current Leaf Count: @SystemGlobals.Instance.LeafCount 🍂
+            </h4>
+        </div>
+        <br/><br /><br /><br />
+        <div class="row">
+            <div class="col">
+                <div class="card text-center reward-card">
+                    <img class="card-img-top  reward-img" src="~/Content/img/gold.jpg" alt="Card image cap">
+                    <div class="card-body">
+                        <a href="~/Trees/Edit/gold" class="btn btn-primary">+3 Leaves</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card text-center reward-card">
+                    <img class="card-img-top  reward-img" src="~/Content/img/silver.jpg" alt="Card image cap">
+                    <div class="card-body">
+                        <a href="~/Trees/Edit/silver" class="btn btn-primary">+2 Leaves</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card text-center reward-card">
+                    <img class="card-img-top reward-img" src="~/Content/img/bronze.jpg" alt="Card image cap">
+                    <div class="card-body">
+                        <a href="~/Trees/Edit/bronze" class="btn btn-primary">+1 Leaves</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 <br />
-<div class="row">
-    <div class="col-6">
 
-        <h4>
-            Current Leaf Count: @SystemGlobals.Instance.LeafCount 🍂
-        </h4>
-    </div>
-</div>
 <div class="row">
-    <div class="col-2">
-        <div class="card text-center reward-card">
-            <img class="card-img-top  reward-img" src="~/Content/img/gold.jpg" alt="Card image cap">
-            <div class="card-body">
-                <a href="~/Trees/Edit/gold" class="btn btn-primary">+3 Leaves</a>
-            </div>
-        </div>
-    </div>
-    <div class="col-2">
-        <div class="card text-center reward-card">
-            <img class="card-img-top  reward-img" src="~/Content/img/silver.jpg" alt="Card image cap">
-            <div class="card-body">
-                <a href="~/Trees/Edit/silver" class="btn btn-primary">+2 Leaves</a>
-            </div>
-        </div>
-    </div>
-    <div class="col-2">
-        <div class="card text-center reward-card">
-            <img class="card-img-top reward-img" src="~/Content/img/bronze.jpg" alt="Card image cap">
-            <div class="card-body">
-                <a href="~/Trees/Edit/bronze" class="btn btn-primary">+1 Leaves</a>
-            </div>
-        </div>
-    </div>
+
 </div>
 <br />
 
