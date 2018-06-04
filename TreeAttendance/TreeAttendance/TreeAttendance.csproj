@@ -265,6 +265,7 @@
     <Content Include="Content\img\background.jpg" />
     <Content Include="Content\img\boy1.png" />
     <Content Include="Content\img\boy2.png" />
+    <Content Include="Content\img\Brand.png" />
     <Content Include="Content\img\calendar.png" />
     <Content Include="Content\img\chicken.png" />
     <Content Include="Content\img\chipmunk.png" />
