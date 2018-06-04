@@ -264,6 +264,7 @@
     <Content Include="Content\img\AddIcon.png" />
     <Content Include="Content\img\boy1.png" />
     <Content Include="Content\img\boy2.png" />
+    <Content Include="Content\img\Brand.png" />
     <Content Include="Content\img\calendar.png" />
     <Content Include="Content\img\classTable1.png" />
     <Content Include="Content\img\classTable2.png" />
@@ -273,6 +274,7 @@
     <Content Include="Content\img\girl1.png" />
     <Content Include="Content\img\girl2.png" />
     <Content Include="Content\img\group.png" />
+    <Content Include="Content\img\logo_title_small_2-01.png" />
     <Content Include="Content\img\PointierTrees.png" />
     <Content Include="Content\img\ReportsDetails.png" />
     <Content Include="Content\img\ReportsIndex.png" />
@@ -303,6 +305,7 @@
     <Content Include="Content\img\tree2-4-01.png" />
     <Content Include="Content\img\TreeIcon.png" />
     <Content Include="Content\img\treeTogether.png" />
+    <Content Include="Content\img\logo_title.png" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
