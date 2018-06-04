@@ -1,5 +1,6 @@
 ﻿body {
     padding-bottom: 20px;
+    background-color:lightblue;
 }
 
 /* Set padding to keep content from hitting the edges */
@@ -138,5 +139,9 @@ textarea {
 
 .row-custom {
     margin: 20px;
+}
+
+.dash-btn {
+    padding:0;
 }
 

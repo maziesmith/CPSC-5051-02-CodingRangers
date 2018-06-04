@@ -244,6 +244,7 @@
     <Compile Include="Models\SchoolDayModel.cs" />
     <Compile Include="Models\StudentModel.cs" />
     <Compile Include="Models\SystemGlobals.cs" />
+    <Compile Include="Models\TodayAttendance.cs" />
     <Compile Include="Models\ViewModels\AttendanceByDateViewModel.cs" />
     <Compile Include="Models\ViewModels\AttendanceByStudentViewModel.cs" />
     <Compile Include="Models\ViewModels\AttendanceCheckInViewModel.cs" />
@@ -261,18 +262,27 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\img\AddIcon.png" />
+    <Content Include="Content\img\background.jpg" />
     <Content Include="Content\img\boy1.png" />
     <Content Include="Content\img\boy2.png" />
+    <Content Include="Content\img\Brand.png" />
     <Content Include="Content\img\calendar.png" />
+    <Content Include="Content\img\chicken.png" />
+    <Content Include="Content\img\chipmunk.png" />
     <Content Include="Content\img\classTable1.png" />
     <Content Include="Content\img\classTable2.png" />
     <Content Include="Content\img\classTable3.png" />
     <Content Include="Content\img\classTable4.png" />
+    <Content Include="Content\img\deer.png" />
     <Content Include="Content\img\forrest.png" />
     <Content Include="Content\img\girl1.png" />
     <Content Include="Content\img\girl2.png" />
     <Content Include="Content\img\group.png" />
+    <Content Include="Content\img\login.jpg" />
+    <Content Include="Content\img\monkey.png" />
     <Content Include="Content\img\PointierTrees.png" />
+    <Content Include="Content\img\progress-bar.png" />
+    <Content Include="Content\img\rabbit.png" />
     <Content Include="Content\img\ReportsDetails.png" />
     <Content Include="Content\img\ReportsIndex.png" />
     <Content Include="Content\img\RoundTrees.png" />
@@ -300,6 +310,7 @@
     <Content Include="Content\img\tree2-2-01.png" />
     <Content Include="Content\img\tree2-3-01.png" />
     <Content Include="Content\img\tree2-4-01.png" />
+    <Content Include="Content\img\tree4.png" />
     <Content Include="Content\img\TreeIcon.png" />
     <Content Include="Content\img\treeTogether.png" />
     <Content Include="favicon.ico" />
@@ -394,6 +405,8 @@
     <Content Include="Views\Reports\Index.cshtml" />
     <Content Include="Views\Reports\StudentReports.cshtml" />
     <Content Include="Views\Reports\ClassReports.cshtml" />
+    <Content Include="Views\StudentHome\Store.cshtml" />
+    <Content Include="Views\StudentHome\Rules.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

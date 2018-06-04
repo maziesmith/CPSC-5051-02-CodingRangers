@@ -27,23 +27,28 @@
                     Select Month
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                    <a class="dropdown-item" href="#">May 2018</a>
-                    <a class="dropdown-item" href="#">April 2018</a>
-                    <a class="dropdown-item" href="#">March 2018</a>
-                    <a class="dropdown-item" href="#">Febuary 2018</a>
-                    <a class="dropdown-item" href="#">January 2018</a>
+                    <a class="dropdown-item" href="/Reports/StudentReports/@Url.RequestContext.RouteData.Values["id"]/6">June 2018</a>
+                    <a class="dropdown-item" href="/Reports/StudentReports/@Url.RequestContext.RouteData.Values["id"]/5">May 2018</a>
+                    <a class="dropdown-item" href="/Reports/StudentReports/@Url.RequestContext.RouteData.Values["id"]/4">April 2018</a>
+                    <a class="dropdown-item" href="/Reports/StudentReports/@Url.RequestContext.RouteData.Values["id"]/3">March 2018</a>
+                    <a class="dropdown-item" href="/Reports/StudentReports/@Url.RequestContext.RouteData.Values["id"]/2">Febuary 2018</a>
+                    <a class="dropdown-item" href="/Reports/StudentReports/@Url.RequestContext.RouteData.Values["id"]/1">January 2018</a>
                 </div>
             </li>
         </ul>
     </div>
 </nav>
+@if (Model.Attendance.Count == 0)
+{
+    <p>No Data of this Month</p>
+}
+else
+{
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.js"></script>
 
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.js"></script>
-
-<div class="row justify-content-lg-center">
-    <canvas id="barChart2" width="1150" height="300"></canvas>
-    <script>
+    <div class="row justify-content-lg-center">
+        <canvas id="barChart2" width="1150" height="300"></canvas>
+        <script>
         var ctx = document.getElementById("barChart2").getContext('2d');
         var myChart = new Chart(ctx, {
             type: 'bar',
@@ -53,7 +58,7 @@
 
                 datasets: [{
                     backgroundColor:
-                        'rgba(54, 162, 235, 1)',
+                        'rgba(54, 162, 235, 0.5)',
                     label: 'Daily Attended Hours' ,
 
                     data: [@String.Join(", ", Model.HoursAttended.ToArray())],
@@ -79,12 +84,12 @@
             }
         });
 
-    </script>
-</div>
-<br />
-<div class="row justify-content-lg-center">
-    <canvas id="accumulativeChart" width="1150" height="300"></canvas>
-    <script>
+        </script>
+    </div>
+    <br />
+    <div class="row justify-content-lg-center">
+        <canvas id="accumulativeChart" width="1150" height="300"></canvas>
+        <script>
         var ctx = document.getElementById("accumulativeChart").getContext('2d');
         var myChart = new Chart(ctx, {
             type: 'line',
@@ -92,9 +97,9 @@
                 labels: [@String.Join(", ", Model.Date.ToArray())],
 
                 datasets: [{
-                    label: 'Actual',
+                    label: 'Attended',
                     backgroundColor: [
-                        'rgba(54, 162, 235, 1)',
+                        'rgba(54, 162, 235, 0.5)',
                     ],
                     data: [@String.Join(", ", Model.AccumulativeHoursAttended.ToArray())],
 
@@ -114,7 +119,7 @@
                     display: true,
                     position: 'bottom',
                     fontSize: 20,
-                    text: 'Accumulative Attended Hours'
+                    text: 'Cumulative Attended Hours'
                 },
                 responsive: false,
                 scales: {
@@ -127,13 +132,13 @@
             }
         });
 
-    </script>
-</div>
-<br />
-<div class="row justify-content-lg-center">
-    <div class="col-3">
-        <canvas id="pieChart" width="300" height="300"></canvas>
-        <script>
+        </script>
+    </div>
+    <br />
+    <div class="row justify-content-lg-center">
+        <div class="col-3">
+            <canvas id="pieChart" width="300" height="300"></canvas>
+            <script>
             var ctx = document.getElementById("pieChart").getContext('2d');
             var myChart = new Chart(ctx, {
                 type: 'pie',
@@ -142,12 +147,12 @@
                     datasets: [{
                         data: [@Model.DaysPresent, @Model.DaysAbsentExcused, @Model.DaysAbsentUnexcused],
                         backgroundColor: [
-                            'rgba(75, 192, 192, 0.2)',
+                            'rgba(54, 162, 235, 0.2)',
                             'rgba(255, 159, 64, 0.2)',
                             'rgba(255, 99, 132, 0.2)',
                         ],
                         borderColor: [
-                            'rgba(75, 192, 192, 1)',
+                            'rgba(54, 162, 235, 1)',
                             'rgba(255, 159, 64, 1)',
                             'rgba(255, 99, 132, 1)',
                         ],
@@ -165,11 +170,11 @@
                 }
             });
 
-        </script>
-    </div>
-    <div class="col-3">
-        <canvas id="pieChart4" width="300" height="300"></canvas>
-        <script>
+            </script>
+        </div>
+        <div class="col-3">
+            <canvas id="pieChart4" width="300" height="300"></canvas>
+            <script>
             var ctx = document.getElementById("pieChart4").getContext('2d');
             var myChart = new Chart(ctx, {
                 type: 'pie',
@@ -178,11 +183,11 @@
                     datasets: [{
                         data: [@Model.TotalHoursAttended, @Model.TotalHoursMissing],
                         backgroundColor: [
-                            'rgba(75, 192, 192, 0.2)',
+                            'rgba(54, 162, 235, 0.2)',
                             'rgba(255, 99, 132, 0.2)',
                         ],
                         borderColor: [
-                            'rgba(75, 192, 192, 1)',
+                            'rgba(54, 162, 235, 1)',
                             'rgba(255, 99, 132, 1)',
                         ],
                         borderWidth: 1
@@ -199,11 +204,11 @@
                 }
             });
 
-        </script>
-    </div>
-    <div class="col-3">
-        <canvas id="pieChart2" width="300" height="300"></canvas>
-        <script>
+            </script>
+        </div>
+        <div class="col-3">
+            <canvas id="pieChart2" width="300" height="300"></canvas>
+            <script>
             var ctx = document.getElementById("pieChart2").getContext('2d');
             var myChart = new Chart(ctx, {
                 type: 'pie',
@@ -212,11 +217,11 @@
                     datasets: [{
                         data: [@Model.DaysOnTime, @Model.DaysLate],
                         backgroundColor: [
-                            'rgba(75, 192, 192, 0.2)',
+                            'rgba(54, 162, 235, 0.2)',
                             'rgba(255, 99, 132, 0.2)',
                         ],
                         borderColor: [
-                            'rgba(75, 192, 192, 1)',
+                            'rgba(54, 162, 235, 1)',
                             'rgba(255, 99, 132, 1)',
                         ],
                         borderWidth: 1
@@ -233,11 +238,11 @@
                 }
             });
 
-        </script>
-    </div>
-    <div class="col-3">
-        <canvas id="pieChart3" width="300" height="300"></canvas>
-        <script>
+            </script>
+        </div>
+        <div class="col-3">
+            <canvas id="pieChart3" width="300" height="300"></canvas>
+            <script>
             var ctx = document.getElementById("pieChart3").getContext('2d');
             var myChart = new Chart(ctx, {
                 type: 'pie',
@@ -246,11 +251,11 @@
                     datasets: [{
                         data: [@Model.DaysStayed, @Model.DaysLeftEarly],
                         backgroundColor: [
-                            'rgba(75, 192, 192, 0.2)',
+                            'rgba(54, 162, 235, 0.2)',
                             'rgba(255, 99, 132, 0.2)',
                         ],
                         borderColor: [
-                            'rgba(75, 192, 192, 1)',
+                            'rgba(54, 162, 235, 1)',
                             'rgba(255, 99, 132, 1)',
                         ],
                         borderWidth: 1
@@ -267,13 +272,13 @@
                 }
             });
 
-        </script>
+            </script>
+
+        </div>
 
     </div>
-
-</div>
-<br />
+    <br />
 
 
+}
 
-<img class="report-img" src="~/Content/img/StudentReportMerge.jpg" />
