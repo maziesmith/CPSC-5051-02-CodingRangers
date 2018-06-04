@@ -24,7 +24,14 @@ namespace TreeAttendance.Models
         public int DaysLate { get; set; }
         public int DaysStayed { get; set; }
         public int DaysLeftEarly { get; set; }
-
+        public int DaysOnTimeStayed { get; set; }
+        public int DaysOnTimeLeft { get; set; }
+        public int DaysLateStayed { get; set; }
+        public int DaysLateLeft { get; set; }
+        public int PercPresent { get; set; }
+        public int PercAttendedHours { get; set; }
+        public int PercExcused { get; set; }
+        public int PercUnexcused { get; set; }
         public StudentReport(List<AttendanceModel> attendance, string month, string studentName)
         {
             Month = month;
@@ -84,13 +91,25 @@ namespace TreeAttendance.Models
                     {
                         DaysAbsentUnexcused++;
                     }
-                    else if (item.Status == Enums.AttendanceStatusEnum.Late || item.Status == Enums.AttendanceStatusEnum.LateLeft)
+                    else if (item.Status == Enums.AttendanceStatusEnum.Late)
                     {
+                        DaysLateStayed++;
                         DaysLate++;
                     }
-                    if (item.Status == Enums.AttendanceStatusEnum.OnTimeLeft || item.Status == Enums.AttendanceStatusEnum.LateLeft)
+                    if (item.Status == Enums.AttendanceStatusEnum.LateLeft)
                     {
+                        DaysLateLeft++;
                         DaysLeftEarly++;
+                    }
+                    if (item.Status == Enums.AttendanceStatusEnum.OnTimeLeft)
+                    {
+                        DaysOnTimeLeft++;
+                        DaysOnTime++;
+                    }
+                    if (item.Status == Enums.AttendanceStatusEnum.OnTime)
+                    {
+                        DaysOnTimeStayed++;
+                        DaysOnTime++;
                     }
                 }
                 DaysPresent = Attendance.Count - DaysAbsentExcused - DaysAbsentUnexcused;
@@ -98,6 +117,10 @@ namespace TreeAttendance.Models
                 DaysStayed = DaysPresent - DaysLeftEarly;
                 TotalHoursAttended = AccumulativeHoursAttended.Last();
                 TotalHoursMissing = AccumulativeHoursExpected.Last() - AccumulativeHoursAttended.Last();
+                PercPresent = 100 * DaysPresent / Attendance.Count;
+                PercExcused = 100 * DaysAbsentExcused / Attendance.Count;
+                PercUnexcused = 100 * DaysAbsentUnexcused / Attendance.Count;
+                PercAttendedHours = (int) (100 * TotalHoursAttended / (TotalHoursMissing + TotalHoursAttended));
             }
 
         }

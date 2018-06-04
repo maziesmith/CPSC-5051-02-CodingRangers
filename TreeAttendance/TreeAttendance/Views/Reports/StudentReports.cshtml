@@ -44,8 +44,46 @@
 }
 else
 {
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.js"></script>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.js"></script>
+    <div class="text-center">
+        <h4>Attendance Statistics of this Month</h4>
+    </div>
+
+    <div class="bg-white">
+        <table class="table table-striped">
+            <thead>
+                <tr class="thead">
+                    <th>Attendance Status</th>
+                    <th>Days</th>
+                    <th>Percentage</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Present</td>
+                    <td>@Model.DaysPresent</td>
+                    <td>@Model.PercPresent%</td>
+                </tr>
+                <tr>
+                    <td>Absent Unexcused</td>
+                    <td>@Model.DaysAbsentUnexcused</td>
+                    <td>@Model.PercUnexcused%</td>
+                </tr>
+                <tr>
+                    <td>Absent Excused</td>
+                    <td>@Model.DaysAbsentExcused</td>
+                    <td>@Model.PercExcused%</td>
+                </tr>
+                <tr>
+                    <td>Total Days</td>
+                    <td>@Model.Attendance.Count</td>
+                    <td>100%</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <br/>
     <div class="row justify-content-lg-center">
         <canvas id="barChart2" width="1150" height="300"></canvas>
         <script>
@@ -69,15 +107,24 @@ else
             options: {
                 title: {
                     display: true,
-                    position: 'bottom',
-                    fontSize: 20,
+                    fontSize: 24,
                     text: 'Attended Hours'
                 },
                 responsive: false,
                 scales: {
+                    xAxes: [{
+                        scaleLabel: {
+                            display: true,
+                            labelString: 'Date'
+                        }
+                    }],
                     yAxes: [{
                         ticks: {
                             beginAtZero: true
+                        },
+                        scaleLabel: {
+                            display: true,
+                            labelString: '# of Hours Attended'
                         }
                     }]
                 },
@@ -117,15 +164,24 @@ else
             options: {
                 title: {
                     display: true,
-                    position: 'bottom',
-                    fontSize: 20,
+                    fontSize: 24,
                     text: 'Cumulative Attended Hours'
                 },
                 responsive: false,
                 scales: {
+                    xAxes: [{
+                        scaleLabel: {
+                            display: true,
+                            labelString: 'Date'
+                        }
+                    }],
                     yAxes: [{
                         ticks: {
                             beginAtZero: true
+                        },
+                        scaleLabel: {
+                            display: true,
+                            labelString: '# of Cummulative Hours'
                         }
                     }]
                 },
@@ -162,7 +218,6 @@ else
                 options: {
                     title: {
                         display: true,
-                        position: 'bottom',
                         fontSize: 20,
                         text: 'Present vs Absent'
                     },
@@ -196,7 +251,6 @@ else
                 options: {
                     title: {
                         display: true,
-                        position: 'bottom',
                         fontSize: 20,
                         text: 'Attended Hours vs Missing Hours'
                     },
@@ -230,7 +284,6 @@ else
                 options: {
                     title: {
                         display: true,
-                        position: 'bottom',
                         fontSize: 20,
                         text: 'On Time vs Late'
                     },
@@ -264,7 +317,6 @@ else
                 options: {
                     title: {
                         display: true,
-                        position: 'bottom',
                         fontSize: 20,
                         text: 'Stayed vs Left Early'
                     },
