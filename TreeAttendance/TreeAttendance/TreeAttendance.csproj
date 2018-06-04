@@ -309,6 +309,7 @@
     <Content Include="Content\img\tree2-2-01.png" />
     <Content Include="Content\img\tree2-3-01.png" />
     <Content Include="Content\img\tree2-4-01.png" />
+    <Content Include="Content\img\tree4.png" />
     <Content Include="Content\img\TreeIcon.png" />
     <Content Include="Content\img\treeTogether.png" />
     <Content Include="favicon.ico" />
