@@ -105,16 +105,6 @@
 <br />
 
 <br />
-<div>
-    @if (Model.Attendance.Status == AttendanceStatusEnum.AbsentExcused)
-    {
-        <a href="~/Attendance/SetExcused/@Model.Attendance.Id/0" class="btn btn-primary">Change to Unexcused Absent</a>
-    }
-    @if (Model.Attendance.Status == AttendanceStatusEnum.AbsentUnexcused)
-    {
-        <a href="~/Attendance/SetExcused/@Model.Attendance.Id/1" class="btn btn-primary">Change to Excused Absent</a>
-    }
-</div>
 
 <div>
     <a href="~/Attendance/Delete/@Model.Attendance.Id" class="btn btn-outline-danger">Remove This Attendance Record</a>
