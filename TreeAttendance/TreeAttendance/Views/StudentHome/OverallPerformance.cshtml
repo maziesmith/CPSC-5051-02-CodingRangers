@@ -2,14 +2,7 @@
 @{
     ViewBag.Title = "Student Reports";
 }
-
-<nav aria-label="breadcrumb">
-    <ol class="breadcrumb">
-        <li class="breadcrumb-item" aria-current="page"> <a href="~/AdminHome">Admin</a></li>
-        <li class="breadcrumb-item" aria-current="page"> <a href="~/Reports/Index">Reports</a></li>
-        <li class="breadcrumb-item active" aria-current="page">Student Reports</li>
-    </ol>
-</nav>
+<br />
 <div class="page-header">Student Reports</div>
 <div class="text-center">
     <h5>Monthly Reports of Student</h5>
@@ -27,12 +20,12 @@
                     Select Month
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                    <a class="dropdown-item" href="/Reports/StudentReports/@Url.RequestContext.RouteData.Values["id"]/6">June 2018</a>
-                    <a class="dropdown-item" href="/Reports/StudentReports/@Url.RequestContext.RouteData.Values["id"]/5">May 2018</a>
-                    <a class="dropdown-item" href="/Reports/StudentReports/@Url.RequestContext.RouteData.Values["id"]/4">April 2018</a>
-                    <a class="dropdown-item" href="/Reports/StudentReports/@Url.RequestContext.RouteData.Values["id"]/3">March 2018</a>
-                    <a class="dropdown-item" href="/Reports/StudentReports/@Url.RequestContext.RouteData.Values["id"]/2">Febuary 2018</a>
-                    <a class="dropdown-item" href="/Reports/StudentReports/@Url.RequestContext.RouteData.Values["id"]/1">January 2018</a>
+                    <a class="dropdown-item" href="/StudentHome/OverallPerformance/@Url.RequestContext.RouteData.Values["id"]/6">June 2018</a>
+                    <a class="dropdown-item" href="/StudentHome/OverallPerformance/@Url.RequestContext.RouteData.Values["id"]/5">May 2018</a>
+                    <a class="dropdown-item" href="/StudentHome/OverallPerformance/@Url.RequestContext.RouteData.Values["id"]/4">April 2018</a>
+                    <a class="dropdown-item" href="/StudentHome/OverallPerformance/@Url.RequestContext.RouteData.Values["id"]/3">March 2018</a>
+                    <a class="dropdown-item" href="/StudentHome/OverallPerformance/@Url.RequestContext.RouteData.Values["id"]/2">Febuary 2018</a>
+                    <a class="dropdown-item" href="/StudentHome/OverallPerformance/@Url.RequestContext.RouteData.Values["id"]/1">January 2018</a>
                 </div>
             </li>
         </ul>
