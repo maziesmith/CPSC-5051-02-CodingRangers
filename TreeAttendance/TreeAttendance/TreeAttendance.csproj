@@ -287,6 +287,12 @@
     <Content Include="Content\img\gold.jpg" />
     <Content Include="Content\img\group.png" />
     <Content Include="Content\img\house.png" />
+    <Content Include="Content\img\icon-attendance-01.png" />
+    <Content Include="Content\img\icon-calendar-01.png" />
+    <Content Include="Content\img\icon-dashboard-01.png" />
+    <Content Include="Content\img\icon-reports-01.png" />
+    <Content Include="Content\img\icon-student-01.png" />
+    <Content Include="Content\img\icon-tree-01.png" />
     <Content Include="Content\img\login.jpg" />
     <Content Include="Content\img\monkey.png" />
     <Content Include="Content\img\PointierTrees.png" />
