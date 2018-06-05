@@ -1,4 +1,4 @@
-﻿
+﻿@model TreeAttendance.Models.StudentModel
 @{
     ViewBag.Title = "Index";
 }
@@ -7,52 +7,11 @@
 
 <p style=" text-align: right;">Hello, Student!</p>
 
-@*<html>
-    <head>
-        <style>
-            /*Background color*/
-            body {
-                background-color: none;
-            }
-            ul {
-                list-style-type: none;
-                margin: 0;
-                padding: 0;
-                overflow: hidden;
-            }
 
-            /*text to the right*/
-            li {
-                float: right;
-            }
-
-            li a {
-                display: block;
-                padding: 16px;
-                background-color: none;
-            }
-
-
-            /* Create two equal columns that floats next to each other */
-            .column {
-                float: left;
-                width: 50%;
-                padding: 10px;
-            }
-
-            /* Clear floats after the columns */
-            .row:after {
-                content: "";
-                display: table;
-                clear: both;
-            }
-        </style>
-    </head>
-    <body>*@
 
 <!-- Create Attendance and Overall button and link them to new page -->
 <nav class="navbar navbar-expand-lg">
-    <a class="navbar-brand" href="~/StudentHome/Attendance"><div class="btn btn-primary my-2 my-sm-0">Attendance</div></a>
+    <a class="navbar-brand" href="~/StudentHome/Attendance/@Model.Id"><div class="btn btn-primary my-2 my-sm-0">Attendance</div></a>
     <a class="navbar-brand" href="~/StudentHome/OverallPerformance"><div class="btn btn-primary my-2 my-sm-0">Reports</div></a>
     <a class="navbar-brand" href="~/StudentHome/Store"><div class="btn btn-primary my-2 my-sm-0">Store</div></a>
     <a class="navbar-brand" href="~/StudentHome/Rules"><div class="btn btn-primary my-2 my-sm-0">Rules</div></a>
@@ -88,6 +47,6 @@
     <p style="font-size: 20px;">Leaves needed: 55🍂, leaves earned: 145🍂</p>
 </div>
 
-    @*</body>
+@*</body>
 
-        </html>*@
+    </html>*@

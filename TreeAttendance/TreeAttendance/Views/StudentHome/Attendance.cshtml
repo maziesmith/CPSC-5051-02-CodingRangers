@@ -1,60 +1,79 @@
-﻿
+﻿@model TreeAttendance.Models.ViewModels.AttendanceByStudentViewModel
 @{
-    ViewBag.Title = "Attendance";
+    ViewBag.Title = "Attendance by Student";
 }
-<br/>
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+
+<div class="page-header">Past Attendance Records</div>
+
+<br />
+<nav class="navbar navbar-expand-lg">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <ul class="navbar-nav">
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Select Week
+                    Select Month
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                    <a class="dropdown-item" href="#">1st May 2018</a>
-                    <a class="dropdown-item" href="#">2st May 2018</a>
-                    <a class="dropdown-item" href="#">3st May 2018</a>
+                    <a class="dropdown-item" href="/StudentHome/Attendance/@Url.RequestContext.RouteData.Values["id"]/6">June 2018</a>
+                    <a class="dropdown-item" href="/StudentHome/Attendance/@Url.RequestContext.RouteData.Values["id"]/5">May 2018</a>
+                    <a class="dropdown-item" href="/StudentHome/Attendance/@Url.RequestContext.RouteData.Values["id"]/4">April 2018</a>
+                    <a class="dropdown-item" href="/StudentHome/Attendance/@Url.RequestContext.RouteData.Values["id"]/3">March 2018</a>
+                    <a class="dropdown-item" href="/StudentHome/Attendance/@Url.RequestContext.RouteData.Values["id"]/2">Febuary 2018</a>
+                    <a class="dropdown-item" href="/StudentHome/Attendance/@Url.RequestContext.RouteData.Values["id"]/1">January 2018</a>
                 </div>
             </li>
         </ul>
     </div>
 </nav>
+@if (Model.AttendanceList.Count == 0)
+{
+    <br />
+    <p>No attendance record of this student</p>
+    <br />
+}
+else
+{
+    <div class="bg-white">
+        <table class="table table-striped">
+            <thead>
+                <tr class="thead">
+                    <th>Date</th>
+                    <th>Check-in Time</th>
+                    <th>Check-out Time</th>
+                </tr>
+            </thead>
+            <tbody>
+                @for (int i = Model.AttendanceList.Count - 1; i >= 0; i--)
+                {
+                    var item = Model.AttendanceList[i];
+                    <tr>
+                        <td>@item.Date.ToString("D")</td>
+                        <td>
+                            @if (@item.Attendance.AttendanceCheckIns.Count != 0)
+                            {
+                                var inTime = string.Format("{0:00}:{1:00}", @item.Attendance.AttendanceCheckIns.First().CheckIn.Hours, @item.Attendance.AttendanceCheckIns.First().CheckIn.Minutes);
+                                @inTime
+                            }
+
+                        </td>
+                        <td>
+                            @if (@item.Attendance.AttendanceCheckIns.Count != 0)
+                            {
+                                var outTime = string.Format("{0:00}:{1:00}", @item.Attendance.AttendanceCheckIns.First().CheckOut.Hours, @item.Attendance.AttendanceCheckIns.First().CheckOut.Minutes);
+                                @outTime
+                            }
+                        </td>
+                    </tr>
+                }
+
+
+            </tbody>
+        </table>
+    </div>
+}
+
 <br />
-<div class="row">
-    <table class="table table-bordered">
-        <thead>
-            <tr class="thead-dark">
-                <th>Date</th>
-                <th>Check-in</th>
-                <th>Check-out</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr class="table-success">
-                <th>5/15/2018</th>
-                <th>08:30:14</th>
-                <th>15:45:00</th>
-            </tr>
-            <tr class="table-success">
-                <th>5/14/2018</th>
-                <th>08:41:45</th>
-                <th>15:45:00</th>
-            </tr>
-            <tr class="table-warning">
-                <th>5/13/2018</th>
-                <th>09:32:14</th>
-                <th>15:45:00</th>
-            </tr>
-            <tr class="table-danger">
-                <th>5/12/2018</th>
-                <th></th>
-                <th></th>
-            </tr>
-            <tr class="table-danger">
-                <th>5/11/2018</th>
-                <th>08:30:14</th>
-                <th>10:45:43</th>
-            </tr>
-        </tbody>
-    </table>
-</div>
+<br />
