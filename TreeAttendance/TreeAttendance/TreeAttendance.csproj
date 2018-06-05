@@ -269,6 +269,11 @@
     <Content Include="Content\img\boy1.png" />
     <Content Include="Content\img\boy2.png" />
     <Content Include="Content\img\Brand.png" />
+    <Content Include="Content\img\Brand4.png" />
+    <Content Include="Content\img\Brand5.png" />
+    <Content Include="Content\img\BrandAtt.png" />
+    <Content Include="Content\img\BrandLogo.png" />
+    <Content Include="Content\img\BrandTree.png" />
     <Content Include="Content\img\bronze.jpg" />
     <Content Include="Content\img\bush.png" />
     <Content Include="Content\img\butterfly.png" />
@@ -294,6 +299,8 @@
     <Content Include="Content\img\icon-student-01.png" />
     <Content Include="Content\img\icon-tree-01.png" />
     <Content Include="Content\img\login.jpg" />
+    <Content Include="Content\img\logo_bw-01.png" />
+    <Content Include="Content\img\logo_title2.png" />
     <Content Include="Content\img\monkey.png" />
     <Content Include="Content\img\PointierTrees.png" />
     <Content Include="Content\img\progress-bar.png" />
@@ -303,6 +310,7 @@
     <Content Include="Content\img\RoundTrees.png" />
     <Content Include="Content\img\sheep.png" />
     <Content Include="Content\img\silver.jpg" />
+    <Content Include="Content\img\SiteBrand2.png" />
     <Content Include="Content\img\smalltree.png" />
     <Content Include="Content\img\snail.png" />
     <Content Include="Content\img\snake.png" />
