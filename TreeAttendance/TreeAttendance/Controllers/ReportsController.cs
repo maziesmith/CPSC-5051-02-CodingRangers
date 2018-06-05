@@ -40,7 +40,7 @@ namespace TreeAttendance.Controllers
             }
             //Load the list of data into myAttendanceList 
             var myAttendanceList = AttendanceBackend.IndexByStudent(id, index);
-            var report = new StudentReport(myAttendanceList, "May", "Allen");
+            var report = new StudentReport(myAttendanceList);
             return View(report);
         }
 

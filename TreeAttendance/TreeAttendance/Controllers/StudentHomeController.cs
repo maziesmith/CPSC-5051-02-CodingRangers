@@ -25,9 +25,16 @@ namespace TreeAttendance.Controllers
 
         // GET: OverallPerformance
         // Access Overall Performance Page
-        public ActionResult OverallPerformance()
+        public ActionResult OverallPerformance(string id, int index = 0)
         {
-            return View();
+            if (index == 0)
+            {
+                index = SystemGlobals.Instance.Today.Month;
+            }
+            //Load the list of data into myAttendanceList 
+            var myAttendanceList = AttendanceBackend.IndexByStudent(id, index);
+            var report = new StudentReport(myAttendanceList);
+            return View(report);
         }
 
 

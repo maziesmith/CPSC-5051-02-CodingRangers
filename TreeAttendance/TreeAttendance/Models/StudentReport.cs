@@ -7,8 +7,6 @@ namespace TreeAttendance.Models
 {
     public class StudentReport
     {
-        public string Month { get; set; }
-        public string StudentName { get; set; }
         public List<AttendanceModel> Attendance { get; set; }
         public List<string> Date { get; set; }
         public List<double> HoursExpected { get; set; }
@@ -32,10 +30,8 @@ namespace TreeAttendance.Models
         public int PercAttendedHours { get; set; }
         public int PercExcused { get; set; }
         public int PercUnexcused { get; set; }
-        public StudentReport(List<AttendanceModel> attendance, string month, string studentName)
+        public StudentReport(List<AttendanceModel> attendance)
         {
-            Month = month;
-            StudentName = studentName;
             Attendance = attendance;
             Date = new List<string>();
             HoursExpected = new List<double>();
