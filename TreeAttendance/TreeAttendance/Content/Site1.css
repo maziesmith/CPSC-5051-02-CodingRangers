@@ -166,3 +166,11 @@ textarea {
     height:28px;
     padding:0;
 }
+
+.tree-set {
+    height: 200px;
+}
+
+.blur {
+    filter: blur(5px);
+}
