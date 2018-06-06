@@ -1,9 +1,9 @@
 ﻿@using TreeAttendance.Models.Enums
 @model TreeAttendance.Models.ViewModels.AttendanceByStudentViewModel
 @{
-                /**/
+    /**/
 
-                ViewBag.Title = "Attendance by Student";
+    ViewBag.Title = "Attendance by Student";
 }
 
 <nav aria-label="breadcrumb">
@@ -16,7 +16,21 @@
 <div class="page-header">Past Attendance Records of @Model.StudentName</div>
 
 <br />
+<div class="dropdown">
+    <a class="btn btn-primary dropdown-toggle text-white" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Select Month
+    </a>
 
+    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+        <a class="dropdown-item" href="/Attendance/ByStudent/@Url.RequestContext.RouteData.Values["id"]/6">June 2018</a>
+        <a class="dropdown-item" href="/Attendance/ByStudent/@Url.RequestContext.RouteData.Values["id"]/5">May 2018</a>
+        <a class="dropdown-item" href="/Attendance/ByStudent/@Url.RequestContext.RouteData.Values["id"]/4">April 2018</a>
+        <a class="dropdown-item" href="/Attendance/ByStudent/@Url.RequestContext.RouteData.Values["id"]/3">March 2018</a>
+        <a class="dropdown-item" href="/Attendance/ByStudent/@Url.RequestContext.RouteData.Values["id"]/2">Febuary 2018</a>
+        <a class="dropdown-item" href="/Attendance/ByStudent/@Url.RequestContext.RouteData.Values["id"]/1">January 2018</a>
+    </div>
+</div>
+<br />
 
 @if (Model.AttendanceList.Count == 0)
 {
@@ -26,21 +40,7 @@
 }
 else
 {
-    <div class="dropdown">
-        <a class="btn btn-primary dropdown-toggle text-white" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Select Month
-        </a>
 
-        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-            <a class="dropdown-item" href="/Attendance/ByStudent/@Url.RequestContext.RouteData.Values["id"]/6">June 2018</a>
-            <a class="dropdown-item" href="/Attendance/ByStudent/@Url.RequestContext.RouteData.Values["id"]/5">May 2018</a>
-            <a class="dropdown-item" href="/Attendance/ByStudent/@Url.RequestContext.RouteData.Values["id"]/4">April 2018</a>
-            <a class="dropdown-item" href="/Attendance/ByStudent/@Url.RequestContext.RouteData.Values["id"]/3">March 2018</a>
-            <a class="dropdown-item" href="/Attendance/ByStudent/@Url.RequestContext.RouteData.Values["id"]/2">Febuary 2018</a>
-            <a class="dropdown-item" href="/Attendance/ByStudent/@Url.RequestContext.RouteData.Values["id"]/1">January 2018</a>
-        </div>
-    </div>
-    <br/>
     <div class="bg-white">
         <table class="table table-striped">
             <thead>

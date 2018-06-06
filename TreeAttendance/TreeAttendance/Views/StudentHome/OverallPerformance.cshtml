@@ -3,83 +3,85 @@
     ViewBag.Title = "Student Reports";
 }
 <br />
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item" aria-current="page"><a href="~/StudentHome">Home</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Reports</li>
+    </ol>
+</nav>
 <div class="page-header">Student Reports</div>
 <div class="text-center">
     <h5>Monthly Reports of Student</h5>
 </div>
 <br />
-<nav class="navbar navbar-expand-lg">
-    <a class="navbar-brand" href="~/Reports/Download" target="_blank"><div class="btn btn-primary my-2 my-sm-0" href="~/Reports/Download" target="_blank">Download report</div></a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNavDropdown">
-        <ul class="navbar-nav">
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Select Month
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                    <a class="dropdown-item" href="/StudentHome/OverallPerformance/@Url.RequestContext.RouteData.Values["id"]/6">June 2018</a>
-                    <a class="dropdown-item" href="/StudentHome/OverallPerformance/@Url.RequestContext.RouteData.Values["id"]/5">May 2018</a>
-                    <a class="dropdown-item" href="/StudentHome/OverallPerformance/@Url.RequestContext.RouteData.Values["id"]/4">April 2018</a>
-                    <a class="dropdown-item" href="/StudentHome/OverallPerformance/@Url.RequestContext.RouteData.Values["id"]/3">March 2018</a>
-                    <a class="dropdown-item" href="/StudentHome/OverallPerformance/@Url.RequestContext.RouteData.Values["id"]/2">Febuary 2018</a>
-                    <a class="dropdown-item" href="/StudentHome/OverallPerformance/@Url.RequestContext.RouteData.Values["id"]/1">January 2018</a>
-                </div>
-            </li>
-        </ul>
+<div class="row row-custom">
+    <div class="dropdown">
+        <a class="btn btn-primary dropdown-toggle text-white" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Select Month
+        </a>
+        &nbsp;
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <a class="dropdown-item" href="/StudentHome/OverallPerformance/@Url.RequestContext.RouteData.Values["id"]/6">June 2018</a>
+            <a class="dropdown-item" href="/StudentHome/OverallPerformance/@Url.RequestContext.RouteData.Values["id"]/5">May 2018</a>
+            <a class="dropdown-item" href="/StudentHome/OverallPerformance/@Url.RequestContext.RouteData.Values["id"]/4">April 2018</a>
+            <a class="dropdown-item" href="/StudentHome/OverallPerformance/@Url.RequestContext.RouteData.Values["id"]/3">March 2018</a>
+            <a class="dropdown-item" href="/StudentHome/OverallPerformance/@Url.RequestContext.RouteData.Values["id"]/2">Febuary 2018</a>
+            <a class="dropdown-item" href="/StudentHome/OverallPerformance/@Url.RequestContext.RouteData.Values["id"]/1">January 2018</a>
+        </div>
+        <a class="btn btn-primary text-white" href="/Reports/Download" target="_blank">
+            Download Report
+        </a>
     </div>
-</nav>
-@if (Model.Attendance.Count == 0)
-{
-    <p>No Data of this Month</p>
-}
-else
-{
+</div>
+    @if (Model.Attendance.Count == 0)
+    {
+        <p>No Data of this Month</p>
+    }
+    else
+    {
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.js"></script>
-    <div class="text-center">
-        <h4>Attendance Statistics of this Month</h4>
-    </div>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.js"></script>
+        <div class="text-center">
+            <h4>Attendance Statistics of this Month</h4>
+        </div>
 
-    <div class="bg-white">
-        <table class="table table-striped">
-            <thead>
-                <tr class="thead">
-                    <th>Attendance Status</th>
-                    <th>Days</th>
-                    <th>Percentage</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>Present</td>
-                    <td>@Model.DaysPresent</td>
-                    <td>@Model.PercPresent%</td>
-                </tr>
-                <tr>
-                    <td>Absent Unexcused</td>
-                    <td>@Model.DaysAbsentUnexcused</td>
-                    <td>@Model.PercUnexcused%</td>
-                </tr>
-                <tr>
-                    <td>Absent Excused</td>
-                    <td>@Model.DaysAbsentExcused</td>
-                    <td>@Model.PercExcused%</td>
-                </tr>
-                <tr>
-                    <td>Total Days</td>
-                    <td>@Model.Attendance.Count</td>
-                    <td>100%</td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-    <br />
-    <div class="row justify-content-lg-center">
-        <canvas id="barChart2" width="1150" height="300"></canvas>
-        <script>
+        <div class="bg-white">
+            <table class="table table-striped">
+                <thead>
+                    <tr class="thead">
+                        <th>Attendance Status</th>
+                        <th>Days</th>
+                        <th>Percentage</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Present</td>
+                        <td>@Model.DaysPresent</td>
+                        <td>@Model.PercPresent%</td>
+                    </tr>
+                    <tr>
+                        <td>Absent Unexcused</td>
+                        <td>@Model.DaysAbsentUnexcused</td>
+                        <td>@Model.PercUnexcused%</td>
+                    </tr>
+                    <tr>
+                        <td>Absent Excused</td>
+                        <td>@Model.DaysAbsentExcused</td>
+                        <td>@Model.PercExcused%</td>
+                    </tr>
+                    <tr>
+                        <td>Total Days</td>
+                        <td>@Model.Attendance.Count</td>
+                        <td>100%</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <br />
+        <div class="row justify-content-lg-center">
+            <canvas id="barChart2" width="1150" height="300"></canvas>
+            <script>
         var ctx = document.getElementById("barChart2").getContext('2d');
         var myChart = new Chart(ctx, {
             type: 'bar',
@@ -124,12 +126,12 @@ else
             }
         });
 
-        </script>
-    </div>
-    <br />
-    <div class="row justify-content-lg-center">
-        <canvas id="accumulativeChart" width="1150" height="300"></canvas>
-        <script>
+            </script>
+        </div>
+        <br />
+        <div class="row justify-content-lg-center">
+            <canvas id="accumulativeChart" width="1150" height="300"></canvas>
+            <script>
         var ctx = document.getElementById("accumulativeChart").getContext('2d');
         var myChart = new Chart(ctx, {
             type: 'line',
@@ -181,13 +183,13 @@ else
             }
         });
 
-        </script>
-    </div>
-    <br />
-    <div class="row justify-content-lg-center">
-        <div class="col-3">
-            <canvas id="pieChart" width="300" height="300"></canvas>
-            <script>
+            </script>
+        </div>
+        <br />
+        <div class="row justify-content-lg-center">
+            <div class="col-3">
+                <canvas id="pieChart" width="300" height="300"></canvas>
+                <script>
             var ctx = document.getElementById("pieChart").getContext('2d');
             var myChart = new Chart(ctx, {
                 type: 'pie',
@@ -218,11 +220,11 @@ else
                 }
             });
 
-            </script>
-        </div>
-        <div class="col-3">
-            <canvas id="pieChart4" width="300" height="300"></canvas>
-            <script>
+                </script>
+            </div>
+            <div class="col-3">
+                <canvas id="pieChart4" width="300" height="300"></canvas>
+                <script>
             var ctx = document.getElementById("pieChart4").getContext('2d');
             var myChart = new Chart(ctx, {
                 type: 'pie',
@@ -251,11 +253,11 @@ else
                 }
             });
 
-            </script>
-        </div>
-        <div class="col-3">
-            <canvas id="pieChart2" width="300" height="300"></canvas>
-            <script>
+                </script>
+            </div>
+            <div class="col-3">
+                <canvas id="pieChart2" width="300" height="300"></canvas>
+                <script>
             var ctx = document.getElementById("pieChart2").getContext('2d');
             var myChart = new Chart(ctx, {
                 type: 'pie',
@@ -284,11 +286,11 @@ else
                 }
             });
 
-            </script>
-        </div>
-        <div class="col-3">
-            <canvas id="pieChart3" width="300" height="300"></canvas>
-            <script>
+                </script>
+            </div>
+            <div class="col-3">
+                <canvas id="pieChart3" width="300" height="300"></canvas>
+                <script>
             var ctx = document.getElementById("pieChart3").getContext('2d');
             var myChart = new Chart(ctx, {
                 type: 'pie',
@@ -317,14 +319,14 @@ else
                 }
             });
 
-            </script>
+                </script>
+
+            </div>
 
         </div>
-
-    </div>
-    <br />
+        <br />
 
 
-}
+    }
 
 
