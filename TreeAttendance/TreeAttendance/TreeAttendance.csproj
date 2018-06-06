@@ -313,6 +313,10 @@
     <Content Include="Content\img\sheep.png" />
     <Content Include="Content\img\silver.jpg" />
     <Content Include="Content\img\SiteBrand2.png" />
+    <Content Include="Content\img\slide1.png" />
+    <Content Include="Content\img\slide2.png" />
+    <Content Include="Content\img\slide3.png" />
+    <Content Include="Content\img\slide4.png" />
     <Content Include="Content\img\smalltree.png" />
     <Content Include="Content\img\snail.png" />
     <Content Include="Content\img\snake.png" />
