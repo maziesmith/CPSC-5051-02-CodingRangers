@@ -341,6 +341,7 @@
     <Content Include="Content\img\tree4.png" />
     <Content Include="Content\img\TreeIcon.png" />
     <Content Include="Content\img\treeTogether.png" />
+    <Content Include="Content\img\treeWithAnimals.png" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
