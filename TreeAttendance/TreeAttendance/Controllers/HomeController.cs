@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace TreeAttendance.Controllers
@@ -64,5 +61,16 @@ namespace TreeAttendance.Controllers
 
             return RedirectToAction("Index");
         }
+
+        /// <summary>
+        /// For demo purposes, personas page
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult Personas()
+        {
+            return View();
+        }
+
+
     }
 }

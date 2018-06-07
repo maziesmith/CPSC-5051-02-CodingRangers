@@ -310,9 +310,16 @@
     <Content Include="Content\img\ReportsDetails.png" />
     <Content Include="Content\img\ReportsIndex.png" />
     <Content Include="Content\img\RoundTrees.png" />
+    <Content Include="Content\img\Sarah.png" />
     <Content Include="Content\img\sheep.png" />
     <Content Include="Content\img\silver.jpg" />
     <Content Include="Content\img\SiteBrand2.png" />
+    <Content Include="Content\img\sl1.png" />
+    <Content Include="Content\img\sl2.png" />
+    <Content Include="Content\img\sl3.png" />
+    <Content Include="Content\img\sl4.png" />
+    <Content Include="Content\img\sl5.png" />
+    <Content Include="Content\img\sl6.png" />
     <Content Include="Content\img\slide1.png" />
     <Content Include="Content\img\slide2.png" />
     <Content Include="Content\img\slide3.png" />
@@ -347,6 +354,7 @@
     <Content Include="Content\img\TreeIcon.png" />
     <Content Include="Content\img\treeTogether.png" />
     <Content Include="Content\img\treeWithAnimals.png" />
+    <Content Include="Content\img\Yanny.png" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -442,6 +450,7 @@
     <Content Include="Views\Reports\ClassReports.cshtml" />
     <Content Include="Views\StudentHome\Store.cshtml" />
     <Content Include="Views\StudentHome\Rules.cshtml" />
+    <Content Include="Views\Home\Personas.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
