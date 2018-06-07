@@ -131,7 +131,7 @@ namespace TreeAttendance.Backend
         public void Initialize()
         {
             //create school days
-            for (int i = 100; i >= 0; i--)
+            for (int i = 50; i >= 0; i--)
             {
                 DateTime date = SystemGlobals.Instance.Today.AddDays(-i);
                 if((date.DayOfWeek != DayOfWeek.Saturday) && (date.DayOfWeek != DayOfWeek.Sunday))
