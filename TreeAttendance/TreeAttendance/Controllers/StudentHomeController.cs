@@ -19,7 +19,7 @@ namespace TreeAttendance.Controllers
         // Go to student home page
         public ActionResult Index()
         {
-            var myStudent = StudentBackend.Index()[0];
+            var myStudent = StudentBackend.Index()[2];
             return View(myStudent);
         }
 
